@@ -1,0 +1,19 @@
+body{
+    padding: 0;
+    margin: 0;
+    background-color: #67b168;
+    }
+
+.login{
+    width: 700px;
+    height:300px;
+    margin-top: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #ffffff;
+}
+
+.id1{
+    margin: 0px;
+    padding: 0px;
+}
