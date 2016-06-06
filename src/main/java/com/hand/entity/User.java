@@ -17,6 +17,9 @@ public class User implements Serializable {
 	
 	@Column(name="name")
 	private String name;
+	
+	@Column(name="identity")
+	private Integer identity;
 
 	public String getId() {
 		return id;
@@ -40,6 +43,14 @@ public class User implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public Integer getIdentity() {
+		return identity;
+	}
+
+	public void setIdentity(Integer identity) {
+		this.identity = identity;
 	}
 	
 	
