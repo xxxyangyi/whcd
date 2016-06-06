@@ -14,8 +14,8 @@
 	<!--设置浏览器是否缓存静态内容，建议：开发阶段关闭，运行时开启 -->
 	<constant name="struts.serve.static.browserCache" value="false" />
 
-	<package name="Customer" namespace="/Customer" extends="struts-default">
-		<!-- 登录验证 -->
+<!-- 	<package name="Customer" namespace="/Customer" extends="struts-default">
+		登录验证
 		<interceptors>
 			<interceptor name="auth" class="com.hand.interceptor.AuthInterceptor">
 			</interceptor>
@@ -33,5 +33,10 @@
 		<action name="add" class="customerAction" method="addCustomer"></action>
 		<action name="dele" class="customerAction" method="deleCustomer"></action>
 		<action name="edit" class="customerAction" method="editCustomer"></action>
+	</package> -->
+	<package name="Home" namespace="/Home" extends="struts-default">
+		<action name="Index" class="homeAction" method="Index">
+			<result name="index">/jsp/view/index.jsp</result>
+		</action>
 	</package>
 </struts>

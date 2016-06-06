@@ -42,6 +42,7 @@ public abstract class AbstractHibernateDao<T extends Serializable> implements
 	public void Create(T model) {
 		// TODO Auto-generated method stub
 		// getCurrentSession().saveOrUpdate(model);
+		System.out.println("------------------------"+model.toString());
 		getCurrentSession().save(model);
 	}
 

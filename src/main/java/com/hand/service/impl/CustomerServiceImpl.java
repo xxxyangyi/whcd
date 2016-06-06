@@ -1,4 +1,4 @@
-package com.hand.service.impl;
+/*package com.hand.service.impl;
 
 import java.util.List;
 
@@ -73,3 +73,4 @@ public class CustomerServiceImpl implements CustomerService {
 
 
 }
+*/
