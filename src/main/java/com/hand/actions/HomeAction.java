@@ -11,44 +11,52 @@ import com.hand.service.impl.UserService;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class HomeAction extends ActionSupport {
-	
-	@Resource(name="userService")
+
+	@Resource(name = "userService")
 	private IUserService userService;
-	
-	public String Index(){
-		User user=new User();
+
+	public String Index() {
+		User user = new User();
 		user.setId("123");
 		user.setName("long");
 		user.setPassword("123");
-		
-		//userService.AddUser(user);
+
+		// userService.AddUser(user);
 		return "index";
 	}
-	
+
 	/***
 	 * 注册界面
+	 * 
 	 * @return 返回注册视图
 	 */
-	public  String Resister(){
+	public String Resister() {
 		return "resister";
 	}
-	
-	public  String DoResister(){
-		
-		HttpServletRequest request=ServletActionContext.getRequest();
-		String id=request.getParameter("id");
-		String password=request.getParameter("password");
-		String name=request.getParameter("name");
-		Integer identity=Integer.parseInt(request.getParameter("identity"));
-		
-		User user=new User();
-		user.setId(id);
-		user.setName(name);
-		user.setPassword(password);
-		user.setIdentity(identity);
-		
-		userService.AddUser(user);
-		
-		return "index";
+
+	public String DoResister() {
+		try {
+			HttpServletRequest request = ServletActionContext.getRequest();
+			String id = request.getParameter("mail");
+			String password = request.getParameter("password");
+			String name = request.getParameter("name");
+			Integer identity = Integer.parseInt(request
+					.getParameter("identity"));
+			Integer sex = Integer.parseInt(request.getParameter("sex"));
+
+			User user = new User();
+			user.setId(id);
+			user.setName(name);
+			user.setPassword(password);
+			user.setIdentity(identity);
+			user.setSex(sex);
+			
+			userService.AddUser(user);
+			
+			return "success";
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return "failed";
+		}
 	}
 }

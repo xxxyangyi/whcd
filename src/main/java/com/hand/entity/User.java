@@ -21,6 +21,9 @@ public class User implements Serializable {
 	@Column(name="identity")
 	private Integer identity;
 
+	@Column(name="sex")
+	private Integer sex;
+	
 	public String getId() {
 		return id;
 	}
@@ -51,6 +54,14 @@ public class User implements Serializable {
 
 	public void setIdentity(Integer identity) {
 		this.identity = identity;
+	}
+
+	public Integer getSex() {
+		return sex;
+	}
+
+	public void setSex(Integer sex) {
+		this.sex = sex;
 	}
 	
 	

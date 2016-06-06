@@ -38,5 +38,12 @@
 		<action name="Index" class="homeAction" method="Index">
 			<result name="index">/jsp/view/index.jsp</result>
 		</action>
+		<action name="Resister" class="homeAction" method="Resister">
+			<result name="resister">/jsp/view/register.jsp</result>
+		</action>
+		<action name="DoResister" class="homeAction" method="DoResister">
+			<result name="success">/jsp/view/index.jsp</result>
+			<result name="failed">/jsp/view/register.jsp</result>
+		</action>
 	</package>
 </struts>
