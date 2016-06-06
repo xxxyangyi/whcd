@@ -24,7 +24,7 @@
 		<property name="driverClassName" value="${driver}" />
 		<property name="url" value="${dburl}" />
 		<property name="username" value="${user}" />
-		<property name="password" value="${password}" />
+<!-- 		<property name="password" value="${password}" /> -->
 	</bean>
 
 	<!-- Session 的创建 -->
@@ -68,6 +68,5 @@
 	<bean id="app" class="com.hand.Test">
 		<property name="customerService" ref="customerService" />
 		<property name="changeToJson" ref="changeToJson"></property>
-
 	</bean>
 </beans>
