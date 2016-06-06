@@ -46,40 +46,60 @@
 					<h1>注册</h1>
 				</div>
 				<hr align="left" width="100%" size="15" />
-				<form>
-					<div class="form-group">
-						<label for="exampleInputEmail1">Email address</label> <input
-							type="email" class="form-control" id="exampleInputEmail1"
-							placeholder="Email">
-					</div>
-					<div class="form-group">
-						<label for="exampleInputPassword1">Password</label> <input
-							type="password" class="form-control" id="exampleInputPassword1"
-							placeholder="Password">
-					</div>
-					<div class="form-group">
-						<label for="exampleInputFile">File input</label> <input
-							type="file" id="exampleInputFile">
-						<p class="help-block">Example block-level help text here.</p>
-					</div>
-					<div class="checkbox">
-						<label> <input type="checkbox"> Check me out
-						</label>
-					</div>
-					<button type="submit" class="btn btn-default">Submit</button>
-				</form>
-
-
 				<div class="row">
-					<div class="col-lg-3 col-lg-offset-2">
-						<input type="button" class="btn btn-info" id="submit" value="提交">
-						<input type="button" class="btn btn-info" id="cancel" value="取消">
+					<div class="col-lg-7 col-lg-offset-1">
+
+
+						<form>
+							<div class="form-group">
+								<label for="exampleInputEmail1">用户名：</label> <input type="text"
+									class="form-control" id="userName" placeholder="用户名">
+							</div>
+							<div class="form-group">
+								<div class="input-group">
+									<div clas="row">
+										<div class="col-lg-1">
+											<input type="radio" name="sex" aria-label="...">
+										</div>
+										<div class="col-lg-3">男</div>
+										<div class="col-lg-1">
+											<input type="radio" name="sex" aria-label="...">
+										</div>
+										<div class="col-lg-3">女</div>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="exampleInputEmail1">邮箱地址：</label> <input
+									type="email" class="form-control" id="exampleInputEmail1"
+									placeholder="邮箱地址">
+							</div>
+							<div class="form-group">
+								<label for="exampleInputPassword1">密码：</label> <input
+									type="password" class="form-control" id="Password"
+									placeholder="密码">
+							</div>
+							<div class="form-group">
+								<label for="exampleInputPassword2">确认密码：</label> <input
+									type="password" class="form-control" id="confirmPassword"
+									placeholder="确认密码">
+							</div>
+							<div class="form-group">
+								<div class="row">
+									<div class="col-lg-3 col-lg-offset-2">
+										<button type="submit" class="btn btn-default">提交</button>
+									</div>
+									<div class="col-lg-3">
+										<button type="reset" class="btn btn-default">重置</button>
+									</div>
+								</div>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
+			<div class="col-md-1"></div>
 		</div>
-		<div class="col-md-1"></div>
-	</div>
 
 	</div>
 
