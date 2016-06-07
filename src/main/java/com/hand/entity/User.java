@@ -1,9 +1,13 @@
 package com.hand.entity;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity(name="user")
 public class User implements Serializable {
@@ -16,6 +20,9 @@ public class User implements Serializable {
 	
 	@Column(name="name")
 	private String name;
+	
+	@OneToMany(mappedBy = "reader", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private Set<UserToActivity> userToActivity  =new HashSet<UserToActivity>();
 
 	public String getId() {
 		return id;
@@ -41,5 +48,12 @@ public class User implements Serializable {
 		this.name = name;
 	}
 	
-	
+	public Set<UserToActivity> getUserToActivity() {
+		return userToActivity;
+	}
+
+	public void setUserToActivity(Set<UserToActivity> userToActivity) {
+		this.userToActivity = userToActivity;
+	}
+
 }
