@@ -67,6 +67,5 @@
 		<property name="changeToJson" ref="changeToJson"></property>
 	</bean> -->
 	<bean id="homeAction" class="com.hand.actions.HomeAction">
-	</bean>
-	
+	</bean>	
 </beans>

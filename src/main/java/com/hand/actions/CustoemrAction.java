@@ -18,7 +18,7 @@ import com.hand.service.impl.ChangeToJson;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class CustoemrAction  extends ActionSupport {
+public abstract class CustoemrAction  extends ActionSupport {
 
 	private Customer cus;	
 	private CustomerService customerService;

@@ -13,11 +13,11 @@
 
 <title>注册页面</title>
 
-<link rel="stylesheet" href="jsp/css/bootstrap.css">
-<link rel="stylesheet" href="jsp/css/app.css">
-<script type="text/javascript" src="jsp/js/jquery-2.1.4.js"></script>
-<script src="jsp/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="jsp/js/app.js"></script>
+<link rel="stylesheet" href="<%=basePath%>/jsp/css/bootstrap.css">
+<link rel="stylesheet" href="<%=basePath%>/jsp/css/app.css">
+<script type="text/javascript" src="<%=basePath%>/jsp/js/jquery-2.1.4.js"></script>
+<script src="<%=basePath%>/jsp/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>/jsp/js/app.js"></script>
 
 
 </head>
@@ -57,7 +57,9 @@
         </li> -->
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
+				<%if(session.getAttribute("user")!=null) {%>
 				<li><a href="#" data-toggle="modal" data-target="#loginModal" data-whatever="@mdo">登录</a></li>
+				<%}else{ %>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">个人中心 <span class="caret"></span></a>
@@ -68,6 +70,7 @@
 						<li role="separator" class="divider"></li>
 						<li><a href="#">退出</a></li>
 					</ul></li>
+					<%} %>
 			</ul>
 			<form class="navbar-form navbar-right" role="search">
 				<div class="form-group">

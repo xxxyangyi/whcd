@@ -1,5 +1,7 @@
 package com.hand.actions;
 
+import java.util.Map;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
@@ -8,6 +10,7 @@ import org.apache.struts2.ServletActionContext;
 import com.hand.entity.User;
 import com.hand.service.IUserService;
 import com.hand.service.impl.UserService;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class HomeAction extends ActionSupport {
@@ -16,12 +19,6 @@ public class HomeAction extends ActionSupport {
 	private IUserService userService;
 
 	public String Index() {
-		User user = new User();
-		user.setId("123");
-		user.setName("long");
-		user.setPassword("123");
-
-		// userService.AddUser(user);
 		return "index";
 	}
 
@@ -53,10 +50,17 @@ public class HomeAction extends ActionSupport {
 			
 			userService.AddUser(user);
 			
+			Map session=ActionContext.getContext().getSession();
+			session.put("user",user);
+
 			return "success";
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			return "failed";
 		}
+	}
+	public String DoLogin(){
+		
+		return "";
 	}
 }
