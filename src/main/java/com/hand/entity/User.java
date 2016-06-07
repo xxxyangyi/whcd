@@ -1,4 +1,3 @@
-
 package com.hand.entity;
 
 import java.io.Serializable;
@@ -22,8 +21,8 @@ public class User implements Serializable {
 	@Column(name="name")
 	private String name;
 	
-/*	@OneToMany(mappedBy = "reader", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private Set<UserToActivity> userToActivity  =new HashSet<UserToActivity>();*/
+	@OneToMany(mappedBy = "user_id", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private Set<UserToActivity> userToActivity  =new HashSet<UserToActivity>();
 
 	@Column(name="identity")
 	private Integer identity;
@@ -31,6 +30,7 @@ public class User implements Serializable {
 	@Column(name="sex")
 	private Integer sex;
 	
+
 	public String getMail() {
 		return mail;
 	}
@@ -71,12 +71,12 @@ public class User implements Serializable {
 		this.sex = sex;
 	}
 	
-/*	public Set<UserToActivity> getUserToActivity() {
+	public Set<UserToActivity> getUserToActivity() {
 		return userToActivity;
 	}
 
 	public void setUserToActivity(Set<UserToActivity> userToActivity) {
 		this.userToActivity = userToActivity;
-	}*/
+	}
 
 }
