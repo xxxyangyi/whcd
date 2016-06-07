@@ -57,7 +57,7 @@
         </li> -->
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#">登录</a></li>
+				<li><a href="#" data-toggle="modal" data-target="#loginModal" data-whatever="@mdo">登录</a></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">个人中心 <span class="caret"></span></a>
@@ -80,4 +80,42 @@
 		<!-- /.navbar-collapse -->
 	</div>
 	<!-- /.container-fluid --> </nav>
+
+	<div class="modal fade" id="loginModal" tabindex="-1" role="dialog"
+		aria-labelledby="loginModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="exampleModalLabel">登录</h4>
+				</div>
+				<div class="modal-body">
+					<form class="form-horizontal">
+						<div class="form-group  ">
+							<label class="control-label col-sm-3" >用户名：</label>
+							<div class="col-sm-7">
+								<input type="text" class="form-control" id="inputSuccess3"
+									aria-describedby="inputSuccess3Status">
+							</div>
+						</div>
+						<div class="form-group  ">
+							<label class="control-label col-sm-3" >密码：</label>
+							<div class="col-sm-7">
+								<input type="text" class="form-control" id="inputSuccess3"
+									aria-describedby="inputSuccess3Status"> 
+							</div>
+						</div>
+
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+					<button type="button" class="btn btn-primary">登录</button>
+
+				</div>
+			</div></div>
+		</div>
 </body>

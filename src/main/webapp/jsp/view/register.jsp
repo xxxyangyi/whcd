@@ -13,9 +13,9 @@
 <base href="<%=basePath%>">
 
 <title>注册页面</title>
-
 <link rel="stylesheet" href="jsp/css/bootstrap.css">
 <link rel="stylesheet" href="jsp/css/app.css">
+
 <style type="text/css">
 	.error{
 		color:red;
