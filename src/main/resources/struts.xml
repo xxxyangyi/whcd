@@ -46,7 +46,4 @@
 			<result name="failed">/jsp/view/register.jsp</result>
 		</action>
 	</package>
-	<package name="Customer" namespace="/Customer" extends="struts-default">
-		<action name=""></action>
-	</package>
 </struts>

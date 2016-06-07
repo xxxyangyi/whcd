@@ -14,7 +14,7 @@ public class UserToActivity implements Serializable {
 	
 	@ManyToOne(cascade={CascadeType.ALL})           
     @JoinColumn(name="user_id") 
-	private User user;
+	private User user_id;
 
 	public int getId() {
 		return id;
@@ -24,13 +24,15 @@ public class UserToActivity implements Serializable {
 		this.id = id;
 	}
 
-	public User getUser() {
-		return user;
+	public User getUser_id() {
+		return user_id;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUser_id(User user_id) {
+		this.user_id = user_id;
 	}
+
+
 	
 //	@Column(name="active_id")
 //	private int active_id;

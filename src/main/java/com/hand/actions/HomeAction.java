@@ -1,7 +1,9 @@
 
 package com.hand.actions;
 
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -9,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.ServletActionContext;
 
 import com.hand.entity.User;
+import com.hand.entity.UserToActivity;
 import com.hand.service.IUserService;
 import com.hand.service.impl.UserService;
 import com.opensymphony.xwork2.ActionContext;
@@ -20,6 +23,16 @@ public class HomeAction extends ActionSupport {
 	private IUserService userService;
 
 	public String Index() {
+		User user = new User();
+		Set<UserToActivity> userToActivity  =new HashSet<UserToActivity>();
+		UserToActivity uTa = new UserToActivity();
+		user.setMail("1234567");
+		user.setName("yangyangyang1");
+		uTa.setUser_id(user);
+		userToActivity.add(uTa);
+		user.setUserToActivity(userToActivity);
+		userService.AddUser(user);
+		
 		return "index";
 	}
 
@@ -35,7 +48,7 @@ public class HomeAction extends ActionSupport {
 	public String DoResister() {
 		try {
 			HttpServletRequest request = ServletActionContext.getRequest();
-			String id = request.getParameter("mail");
+			String mail = request.getParameter("mail");
 			String password = request.getParameter("password");
 			String name = request.getParameter("name");
 			Integer identity = Integer.parseInt(request
@@ -43,7 +56,7 @@ public class HomeAction extends ActionSupport {
 			Integer sex = Integer.parseInt(request.getParameter("sex"));
 
 			User user = new User();
-			user.setId(id);
+			user.setMail(mail);
 			user.setName(name);
 			user.setPassword(password);
 			user.setIdentity(identity);

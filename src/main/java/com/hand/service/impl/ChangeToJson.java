@@ -3,7 +3,6 @@ package com.hand.service.impl;
 import java.text.SimpleDateFormat;
 import java.util.Iterator;
 import java.util.List;
-
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.hand.entity.Customer;
