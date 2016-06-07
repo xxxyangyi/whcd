@@ -57,7 +57,11 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-lg-10 col-lg-offset-2">
+					</div>
+				</div>
+				<div class="col-lg-10 col-lg-offset-2">
+					<div class="panel panel-default">
+						<div class="panel-body">
 							<div class="media">
 								<div class="media-body">
 									<h4 class="media-heading">Middle aligned media</h4>
@@ -68,17 +72,32 @@
 										width="100px" src="jsp/image/sky.jpg" alt="...">
 									</a>
 								</div>
-
 							</div>
 						</div>
 					</div>
-					
 				</div>
-
+				<div class="row">
+					<div class="col-lg-10 col-lg-offset-1">
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<div class="media">
+									<div class="media-left media-middle">
+										<a href="#"> <img class="media-object " height="100px"
+											width="100px" src="jsp/image/sky.jpg" alt="...">
+										</a>
+									</div>
+									<div class="media-body">
+										<h4 class="media-heading">Middle aligned media</h4>
+										这是一张图片这是一张图片这是一张图片这是一张图片这是一张图片这是一张图片这是一张图片这是一张图片这是一张图片这是一张图片。。。
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
 			</div>
-
 		</div>
-
 	</div>
 </body>
 </html>
