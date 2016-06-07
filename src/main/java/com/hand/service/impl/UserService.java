@@ -11,14 +11,34 @@ import com.hand.service.IUserService;
 
 @Transactional
 @Service("userService")
-public class UserService implements IUserService  {
-	
-	@Resource(name="userDao")
+public class UserService implements IUserService {
+
+	@Resource(name = "userDao")
 	private IUserDao userDao;
-	
-	public void AddUser(User user){
-		System.out.println("------------------------"+user.getName());
+
+	@Override
+	public void AddUser(User user) {
 		userDao.Create(user);
 	}
-	
+
+	@Override
+	public User GetUser(String mail) {
+		return userDao.FindOne(mail);
+	}
+
+	@Override
+	public boolean IsUserExisted(String mail,String password) {
+		// TODO Auto-generated method stub
+		try {
+			User user=GetUser(mail);
+			
+			if(user!=null&&user.getPassword().equals(password))
+					return true;
+			return false;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+	}
+
 }

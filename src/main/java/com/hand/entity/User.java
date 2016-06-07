@@ -13,8 +13,8 @@ import javax.persistence.*;
 @Entity(name="user")
 public class User implements Serializable {
 	@Id
-	@Column(name="id")
-	private String id;
+	@Column(name="mail")
+	private String mail;
 	
 	@Column(name="password")
 	private String password;
@@ -22,8 +22,8 @@ public class User implements Serializable {
 	@Column(name="name")
 	private String name;
 	
-	@OneToMany(mappedBy = "reader", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private Set<UserToActivity> userToActivity  =new HashSet<UserToActivity>();
+/*	@OneToMany(mappedBy = "reader", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private Set<UserToActivity> userToActivity  =new HashSet<UserToActivity>();*/
 
 	@Column(name="identity")
 	private Integer identity;
@@ -31,13 +31,12 @@ public class User implements Serializable {
 	@Column(name="sex")
 	private Integer sex;
 	
-	
-	public String getId() {
-		return id;
+	public String getMail() {
+		return mail;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setMail(String mail) {
+		this.mail = mail;
 	}
 
 	public String getPassword() {
@@ -72,12 +71,12 @@ public class User implements Serializable {
 		this.sex = sex;
 	}
 	
-	public Set<UserToActivity> getUserToActivity() {
+/*	public Set<UserToActivity> getUserToActivity() {
 		return userToActivity;
 	}
 
 	public void setUserToActivity(Set<UserToActivity> userToActivity) {
 		this.userToActivity = userToActivity;
-	}
+	}*/
 
 }

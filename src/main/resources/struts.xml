@@ -45,8 +45,6 @@
 			<result name="success">/jsp/view/index.jsp</result>
 			<result name="failed">/jsp/view/register.jsp</result>
 		</action>
-	</package>
-	<package name="Customer" namespace="/Customer" extends="struts-default">
-		<action name=""></action>
+		<action name="DoLogin" class="homeAction" method="DoLogin"></action>
 	</package>
 </struts>

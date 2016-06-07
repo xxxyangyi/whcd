@@ -1,10 +1,12 @@
 
 package com.hand.actions;
 
+import java.io.PrintWriter;
 import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.ServletActionContext;
 
@@ -35,7 +37,7 @@ public class HomeAction extends ActionSupport {
 	public String DoResister() {
 		try {
 			HttpServletRequest request = ServletActionContext.getRequest();
-			String id = request.getParameter("mail");
+			String mail = request.getParameter("mail");
 			String password = request.getParameter("password");
 			String name = request.getParameter("name");
 			Integer identity = Integer.parseInt(request
@@ -43,7 +45,7 @@ public class HomeAction extends ActionSupport {
 			Integer sex = Integer.parseInt(request.getParameter("sex"));
 
 			User user = new User();
-			user.setId(id);
+			user.setMail(mail);
 			user.setName(name);
 			user.setPassword(password);
 			user.setIdentity(identity);
@@ -60,9 +62,32 @@ public class HomeAction extends ActionSupport {
 			return "failed";
 		}
 	}
-	public String DoLogin(){
+	
+	
+	public void DoLogin(){
+		try{
+		System.out.println("++++++++++++++++++++++++++++++++++");;
+		HttpServletRequest request=ServletActionContext.getRequest();
+		HttpServletResponse response=ServletActionContext.getResponse();
+		PrintWriter out = response.getWriter();
 		
-		return "";
+		String mail = request.getParameter("mail");
+		String password = request.getParameter("password");
+		if(userService.IsUserExisted(mail, password)){
+			System.out.println("++++++++++++++++++++++++++++++++++ mail:"+mail);
+			System.out.println("++++++++++++++++++++++++++++++++++  password:"+password);;
+			User user=userService.GetUser(mail);
+			Map session=ActionContext.getContext().getSession();
+			session.put("user",user);
+			out.print(1);
+		}
+		else
+			out.print(0);
+		
+	}
+		catch(Exception ex){
+			ex.printStackTrace();
+		}
 	}
 }
 

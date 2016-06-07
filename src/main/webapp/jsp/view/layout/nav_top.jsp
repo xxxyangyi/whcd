@@ -1,7 +1,8 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
 <%@ taglib prefix="s" uri="/struts-tags"%>
@@ -15,7 +16,8 @@
 
 <link rel="stylesheet" href="<%=basePath%>/jsp/css/bootstrap.css">
 <link rel="stylesheet" href="<%=basePath%>/jsp/css/app.css">
-<script type="text/javascript" src="<%=basePath%>/jsp/js/jquery-2.1.4.js"></script>
+<script type="text/javascript"
+	src="<%=basePath%>/jsp/js/jquery-2.1.4.js"></script>
 <script src="<%=basePath%>/jsp/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<%=basePath%>/jsp/js/app.js"></script>
 
@@ -57,9 +59,14 @@
         </li> -->
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<%if(session.getAttribute("user")!=null) {%>
-				<li><a href="#" data-toggle="modal" data-target="#loginModal" data-whatever="@mdo">登录</a></li>
-				<%}else{ %>
+				<%
+					if (session.getAttribute("user") == null) {
+				%>
+				<li><a href="#" data-toggle="modal" data-target="#loginModal"
+					data-whatever="@mdo">登录</a></li>
+				<%
+					} else {
+				%>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">个人中心 <span class="caret"></span></a>
@@ -70,7 +77,9 @@
 						<li role="separator" class="divider"></li>
 						<li><a href="#">退出</a></li>
 					</ul></li>
-					<%} %>
+				<%
+					}
+				%>
 			</ul>
 			<form class="navbar-form navbar-right" role="search">
 				<div class="form-group">
@@ -98,17 +107,20 @@
 				<div class="modal-body">
 					<form class="form-horizontal">
 						<div class="form-group  ">
-							<label class="control-label col-sm-3" >用户名：</label>
+							<label id="error" style="color: red;text-align: center;" class="control-label col-sm-10"></label>
+						</div>
+						<div class="form-group  ">
+							<label class="control-label col-sm-3">邮箱：</label>
 							<div class="col-sm-7">
-								<input type="text" class="form-control" id="inputSuccess3"
-									aria-describedby="inputSuccess3Status">
+								<input type="text" class="form-control" id="mail"
+									aria-describedby="mailStatus">
 							</div>
 						</div>
 						<div class="form-group  ">
-							<label class="control-label col-sm-3" >密码：</label>
+							<label class="control-label col-sm-3">密码：</label>
 							<div class="col-sm-7">
-								<input type="text" class="form-control" id="inputSuccess3"
-									aria-describedby="inputSuccess3Status"> 
+								<input type="text" class="form-control" id="password"
+									aria-describedby="passwordStatus">
 							</div>
 						</div>
 
@@ -116,9 +128,34 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-					<button type="button" class="btn btn-primary">登录</button>
+					<button type="button" class="btn btn-primary" onclick="login('<%=path%>/Home/DoLogin');">登录</button>
 
 				</div>
-			</div></div>
+			</div>
 		</div>
+	</div>
+	<script type="text/javascript">
+		function login(url) {
+			var mail=$("#mail").val();
+			var password=$("#password").val();
+			$.ajax({
+				url : url,
+				async : false,
+				data:{"mail":mail,"password":password},
+				error : function() {
+					alert("登陆过程出错！");
+				},
+				success : function(data) {
+					var status=data;
+					if(status==='1'){
+						window.location.reload();
+					}
+					else{
+						$("#error").html("邮箱或密码输入有误！");
+					}
+						
+				}
+			});
+		}
+	</script>
 </body>
