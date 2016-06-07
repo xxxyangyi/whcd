@@ -1,3 +1,4 @@
+
 package com.hand.entity;
 
 import java.io.Serializable;

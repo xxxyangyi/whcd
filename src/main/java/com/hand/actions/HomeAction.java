@@ -1,3 +1,4 @@
+
 package com.hand.actions;
 
 import java.util.Map;
@@ -64,3 +65,4 @@ public class HomeAction extends ActionSupport {
 		return "";
 	}
 }
+
