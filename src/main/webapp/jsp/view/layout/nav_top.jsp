@@ -14,12 +14,11 @@
 
 <title>注册页面</title>
 
-<link rel="stylesheet" href="<%=basePath%>/jsp/css/bootstrap.css">
-<link rel="stylesheet" href="<%=basePath%>/jsp/css/app.css">
-<script type="text/javascript"
-	src="<%=basePath%>/jsp/js/jquery-2.1.4.js"></script>
-<script src="<%=basePath%>/jsp/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="<%=basePath%>/jsp/js/app.js"></script>
+<link rel="stylesheet" href="<%=basePath%>jsp/css/bootstrap.css">
+<link rel="stylesheet" href="<%=basePath%>jsp/css/app.css">
+<script type="text/javascript" src="<%=basePath%>jsp/js/jquery-2.1.4.js"></script>
+<script src="<%=basePath%>jsp/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>jsp/js/app.js"></script>
 
 
 </head>
@@ -43,7 +42,7 @@
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="#">名胜古迹 <span class="sr-only">(current)</span></a></li>
+				<li class="active"><a href="<%=request.getContextPath()%>/Scenery/SceneryList">名胜古迹 <span class="sr-only">(current)</span></a></li>
 				<li><a href="#">投票系统</a></li>
 				<!-- <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -71,11 +70,11 @@
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">个人中心 <span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="#">修改个人信息</a></li>
-						<li><a href="#">创建名胜古迹</a></li>
+						<li><a href="<%=request.getContextPath()%>/PersonCenter/ModifyInfo">修改个人信息</a></li>
+						<li><a href="<%=request.getContextPath()%>/PersonCenter/CreateScenery">创建名胜古迹</a></li>
 						<li><a href="#">创建投票信息</a></li>
 						<li role="separator" class="divider"></li>
-						<li><a href="#">退出</a></li>
+						<li><a onclick="logout('<%=path%>/Home/DoLogOut');">退出</a></li>
 					</ul></li>
 				<%
 					}
@@ -157,5 +156,27 @@
 				}
 			});
 		}
+		function logout(url){
+			
+			$.ajax({
+				url : url,
+				async : false,
+				error : function() {
+					alert("登陆过程出错！");
+				},
+				success : function(data) {
+					var status=data;
+					if(status==='1'){
+						alert("退出成功!");
+						window.location.reload();
+					}
+					else{
+						alert("退出失败!");
+					}
+						
+				}
+			});
+		}
+		
 	</script>
 </body>

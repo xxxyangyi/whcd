@@ -13,9 +13,6 @@
 <base href="<%=basePath%>">
 
 <title>注册页面</title>
-<link rel="stylesheet" href="<%=basePath%>/jsp/css/bootstrap.css">
-<link rel="stylesheet" href="<%=basePath%>/jsp/css/app.css">
-
 <style type="text/css">
 	.error{
 		color:red;
@@ -121,9 +118,8 @@
 
 	</div>
 	</div>
-	<script type="text/javascript" src="<%=basePath%>/jsp/js/jquery-2.1.4.js"></script>
-	<script type="text/javascript" src="<%=basePath%>/jsp/js/jquery.validate.js"></script>
-	<script type="text/javascript" src="<%=basePath%>/jsp/js/additional-methods.js"></script>
+	<script type="text/javascript" src="<%=basePath%>jsp/js/jquery.validate.js"></script>
+	<script type="text/javascript" src="<%=basePath%>jsp/js/additional-methods.js"></script>
 	<script type="text/javascript">
 	$().ready(
 			function() {

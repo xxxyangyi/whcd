@@ -70,7 +70,6 @@ public class HomeAction extends ActionSupport {
 		HttpServletRequest request=ServletActionContext.getRequest();
 		HttpServletResponse response=ServletActionContext.getResponse();
 		PrintWriter out = response.getWriter();
-		
 		String mail = request.getParameter("mail");
 		String password = request.getParameter("password");
 		if(userService.IsUserExisted(mail, password)){
@@ -85,6 +84,19 @@ public class HomeAction extends ActionSupport {
 			out.print(0);
 		
 	}
+		catch(Exception ex){
+			ex.printStackTrace();
+		}
+	}
+	
+	public void DoLogOut(){
+		try{
+			Map session=ActionContext.getContext().getSession();
+			session.remove("user");
+			HttpServletResponse response=ServletActionContext.getResponse();
+			PrintWriter out = response.getWriter();
+			out.print("1");
+		}
 		catch(Exception ex){
 			ex.printStackTrace();
 		}
