@@ -1,4 +1,3 @@
-
 package com.hand.actions;
 
 import java.io.PrintWriter;
@@ -66,7 +65,7 @@ public class HomeAction extends ActionSupport {
 	
 	public void DoLogin(){
 		try{
-		//System.out.println("++++++++++++++++++++++++++++++++++");;
+		System.out.println("++++++++++++++++++++++++++++++++++");
 		HttpServletRequest request=ServletActionContext.getRequest();
 		HttpServletResponse response=ServletActionContext.getResponse();
 		PrintWriter out = response.getWriter();
@@ -102,4 +101,3 @@ public class HomeAction extends ActionSupport {
 		}
 	}
 }
-

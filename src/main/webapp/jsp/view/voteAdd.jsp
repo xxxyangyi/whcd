@@ -44,21 +44,14 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">请填写您的投票信息</div>
 					<div class="panel-body">
-						<form>
+						<form  action="<%=basePath%>activity/voteAdd" method="post">
 							<div class="form-group">
 								<label for="dropdownActivity">您所要参加的活动：</label>
 								<div class="dropdown">
-									<button class="btn btn-default dropdown-toggle form-control" type="button"
-										id="dropdownActivity" data-toggle="dropdown" aria-haspopup="true"
-										aria-expanded="true">
-										您所要参加的活动： <span class="caret"></span>
-									</button>
-									<ul class="dropdown-menu form-control" aria-labelledby="dropdownMenu1">
-										<li>活动1</li>
-										<li>活动2</li>
-										<li>活动3</li>
-										<li>活动4</li>
-									</ul>
+									<select name="activity_id" class="btn btn-default dropdown-toggle form-control"
+										id="selectActivity" >
+										<option value=<s:property value="activity.id"/> selected="selected"><s:property value="activity.id"/></option>
+									</select>
 								</div>
 							</div>
 							<div class="form-group">
@@ -70,8 +63,9 @@
 								<!-- <p class="help-block">加油加油加油！！！</p> -->
 							</div>
 							<div class="form-group">
-								<label for="context">请简介照片内容</label> <textarea  style="height:100px" 
-									class="form-control" id="context" placeholder="请简介照片内容"></textarea>
+								<label for="context">请简介照片内容</label>
+								<textarea name="vote.context" style="height: 100px" class="form-control"
+									id="context" placeholder="请简介照片内容"></textarea>
 							</div>
 							<button type="submit" class="btn btn-default">提交</button>
 						</form>

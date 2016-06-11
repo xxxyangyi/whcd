@@ -1,3 +1,4 @@
+
 package com.hand.dao.common;
 
 import java.io.Serializable;

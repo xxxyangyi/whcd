@@ -21,11 +21,12 @@ public class User implements Serializable {
 	@Column(name="name")
 	private String name;
 	
-	@OneToMany(mappedBy = "user_id", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "user_id", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Set<UserToActivity> userToActivity  =new HashSet<UserToActivity>();
 	
 	@OneToMany(mappedBy = "user_id", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Set<Scenery> scenery  =new HashSet<Scenery>();
+
 
 	@Column(name="identity")
 	private Integer identity;
@@ -82,6 +83,7 @@ public class User implements Serializable {
 		this.userToActivity = userToActivity;
 	}
 
+
 	public Set<Scenery> getScenery() {
 		return scenery;
 	}
@@ -89,6 +91,5 @@ public class User implements Serializable {
 	public void setScenery(Set<Scenery> scenery) {
 		this.scenery = scenery;
 	}
-	
-	
+
 }
