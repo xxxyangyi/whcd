@@ -24,13 +24,9 @@ public class User implements Serializable {
 	@OneToMany(mappedBy = "user_id", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Set<UserToActivity> userToActivity  =new HashSet<UserToActivity>();
 	
-<<<<<<< HEAD
-//	@OneToMany(mappedBy = "user_id1", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//	private Set<Vote> votes  =new HashSet<Vote>();
-=======
 	@OneToMany(mappedBy = "user_id", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Set<Scenery> scenery  =new HashSet<Scenery>();
->>>>>>> refs/remotes/origin/master
+
 
 	@Column(name="identity")
 	private Integer identity;
@@ -87,16 +83,7 @@ public class User implements Serializable {
 		this.userToActivity = userToActivity;
 	}
 
-<<<<<<< HEAD
-//	public Set<Vote> getVotes() {
-//		return votes;
-//	}
-//
-//	public void setVotes(Set<Vote> votes) {
-//		this.votes = votes;
-//	}
 
-=======
 	public Set<Scenery> getScenery() {
 		return scenery;
 	}
@@ -104,7 +91,5 @@ public class User implements Serializable {
 	public void setScenery(Set<Scenery> scenery) {
 		this.scenery = scenery;
 	}
-	
-	
->>>>>>> refs/remotes/origin/master
+
 }

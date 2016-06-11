@@ -48,7 +48,7 @@
 		<action name="DoLogin" class="homeAction" method="DoLogin"></action>
 		<action name="DoLogOut" class="homeAction" method="DoLogOut"></action>
 	</package>
-<<<<<<< HEAD
+
 	<package name="activity" namespace="/activity" extends="struts-default">
 		<action name="voteAdd" class="voteAction" method="voteAdd">
 		    <result name="success" type="redirect">/activity/getActivityVotes</result>
@@ -70,7 +70,6 @@
 		<action name="voteFor" class="voteAction" method="voteFor"></action>
 		
 	</package>
-=======
 	
 	<package name="PersonCenter" namespace="/PersonCenter" extends="struts-default">
 		<action name="ModifyInfo" class="personCenter" method="ModifyInfo">
@@ -151,8 +150,5 @@
 			<result name="sceneryDetail">/jsp/view/scenery/sceneryDetail.jsp</result>
 		</action>
 	</package>
-	
-	
-	
->>>>>>> refs/remotes/origin/master
+
 </struts>
