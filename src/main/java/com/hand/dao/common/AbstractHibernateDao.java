@@ -3,7 +3,9 @@ package com.hand.dao.common;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
+
 import javax.annotation.Resource;
+
 import org.apache.commons.logging.impl.Log4JLogger;
 import org.apache.log4j.Logger;
 import org.hibernate.Query;
@@ -17,6 +19,7 @@ public abstract class AbstractHibernateDao<T extends Serializable> implements
 		IOperation<T> {
 	private Class<T> clazz;
 	//private final Logger log=Logger.getLogger(AbstractHibernateDao.class);
+	
 	
 	@Resource(name = "sessionFactory")
 	private SessionFactory sessionFactory;
@@ -48,7 +51,6 @@ public abstract class AbstractHibernateDao<T extends Serializable> implements
 	public void Create(T model) {
 		// TODO Auto-generated method stub
 		// getCurrentSession().saveOrUpdate(model);
-		System.out.println("------------------------"+model.toString());
 		getCurrentSession().merge(model);
 	}
 
