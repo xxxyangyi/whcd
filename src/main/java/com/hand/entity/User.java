@@ -21,8 +21,11 @@ public class User implements Serializable {
 	@Column(name="name")
 	private String name;
 	
-	@OneToMany(mappedBy = "user_id", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "user_id", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Set<UserToActivity> userToActivity  =new HashSet<UserToActivity>();
+	
+//	@OneToMany(mappedBy = "user_id1", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//	private Set<Vote> votes  =new HashSet<Vote>();
 
 	@Column(name="identity")
 	private Integer identity;
@@ -78,5 +81,13 @@ public class User implements Serializable {
 	public void setUserToActivity(Set<UserToActivity> userToActivity) {
 		this.userToActivity = userToActivity;
 	}
+
+//	public Set<Vote> getVotes() {
+//		return votes;
+//	}
+//
+//	public void setVotes(Set<Vote> votes) {
+//		this.votes = votes;
+//	}
 
 }

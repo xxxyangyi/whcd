@@ -9,4 +9,5 @@ public interface IOperation<T extends Serializable> {
 	void Create(final T model);
 	T Update(final T model);
 	void Delete(final T model);
+	List<T> FindBySQL(String str);
 }

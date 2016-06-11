@@ -66,6 +66,7 @@
 		<property name="customerService" ref="customerService" />
 		<property name="changeToJson" ref="changeToJson"></property>
 	</bean> -->
-	<bean id="homeAction" class="com.hand.actions.HomeAction">
-	</bean>	
+	<bean id="homeAction" class="com.hand.actions.HomeAction"></bean>
+	<bean id="voteAction" class="com.hand.actions.VoteAction"></bean>
+	<bean id="activityAction" class="com.hand.actions.ActivityAction"></bean>			
 </beans>

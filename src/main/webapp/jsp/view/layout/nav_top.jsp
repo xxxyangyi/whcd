@@ -14,12 +14,12 @@
 
 <title>注册页面</title>
 
-<link rel="stylesheet" href="<%=basePath%>/jsp/css/bootstrap.css">
-<link rel="stylesheet" href="<%=basePath%>/jsp/css/app.css">
+<link rel="stylesheet" href="<%=basePath%>jsp/css/bootstrap.css">
+<link rel="stylesheet" href="<%=basePath%>jsp/css/app.css">
 <script type="text/javascript"
-	src="<%=basePath%>/jsp/js/jquery-2.1.4.js"></script>
-<script src="<%=basePath%>/jsp/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="<%=basePath%>/jsp/js/app.js"></script>
+	src="<%=basePath%>jsp/js/jquery-2.1.4.js"></script>
+<script src="<%=basePath%>jsp/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>jsp/js/app.js"></script>
 
 
 </head>
@@ -44,7 +44,7 @@
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="#">名胜古迹 <span class="sr-only">(current)</span></a></li>
-				<li><a href="#">投票系统</a></li>
+				<li><a href="<%=basePath%>jsp/view/activityShowList.jsp">投票系统</a></li>
 				<!-- <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
           <ul class="dropdown-menu">

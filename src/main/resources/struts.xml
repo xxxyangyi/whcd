@@ -7,8 +7,8 @@
 	<constant name="struts.devMode" value="true" />
 	<!--当struts.xml配置文件修改后，系统是否重新加载该文件，开发阶段打开此功能 -->
 	<constant name="struts.configuration.xml.reload" value="true" />
-	<!-- 允许调用静态方法 -->
-	<constant name="struts.ognl.allowStaticMethodAccess" value="true" />
+	<!-- 允许调用静态方法
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true" /> -->
 	<constant name="struts.i18n.encoding" value="UTF-8" />
 	<constant name="struts.custom.i18n.resources" value="global" />
 	<!--设置浏览器是否缓存静态内容，建议：开发阶段关闭，运行时开启 -->
@@ -46,5 +46,26 @@
 			<result name="failed">/jsp/view/register.jsp</result>
 		</action>
 		<action name="DoLogin" class="homeAction" method="DoLogin"></action>
+	</package>
+	<package name="activity" namespace="/activity" extends="struts-default">
+		<action name="voteAdd" class="voteAction" method="voteAdd">
+		    <result name="success" type="redirect">/activity/getActivityVotes</result>
+		    <result name="success" type="redirectAction">  
+                 <param name="actionName">activity/getActivityVotes</param>  
+                 <param name="activity_id">${vote.activity_id.id}</param>  
+             </result>	
+		</action>
+		<action name="activityAdd" class="activityAction" method="activityAdd">
+			<result name="success" type="redirect">/jsp/view/activityShowList.jsp</result>
+		</action>
+		<action name="getActivitys" class="activityAction" method="getActivitys"></action>
+		<action name="getActivityVotes" class="activityAction" method="getActivityVotes">
+		    <result name="success">/jsp/view/activityShowContext.jsp</result>		    
+		</action>
+		<action name="getActivityById" class="activityAction" method="getActivityById">
+		    <result name="success">/jsp/view/voteAdd.jsp</result>		    
+		</action>
+		<action name="voteFor" class="voteAction" method="voteFor"></action>
+		
 	</package>
 </struts>

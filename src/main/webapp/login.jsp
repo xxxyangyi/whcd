@@ -35,7 +35,7 @@
 							<span class="input-group-addon">用户名:</span>
 						</div>
 						<div class="col-lg-6">
-							<input name="cus.first_name" type="text"
+							<input name="activity.activityName" type="text"
 								class="form-control col-lg-6" placeholder="请输入用户名">
 						</div>
 					</div>
