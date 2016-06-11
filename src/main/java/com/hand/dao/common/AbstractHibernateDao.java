@@ -2,6 +2,7 @@ package com.hand.dao.common;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 import javax.annotation.Resource;
 import org.apache.commons.logging.impl.Log4JLogger;
 import org.apache.log4j.Logger;
