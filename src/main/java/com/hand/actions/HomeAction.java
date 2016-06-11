@@ -66,15 +66,15 @@ public class HomeAction extends ActionSupport {
 	
 	public void DoLogin(){
 		try{
-		System.out.println("++++++++++++++++++++++++++++++++++");;
+		//System.out.println("++++++++++++++++++++++++++++++++++");;
 		HttpServletRequest request=ServletActionContext.getRequest();
 		HttpServletResponse response=ServletActionContext.getResponse();
 		PrintWriter out = response.getWriter();
 		String mail = request.getParameter("mail");
 		String password = request.getParameter("password");
 		if(userService.IsUserExisted(mail, password)){
-			System.out.println("++++++++++++++++++++++++++++++++++ mail:"+mail);
-			System.out.println("++++++++++++++++++++++++++++++++++  password:"+password);;
+			//System.out.println("++++++++++++++++++++++++++++++++++ mail:"+mail);
+			//System.out.println("++++++++++++++++++++++++++++++++++  password:"+password);;
 			User user=userService.GetUser(mail);
 			Map session=ActionContext.getContext().getSession();
 			session.put("user",user);

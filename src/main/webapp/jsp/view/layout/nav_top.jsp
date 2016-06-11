@@ -63,36 +63,7 @@
 				%>
 				<li><a href="#" data-toggle="modal" data-target="#loginModal"
 					data-whatever="@mdo">登录</a></li>
-				<%
-					} else {
-				%>
-				<li class="dropdown"><a href="#" class="dropdown-toggle"
-					data-toggle="dropdown" role="button" aria-haspopup="true"
-					aria-expanded="false">个人中心 <span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="<%=request.getContextPath()%>/PersonCenter/ModifyInfo">修改个人信息</a></li>
-						<li><a href="<%=request.getContextPath()%>/PersonCenter/CreateScenery">创建名胜古迹</a></li>
-						<li><a href="#">创建投票信息</a></li>
-						<li role="separator" class="divider"></li>
-						<li><a onclick="logout('<%=path%>/Home/DoLogOut');">退出</a></li>
-					</ul></li>
-				<%
-					}
-				%>
-			</ul>
-			<form class="navbar-form navbar-right" role="search">
-				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Search">
-				</div>
-				<button type="submit" class="btn btn-default">搜索</button>
-			</form>
-
-		</div>
-		<!-- /.navbar-collapse -->
-	</div>
-	<!-- /.container-fluid --> </nav>
-
-	<div class="modal fade" id="loginModal" tabindex="-1" role="dialog"
+					<div class="modal fade" id="loginModal" tabindex="-1" role="dialog"
 		aria-labelledby="loginModalLabel">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
@@ -133,6 +104,36 @@
 			</div>
 		</div>
 	</div>
+				
+					
+				<%
+					} else {
+				%>
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown" role="button" aria-haspopup="true"
+					aria-expanded="false">个人中心 <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="<%=request.getContextPath()%>/PersonCenter/ModifyInfo">修改个人信息</a></li>
+						<li><a href="<%=request.getContextPath()%>/PersonCenter/CreateScenery">创建名胜古迹</a></li>
+						<li><a href="#">创建投票信息</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a onclick="logout('<%=path%>/Home/DoLogOut');">退出</a></li>
+					</ul></li>
+				<%
+					}
+				%>
+			</ul>
+			<form class="navbar-form navbar-right" role="search">
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Search">
+				</div>
+				<button type="submit" class="btn btn-default">搜索</button>
+			</form>
+
+		</div>
+		<!-- /.navbar-collapse -->
+	</div>
+	<!-- /.container-fluid --> </nav>
 	<script type="text/javascript">
 		function login(url) {
 			var mail=$("#mail").val();

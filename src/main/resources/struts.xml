@@ -92,9 +92,11 @@
 			<result name="modifyUserInfo">/jsp/view/manager/modifyUserInfo.jsp</result>
 		</action>
 		<action name="DoModifyUserInfo" class="managerAction" method="DoModifyUserInfo">
-			<result name="modifySuccess" type="redirect">/Manager/ModifyUserInfo</result>
+			<result name="modifySuccess" type="redirect">/Manager/ManageUser</result>
 		</action>
 		<action name="DeleteUser" class="managerAction" method="DeleteUser">
+		</action>
+		<action name="AddUser" class="managerAction" method="AddUser">
 		</action>
 		<action name="ManageScenery" class="managerAction" method="ManageScenery">
 			<result name="manageScenery">/jsp/view/manager/manageScenery.jsp</result>
@@ -109,6 +111,9 @@
 			<result name="modifyScenerySuccess" type="redirect">/Manager/ManageScenery</result>
 		</action>
 		<action name="DeleteScenery" class="managerAction" method="DeleteScenery">
+		</action>
+		<action name="AddScenery" class="managerAction" method="AddScenery">
+			<result name="addScenerySuccess" type="redirect">/Manager/ManageScenery</result>
 		</action>
 	</package>
 	
