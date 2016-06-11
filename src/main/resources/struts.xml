@@ -42,7 +42,7 @@
 			<result name="resister">/jsp/view/register.jsp</result>
 		</action>
 		<action name="DoResister" class="homeAction" method="DoResister">
-			<result name="success">/jsp/view/index.jsp</result>
+			<result name="success" type="redirect">/Home/Index</result>
 			<result name="failed">/jsp/view/register.jsp</result>
 		</action>
 		<action name="DoLogin" class="homeAction" method="DoLogin"></action>

@@ -8,6 +8,7 @@ public interface IOperation<T extends Serializable> {
 	List<T> FindAll();
 	void Create(final T model);
 	T Update(final T model);
+	List<T> FindBySQL(String str);
 	void Delete(final T model);
 	
 	List<T> FindList(String sql,Integer pre,Integer numPage);

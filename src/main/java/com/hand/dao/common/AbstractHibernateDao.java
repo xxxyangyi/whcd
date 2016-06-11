@@ -42,11 +42,16 @@ public abstract class AbstractHibernateDao<T extends Serializable> implements
 		// TODO Auto-generated method stub
 		return getCurrentSession().createQuery("from " + clazz.getName()).list();
 	}
+	
+	public List<T> FindBySQL(String str){
+		List<T> list = getCurrentSession().createSQLQuery(str).addEntity(clazz).list();
+		return list;
+	}
 
 	public void Create(T model) {
 		// TODO Auto-generated method stub
 		// getCurrentSession().saveOrUpdate(model);
-		getCurrentSession().save(model);
+		getCurrentSession().merge(model);
 	}
 
 	public T Update(T model) {

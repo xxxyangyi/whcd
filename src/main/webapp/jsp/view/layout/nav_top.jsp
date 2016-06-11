@@ -82,14 +82,14 @@
 						<div class="form-group  ">
 							<label class="control-label col-sm-3">邮箱：</label>
 							<div class="col-sm-7">
-								<input type="text" class="form-control" id="mail"
+								<input type="text" class="form-control" id="mailLogin"
 									aria-describedby="mailStatus">
 							</div>
 						</div>
 						<div class="form-group  ">
 							<label class="control-label col-sm-3">密码：</label>
 							<div class="col-sm-7">
-								<input type="text" class="form-control" id="password"
+								<input type="text" class="form-control" id="passwordLogin"
 									aria-describedby="passwordStatus">
 							</div>
 						</div>
@@ -136,8 +136,8 @@
 	<!-- /.container-fluid --> </nav>
 	<script type="text/javascript">
 		function login(url) {
-			var mail=$("#mail").val();
-			var password=$("#password").val();
+			var mail=$("#mailLogin").val();
+			var password=$("#passwordLogin").val();
 			$.ajax({
 				url : url,
 				async : false,

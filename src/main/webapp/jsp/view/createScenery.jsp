@@ -132,8 +132,22 @@
 	
 	function Create(){
 		var str=$(".wysiwyg-editor").html();
+		alert(str);
 		$("#richText").val(str);
-		$("#sceneryForm").submit();
+		//$("#sceneryForm").submit();
+		var strNew=RegText(".wysiwyg-editor");
+		
+		
+	}
+	
+	function RegText(id){
+		var description=$(""+id).html();
+		description = description.replace(/(\n)/g, "");  
+		description = description.replace(/(\t)/g, "");  
+		description = description.replace(/(\r)/g, "");  
+		description = description.replace(/<\/?[^>]*>|(&nbsp;)/g, "");  
+		description = description.replace(/\s*/g, "");  
+		return description;
 	}
 	</script>
 	<script type="text/javascript" src="<%=basePath%>/jsp/js/wysiwyg.js"></script>
