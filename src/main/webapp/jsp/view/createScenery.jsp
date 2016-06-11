@@ -75,11 +75,11 @@
 							<div>
 								<label style="display: block;">图片：</label>
 								<div class="form-group col-sm-12">
-									<img id="preview"  onerror="javascript:this.src='<%=request.getContextPath()%>/jsp/img/errorimg.jpg'" style="width: 100%;height: 100%;" >
+									<img id="preview" src=""  onerror="javascript:this.src='<%=request.getContextPath()%>/jsp/img/errorimg.jpg'" style="width: 100%;height: 100%;" >
 								</div>
 								<br/>
 								<div class="col-sm-12">
-									<input type="file" name="imgUpLoad" id="imgUpLoad" onchange="PreView()" class="filestyle" data-buttonName="btn-primary" disabled="disabled">
+									<input type="file" name="imgUpLoad" id="imgUpLoad" onchange="PreView()" class="filestyle" data-buttonName="btn-primary" >
 								</div>
 						</div>
 						</form>

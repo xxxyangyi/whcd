@@ -25,11 +25,10 @@
 										</a>
 									</div>
 									<div class="media-body">
-										<h4 class="media-heading"><%=sceneryList.get(i-1).getSummary()%></h4>
+										<h4 class="media-heading"><a href="<%=request.getContextPath()%>/Scenery/SceneryDetail?sceneryId=<%=sceneryList.get(i-1).getId()%>"><%=sceneryList.get(i-1).getSummary()%></a></h4>
 										<%=sceneryList.get(i-1).getDetail()%>
 									</div>
 									<div class="col-lg-2 col-lg-offset-10">
-										<a class="btn btn-primary" href="<%=request.getContextPath()%>/Scenery/SceneryDetail?sceneryId=<%=sceneryList.get(i-1).getId()%>">查看详情</a>
 									</div>
 								</div>
 							</div>
@@ -42,7 +41,7 @@
 						<div class="panel-body">
 							<div class="media">
 								<div class="media-body">
-									<h4 class="media-heading"><%=sceneryList.get(i-1).getSummary()%></h4>
+									<h4 class="media-heading"><a href="<%=request.getContextPath()%>/Scenery/SceneryDetail?sceneryId=<%=sceneryList.get(i-1).getId()%>"><%=sceneryList.get(i-1).getSummary()%></a></h4>
 									<%=sceneryList.get(i-1).getDetail()%>
 								</div>
 								<div class="media-right media-middle">
@@ -51,7 +50,7 @@
 									</a>
 								</div>
 								<div class="col-lg-2 col-lg-offset-10">
-										<a class="btn btn-primary" href="<%=request.getContextPath()%>/Scenery/SceneryDetail?sceneryId=<%=sceneryList.get(i-1).getId()%>">查看详情</a>
+										
 									</div>
 							</div>
 						</div>

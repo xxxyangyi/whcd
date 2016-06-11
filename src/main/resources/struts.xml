@@ -60,7 +60,7 @@
 			<result name="createScenery">/jsp/view/createScenery.jsp</result>
 		</action>
 		<action name="DoCreateScenery" class="personCenter" method="DoCreateScenery">
-			<result name="createScenerySuccess" type="redirect">/PersonCenter/CreateScenery</result>
+			<result name="createScenerySuccess" type="redirect">/PersonCenter/SceneryManage</result>
 		</action>
 		<action name="SceneryManage" class="personCenter" method="SceneryManage">
 			<result name="sceneryManage">/jsp/view/sceneryManage.jsp</result>

@@ -166,7 +166,7 @@ public class PersonCenter extends ActionSupport {
 		User user=(User) session.get("user");
 		String mail=user.getMail();
 		
-		String sqlSum="select count(*) from scenery where user_id='"+mail+"' order by createdate";
+		String sqlSum="select count(*) as sumkey from scenery where user_id='"+mail+"' order by createdate";
 		String sql="select * from scenery where user_id='"+mail+"' order by createdate";
 		//String sqlSum="select count(*) as sumkey from scenery where user_id='"+123+"' order by createdate";
 		//String sql="select * from scenery where user_id='"+123+"' order by createdate";
@@ -190,7 +190,7 @@ public class PersonCenter extends ActionSupport {
 		User user=(User) session.get("user");
 		String mail=user.getMail();
 		
-		String sqlSum="select count(*) from scenery where user_id='"+mail+"' order by createdate";
+		String sqlSum="select count(*) as sumkey from scenery where user_id='"+mail+"' order by createdate";
 		String sql="select * from scenery where user_id='"+mail+"' order by createdate";
 		
 //		String sqlSum="select count(*) as sumkey from scenery where user_id='"+123+"' order by createdate";

@@ -23,12 +23,10 @@
 										</a>
 									</div>
 									<div class="media-body">
-										<h4 class="media-heading"><%=sceneryList.get(i-1).getSummary()%></h4>
+										<h4 class="media-heading"><a href="<%=request.getContextPath()%>/PersonCenter/SceneryDetail?sceneryId=<%=sceneryList.get(i-1).getId()%>"><%=sceneryList.get(i-1).getSummary()%></a></h4>
 										<%=sceneryList.get(i-1).getDetail()%>
 									</div>
 									<div class="col-lg-5 col-lg-offset-7">
-										
-										<a class="btn btn-primary" href="<%=request.getContextPath()%>/PersonCenter/SceneryDetail?sceneryId=<%=sceneryList.get(i-1).getId()%>">查看详情</a>
 										<a class="btn btn-warning" href="<%=request.getContextPath()%>/PersonCenter/SceneryModify?sceneryId=<%=sceneryList.get(i-1).getId()%>">修改</a>
 										<a class="btn btn-danger" onclick="Delete('<%=sceneryList.get(i-1).getId()%>')" >删除</a>
 									</div>
