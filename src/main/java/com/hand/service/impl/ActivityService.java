@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.hand.dao.IActivityDao;
 import com.hand.entity.Activity;
+import com.hand.entity.UserToActivity;
 import com.hand.service.IActivityService;
 
 @Transactional
@@ -17,7 +18,6 @@ public class ActivityService implements IActivityService {
 
 	@Resource(name = "activityDao")
 	private IActivityDao activityDao;
-
 	@Override
 	public void AddActivity(Activity activity) {
 		activityDao.Create(activity);
@@ -27,11 +27,14 @@ public class ActivityService implements IActivityService {
 	public Activity GetActivity(int id) {
 		return activityDao.FindOne(id);
 	}
-
 	@Override
 	public List<Activity> GetActivitys() {		
 		return activityDao.FindAll();
 	}
-
+	
+	@Override
+	public List<Activity> FindBySQL(String str) {
+		return activityDao.FindBySQL(str);
+	}
 
 }

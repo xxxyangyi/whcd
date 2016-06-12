@@ -39,7 +39,7 @@ public class ActivityAction extends ActionSupport implements SessionAware,Servle
 	}
 	
 	public String activityAdd() throws ParseException{
-		System.out.println("===========activityAdd");		
+		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		String startTime = request.getParameter("time1");
 		String endTime = request.getParameter("time2");		

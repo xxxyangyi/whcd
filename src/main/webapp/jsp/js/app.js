@@ -66,6 +66,19 @@ $(document).ready(function() {
 		} else {
 			console.log("activity_list 不存在：不请求数据");
 		}
+	
+//	$("#joinIn").click(function(){
+//		var activity_id = 1;
+//		$.ajax({
+//			type : "post",
+//			data : {activity_id:activity_id},
+//			url : "http://localhost:8080/WHCD/activity/getActivityById",
+//			async : true,
+//			success : function(msg) {alert(msg)}											
+//		});
+//		})
+	
+	
 })
 	//  点击投票事件
 	function vote(activity_id,voteFor,vote_id) {
@@ -78,9 +91,13 @@ $(document).ready(function() {
 			dataType : 'json',
 			success : function(msg) {alert(msg)}
 				
-		})
-		
-		
+		})		
+	};
+	
+	//  查看大图				
+	function showlargeImg() {
+		alert("kais");
+		$("#modalShowLargeImg").modal('show');
 	}
 function RegText(id){
 	var description=$(""+id).html();
@@ -127,7 +144,6 @@ function RegText(id){
 	 objImg.height = h;
 	 objImg.width = w;
 }					
-					
 					
 					
 					
