@@ -45,7 +45,12 @@
 			<result name="success" type="redirect">/Home/Index</result>
 			<result name="failed">/jsp/view/register.jsp</result>
 		</action>
-		<action name="DoLogin" class="homeAction" method="DoLogin"></action>
+		<action name="DoLogin" class="homeAction" method="DoLogin">
+			<!-- <result name="manager" type="redirect">/Manager/Index</result>
+			<result name="user" type="redirect">/Home/Index</result>
+			<result name="expert" type="redirect">/Expert/Index</result>
+			<result name="failed">/jsp/view/error.jsp</result> -->
+		</action>
 		<action name="DoLogOut" class="homeAction" method="DoLogOut"></action>
 	</package>
 
@@ -72,29 +77,32 @@
 	</package>
 	
 	<package name="PersonCenter" namespace="/PersonCenter" extends="struts-default">
+		<action name="Index" class="personCenter" method="Index">
+			<result name="index">/jsp/view/user/index.jsp</result>
+		</action>
 		<action name="ModifyInfo" class="personCenter" method="ModifyInfo">
-			<result name="modifyInfo">/jsp/view/modifyInfo.jsp</result>
+			<result name="modifyInfo">/jsp/view/user/modifyInfo.jsp</result>
 		</action>
 		<action name="DoModifyInfo" class="personCenter" method="DoModifyInfo">
 			<result name="modifySuccess" type="redirect">/PersonCenter/ModifyInfo</result>
 		</action>
 		<action name="CreateScenery" class="personCenter" method="CreateScenery">
-			<result name="createScenery">/jsp/view/createScenery.jsp</result>
+			<result name="createScenery">/jsp/view/user/createScenery.jsp</result>
 		</action>
 		<action name="DoCreateScenery" class="personCenter" method="DoCreateScenery">
 			<result name="createScenerySuccess" type="redirect">/PersonCenter/SceneryManage</result>
 		</action>
 		<action name="SceneryManage" class="personCenter" method="SceneryManage">
-			<result name="sceneryManage">/jsp/view/sceneryManage.jsp</result>
+			<result name="sceneryManage">/jsp/view/user/sceneryManage.jsp</result>
 		</action>
 		<action name="SceneryManageSub" class="personCenter" method="SceneryManageSub">
-			<result name="sceneryManageSub">/jsp/view/sceneryManageSub.jsp</result>
+			<result name="sceneryManageSub">/jsp/view/user/sceneryManageSub.jsp</result>
 		</action>
 		<action name="SceneryDetail" class="personCenter" method="SceneryDetail">
-			<result name="sceneryDetail">/jsp/view/sceneryDetail.jsp</result>
+			<result name="sceneryDetail">/jsp/view/user/sceneryDetail.jsp</result>
 		</action>
 		<action name="SceneryModify" class="personCenter" method="SceneryModify">
-			<result name="sceneryModify">/jsp/view/sceneryModify.jsp</result>
+			<result name="sceneryModify">/jsp/view/user/sceneryModify.jsp</result>
 		</action>
 		<action name="DoSceneryModify" class="personCenter" method="DoSceneryModify">
 			<result name="modifyScenerySuccess" type="redirect">/PersonCenter/SceneryManage</result>
@@ -104,6 +112,19 @@
 	</package>
 	
 	<package name="Manager" namespace="/Manager" extends="struts-default">
+		<action name="Index" class="managerAction" method="Index">
+			<result name="index">/jsp/view/manager/index.jsp</result>
+		</action>
+		<action name="DoLogOut" class="managerAction" method="DoLogOut">
+			<result name="logOutSuccess" type="redirect">/Home/Index</result>
+			<result name="logOutFailed" type="redirect">/Manager/Index</result>
+		</action>
+		<action name="ModifyInfo" class="managerAction" method="ModifyInfo">
+			<result name="modifyInfo">/jsp/view/manager/modifyInfo.jsp</result>
+		</action>
+		<action name="DoModifyInfo" class="managerAction" method="DoModifyInfo">
+			<result name="modifySuccess" type="redirect">/Manager/Index</result>
+		</action>
 		<action name="ManageUser" class="managerAction" method="ManageUser">
 			<result name="manangeUser">/jsp/view/manager/manageUser.jsp</result>
 		</action>
@@ -116,9 +137,14 @@
 		<action name="DoModifyUserInfo" class="managerAction" method="DoModifyUserInfo">
 			<result name="modifySuccess" type="redirect">/Manager/ManageUser</result>
 		</action>
-		<action name="DeleteUser" class="managerAction" method="DeleteUser">
+		<action name="DisableUser" class="managerAction" method="DisableUser">
+		</action>
+		<action name="InitializeUserPassword" class="managerAction" method="InitializeUserPassword">
 		</action>
 		<action name="AddUser" class="managerAction" method="AddUser">
+		</action>
+		<action name="DetailUserInfo" class="personCenter" method="DetailUserInfo">
+			<result name="detailUserInfo">/jsp/view/manager/detailUserInfo.jsp</result>
 		</action>
 		<action name="ManageScenery" class="managerAction" method="ManageScenery">
 			<result name="manageScenery">/jsp/view/manager/manageScenery.jsp</result>
@@ -136,6 +162,9 @@
 		</action>
 		<action name="AddScenery" class="managerAction" method="AddScenery">
 			<result name="addScenerySuccess" type="redirect">/Manager/ManageScenery</result>
+		</action>
+		<action name="DetailSceneryInfo" class="personCenter" method="DetailSceneryInfo">
+			<result name="detailSceneryInfo">/jsp/view/manager/detailSceneryInfo.jsp</result>
 		</action>
 	</package>
 	

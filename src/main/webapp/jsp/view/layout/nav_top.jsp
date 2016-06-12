@@ -113,6 +113,7 @@
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">个人中心 <span class="caret"></span></a>
 					<ul class="dropdown-menu">
+						<li><a href="<%=request.getContextPath()%>/PersonCenter/Index">中心首页</a></li>
 						<li><a href="<%=request.getContextPath()%>/PersonCenter/ModifyInfo">修改个人信息</a></li>
 						<li><a href="<%=request.getContextPath()%>/PersonCenter/CreateScenery">创建名胜古迹</a></li>
 						<li><a href="#">创建投票信息</a></li>
@@ -147,11 +148,14 @@
 				},
 				success : function(data) {
 					var status=data;
-					if(status==='1'){
-						window.location.reload();
+					if(status==='0'||status===''){
+						$("#error").html("邮箱或密码输入有误！")
+					}
+					else if(status==='-1'){
+						$("#error").html("该用户已经被禁用！");
 					}
 					else{
-						$("#error").html("邮箱或密码输入有误！");
+						 location.href=status+''; 
 					}
 						
 				}

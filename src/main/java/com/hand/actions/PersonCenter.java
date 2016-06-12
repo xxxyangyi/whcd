@@ -21,6 +21,7 @@ import com.hand.entity.Scenery;
 import com.hand.entity.User;
 import com.hand.service.ISceneryService;
 import com.hand.service.IUserService;
+import com.hand.util.UploadFile;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -64,6 +65,10 @@ public class PersonCenter extends ActionSupport {
 	@Resource(name = "sceneryService")
 	private ISceneryService sceneryService;
 	
+	public String Index(){
+		return "index";
+	}
+	
 	public String ModifyInfo(){
 		
 		Map session=ActionContext.getContext().getSession();
@@ -103,37 +108,11 @@ public class PersonCenter extends ActionSupport {
 		HttpServletRequest request=ServletActionContext.getRequest();
 		String summary=request.getParameter("summary");
 		String richText=request.getParameter("richText");
+		String detailSub=request.getParameter("detailSub");
 		
-		//基于myFile创建一个文件输入流  
-        InputStream is = new FileInputStream(imgUpLoad);  
-          
-        // 设置上传文件目录  
-        String uploadPath = ServletActionContext.getServletContext().getRealPath("/jsp/img");  
-          
-        // 设置目标文件  
-        File toFile = new File(uploadPath, this.getImgUpLoadFileName());  
-          
-        // 创建一个输出流  
-        OutputStream os = new FileOutputStream(toFile);  
-  
-        //设置缓存  
-        byte[] buffer = new byte[1024];  
-  
-        int length = 0;  
-  
-        //读取myFile文件输出到toFile文件中  
-        while ((length = is.read(buffer)) > 0) {  
-            os.write(buffer, 0, length);  
-        }
-        //private  String strPicPerson=(this.getClass().getClassLoader().getResource("").getPath()).replaceAll("%20"," ").replace("/WEB-INF/classes/", "/jsp/img/"); 
-        System.out.println("上传文件名"+uploadPath); 
-        System.out.println("上传文件名"+imgUpLoadContentType);  
-        System.out.println("上传文件类型"+imgUpLoadFileName);  
-        //关闭输入流  
-        is.close();  
-        //关闭输出流  
-        os.close();  
+		String picAddr=UploadFile.SaveFile(imgUpLoad, this.getImgUpLoadFileName());
         
+		
         String s=UUID.randomUUID().toString();
 		String id=s.substring(0,8)+s.substring(9,13)+s.substring(14,18)+s.substring(19,23)+s.substring(24);
 		
@@ -143,10 +122,11 @@ public class PersonCenter extends ActionSupport {
 		Scenery scenery=new Scenery();
 		scenery.setDetail(richText);
 		scenery.setId(id);
-		scenery.setPicaddr("/jsp/img/"+this.getImgUpLoadFileName());
+		scenery.setPicaddr("/jsp/img/"+picAddr);
 		scenery.setSummary(summary);
 		scenery.setUser_id(user);
 		scenery.setCreateDate(new Date());
+		scenery.setDetailSub(detailSub);
 		
 		sceneryService.AddScenery(scenery);
 		
@@ -168,9 +148,6 @@ public class PersonCenter extends ActionSupport {
 		
 		String sqlSum="select count(*) as sumkey from scenery where user_id='"+mail+"' order by createdate";
 		String sql="select * from scenery where user_id='"+mail+"' order by createdate";
-		//String sqlSum="select count(*) as sumkey from scenery where user_id='"+123+"' order by createdate";
-		//String sql="select * from scenery where user_id='"+123+"' order by createdate";
-		
 		
 		Integer total=sceneryService.GetTotal(sqlSum, numPage);
 		List<Scenery> sceneryList=sceneryService.GetList(sql, 1, numPage, total);
@@ -239,42 +216,18 @@ public class PersonCenter extends ActionSupport {
 			String sceneryId=request.getParameter("sceneryId");
 			String summary=request.getParameter("summary");
 			String richText=request.getParameter("richText");
+			String detailSub=request.getParameter("detailSub");
 			
 			Scenery sceneryOld=sceneryService.GetScenery(sceneryId);
 			if(!sceneryOld.getDetail().equals(richText))sceneryOld.setDetail(richText);
-			if(!sceneryOld.getSummary().equals(summary))sceneryOld.setSummary(summary);
+			if(!sceneryOld.getSummary().equals(summary)){
+				sceneryOld.setSummary(summary);
+				sceneryOld.setDetailSub(detailSub);
+			}
 			
 			if(imgUpLoad!=null){
-			//基于myFile创建一个文件输入流  
-	        InputStream is = new FileInputStream(imgUpLoad);  
-	          
-	        // 设置上传文件目录  
-	        String uploadPath = ServletActionContext.getServletContext().getRealPath("/jsp/img");  
-	          
-	        // 设置目标文件  
-	        File toFile = new File(uploadPath, this.getImgUpLoadFileName());  
-	          
-	        // 创建一个输出流  
-	        OutputStream os = new FileOutputStream(toFile);  
-	  
-	        //设置缓存  
-	        byte[] buffer = new byte[1024];  
-	  
-	        int length = 0;  
-	  
-	        //读取myFile文件输出到toFile文件中  
-	        while ((length = is.read(buffer)) > 0) {  
-	            os.write(buffer, 0, length);  
-	        }
-	        //private  String strPicPerson=(this.getClass().getClassLoader().getResource("").getPath()).replaceAll("%20"," ").replace("/WEB-INF/classes/", "/jsp/img/"); 
-	        System.out.println("上传文件名"+uploadPath); 
-	        System.out.println("上传文件名"+imgUpLoadContentType);  
-	        System.out.println("上传文件类型"+imgUpLoadFileName);  
-	        //关闭输入流  
-	        is.close();  
-	        //关闭输出流  
-	        os.close();  
-	        sceneryOld.setPicaddr("/jsp/img/"+this.getImgUpLoadFileName());
+			String picAddr=UploadFile.SaveFile(imgUpLoad, this.getImgUpLoadFileName());
+	        sceneryOld.setPicaddr("/jsp/img/"+picAddr);
 			}
 	       
 			sceneryService.UpdateScenery(sceneryOld);

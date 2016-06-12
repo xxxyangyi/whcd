@@ -21,6 +21,7 @@ import com.hand.entity.Scenery;
 import com.hand.entity.User;
 import com.hand.service.ISceneryService;
 import com.hand.service.IUserService;
+import com.hand.util.UploadFile;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -64,6 +65,52 @@ private static Integer numPage=2;
 	@Resource(name = "sceneryService")
 	private ISceneryService sceneryService;
 
+	public String Index(){
+		return "index";
+	}
+	
+	public String DoLogOut(){
+		try{
+			Map session=ActionContext.getContext().getSession();
+			session.remove("manager");
+			return "logOutSuccess";
+		}
+		catch(Exception ex){
+			ex.printStackTrace();
+			return "logOutFailed";
+		}
+	}
+	
+	public String ModifyInfo(){
+		
+		Map session=ActionContext.getContext().getSession();
+		User user=(User) session.get("manager");
+		String mail=user.getMail();
+		//String mail="123";
+		User userNew=userService.GetUser(mail);
+		session.put("manager", userNew);
+		return "modifyInfo";
+	}
+	public String DoModifyInfo(){
+		
+		Map session=ActionContext.getContext().getSession();
+		User user=(User) session.get("manager");
+		String mail=user.getMail();
+		User userNew=userService.GetUser(mail);
+		HttpServletRequest request=ServletActionContext.getRequest();
+		String name=request.getParameter("name");
+		String password=request.getParameter("password");
+		Integer sex = Integer.parseInt(request.getParameter("sex"));
+		
+		userNew.setName(name);
+		userNew.setPassword(password);
+		userNew.setSex(sex);
+		
+		userService.UpdateUser(userNew);
+		
+		return "modifySuccess";
+	}
+	
 	public String ManageUser() {
 
 		String sqlSum = "select count(*) as sumkey from user";
@@ -144,6 +191,7 @@ private static Integer numPage=2;
 			user.setPassword(password);
 			user.setIdentity(identity);
 			user.setSex(sex);
+			user.setIsUsed(1);
 			HttpServletResponse response=ServletActionContext.getResponse();
 			PrintWriter out = response.getWriter();
 			
@@ -161,14 +209,14 @@ private static Integer numPage=2;
 		}
 	}
 	
-	public void DeleteUser(){
+	public void DisableUser(){
 		try{
 		HttpServletRequest request=ServletActionContext.getRequest();
 		String mail=request.getParameter("mail");
 		
 		User user=userService.GetUser(mail);
-		userService.DeleteUser(user);
-		
+		user.setIsUsed(0);
+		userService.UpdateUser(user);
 		HttpServletResponse response=ServletActionContext.getResponse();
 		PrintWriter out = response.getWriter();
 		out.print("1");
@@ -176,6 +224,33 @@ private static Integer numPage=2;
 		catch(Exception ex){
 			ex.printStackTrace();
 		}
+	}
+	
+	public void InitializeUserPassword(){
+		try{
+		HttpServletRequest request=ServletActionContext.getRequest();
+		String mail=request.getParameter("mail");
+		
+		User user=userService.GetUser(mail);
+		
+		user.setPassword(user.getMail());;
+		userService.UpdateUser(user);
+		HttpServletResponse response=ServletActionContext.getResponse();
+		PrintWriter out = response.getWriter();
+		out.print("1");
+		}
+		catch(Exception ex){
+			ex.printStackTrace();
+		}
+	}
+	
+	public String DetailUserInfo(){
+		HttpServletRequest request=ServletActionContext.getRequest();
+		String mail=request.getParameter("mail");
+		User user=userService.GetUser(mail);
+		request.setAttribute("user",user);
+		
+		return "detailSceneryInfo";
 	}
 	
 public String ManageScenery(){
@@ -232,42 +307,18 @@ public String ManageScenery(){
 			String sceneryId=request.getParameter("sceneryId");
 			String summary=request.getParameter("summary");
 			String richText=request.getParameter("richText");
+			String detailSub=request.getParameter("detailSub");
 			
 			Scenery sceneryOld=sceneryService.GetScenery(sceneryId);
 			if(!sceneryOld.getDetail().equals(richText))sceneryOld.setDetail(richText);
-			if(!sceneryOld.getSummary().equals(summary))sceneryOld.setSummary(summary);
+			if(!sceneryOld.getSummary().equals(summary)){
+				sceneryOld.setSummary(summary);
+				sceneryOld.setDetailSub(detailSub);
+			}
 			
 			if(imgUpLoad!=null){
-			//基于myFile创建一个文件输入流  
-	        InputStream is = new FileInputStream(imgUpLoad);  
-	          
-	        // 设置上传文件目录  
-	        String uploadPath = ServletActionContext.getServletContext().getRealPath("/jsp/img");  
-	          
-	        // 设置目标文件  
-	        File toFile = new File(uploadPath, this.getImgUpLoadFileName());  
-	          
-	        // 创建一个输出流  
-	        OutputStream os = new FileOutputStream(toFile);  
-	  
-	        //设置缓存  
-	        byte[] buffer = new byte[1024];  
-	  
-	        int length = 0;  
-	  
-	        //读取myFile文件输出到toFile文件中  
-	        while ((length = is.read(buffer)) > 0) {  
-	            os.write(buffer, 0, length);  
-	        }
-	        //private  String strPicPerson=(this.getClass().getClassLoader().getResource("").getPath()).replaceAll("%20"," ").replace("/WEB-INF/classes/", "/jsp/img/"); 
-	        System.out.println("上传文件名"+uploadPath); 
-	        System.out.println("上传文件名"+imgUpLoadContentType);  
-	        System.out.println("上传文件类型"+imgUpLoadFileName);  
-	        //关闭输入流  
-	        is.close();  
-	        //关闭输出流  
-	        os.close();  
-	        sceneryOld.setPicaddr("/jsp/img/"+this.getImgUpLoadFileName());
+				String picAddr=UploadFile.SaveFile(imgUpLoad, this.getImgUpLoadFileName());
+	        sceneryOld.setPicaddr("/jsp/img/"+picAddr);
 			}
 	       
 			sceneryService.UpdateScenery(sceneryOld);
@@ -300,42 +351,14 @@ public String ManageScenery(){
 	public String AddScenery(){
 		try{
 			
-		System.out.println("111111111111111111111111111111111111");	
 		HttpServletRequest request=ServletActionContext.getRequest();
 		String summary=request.getParameter("summary");
 		String richText=request.getParameter("richText");
 		String mail=request.getParameter("userId");
+		String detailSub=request.getParameter("detailSub");
 		
-		//基于myFile创建一个文件输入流  
-        InputStream is = new FileInputStream(imgUpLoad);  
-          
-        // 设置上传文件目录  
-        String uploadPath = ServletActionContext.getServletContext().getRealPath("/jsp/img");  
-          
-        // 设置目标文件  
-        File toFile = new File(uploadPath, this.getImgUpLoadFileName());  
-          
-        // 创建一个输出流  
-        OutputStream os = new FileOutputStream(toFile);  
-  
-        //设置缓存  
-        byte[] buffer = new byte[1024];  
-  
-        int length = 0;  
-  
-        //读取myFile文件输出到toFile文件中  
-        while ((length = is.read(buffer)) > 0) {  
-            os.write(buffer, 0, length);  
-        }
-        //private  String strPicPerson=(this.getClass().getClassLoader().getResource("").getPath()).replaceAll("%20"," ").replace("/WEB-INF/classes/", "/jsp/img/"); 
-        System.out.println("上传文件名"+uploadPath); 
-        System.out.println("上传文件名"+imgUpLoadContentType);  
-        System.out.println("上传文件类型"+imgUpLoadFileName);  
-        //关闭输入流  
-        is.close();  
-        //关闭输出流  
-        os.close();  
-        
+		String picAddr=UploadFile.SaveFile(imgUpLoad, this.getImgUpLoadFileName());
+		
         String s=UUID.randomUUID().toString();
 		String id=s.substring(0,8)+s.substring(9,13)+s.substring(14,18)+s.substring(19,23)+s.substring(24);
 		
@@ -344,10 +367,11 @@ public String ManageScenery(){
 		Scenery scenery=new Scenery();
 		scenery.setDetail(richText);
 		scenery.setId(id);
-		scenery.setPicaddr("/jsp/img/"+this.getImgUpLoadFileName());
+		scenery.setPicaddr("/jsp/img/"+picAddr);
 		scenery.setSummary(summary);
 		scenery.setUser_id(user);
 		scenery.setCreateDate(new Date());
+		scenery.setDetailSub(detailSub);
 	
 		sceneryService.AddScenery(scenery);
 		
@@ -359,8 +383,12 @@ public String ManageScenery(){
 		
 		return "addScenerySuccess";
 	}
-
-	
-	
-	
+	public String DetailSceneryInfo(){
+		HttpServletRequest request=ServletActionContext.getRequest();
+		String sceneryId=request.getParameter("sceneryId");
+		Scenery scenery=sceneryService.GetScenery(sceneryId);
+		request.setAttribute("scenery",scenery);
+		
+		return "detailSceneryInfo";
+	}
 }

@@ -10,7 +10,7 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <div class="col-md-9" style="background-color: white;">
 	<h2 style="display: inline-block;">用户管理</h2><div style="float:right;display: inline-block;margin-top: 20px;"><a  data-toggle="modal" data-target="#addUserModel" ata-whatever="@mdo" class="btn btn-info">添加</a></div>
-	<table class="table table-bordered" style="text-align:center;">
+	<table class="table table-hover" style="text-align:center;">
 		<thead >
 			<tr>
 				<th style="text-align:center;">邮箱</th>
@@ -23,11 +23,11 @@
 				for(int i=1;i<=numPage&&i<=len;i++){
 			%>
 			<tr>
-				<td><%=userList.get(i-1).getMail()%></th>
+				<td><a href="<%=request.getContextPath()%>/Manager/DetailUserInfo?mail=<%=userList.get(i-1).getMail()%>"><%=userList.get(i-1).getMail()%></a></td>
 				<td><%=userList.get(i-1).getName()%></td>
 				<td>
-					<a class="btn btn-warning" href="<%=request.getContextPath()%>/Manager/ModifyUserInfo?mail=<%=userList.get(i-1).getMail()%>">修改</a>
-					<a class="btn btn-danger" onclick="Delete('<%=userList.get(i-1).getMail()%>')" >删除</a>
+					<a class="btn btn-warning" onclick="InitializeUserPassword('<%=userList.get(i-1).getMail()%>')">初始化密码</a>
+					<a class="btn btn-danger" onclick="Disable('<%=userList.get(i-1).getMail()%>')" >禁用</a>
 				</td>
 			</tr>
 			<%
@@ -194,8 +194,8 @@
 				}
 			});
 		}
-	function Delete(mail){
-		var urlStr="<%=request.getContextPath()%>/Manager/DeleteUser";	
+	function Disable(mail){
+		var urlStr="<%=request.getContextPath()%>/Manager/DisableUser";	
 		$.ajax({
 			url : urlStr,
 			async : false,
@@ -203,13 +203,13 @@
 				"mail" : mail
 			},
 			error : function() {
-				alert("删除失败！");
+				alert("禁用失败！");
 			},
 			success : function(data) {
 				if(data==='1')
-					alert('删除成功');
+					alert('禁用成功');
 			else
-				alert('删除成功');
+				alert('禁用失败');
 			window.location.reload();
 			}
 		});
@@ -247,6 +247,27 @@
 		});
 		
 	}
+	function  InitializeUserPassword(){
+		var urlStr="<%=request.getContextPath()%>/Manager/InitializeUserPassword";	
+		$.ajax({
+			url : urlStr,
+			async : false,
+			data : {
+				"mail" : mail
+			},
+			error : function() {
+				alert("初始化密码失败！");
+			},
+			success : function(data) {
+				if(data==='1')
+					alert('初始化密码成功！');
+			else
+				alert('初始化密码失败！');
+			window.location.reload();
+			}
+		});
+	}
+	
 </script>
 </body>
 </html>

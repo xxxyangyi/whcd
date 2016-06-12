@@ -25,18 +25,7 @@
 	<div class="container id1" style="width: 90%">
 		<div class="row">
 			<div class="col-md-3">
-				<ul>
-					<li>
-						<div class="btn-group">
-							<button class="btn btn-info" type="button" style="width: 150px">其他</button>
-						</div>
-					</li>
-					<li>
-						<div class="btn-group">
-							<button class="btn btn-info" type="button" style="width: 150px">设置</button>
-						</div>
-					</li>
-				</ul>
+				<jsp:include page="layout/left_panel.jsp"></jsp:include>
 			</div>
 			<div class="col-md-9">
 				<hr align="left" width="100%" size="15" />
@@ -47,5 +36,13 @@
 			</div>
 		</div>
 	</div>
+			<script type="text/javascript">
+		
+		$(".list-group a").each(function() {
+	         $(this).removeClass("active");
+	 });
+		$(".list-group a").eq(1).addClass("active");
+	</script>
+</body>
 </body>
 </html>

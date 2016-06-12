@@ -30,18 +30,7 @@
 	<div class="container id1" style="width: 90%">
 		<div class="row">
 			<div class="col-md-3">
-				<ul>
-					<li>
-						<div class="btn-group">
-							<button class="btn btn-info" type="button" style="width: 150px">其他</button>
-						</div>
-					</li>
-					<li>
-						<div class="btn-group">
-							<button class="btn btn-info" type="button" style="width: 150px">设置</button>
-						</div>
-					</li>
-				</ul>
+				<jsp:include page="../layout/left_panel_manager.jsp"></jsp:include>
 			</div>
 			<div class="col-md-9">
 				<hr align="left" width="100%" size="15" />
@@ -77,13 +66,14 @@
 									</div>
 									<input type="hidden" id="richText"  name="richText" value="<%=scenery.getDetail()%>"/>
 									<input  type="hidden" name="sceneryId" value="<%=scenery.getId()%>" > 
+									<input type="hidden" id="detailSub"  name="detailSub" />
 								</div>
 								</div>
 							</div>
 							<div>
 								<label style="display: block;">图片：</label>
 								<div class="form-group col-sm-12">
-									<img id="preview"  src="<%=request.getContextPath()%><%=scenery.getPicaddr()%>" onerror="javascript:this.src='<%=request.getContextPath()%>/jsp/img/errorimg.jpg'" style="width: 100%;height: 100%;" >
+									<img id="preview"  src="<%=request.getContextPath()%><%=scenery.getPicaddr()%>" onload="AutoResizeImage(850,0,this)"  onerror="javascript:this.src='<%=request.getContextPath()%>/jsp/img/errorimg.jpg'"  >
 								</div>
 								<br/>
 								<div class="col-sm-12">
@@ -124,6 +114,10 @@
 		function Config(inputId) {
 			var str=$(".wysiwyg-editor").html();
 			$("#richText").val(str);
+			
+			var strNew=RegText(".wysiwyg-editor");
+			var strFinal=SpiltStr(strNew);
+			$("#detailSub").val(strFinal);
 			$("#sceneryForm").submit();
 		}
 	function GetFilePath() {

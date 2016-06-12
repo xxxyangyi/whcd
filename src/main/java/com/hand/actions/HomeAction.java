@@ -49,6 +49,7 @@ public class HomeAction extends ActionSupport {
 			user.setPassword(password);
 			user.setIdentity(identity);
 			user.setSex(sex);
+			user.setIsUsed(1);
 			
 			userService.AddUser(user);
 			
@@ -65,19 +66,33 @@ public class HomeAction extends ActionSupport {
 	
 	public void DoLogin(){
 		try{
-		System.out.println("++++++++++++++++++++++++++++++++++");
 		HttpServletRequest request=ServletActionContext.getRequest();
 		HttpServletResponse response=ServletActionContext.getResponse();
 		PrintWriter out = response.getWriter();
 		String mail = request.getParameter("mail");
 		String password = request.getParameter("password");
 		if(userService.IsUserExisted(mail, password)){
-			//System.out.println("++++++++++++++++++++++++++++++++++ mail:"+mail);
-			//System.out.println("++++++++++++++++++++++++++++++++++  password:"+password);;
 			User user=userService.GetUser(mail);
-			Map session=ActionContext.getContext().getSession();
-			session.put("user",user);
-			out.print(1);
+			if(user.getIsUsed()==0)
+				out.print(-1);
+			else{
+					Map session = ActionContext.getContext().getSession();
+					if(user.getIdentity()==0)
+					{
+						session.put("manager", user);
+						out.print("/WHCD/Manager/Index");
+					}
+					else if(user.getIdentity()==1)
+					{
+						session.put("user", user);
+						out.print("/WHCD/Home/Index");
+					}
+					else 
+					{	
+						session.put("expert", user);
+						out.print("/WHCD/Expert/Index");
+					}
+			}
 		}
 		else
 			out.print(0);
