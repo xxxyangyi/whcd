@@ -124,9 +124,4 @@ public class ActivityAction extends ActionSupport implements SessionAware,Servle
 	public void setServletResponse(HttpServletResponse response) {
 		this.response = response;
 	}
-
-
-	
-	
-	
 }

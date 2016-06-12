@@ -183,6 +183,7 @@
 		<action name="SceneryList" class="sceneryAction" method="SceneryList">
 			<result name="sceneryList">/jsp/view/scenery/sceneryList.jsp</result>
 		</action>
+		<action name="SceneryListGson" class="sceneryAction" method="SceneryListGson"></action>
 		<action name="SceneryListSub" class="sceneryAction" method="SceneryListSub">
 			<result name="sceneryListSub">/jsp/view/scenery/sceneryListSub.jsp</result>
 		</action>

@@ -11,8 +11,7 @@
 <head>
 <base href="<%=basePath%>">
 
-<title>首页</title>
-
+<title>注册页面</title>
 </head>
 
 <body>
@@ -20,47 +19,9 @@
 
 	<div class="container id1" style="width: 90%">
 		<div class="row">
-			<div class="col-md-3">
-				<jsp:include page="layout/left_panel.jsp"></jsp:include>
-			</div>
-			<div class="col-md-9">
-				<hr align="left" width="100%" size="15" />
-				<div class="row">
-					<div class="col-lg-10 col-lg-offset-1">
-						<div class="panel panel-default">
-							<div class="panel-body">
-								<div class="media">
-									<div class="media-left media-middle">
-										<a href="#"> <img class="media-object " height="100px"
-											width="100px" src="jsp/image/sky.jpg" alt="...">
-										</a>
-									</div>
-									<div class="media-body">
-										<h4 class="media-heading">Middle aligned media</h4>
-										这是一张图片这是一张图片这是一张图片这是一张图片这是一张图片这是一张图片这是一张图片这是一张图片这是一张图片这是一张图片。。。
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-10 col-lg-offset-2">
-					<div class="panel panel-default">
-						<div class="panel-body">
-							<div class="media">
-								<div class="media-body">
-									<h4 class="media-heading">Middle aligned media</h4>
-									这是一张图片这是一张图片这是一张图片这是一张图片这是一张图片这是一张图片这是一张图片这是一张图片这是一张图片这是一张图片。。。
-								</div>
-								<div class="media-right media-middle">
-									<a href="#"> <img class="media-object " height="100px"
-										width="100px" src="jsp/image/sky.jpg" alt="...">
-									</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+			<hr align="left" width="100%" size="15" />	
+			<div class="col-md-8">
+				<div id="home_scenery_list"> </div>
 				<div class="row">
 					<div class="col-lg-10 col-lg-offset-1">
 						<div class="panel panel-default">
@@ -82,15 +43,17 @@
 				</div>
 				
 			</div>
+			<div class="col-md-4">
+				<div id="home_activity_list"> </div>
+			</div>
 		</div>
 	</div>
-	<script type="text/javascript">
+		<script type="text/javascript">
 		
 		$(".list-group a").each(function() {
 	         $(this).removeClass("active");
 	 });
 		$(".list-group a").eq(0).addClass("active");
 	</script>
-</body>
 </body>
 </html>

@@ -10,30 +10,37 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.google.gson.annotations.Expose;
+
 @Entity(name="scenery")
 public class Scenery implements Serializable{
 	@Id
 	@Column(name="id")
+	@Expose 
 	private String id;
 	
 	@Column(name="summary")
+	@Expose 
 	private String summary;
 	
 	@Column(name="detail")
+	@Expose 
 	private String detail;
 	
 	@Column(name="picaddr")
+	@Expose 
 	private String picaddr;
 	
 	@Column(name="createdate")
+	@Expose 
 	private Date createDate;
-	
-	@Column(name="detailsub")
-	private String detailSub;
 	
 	@ManyToOne          
     @JoinColumn(name="user_id",referencedColumnName ="mail") 
 	private User user_id;
+	
+	@Column(name="detailsub")
+	private String detailSub;
 
 	public String getId() {
 		return id;
@@ -82,7 +89,7 @@ public class Scenery implements Serializable{
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
-
+	
 	public String getDetailSub() {
 		return detailSub;
 	}
@@ -90,6 +97,5 @@ public class Scenery implements Serializable{
 	public void setDetailSub(String detailSub) {
 		this.detailSub = detailSub;
 	}
-	
 	
 }
