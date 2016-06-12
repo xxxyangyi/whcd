@@ -21,19 +21,20 @@ public class User implements Serializable {
 	@Column(name="name")
 	private String name;
 	
-	@OneToMany(mappedBy = "user_id", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private Set<UserToActivity> userToActivity  =new HashSet<UserToActivity>();
+	@Column(name="isused")
+	private Integer isUsed;
 	
-	@OneToMany(mappedBy = "user_id", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private Set<Scenery> scenery  =new HashSet<Scenery>();
-
-
 	@Column(name="identity")
 	private Integer identity;
 	
 	@Column(name="sex")
 	private Integer sex;
 	
+	@OneToMany(mappedBy = "user_id", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private Set<UserToActivity> userToActivity  =new HashSet<UserToActivity>();
+	
+	@OneToMany(mappedBy = "user_id", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private Set<Scenery> scenery  =new HashSet<Scenery>();
 
 	public String getMail() {
 		return mail;
@@ -92,4 +93,13 @@ public class User implements Serializable {
 		this.scenery = scenery;
 	}
 
+	public Integer getIsUsed() {
+		return isUsed;
+	}
+
+	public void setIsUsed(Integer isUsed) {
+		this.isUsed = isUsed;
+	}
+	
+	
 }

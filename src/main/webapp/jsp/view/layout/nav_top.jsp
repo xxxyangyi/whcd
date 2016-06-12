@@ -1,3 +1,4 @@
+
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 	String path = request.getContextPath();
@@ -43,7 +44,7 @@
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="<%=request.getContextPath()%>/Scenery/SceneryList">名胜古迹 <span class="sr-only">(current)</span></a></li>
-				<li><a href="<%=basePath%>jsp/view/activityShowList.jsp">投票系统</a></li>
+				<li><a href="#">投票系统</a></li>
 				<!-- <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -113,6 +114,7 @@
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">个人中心 <span class="caret"></span></a>
 					<ul class="dropdown-menu">
+						<li><a href="<%=request.getContextPath()%>/PersonCenter/Index">中心首页</a></li>
 						<li><a href="<%=request.getContextPath()%>/PersonCenter/ModifyInfo">修改个人信息</a></li>
 						<li><a href="<%=request.getContextPath()%>/PersonCenter/CreateScenery">创建名胜古迹</a></li>
 						<li><a href="#">创建投票信息</a></li>
@@ -147,11 +149,14 @@
 				},
 				success : function(data) {
 					var status=data;
-					if(status==='1'){
-						window.location.reload();
+					if(status==='0'||status===''){
+						$("#error").html("邮箱或密码输入有误！")
+					}
+					else if(status==='-1'){
+						$("#error").html("该用户已经被禁用！");
 					}
 					else{
-						$("#error").html("邮箱或密码输入有误！");
+						 location.href=status+''; 
 					}
 						
 				}
@@ -179,5 +184,6 @@
 			});
 		}
 		
+
 	</script>
 </body>

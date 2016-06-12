@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 	String path = request.getContextPath();
@@ -53,5 +54,12 @@
 			</div>
 		</div>
 	</div>
+		<script type="text/javascript">
+		
+		$(".list-group a").each(function() {
+	         $(this).removeClass("active");
+	 });
+		$(".list-group a").eq(0).addClass("active");
+	</script>
 </body>
 </html>

@@ -16,40 +16,39 @@
 			
 			<div class="col-md-9">
 			<h2 style="display: inline-block;">名胜古迹管理</h2><div style="float:right;display: inline-block;margin-top: 20px;"><a  data-toggle="modal" data-target="#addSceneryModel" ata-whatever="@mdo" class="btn btn-info">添加</a></div>
-				<hr align="left" width="100%" size="15" />
-				
-				<%for(int i=1;i<=numPage&&i<=len;i++){%>
-				<div class="row">
-					<div class="col-lg-10 col-lg-offset-1">
-						<div class="panel panel-default">
-							<div class="panel-body">
-								<div class="media">
-									<div class="media-left media-middle">
-										<a href="#"> <img class="media-object " height="100px"
-											width="100px" src="<%=request.getContextPath()%><%=sceneryList.get(i-1).getPicaddr()%>" onerror="javascript:this.src='<%=request.getContextPath()%>/jsp/img/errorimg.jpg'" alt="...">
-										</a>
-									</div>
-									<div class="media-body">
-										<h4 class="media-heading"><%=sceneryList.get(i-1).getSummary()%></h4>
-										<%=sceneryList.get(i-1).getDetail()%>
-									</div>
-									<div class="col-lg-3 col-lg-offset-9">
-										<a class="btn btn-warning" href="<%=request.getContextPath()%>/Manager/ModifyScenery?sceneryId=<%=sceneryList.get(i-1).getId()%>">修改</a>
-										<a class="btn btn-danger" onclick="Delete('<%=sceneryList.get(i-1).getId()%>')" >删除</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<%}%>
+			<hr align="left" width="100%" size="15" />
+			<table class="table table-hover" style="text-align: center;">
+				<thead>
+					<tr>
+						<th style="text-align: center;">名胜古迹标题</th>
+						<th style="text-align: center;">名胜古迹内容</th>
+						<th style="text-align: center;">创建人</th>
+						<th style="text-align: center;">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<%
+						for (int i = 1; i <= numPage && i <= len; i++) {
+					%>
+					<tr>
+						<td><a href="<%=request.getContextPath()%>/Manager/DetailSceneryInfo?sceneryId=<%=sceneryList.get(i-1).getId()%>"><%=sceneryList.get(i-1).getSummary()%></a></td>
+						<td><p style="width:450px;word-wrap:break-word;overflow: hidden;white-space: nowrap;;text-overflow:ellipsis"><%=sceneryList.get(i-1).getDetailSub()%></p></td>
+						<td><%=sceneryList.get(i-1).getUser_id().getName()%> </td>
+						<td><a class="btn btn-danger" onclick="Delete('<%=sceneryList.get(i-1).getId()%>')">删除</a></td>
+					</tr>
+					<%
+						}
+					%>
+				</tbody>
+			</table>
 				<hr align="left" width="100%" size="15" />
 				<div class="col-lg-8 col-lg-offset-3">
 					<div class="col-lg-2">
 						<a onclick="PrePage()" class="btn btn-primary">上一页</a>
 					</div>
 					<div class="col-lg-3">
-						<select id="selectPage" class="form-control" onchange="SelectedPage()">
+						<select id="selectPage" class="form-control"
+								onchange="SelectedPage()">
 						<%for(int i=1;i<=total;i++){%>
 							<%if(i==num) {%>
 							<option value="<%=i%>" selected="selected"><%=i%></option>
@@ -63,7 +62,8 @@
 						<a onclick="NextPage();" class="btn btn-primary">下一页</a>
 					</div>
 				</div>
-			</div>
+			
+				</div>
 			
 			
 <div class="modal " id="addSceneryModel" tabindex="-1" role="dialog"
@@ -96,6 +96,7 @@
 				  							</textarea>
 									</div>
 									<input type="hidden" id="richText"  name="richText" /> 
+									<input type="hidden" id="detailSub"  name="detailSub" />
 								</div>
 								</div>
 						</div>
@@ -170,7 +171,10 @@
 	function Create(){
 		var str=$(".wysiwyg-editor").html();
 		$("#richText").val(str);
-		alert('+++++++++++++++++');
+		var strNew=RegText(".wysiwyg-editor");
+		var strFinal=SpiltStr(strNew);
+		$("#detailSub").val(strFinal);
+		
 		$("#modelForm").submit();
 	}
 	

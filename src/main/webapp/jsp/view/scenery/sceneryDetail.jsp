@@ -27,18 +27,7 @@
 	<div class="container id1" style="width: 90%">
 		<div class="row">
 			<div class="col-md-3">
-				<ul>
-					<li>
-						<div class="btn-group">
-							<button class="btn btn-info" type="button" style="width: 150px" >其他</button>
-						</div>
-					</li>
-					<li>
-						<div class="btn-group">
-							<button class="btn btn-info" type="button" style="width: 150px">设置</button>
-						</div>
-					</li>
-				</ul>
+				<jsp:include page="../layout/left_panel.jsp"></jsp:include>
 			</div>
 			<div class="col-md-9">
 				<hr align="left" width="100%" size="15" />
@@ -50,10 +39,9 @@
 					<div class="panel-body">
 						<div class="col-lg-12">
 							详情：
+							<br/>
+							<img alt="" src="<%=request.getContextPath()%><%=scenery.getPicaddr()%>" style="float: right;margin: 5px;" onload="AutoResizeImage(300,0,this)" onerror="javascript:this.src='<%=request.getContextPath()%>/jsp/img/errorimg.jpg'">
 							<%=scenery.getDetail()%>
-						</div>
-						<div class="col-lg-12">
-							<img style="width: 100%;height: 100%;" alt="" src="<%=request.getContextPath()%><%=scenery.getPicaddr()%>" onerror="javascript:this.src='<%=request.getContextPath()%>/jsp/img/errorimg.jpg'">
 						</div>
 						<div class="col-lg-12">
 							作者：<%=scenery.getUser_id().getName()%>
@@ -66,5 +54,13 @@
 			</div>
 		</div>
 	</div>
+			<script type="text/javascript">
+		
+		$(".list-group a").each(function() {
+	         $(this).removeClass("active");
+	 });
+		$(".list-group a").eq(2).addClass("active");
+	</script>
+</body>
 </body>
 </html>

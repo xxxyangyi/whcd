@@ -24,7 +24,7 @@
 		<property name="driverClassName" value="${driver}" />
 		<property name="url" value="${dburl}" />
 		<property name="username" value="${user}" />
- 		<property name="password" value="${password}" />
+ 		<!-- <property name="password" value="${password}" /> -->
 	</bean>
 
 	<!-- Session 的创建 -->

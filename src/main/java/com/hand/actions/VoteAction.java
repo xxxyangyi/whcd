@@ -60,6 +60,9 @@ public class VoteAction extends ActionSupport implements SessionAware,ServletReq
 	// 给某人投票
 	public void voteFor() throws IOException{
 		System.out.println("======voteFor");
+		if(session.get("user")==null){
+			session.put("user", userService.GetUser("123"));
+		}
 		int		 activity_id	=Integer.parseInt(request.getParameter("activity_id"));
 		int		 vote_id  =  Integer.parseInt(request.getParameter("vote_id"));
 		String	 voteFor  = 	request.getParameter("voteFor");

@@ -38,6 +38,9 @@ public class Scenery implements Serializable{
 	@ManyToOne          
     @JoinColumn(name="user_id",referencedColumnName ="mail") 
 	private User user_id;
+	
+	@Column(name="detailsub")
+	private String detailSub;
 
 	public String getId() {
 		return id;
@@ -87,5 +90,12 @@ public class Scenery implements Serializable{
 		this.createDate = createDate;
 	}
 	
+	public String getDetailSub() {
+		return detailSub;
+	}
+
+	public void setDetailSub(String detailSub) {
+		this.detailSub = detailSub;
+	}
 	
 }

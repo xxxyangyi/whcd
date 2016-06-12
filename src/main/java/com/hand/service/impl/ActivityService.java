@@ -18,7 +18,6 @@ public class ActivityService implements IActivityService {
 
 	@Resource(name = "activityDao")
 	private IActivityDao activityDao;
-	
 	@Override
 	public void AddActivity(Activity activity) {
 		activityDao.Create(activity);
@@ -28,7 +27,6 @@ public class ActivityService implements IActivityService {
 	public Activity GetActivity(int id) {
 		return activityDao.FindOne(id);
 	}
-
 	@Override
 	public List<Activity> GetActivitys() {		
 		return activityDao.FindAll();

@@ -24,23 +24,12 @@
 </head>
 
 <body>
-	<jsp:include page="layout/nav_top.jsp"></jsp:include>
+	<jsp:include page="../layout/nav_top.jsp"></jsp:include>
 
 	<div class="container id1" style="width: 90%">
 		<div class="row">
 			<div class="col-md-3">
-				<ul>
-					<li>
-						<div class="btn-group">
-							<button class="btn btn-info" type="button" style="width: 150px">其他</button>
-						</div>
-					</li>
-					<li>
-						<div class="btn-group">
-							<button class="btn btn-info" type="button" style="width: 150px">设置</button>
-						</div>
-					</li>
-				</ul>
+				<jsp:include page="../layout/left_panel_user.jsp"></jsp:include>
 			</div>
 			<div class="col-md-9">
 				<hr align="left" width="100%" size="15" />
@@ -74,20 +63,20 @@
 				  							</textarea>
 									</div>
 									<input type="hidden" id="richText"  name="richText" value="<%=scenery.getDetail()%>"/>
+									<input type="hidden" id="detailSub"  name="detailSub" />
 									<input  type="hidden" name="sceneryId" value="<%=scenery.getId()%>" > 
 								</div>
 								</div>
 							</div>
 							<div>
 								<label style="display: block;">图片：</label>
-								
-								<div class="form-group col-sm-12">
-									<img id="preview"  src="<%=request.getContextPath()%><%=scenery.getPicaddr()%>" style="width: 100%;height: 100%;" onerror="javascript:this.src='<%=request.getContextPath()%>/jsp/img/errorimg.jpg'" >
-								</div>
-								
-								<div class="col-sm-12">
+								<div class="col-sm-12" style="margin-top: 5px;margin-bottom: 5px;">
 									<input type="file" name="imgUpLoad" id="imgUpLoad" onchange="PreView()" class="filestyle" data-buttonName="btn-primary" disabled="disabled">
 								</div>
+								<div class="form-group col-sm-12">
+									<img id="preview"  src="<%=request.getContextPath()%><%=scenery.getPicaddr()%>" onload="AutoResizeImage(850,0,this)" onerror="javascript:this.src='<%=request.getContextPath()%>/jsp/img/errorimg.jpg'" >
+								</div>
+								
 							</div>
 						</form>
 					</div>
@@ -119,6 +108,10 @@
 		function Config(inputId) {
 			var str=$(".wysiwyg-editor").html();
 			$("#richText").val(str);
+			
+			var strNew=RegText(".wysiwyg-editor");
+			var strFinal=SpiltStr(strNew);
+			$("#detailSub").val(strFinal);
 			$("#sceneryForm").submit();
 		}
 	function GetFilePath() {
@@ -168,6 +161,13 @@
 <script type="text/javascript" src="<%=basePath%>jsp/js/bootstrap-filestyle.min.js"> </script>
 <script type="text/javascript">
 $(":file").filestyle({buttonName: "btn-primary"});
-</script>s
+</script>
+<script type="text/javascript">
+		
+		$(".list-group a").each(function() {
+	         $(this).removeClass("active");
+	 });
+		$(".list-group a").eq(1).addClass("active");
+</script>
 </body>
 </html>
