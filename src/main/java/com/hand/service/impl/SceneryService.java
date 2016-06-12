@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.hand.dao.ISceneryDao;
 import com.hand.dao.IUserDao;
 import com.hand.entity.Scenery;
+import com.hand.entity.Vote;
 import com.hand.service.ISceneryService;
 
 @Transactional
@@ -52,5 +53,12 @@ public class SceneryService implements ISceneryService {
 		// TODO Auto-generated method stub
 		sceneryDao.Delete(scenery);
 	}
-	
+
+	@Override
+	public List<Scenery> GetScenerys() {
+		// TODO Auto-generated method stub
+		return sceneryDao.FindAll();
+	}
+
+
 }

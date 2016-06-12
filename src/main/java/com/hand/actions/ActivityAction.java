@@ -40,9 +40,6 @@ public class ActivityAction extends ActionSupport implements SessionAware,Servle
 	
 	public String activityAdd() throws ParseException{
 		System.out.println("===========activityAdd");
-		//判断是否已经参加过活动，若参加过则不能再参加活动
-		
-		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		String startTime = request.getParameter("time1");
 		String endTime = request.getParameter("time2");		

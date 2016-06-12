@@ -1,5 +1,7 @@
 package com.hand.actions;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import java.util.Map;
 
@@ -12,37 +14,23 @@ import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.hand.entity.Activity;
 import com.hand.entity.Scenery;
 import com.hand.service.ISceneryService;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class SceneryAction extends ActionSupport implements SessionAware,
-		ServletRequestAware, ServletResponseAware {
+public class SceneryAction extends ActionSupport implements ServletResponseAware {
 	
 	private static Integer numPage=2;
 	
-	public Map session;
-	public HttpServletRequest request;
-	public HttpServletResponse response;
+	private Map session;
+	private HttpServletRequest request;
+	private HttpServletResponse response;
 	
 	@Resource(name = "sceneryService")
 	private ISceneryService sceneryService;
-	
-	public void setSession(Map<String, Object> session) {
-		this.session = session;
-	}
-
-	@Override
-	public void setServletResponse(HttpServletResponse arg0) {
-		// TODO Auto-generated method stub
-		this.response = response;
-	}
-
-	@Override
-	public void setServletRequest(HttpServletRequest arg0) {
-		// TODO Auto-generated method stub
-		this.request = request;
-	}
 
 	public String SceneryList() {
 		String sqlSum="select count(*) as sumkey from scenery order by createdate";
@@ -58,6 +46,18 @@ public class SceneryAction extends ActionSupport implements SessionAware,
 		request.setAttribute("numPage", numPage);
 		
 		return "sceneryList";
+	}
+	
+	public void SceneryListGson() throws IOException{
+		System.out.println("=============SceneryListGson");
+		response.setContentType("text/json"); 
+        response.setCharacterEncoding("UTF-8"); 
+		PrintWriter out = response.getWriter();
+		List<Scenery> list = sceneryService.GetScenerys();
+		System.out.println(list.size());
+		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+		out.print(gson.toJson(list));
+		System.out.println("发送数据");
 	}
 
 	public String SceneryListSub() {
@@ -89,6 +89,11 @@ public class SceneryAction extends ActionSupport implements SessionAware,
 		request.setAttribute("scenery", scenery);
 		
 		return "sceneryDetail";
+	}
+
+	@Override
+	public void setServletResponse(HttpServletResponse response) {
+		this.response = response;
 	}
 	
 }

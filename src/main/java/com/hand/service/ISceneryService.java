@@ -3,6 +3,7 @@ package com.hand.service;
 import java.util.List;
 
 import com.hand.entity.Scenery;
+import com.hand.entity.Vote;
 
 public interface ISceneryService {
 
@@ -48,4 +49,5 @@ public interface ISceneryService {
 	 * @param scenery 名胜古迹对象
 	 */
 	public void DeleteScenery(Scenery scenery);
+	public List<Scenery> GetScenerys();
 }

@@ -66,17 +66,93 @@ $(document).ready(function() {
 		} else {
 			console.log("activity_list 不存在：不请求数据");
 		}
+		
+	// 首页加载活动
+	if ($("#home_activity_list").length > 0) {
+		console.log("home_activity_list 存在：请求数据");
+		$.ajax({
+			type : "post",
+			data : {},
+			url : "http://localhost:8080/WHCD/activity/getActivitys",
+			async : true,
+			dataType : 'json',
+			success : function(msg) {
+				if (msg) {
+					console.log("请求数据成功： "+ msg.length);
+					var i = 0;
+					var y = 0;
+					if(msg.length<=6){
+						y=msg.length;
+					}else{
+						y=6;
+					}
+					console.log(y)
+					for (i; i < y; i++) {
+						console.log(i)
+							$("#home_activity_list").append(
+																	"<div class='panel panel-default'>"+
+																	"<div class='panel-body'>"
+																			+ "<div class='media'>"
+																			+ "<div class='media-left media-middle'>"
+																			+"<img class='media-object' height='50px' width='50px' src='jsp/image/sky.jpg'>"
+																			+ "</div>"
+																			+ "<div class='media-body'>"
+																			+ "<h4 class='media-heading'>"
+																			+ "<a href='http://localhost:8080/WHCD/activity/getActivityVotes?activity_id="+msg[i].id+"'> "
+																			+msg[i].activityName
+																			+"</a>"
+																			+"</h4>"
+																			+ msg[i].context
+																			+ "</div>"
+																			+ "</div>"
+																			+ "</div>	"	
+																			+"</div>"
+							
+							
+							)
+					}				
+				} else {
+					console.log("请求数据失败： "+ msg);
+				}
+			}
+		})	
+		} else {
+			console.log("home_activity_list 不存在：不请求数据");
+		}
 	
-//	$("#joinIn").click(function(){
-//		var activity_id = 1;
-//		$.ajax({
-//			type : "post",
-//			data : {activity_id:activity_id},
-//			url : "http://localhost:8080/WHCD/activity/getActivityById",
-//			async : true,
-//			success : function(msg) {alert(msg)}											
-//		});
-//		})
+	if ($("#home_scenery_list").length > 0) {
+		console.log("home_scenery_list 存在：请求数据");
+		$.ajax({
+			type : "post",
+			data : {},
+			url : "http://localhost:8080/WHCD/Scenery/SceneryListGson",
+			async : true,
+			dataType : 'json',
+			success : function(msg) {
+				if (msg) {
+					console.log("请求数据成功： "+ msg.length);
+					var i = 0;
+					var y = 0;
+					if(msg.length<=6){
+						y=msg.length;
+					}else{
+						y=6;
+					}
+					console.log(y)
+					for (i; i < y; i++) {
+						console.log(i)
+							$("#home_scenery_list").append("1"
+														
+							)
+					}				
+				} else {
+					console.log("请求数据失败： "+ msg);
+				}
+			}
+		})	
+		} else {
+			console.log("home_activity_list 不存在：不请求数据");
+		}
 	
 	
 })
