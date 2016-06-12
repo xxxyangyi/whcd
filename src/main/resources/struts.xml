@@ -50,8 +50,18 @@
 	</package>
 
 	<package name="activity" namespace="/activity" extends="struts-default">
+		<interceptors>
+			<interceptor name="authority" class="com.hand.intercepter.ActivityInterceptor" />
+			<interceptor-stack name="ActivityInterceptor">
+				<interceptor-ref name="authority">
+				    <param name="excludeMethods">voteAdd,activityAdd,getActivitys,getActivityVotes,voteFor</param><!--不拦截Action中的method1-->  
+				    <param name="includeMethods">getActivityById</param>
+				</interceptor-ref>
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+		<!-- <default-interceptor-ref name="ActivityInterceptor" />    --> 
 		<action name="voteAdd" class="voteAction" method="voteAdd">
-		    <result name="success" type="redirect">/activity/getActivityVotes</result>
 		    <result name="success" type="redirectAction">  
                  <param name="actionName">activity/getActivityVotes</param>  
                  <param name="activity_id">${vote.activity_id.id}</param>  
@@ -65,6 +75,7 @@
 		    <result name="success">/jsp/view/activityShowContext.jsp</result>		    
 		</action>
 		<action name="getActivityById" class="activityAction" method="getActivityById">
+		    <interceptor-ref name="ActivityInterceptor"/>
 		    <result name="success">/jsp/view/voteAdd.jsp</result>		    
 		</action>
 		<action name="voteFor" class="voteAction" method="voteFor"></action>

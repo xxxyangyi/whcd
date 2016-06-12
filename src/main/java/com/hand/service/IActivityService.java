@@ -17,4 +17,5 @@ public interface IActivityService{
 	public Activity GetActivity(int id);
 	
 	public List<Activity> GetActivitys();
+	public List<Activity> FindBySQL(String str);
 }

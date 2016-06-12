@@ -1,11 +1,14 @@
 package com.hand.service.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.hand.dao.IVoteDao;
+import com.hand.entity.UserToActivity;
 import com.hand.entity.Vote;
 import com.hand.service.IVoteService;
 
@@ -30,6 +33,10 @@ public class VoteService implements IVoteService {
 	public Vote update(Vote vote) {
 		return voteDao.Update(vote);	
 	}
-
+	
+	@Override
+	public List<Vote> FindBySQL(String str) {
+		return voteDao.FindBySQL(str);
+	}
 
 }
