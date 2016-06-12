@@ -36,8 +36,8 @@
 
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h2>修改名胜古迹信息</h2>
-						<div style="float: right;margin-top: -5px;">
+						<h4>修改名胜古迹信息</h4>
+						<div style="float: right;margin-top: -35px;">
 						 <input id="nameMdf" type="button" value="修改" class=" btn btn-danger" onclick="Modify('name')" />
 						 <input id="nameConf" type="button" value="确认" class=" btn btn-success" onclick="Config('name')" style="display: none" />
 						 <input id="nameCac" type="button" value="取消" class=" btn btn-warning" onclick="Cancel('name')" style="display: none" />

@@ -10,6 +10,7 @@
 %>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 			<div class="col-md-9">
+				<a href="<%=request.getContextPath()%>/PersonCenter/CreateScenery" class="btn btn-info" style="float:right;margin-bottom: 5px;">创建名胜古迹</a>
 				<hr align="left" width="100%" size="15" />
 				<table class="table table-hover" style="text-align: center;">
 				<thead>

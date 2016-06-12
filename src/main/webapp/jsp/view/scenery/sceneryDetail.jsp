@@ -15,10 +15,6 @@
 <base href="<%=basePath%>">
 
 <title>风景名胜详细信息</title>
-<link rel="stylesheet" href="jsp/css/bootstrap.css">
-<link rel="stylesheet" href="jsp/css/app.css">
-<script src="<%=basePath%>jsp/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="<%=basePath%>jsp/js/app.js"></script>
 </head>
 
 <body>

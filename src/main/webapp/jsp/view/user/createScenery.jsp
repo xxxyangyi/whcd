@@ -36,8 +36,8 @@
 
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						创建名胜古迹
-						<div style="float: right;margin-top: -5px;">
+						<h4>创建名胜古迹</h4>
+						<div style="float: right;margin-top: -35px;">
 						 <input id="nameMdf" type="button" value="创建" class=" btn btn-danger" onclick="Create()" />
 						</div>
 					</div>
