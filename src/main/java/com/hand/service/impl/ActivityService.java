@@ -17,7 +17,7 @@ public class ActivityService implements IActivityService {
 
 	@Resource(name = "activityDao")
 	private IActivityDao activityDao;
-
+	
 	@Override
 	public void AddActivity(Activity activity) {
 		activityDao.Create(activity);

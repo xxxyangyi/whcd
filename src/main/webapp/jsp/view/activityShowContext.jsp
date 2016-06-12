@@ -14,8 +14,10 @@
 <title>活动内容</title>
 <link rel="stylesheet" href="jsp/css/bootstrap.css">
 <link rel="stylesheet" href="jsp/css/app.css">
-<script src="jsp/js/jquery-2.1.4.min.js"></script>
-<script src="jsp/js/bootstrap.min.js"></script>
+<script src="<%=basePath%>jsp/js/jquery-2.1.4.js"></script>
+<script src="<%=basePath%>jsp/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>jsp/js/modernizr-2.6.2.min.js"></script>
+
 <script type="text/javascript" src="jsp/js/app.js"></script>
 </head>
 
@@ -43,14 +45,14 @@
 				<div class="row">
 					<div id="activity_context"></div>
 				</div>
-				<div class="row">
+				<div class="grid row">
 					<s:iterator value="activity.vote" id='id' status='st'>
-						<div class="col-sm-6 col-md-4">
+						<div class="grid_item col-sm-6 col-md-4" style="float:left">
 							<div class="thumbnail">
 								<img src="jsp/image/sky.jpg" alt="未知">
 								<div class="caption">
-									<h5>
-										<s:property value="#id.user_id.name" />
+									<h5 >
+										<div ><s:property value="#id.user_id.name" /></div>
 									</h5>
 									<p>
 										<s:property value="#id.context" />
@@ -64,6 +66,20 @@
 							</div>
 						</div>
 					</s:iterator>
+					<script type="text/javascript" src="<%=basePath%>jsp/js/jquery-2.1.4.js"></script>
+					
+					<script src="https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.min.js"></script>
+					
+					
+					<script type="text/javascript">
+					$(function(){  
+						  $('.grid').masonry({  
+						    // options  
+						    itemSelector : '.grid_item',  
+						    columnWidth : 0  
+						  });  
+						});
+					</script>
 				</div>
 			</div>
 		</div>
