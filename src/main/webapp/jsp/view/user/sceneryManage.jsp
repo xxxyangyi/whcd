@@ -36,4 +36,3 @@
 		$(".list-group a").eq(1).addClass("active");
 	</script>
 </body>
-</html>

@@ -145,4 +145,3 @@ $(":file").filestyle({buttonName: "btn-primary"});
 	</script>
 </body>
 </body>
-</html>
