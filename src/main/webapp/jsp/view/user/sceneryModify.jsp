@@ -161,8 +161,7 @@
 <script type="text/javascript">
 $(":file").filestyle({buttonName: "btn-primary"});
 </script>
-<script type="text/javascript">
-		
+<script type="text/javascript">		
 		$(".list-group a").each(function() {
 	         $(this).removeClass("active");
 	 });
