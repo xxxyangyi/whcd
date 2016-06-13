@@ -1,4 +1,3 @@
-
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 	String path = request.getContextPath();
@@ -11,17 +10,12 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<base href="<%=basePath%>">
-
-<title>注册页面</title>
-
-<link rel="stylesheet" href="<%=basePath%>jsp/css/bootstrap.css">
-<link rel="stylesheet" href="<%=basePath%>jsp/css/app.css">
+<link rel="stylesheet" href="jsp/css/bootstrap.css">
+<link rel="stylesheet" href="jsp/css/app.css">
 <script type="text/javascript" src="<%=basePath%>jsp/js/jquery-2.1.4.js"></script>
 <script src="<%=basePath%>jsp/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<%=basePath%>jsp/js/app.js"></script>
-
-
+<base href="<%=basePath%>">
 </head>
 
 <body>
@@ -44,25 +38,13 @@
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="<%=request.getContextPath()%>/Scenery/SceneryList">名胜古迹 <span class="sr-only">(current)</span></a></li>
-				<li><a href="#">投票系统</a></li>
-				<!-- <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
-          </ul>
-        </li> -->
+				<li><a href="<%=request.getContextPath()%>/jsp/view/activityShowList.jsp">投票系统</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<%
 					if (session.getAttribute("user") == null) {
 				%>
-				<li><a href="#" data-toggle="modal" data-target="#loginModal"
+				<li><a data-toggle="modal" data-target="#loginModal"
 					data-whatever="@mdo">登录</a></li>
 					<div class="modal fade" id="loginModal" tabindex="-1" role="dialog"
 		aria-labelledby="loginModalLabel">
@@ -98,6 +80,7 @@
 					</form>
 				</div>
 				<div class="modal-footer">
+					<a  class="btn btn-primary" href="<%=request.getContextPath()%>/Home/Resister">注册</a>
 					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
 					<button type="button" class="btn btn-primary" onclick="login('<%=path%>/Home/DoLogin');">登录</button>
 
@@ -110,7 +93,7 @@
 				<%
 					} else {
 				%>
-				<li class="dropdown"><a href="#" class="dropdown-toggle"
+				<li class="dropdown"><a  class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">个人中心 <span class="caret"></span></a>
 					<ul class="dropdown-menu">
@@ -118,6 +101,7 @@
 						<li><a href="<%=request.getContextPath()%>/PersonCenter/ModifyInfo">修改个人信息</a></li>
 						<li><a href="<%=request.getContextPath()%>/PersonCenter/CreateScenery">创建名胜古迹</a></li>
 						<li><a href="#">创建投票信息</a></li>
+						<li><a href="<%=request.getContextPath()%>/jsp/view/activityAdd.jsp">创建活动</a></li>						
 						<li role="separator" class="divider"></li>
 						<li><a onclick="logout('<%=path%>/Home/DoLogOut');">退出</a></li>
 					</ul></li>
@@ -184,6 +168,5 @@
 			});
 		}
 		
-
 	</script>
 </body>

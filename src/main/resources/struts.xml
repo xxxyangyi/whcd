@@ -150,6 +150,8 @@
 		</action>
 		<action name="DisableUser" class="managerAction" method="DisableUser">
 		</action>
+		<action name="AbleUser" class="managerAction" method="AbleUser">
+		</action>
 		<action name="InitializeUserPassword" class="managerAction" method="InitializeUserPassword">
 		</action>
 		<action name="AddUser" class="managerAction" method="AddUser">

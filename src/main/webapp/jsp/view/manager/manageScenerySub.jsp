@@ -15,7 +15,7 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 			
 			<div class="col-md-9">
-			<h2 style="display: inline-block;">名胜古迹管理</h2><div style="float:right;display: inline-block;margin-top: 20px;"><a  data-toggle="modal" data-target="#addSceneryModel" ata-whatever="@mdo" class="btn btn-info">添加</a></div>
+			<h4 style="display: inline-block;">名胜古迹管理</h4>
 			<hr align="left" width="100%" size="15" />
 			<table class="table table-hover" style="text-align: center;">
 				<thead>
@@ -32,7 +32,7 @@
 					%>
 					<tr>
 						<td><a href="<%=request.getContextPath()%>/Manager/DetailSceneryInfo?sceneryId=<%=sceneryList.get(i-1).getId()%>"><%=sceneryList.get(i-1).getSummary()%></a></td>
-						<td><p style="width:450px;word-wrap:break-word;overflow: hidden;white-space: nowrap;;text-overflow:ellipsis"><%=sceneryList.get(i-1).getDetailSub()%></p></td>
+						<td><p style="width:400px;word-wrap:break-word;overflow: hidden;white-space: nowrap;;text-overflow:ellipsis"><%=sceneryList.get(i-1).getDetailSub()%></p></td>
 						<td><%=sceneryList.get(i-1).getUser_id().getName()%> </td>
 						<td><a class="btn btn-danger" onclick="Delete('<%=sceneryList.get(i-1).getId()%>')">删除</a></td>
 					</tr>

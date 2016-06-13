@@ -10,6 +10,7 @@
 %>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 			<div class="col-md-9">
+				<div style="float:left;"><h4>名胜古迹列表</h4></div><a style="float:right;" class="btn btn-info" href="<%=request.getContextPath()%>/PersonCenter/CreateScenery">创建名胜古迹</a>
 				<hr align="left" width="100%" size="15" />
 				<table class="table table-hover" style="text-align: center;">
 				<thead>
@@ -26,7 +27,7 @@
 					%>
 					<tr>
 						<td><a href="<%=request.getContextPath()%>/PersonCenter/SceneryDetail?sceneryId=<%=sceneryList.get(i-1).getId()%>"><%=sceneryList.get(i-1).getSummary()%></a></td>
-						<td><p style="width:450px;word-wrap:break-word;overflow:hidden; white-space:nowrap; text-overflow:ellipsis"><%=sceneryList.get(i-1).getDetailSub()%></p></td>
+						<td><p style="width:400px;word-wrap:break-word;overflow:hidden; white-space:nowrap; text-overflow:ellipsis"><%=sceneryList.get(i-1).getDetailSub()%></p></td>
 						<td><%=sceneryList.get(i-1).getUser_id().getName()%> </td>
 						<td>
 							<a class="btn btn-warning" href="<%=request.getContextPath()%>/PersonCenter/SceneryModify?sceneryId=<%=sceneryList.get(i-1).getId()%>">修改</a>

@@ -19,13 +19,11 @@
 <link rel="stylesheet" type="text/css" href="<%=basePath%>jsp/css/textedit_default.css">
 <link rel="stylesheet" type="text/css" href="<%=basePath%>jsp/css/wysiwyg-editor.css" />
 <link href="<%=basePath%>jsp/css/textedit.css" rel="stylesheet" type="text/css" />
-<script src="<%=basePath%>jsp/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="<%=basePath%>jsp/js/app.js"></script>
 
 </head>
 
 <body>
-	<jsp:include page="../layout/nav_top.jsp"></jsp:include>
+	<jsp:include page="../layout/nav_top_manager.jsp"></jsp:include>
 
 	<div class="container id1" style="width: 90%">
 		<div class="row">
@@ -60,7 +58,7 @@
 								</div>
 								<div class="content bgcolor-1" id="textDetail" style="display: none;">
 								<div class="main">
-									<div style="width:860px">
+									<div>
 				  							<textarea id="editor1" name="editor" placeholder="Type your text here..." disabled="disabled">
 				  							</textarea>
 									</div>
@@ -73,7 +71,7 @@
 							<div>
 								<label style="display: block;">图片：</label>
 								<div class="form-group col-sm-12">
-									<img id="preview"  src="<%=request.getContextPath()%><%=scenery.getPicaddr()%>" onload="AutoResizeImage(850,0,this)"  onerror="javascript:this.src='<%=request.getContextPath()%>/jsp/img/errorimg.jpg'"  >
+									<img id="preview"  src="<%=request.getContextPath()%><%=scenery.getPicaddr()%>" onload="AutoResizeImage(650,0,this)"  onerror="javascript:this.src='<%=request.getContextPath()%>/jsp/img/errorimg.jpg'"  >
 								</div>
 								<br/>
 								<div class="col-sm-12">

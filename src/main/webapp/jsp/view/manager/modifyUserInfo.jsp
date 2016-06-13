@@ -15,14 +15,10 @@
 <base href="<%=basePath%>">
 
 <title>修改用户信息</title>
-<link rel="stylesheet" href="jsp/css/bootstrap.css">
-<link rel="stylesheet" href="jsp/css/app.css">
-<script src="<%=basePath%>jsp/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="<%=basePath%>jsp/js/app.js"></script>
 </head>
 
 <body>
-	<jsp:include page="../layout/nav_top.jsp"></jsp:include>
+	<jsp:include page="../layout/nav_top_manager.jsp"></jsp:include>
 
 	<div class="container id1" style="width: 90%">
 		<div class="row">

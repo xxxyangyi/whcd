@@ -170,11 +170,6 @@ $(document).ready(function() {
 		})		
 	};
 	
-	//  查看大图				
-	function showlargeImg() {
-		alert("kais");
-		$("#modalShowLargeImg").modal('show');
-	}
 					
 	function RegText(id){
 		var description=$(""+id).html();

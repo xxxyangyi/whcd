@@ -19,11 +19,11 @@ public class Scenery implements Serializable{
 	@Expose 
 	private String id;
 	
-	@Column(name="summary")
+	@Column(name="summary",columnDefinition="TEXT")
 	@Expose 
 	private String summary;
 	
-	@Column(name="detail")
+	@Column(name="detail",columnDefinition="TEXT")
 	@Expose 
 	private String detail;
 	
@@ -39,7 +39,7 @@ public class Scenery implements Serializable{
     @JoinColumn(name="user_id",referencedColumnName ="mail") 
 	private User user_id;
 	
-	@Column(name="detailsub")
+	@Column(name="detailsub",columnDefinition="TEXT")
 	private String detailSub;
 
 	public String getId() {

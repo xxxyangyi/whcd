@@ -25,7 +25,7 @@
 	<div class="container id1" style="width: 90%">
 		<div class="row">
 			<div class="col-md-3">
-				<jsp:include page="layout/left_panel.jsp"></jsp:include>
+				<!--<jsp:include page="layout/left_panel.jsp"></jsp:include>-->
 			</div>
 			<div class="col-md-9">
 				<hr align="left" width="100%" size="15" />

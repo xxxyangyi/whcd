@@ -19,8 +19,6 @@
 <link rel="stylesheet" type="text/css" href="<%=basePath%>jsp/css/textedit_default.css">
 <link rel="stylesheet" type="text/css" href="<%=basePath%>jsp/css/wysiwyg-editor.css" />
 <link href="<%=basePath%>jsp/css/textedit.css" rel="stylesheet" type="text/css" />
-<script src="<%=basePath%>jsp/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="<%=basePath%>jsp/js/app.js"></script>
 </head>
 
 <body>
@@ -53,7 +51,7 @@
 								<label for="exampleInputPassword1" style="display: block;">详情：</label>
 								<div class="content bgcolor-1">
 								<div class="main">
-									<div style="width:860px">
+									<div>
 				  							<textarea id="editor1" name="editor" placeholder="Type your text here...">
 				  							</textarea>
 									</div>
@@ -68,7 +66,7 @@
 									<input type="file" name="imgUpLoad" id="imgUpLoad" onchange="PreView()" class="filestyle" data-buttonName="btn-primary" >
 								</div>
 								<div class="form-group col-sm-12">
-									<img id="preview" src="" onload="AutoResizeImage(850,0,this)"  onerror="javascript:this.src='<%=request.getContextPath()%>/jsp/img/errorimg.jpg'" >
+									<img id="preview" src="" onload="AutoResizeImage(650,0,this)"  onerror="javascript:this.src='<%=request.getContextPath()%>/jsp/img/errorimg.jpg'" >
 								</div>
 								<br/>
 						</div>
@@ -122,7 +120,7 @@
 	
 	function Create(){
 		var str=$(".wysiwyg-editor").html();
-		alert(str);
+		//alert(str);
 		$("#richText").val(str);
 		var strNew=RegText(".wysiwyg-editor");
 		var strFinal=SpiltStr(strNew);

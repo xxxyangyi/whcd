@@ -13,15 +13,10 @@
 <base href="<%=basePath%>">
 
 <title>首页</title>
-<link rel="stylesheet" href="jsp/css/bootstrap.css">
-<link rel="stylesheet" href="jsp/css/app.css">
-<script src="jsp/js/jquery-2.1.4.min.js"></script>
-<script src="jsp/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="jsp/js/app.js"></script>
 </head>
 
 <body>
-	<jsp:include page="../layout/nav_top.jsp"></jsp:include>
+	<jsp:include page="../layout/nav_top_manager.jsp"></jsp:include>
 
 	<div class="container id1" style="width: 90%">
 		<div class="row">

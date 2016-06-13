@@ -27,7 +27,11 @@
 				<td><%=userList.get(i-1).getName()%></td>
 				<td>
 					<a class="btn btn-warning" onclick="InitializeUserPassword('<%=userList.get(i-1).getMail()%>')">初始化密码</a>
+					<%if(userList.get(i-1).getIsUsed()==1) {%>
 					<a class="btn btn-danger" onclick="Disable('<%=userList.get(i-1).getMail()%>')" >禁用</a>
+					<%}else{ %>
+					<a class="btn btn-success" onclick="Able('<%=userList.get(i-1).getMail()%>')" >解禁</a>
+					<%} %>
 				</td>
 			</tr>
 			<%
@@ -214,6 +218,27 @@
 			}
 		});
 	}
+	function Able(mail){
+		var urlStr="<%=request.getContextPath()%>/Manager/AbleUser";	
+		$.ajax({
+			url : urlStr,
+			async : false,
+			data : {
+				"mail" : mail
+			},
+			error : function() {
+				alert("解禁失败！");
+			},
+			success : function(data) {
+				if(data==='1')
+					alert('解禁成功');
+			else
+				alert('解禁失败');
+			window.location.reload();
+			}
+		});
+	}
+	
 	function Add(){
 		var urlStr='<%=request.getContextPath()%>/Manager/AddUser';
 		var mail=$("#mail").val();
@@ -247,7 +272,7 @@
 		});
 		
 	}
-	function  InitializeUserPassword(){
+	function  InitializeUserPassword(mail){
 		var urlStr="<%=request.getContextPath()%>/Manager/InitializeUserPassword";	
 		$.ajax({
 			url : urlStr,

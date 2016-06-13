@@ -25,7 +25,7 @@
 									</div>
 									<div class="media-body">
 										<h4 class="media-heading"><a href="<%=request.getContextPath()%>/Scenery/SceneryDetail?sceneryId=<%=sceneryList.get(i-1).getId()%>"><%=sceneryList.get(i-1).getSummary()%></a></h4>
-										<p style="width:550px;word-wrap:break-word;text-overflow:ellipsis"><%=sceneryList.get(i-1).getDetailSub()%></p>
+										<p style="width:470px;word-wrap:break-word;text-overflow:ellipsis"><%=sceneryList.get(i-1).getDetailSub()%></p>
 									</div>
 									<div class="col-lg-2 col-lg-offset-10">
 									</div>
@@ -41,7 +41,7 @@
 							<div class="media">
 								<div class="media-body">
 									<h4 class="media-heading"><a href="<%=request.getContextPath()%>/Scenery/SceneryDetail?sceneryId=<%=sceneryList.get(i-1).getId()%>"><%=sceneryList.get(i-1).getSummary()%></a></h4>
-									<p style="width:550px;word-wrap:break-word;text-overflow:ellipsis"><%=sceneryList.get(i-1).getDetailSub()%></p>
+									<p style="width:470px;word-wrap:break-word;text-overflow:ellipsis"><%=sceneryList.get(i-1).getDetailSub()%></p>
 								</div>
 								<div class="media-right media-middle">
 									<a href="#"> <img class="media-object "  src="<%=request.getContextPath()%><%=sceneryList.get(i-1).getPicaddr()%>" onload="AutoResizeImage(100,100,this)" onerror="javascript:this.src='<%=request.getContextPath()%>/jsp/img/errorimg.jpg'" alt="...">

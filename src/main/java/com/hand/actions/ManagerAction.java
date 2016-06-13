@@ -27,7 +27,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class ManagerAction extends ActionSupport {
 
-private static Integer numPage=2;
+private static Integer numPage=8;
 	
 	// myFile属性用来封装上传的文件  
     private File imgUpLoad;  
@@ -216,6 +216,23 @@ private static Integer numPage=2;
 		
 		User user=userService.GetUser(mail);
 		user.setIsUsed(0);
+		userService.UpdateUser(user);
+		HttpServletResponse response=ServletActionContext.getResponse();
+		PrintWriter out = response.getWriter();
+		out.print("1");
+		}
+		catch(Exception ex){
+			ex.printStackTrace();
+		}
+	}
+	
+	public void AbleUser(){
+		try{
+		HttpServletRequest request=ServletActionContext.getRequest();
+		String mail=request.getParameter("mail");
+		
+		User user=userService.GetUser(mail);
+		user.setIsUsed(1);
 		userService.UpdateUser(user);
 		HttpServletResponse response=ServletActionContext.getResponse();
 		PrintWriter out = response.getWriter();
