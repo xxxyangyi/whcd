@@ -27,8 +27,6 @@
 										<h4 class="media-heading"><a href="<%=request.getContextPath()%>/Scenery/SceneryDetail?sceneryId=<%=sceneryList.get(i-1).getId()%>"><%=sceneryList.get(i-1).getSummary()%></a></h4>
 										<p style="width:470px;word-wrap:break-word;text-overflow:ellipsis"><%=sceneryList.get(i-1).getDetailSub()%></p>
 									</div>
-									<div class="col-lg-2 col-lg-offset-10">
-									</div>
 								</div>
 							</div>
 						</div>

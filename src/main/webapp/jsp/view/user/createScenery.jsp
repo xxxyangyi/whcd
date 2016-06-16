@@ -70,5 +70,63 @@
 			</div>
 		</div>
 	</div>
+<<<<<<< Upstream, based on branch 'master' of https://github.com/xxxyangyi/whcd.git
+	<script type="text/javascript">
+	function GetFilePath() {
+		var addr = null;
+		var docObj = document.getElementById("imgUpLoad");
+
+		var imgObjPreview = document.getElementById("preview");
+		if (docObj.files && docObj.files[0]) {
+			//火狐下，直接设img属性
+			imgObjPreview.style.display = 'block';
+			//imgObjPreview.src = docObj.files[0].getAsDataURL();
+
+			//火狐7以上版本不能用上面的getAsDataURL()方式获取，需要一下方式
+			imgObjPreview.src = window.URL
+					.createObjectURL(docObj.files[0]);
+			addr = imgObjPreview.src;
+		} else {
+			//IE下，使用滤镜
+			docObj.select();
+			var imgSrc = document.selection.createRange().text;
+			//图片异常的捕捉，防止用户修改后缀来伪造图片
+			try {
+				localImagId.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
+				localImagId.filters
+						.item("DXImageTransform.Microsoft.AlphaImageLoader").src = imgSrc;
+				addr = imgSrc;
+				//alert(imgSrc);
+			} catch (e) {
+				alert("您上传的图片格式不正确，请重新选择!");
+				return false;
+			}
+			imgObjPreview.style.display = 'none';
+			document.selection.empty();
+		}
+		return addr;
+	}
+
+	function PreView() {
+		var addr = GetFilePath();
+		$("#preview").attr("src", addr);
+	}
+	
+	function Create(){
+		var str=$(".wysiwyg-editor").html();
+		//alert(str);
+		$("#richText").val(str);
+		var strNew=RegText(".wysiwyg-editor");
+		var strFinal=SpiltStr(strNew);
+		$("#detailSub").val(strFinal);
+		$("#sceneryForm").submit();
+	}
+		
+	</script>
+<script type="text/javascript">
+$(":file").filestyle({buttonName: "btn-primary"});
+</script>
+=======
+>>>>>>> 916ebc3 合并代码
 </body>
 </body>

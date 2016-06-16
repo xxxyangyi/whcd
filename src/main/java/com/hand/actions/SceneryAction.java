@@ -2,6 +2,8 @@ package com.hand.actions;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -18,16 +20,16 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.hand.entity.Activity;
 import com.hand.entity.Scenery;
+import com.hand.entity.User;
+import com.hand.entity.vo.SceneryVO;
 import com.hand.service.ISceneryService;
+import com.hand.util.EntityToVo;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class SceneryAction extends ActionSupport implements ServletResponseAware {
+public class SceneryAction extends BaseAction {
 	
 	private static Integer numPage=2;
 	
-	private Map session;
-	private HttpServletRequest request;
-	private HttpServletResponse response;
 	
 	@Resource(name = "sceneryService")
 	private ISceneryService sceneryService;
@@ -82,7 +84,6 @@ public class SceneryAction extends ActionSupport implements ServletResponseAware
 	
 	public String SceneryDetail(){
 		
-		HttpServletRequest request=ServletActionContext.getRequest();
 		String sceneryId=request.getParameter("sceneryId");
 		
 		Scenery scenery=sceneryService.GetScenery(sceneryId);
@@ -90,10 +91,63 @@ public class SceneryAction extends ActionSupport implements ServletResponseAware
 		
 		return "sceneryDetail";
 	}
-
-	@Override
-	public void setServletResponse(HttpServletResponse response) {
-		this.response = response;
+	
+	public void getSceneryList() throws Exception{
+		
+			String sqlSum="select count(*) as sumkey from scenery order by createdate";
+			String sql="select * from scenery order by createdate";
+		
+		
+		Integer page=Integer.parseInt(request.getParameter("page"));
+		Integer total=sceneryService.GetTotal(sqlSum, numPage);
+		List<Scenery> sceneryList=sceneryService.GetList(sql, page, numPage, total);
+		
+		List<SceneryVO> sceneryVoList=new ArrayList<SceneryVO>();
+		for(Scenery s:sceneryList)
+			sceneryVoList.add(EntityToVo.SceneryToVo(s));
+		
+		response.setContentType("text/json"); 
+        response.setCharacterEncoding("UTF-8"); 
+        PrintWriter out = response.getWriter();
+        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+        
+        Map<String, Object> paramMap=new HashMap<String,Object>();
+        paramMap.put("page",page);
+        paramMap.put("total",total);
+        paramMap.put("numPage",numPage);
+        paramMap.put("sceneryList",sceneryVoList);
+		
+        out.print(gson.toJson(paramMap));
 	}
 	
+   public void getPercenCenterSceneryList() throws Exception{
+		
+		User user=(User) session.get("user");
+		String mail=user.getMail();
+	
+		String sqlSum="select count(*) as sumkey from scenery where user_id='"+mail+"' order by createdate";
+		String sql="select * from scenery where user_id='"+mail+"' order by createdate";
+		
+		
+		Integer page=Integer.parseInt(request.getParameter("page"));
+		Integer total=sceneryService.GetTotal(sqlSum, numPage);
+		List<Scenery> sceneryList=sceneryService.GetList(sql, page, numPage, total);
+		
+		List<SceneryVO> sceneryVoList=new ArrayList<SceneryVO>();
+		for(Scenery s:sceneryList)
+			sceneryVoList.add(EntityToVo.SceneryToVo(s));
+		
+		response.setContentType("text/json"); 
+        response.setCharacterEncoding("UTF-8"); 
+        PrintWriter out = response.getWriter();
+        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+        
+        Map<String, Object> paramMap=new HashMap<String,Object>();
+        paramMap.put("page",page);
+        paramMap.put("total",total);
+        paramMap.put("numPage",numPage);
+        paramMap.put("sceneryList",sceneryVoList);
+		
+        out.print(gson.toJson(paramMap));
+	}
 }

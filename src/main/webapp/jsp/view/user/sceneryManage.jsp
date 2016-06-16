@@ -21,8 +21,25 @@
 			<div class="col-md-3">
 				<jsp:include page="../layout/left_panel_user.jsp"></jsp:include>
 			</div>
-			<div id="usrPanelContent">
-				<jsp:include page="sceneryManageSub.jsp"></jsp:include>
+			<div class="col-md-9">
+				<div style="float:left;"><h4>名胜古迹列表</h4></div><a style="float:right;" class="btn btn-info" href="<%=request.getContextPath()%>/PersonCenter/CreateScenery">创建名胜古迹</a>
+				<hr align="left" width="100%" size="15" />
+				<div id="usrPanelContent">
+				<table class="table table-hover" style="text-align: center;">
+				<thead>
+					<tr>
+						<th style="text-align: center;">名胜古迹标题</th>
+						<th style="text-align: center;">名胜古迹内容</th>
+						<th style="text-align: center;">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+				<script type="text/javascript">
+					GetPersonCenterSceneryListOne();
+				</script>
+				</tbody>
+				</table>
+				</div>
 			</div>
 		</div>
 	</div>

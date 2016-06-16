@@ -19,8 +19,13 @@
 			<div class="col-md-3">
 				<jsp:include page="../layout/left_panel.jsp"></jsp:include>
 			</div>
-			<div id="usrPanelContent">
-				<jsp:include page="sceneryListSub.jsp"></jsp:include>
+			<div id="scennery" class="col-md-9">
+				<hr align="left" width="100%" size="15" />
+				<div id="usrPanelContent">
+					<script type="text/javascript">
+						GetSceneryListOne();
+					</script>
+				</div>
 			</div>
 		</div>
 	</div>

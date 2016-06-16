@@ -12,6 +12,11 @@
 <base href="<%=basePath%>">
 
 <title>创建投票信息</title>
+<link rel="stylesheet" href="jsp/css/bootstrap.css">
+<link rel="stylesheet" href="jsp/css/app.css">
+<script src="jsp/js/jquery-2.1.4.min.js"></script>
+<script src="jsp/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="jsp/js/app.js"></script>
 </head>
 
 <body>
@@ -26,7 +31,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">请填写您的投票信息</div>
 					<div class="panel-body">
-						<form  action="<%=basePath%>activity/voteAdd" method="post" enctype="multipart/form-data">
+						<form  action="<%=basePath%>activity/voteAdd" method="post">
 							<div class="form-group">
 								<label for="dropdownActivity">您所要参加的活动：</label>
 								<div class="dropdown">
@@ -37,14 +42,12 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label style="display: block;">图片：</label>
-								<div class="col-sm-12" style="margin-top: 5px;margin-bottom: 5px;">
-									<input type="file" name="imgUpLoad" id="imgUpLoad" onchange="PreView()" class="filestyle" data-buttonName="btn-primary" >
+								<label for="inputFile">请上传您要参加评选的图片：</label>
+								<div>
+									<img src="jsp/image/sky.jpg" class="img-thumbnail">
 								</div>
-								<div class="form-group col-sm-12">
-									<img id="preview" src="" onload="AutoResizeImage(650,0,this)"  onerror="javascript:this.src='<%=request.getContextPath()%>/jsp/img/errorimg.jpg'" >
-								</div>
-								<br/>
+								<input type="file" id="inputFile">
+								<!-- <p class="help-block">加油加油加油！！！</p> -->
 							</div>
 							<div class="form-group">
 								<label for="context">请简介照片内容</label>

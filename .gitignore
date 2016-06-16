@@ -3,7 +3,3 @@
 .settings
 .project
 /.gitignore
-
-src/main/java/com/hand/service/impl/ActivityService.java
-src/main/java/com/hand/service/impl/ActivityService.java
-src/main/java/com/hand/actions/ActivityAction.java

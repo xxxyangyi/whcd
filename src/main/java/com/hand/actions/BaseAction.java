@@ -11,50 +11,32 @@ import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.hand.entity.Activity;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-public  class BaseAction extends ActionSupport  {
-	 
-	 
-//	 protected Map session;
-//	 protected HttpServletResponse response;
-//	 protected HttpServletRequest request;
-//	 protected String realPath;
-	 
-	 
-	 private static final long serialVersionUID = 1L;
-	
-	/**
-	  * 获得request
-	  * 
-	  * @return
-	  */
-	 public HttpServletRequest getRequest() {
-	  return ServletActionContext.getRequest();
-	 }
-	 /**
-	  * 获得response
-	  * 
-	  * @return
-	  */
-	 public HttpServletResponse getResponse() {
-	  return ServletActionContext.getResponse();
-	 }
+public class BaseAction extends ActionSupport implements SessionAware,
+		ServletRequestAware, ServletResponseAware {
+	public Map session;
+	public HttpServletRequest request;
+	public HttpServletResponse response;
 
-	 /**
-	  * 获得servlet上下文
-	  * 
-	  * @return
-	  */
-	 public ServletContext getServletContext() {
-	  return ServletActionContext.getServletContext();
-	 }
-	 public String getRealyPath(String path) {
-	  return getServletContext().getRealPath(path);
-	 }
-	public Map getSession() {
-		return ActionContext.getContext().getSession();
+	@Override
+	public void setServletResponse(HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		this.response = response;
+
 	}
-	 
+
+	@Override
+	public void setServletRequest(HttpServletRequest request) {
+		// TODO Auto-generated method stub
+		this.request = request;
+	}
+
+	@Override
+	public void setSession(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		this.session = map;
+	}
 }

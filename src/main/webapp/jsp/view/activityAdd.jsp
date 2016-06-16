@@ -12,7 +12,18 @@
 <base href="<%=basePath%>">
 
 <title>创建投票信息</title>
-
+<script type="text/javascript">
+	$(function() {
+		$('#activityStartTime').datetimepicker({
+			 format: 'DD/MM/YYYY'
+		});
+	});
+	$(function() {
+		$('#activityEndTime').datetimepicker({
+			format: 'DD/MM/YYYY'
+		});
+	});
+</script>
 
 </head>
 
@@ -43,12 +54,12 @@
 
 							<div class="form-group">
 								<label for="activityStartTime">活动开始时间：</label> <input
-									type="text" class="form-control Time" name="time1"
+									type="text" class="form-control" name="time1"
 									id="activityStartTime" placeholder="活动开始时间">
 							</div>
 							<div class="form-group">
-								<label for="activityEndTime">活动结束时间：</label> <input
-									type="text" class="form-control Time" name="time2"
+								<label for="activityStartTime">活动结束时间：</label> <input
+									type="text" class="form-control" name="time2"
 									id="activityEndTime" placeholder="活动结束时间">
 							</div>
 							<button type="submit" class="btn btn-default">提交</button>
@@ -59,6 +70,14 @@
 			</div>
 		</div>
 	</div>
+	<script src="jsp/js/bootstrap-datetimepicker.js"></script>
+			<script type="text/javascript">
+		
+		$(".list-group a").each(function() {
+	         $(this).removeClass("active");
+	 });
+		$(".list-group a").eq(1).addClass("active");
+	</script>
 </body>
 </body>
 </html>

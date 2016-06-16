@@ -38,17 +38,7 @@
 	<sitemesh:write property='head' />
 </head>
 <body>
-	<s:if test="#session.get('manager')!=null">
-		<jsp:include page="/jsp/view/layout/nav_top_manager.jsp"></jsp:include>
-	</s:if>
-	<s:elseif test="#session.get('expert')!=null">
-		<jsp:include page="/jsp/view/layout/nav_top_expert.jsp"></jsp:include>
-	</s:elseif>
-	<s:else>
-		<jsp:include page="/jsp/view/layout/nav_top.jsp"></jsp:include>
-	</s:else>
-	<decorator:body />  
-	<hr>
-	<h3>Foot</h3>
+	<jsp:include page="/jsp/view/layout/nav_top_manager.jsp"></jsp:include>
+	<sitemesh:write property='body' />
 </body>
 </html>

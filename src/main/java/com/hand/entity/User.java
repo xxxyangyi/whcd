@@ -4,30 +4,35 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.*;
+
+import com.google.gson.annotations.Expose;
 
 @Entity(name="user")
 public class User implements Serializable {
 	@Id
 	@Column(name="mail")
+	@Expose
 	private String mail;
 	
 	@Column(name="password")
+	@Expose
 	private String password;
 	
 	@Column(name="name")
+	@Expose
 	private String name;
 	
 	@Column(name="isused")
+	@Expose
 	private Integer isUsed;
 	
 	@Column(name="identity")
+	@Expose
 	private Integer identity;
 	
 	@Column(name="sex")
+	@Expose
 	private Integer sex;
 	
 	@OneToMany(mappedBy = "user_id", cascade = CascadeType.ALL, fetch = FetchType.EAGER)

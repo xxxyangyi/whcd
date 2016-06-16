@@ -11,7 +11,6 @@
 <head>
 <title>注册页面</title>
 </head>
-
 <body>
 	<div class="container id1" style="width: 90%">
 		<div class="row">

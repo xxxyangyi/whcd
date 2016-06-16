@@ -35,12 +35,13 @@ public class Scenery implements Serializable{
 	@Expose 
 	private Date createDate;
 	
+	@Column(name="detailsub",columnDefinition="TEXT")
+	@Expose
+	private String detailSub;
+	
 	@ManyToOne          
     @JoinColumn(name="user_id",referencedColumnName ="mail") 
 	private User user_id;
-	
-	@Column(name="detailsub",columnDefinition="TEXT")
-	private String detailSub;
 
 	public String getId() {
 		return id;

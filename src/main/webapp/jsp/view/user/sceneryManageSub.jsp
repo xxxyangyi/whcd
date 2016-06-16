@@ -98,7 +98,6 @@
 				}
 			});
 		}
-		
 	}
 	
 	function SelectedPage() {
@@ -116,7 +115,8 @@
 				}
 			});
 		}
-	function Delete(sceneryId){
+	
+	function DeleteScenery(sceneryId){
 		var urlStr="<%=request.getContextPath()%>/PersonCenter/DeleteScenery";
 		$.ajax({
 			url : urlStr,

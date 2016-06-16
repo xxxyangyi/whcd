@@ -7,7 +7,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -18,8 +17,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.ServletActionContext;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.hand.entity.Scenery;
 import com.hand.entity.User;
 import com.hand.service.ISceneryService;
@@ -28,7 +25,7 @@ import com.hand.util.UploadFile;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class ManagerAction extends BaseAction {
+public class ManagerAction extends ActionSupport {
 
 private static Integer numPage=8;
 	
@@ -416,28 +413,4 @@ public String ManageScenery(){
 		
 		return "detailSceneryInfo";
 	}
-	public void getUserList()throws Exception {
-
-		String sqlSum = "select count(*) as sumkey from user";
-		String sql = "select * from user";
-
-		Integer page=Integer.parseInt(request.getParameter("page"));
-
-		Integer total = userService.GetTotal(sqlSum, numPage);
-		List<User> userList = userService.GetList(sql, page, numPage, total);
-		
-		response.setContentType("text/json"); 
-        response.setCharacterEncoding("UTF-8"); 
-        PrintWriter out = response.getWriter();
-        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
-        
-        Map<String, Object> paramMap=new HashMap<String,Object>();
-        paramMap.put("page",page);
-        paramMap.put("total",total);
-        paramMap.put("numPage",numPage);
-        paramMap.put("userList",userList);
-		
-        out.print(gson.toJson(paramMap));
-	}
-	
 }
