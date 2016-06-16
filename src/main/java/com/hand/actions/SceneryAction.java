@@ -94,9 +94,28 @@ public class SceneryAction extends BaseAction {
 	
 	public void getSceneryList() throws Exception{
 		
-			String sqlSum="select count(*) as sumkey from scenery order by createdate";
-			String sql="select * from scenery order by createdate";
+		String managerParam=request.getParameter("managerParam");
+		String userParam=request.getParameter("userParam");
+		String sqlSum="";
+		String sql="";
+		if(managerParam!=null){
+			 sqlSum="select count(*) as sumkey from scenery order by createdate";
+			 sql="select * from scenery order by createdate";
+			 System.out.println(sqlSum);
+			
+		}else if(userParam!=null){
+			User user=(User) session.get("user");
+			String mail=user.getMail();
 		
+			 sqlSum="select count(*) as sumkey from scenery where user_id='"+mail+"' order by createdate";
+			 sql="select * from scenery where user_id='"+mail+"' order by createdate";
+			 System.out.println(sqlSum);
+			
+		}else{
+			 sqlSum="select count(*) as sumkey from scenery where isaudited=1  order by createdate";
+			 sql="select * from scenery where isaudited=1 order by createdate";
+			 System.out.println(sqlSum);
+		}	
 		
 		Integer page=Integer.parseInt(request.getParameter("page"));
 		Integer total=sceneryService.GetTotal(sqlSum, numPage);

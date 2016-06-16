@@ -478,10 +478,10 @@ window.onload=function() {
 	 		if(currentNum==1){
 			$.ajax({
 				type : "post",
-				url:"/WHCD/Scenery/getPercenCenterSceneryList",
+				url:"/WHCD/Scenery/getSceneryList",
 				async : false,
 				dataType : 'json',
-				data:{"page":1},
+				data:{"page":1,"userParam":"userParam"},
 				error : function() {
 					alert("ajax出错！");
 				},
@@ -541,10 +541,10 @@ window.onload=function() {
 		function GetPersonCenterSceneryList(){
 			$.ajax({
 				type : "post",
-				url:"/WHCD/Scenery/getPercenCenterSceneryList",
+				url:"/WHCD/Scenery/getSceneryList",
 				async : false,
 				dataType : 'json',
-				data:{"page":currentNum},
+				data:{"page":currentNum,"userParam":"userParam"},
 				error : function() {
 					alert("ajax出错！");
 				},
@@ -842,7 +842,7 @@ window.onload=function() {
 				url:"/WHCD/Scenery/getSceneryList",
 				async : false,
 				dataType : 'json',
-				data:{"page":1},
+				data:{"page":1,"managerParam":"managerParam"},
 				error : function() {
 					alert("ajax出错！");
 				},
@@ -860,12 +860,25 @@ window.onload=function() {
 							+"<td><a href='/WHCD/PersonCenter/SceneryDetail?sceneryId="+arr[i].id+"'></a>"+arr[i].summary+"</td>"
 							+"<td><p style='width:400px;word-wrap:break-word;overflow:hidden; white-space:nowrap; text-overflow:ellipsis'>"+arr[i].detailSub+"</p></td>"
 							+"<td>"+arr[i].userName+"</td>"
-							+"<td>"+arr[i].createDate+"</td>"
-							+"<td>"
-							+"<a class='btn btn-danger' style='margin-left:5px;' onclick='DeleteScenery(\""+arr[i].id+"\",\"/WHCD/PersonCenter/DeleteScenery\")'>删除</a>"
-							+"</td>"
-							+"</tr>"
-							htmlStr+=tmpStr;
+							+"<td>"+arr[i].createDate+"</td>";
+						if(arr[i].isAudited==1)
+							tmpStr+="<td>通过</td>";
+						else if(arr[i].isAudited==-1)
+							tmpStr+="<td>不通过</td>";
+						else 
+							tmpStr+="<td>待审核</td>";
+						tmpStr+="<td>"+"<a class='btn btn-danger' style='margin-left:5px;' onclick='DeleteScenery(\""+arr[i].id+"\",\"/WHCD/PersonCenter/DeleteScenery\")'>删除</a>";
+						
+						if(arr[i].isAudited==1)
+							tmpStr+="<a class='btn btn-danger' style='margin-left:5px' onclick='AuditScenery(\""+arr[i].id+"\",\"/WHCD/Manager/AuditScenery\")' >通过</a>";
+						else if(arr[i].isAudited==-1)
+							tmpStr+="<a class='btn btn-success' style='margin-left:5px' onclick='DisAuditScenery(\""+arr[i].id+"\",\"/WHCD/Manager/DisAuditScenery\")' >不通过</a>";
+						else
+							{
+							tmpStr+="<a class='btn btn-danger' style='margin-left:5px' onclick='AuditScenery(\""+arr[i].id+"\",\"/WHCD/Manager/AuditScenery\")' >通过</a>";
+							tmpStr+="<a class='btn btn-success' style='margin-left:5px' onclick='DisAuditScenery(\""+arr[i].id+"\",\"/WHCD/Manager/DisAuditScenery\")' >不通过</a>";
+							}
+							htmlStr+=tmpStr+"</td>"+"</tr>";
 					}
 					$("#usrPanelContent tbody").html(htmlStr);
 					var str="";
@@ -905,7 +918,7 @@ window.onload=function() {
 				url:"/WHCD/Scenery/getSceneryList",
 				async : false,
 				dataType : 'json',
-				data:{"page":currentNum},
+				data:{"page":currentNum,"managerParam":"managerParam"},
 				error : function() {
 					alert("ajax出错！");
 				},
@@ -919,15 +932,28 @@ window.onload=function() {
 					var tmpStr="";
 					for(var i=0;i <len&&i<numPage;i++){
 						tmpStr="<tr>"
-							+"<td><a href='/WHCD/PersonCenter/SceneryDetail?sceneryId="+arr[i].id+"'>"+arr[i].summary+"</a></td>"
+							+"<td><a href='/WHCD/PersonCenter/SceneryDetail?sceneryId="+arr[i].id+"'></a>"+arr[i].summary+"</td>"
 							+"<td><p style='width:400px;word-wrap:break-word;overflow:hidden; white-space:nowrap; text-overflow:ellipsis'>"+arr[i].detailSub+"</p></td>"
 							+"<td>"+arr[i].userName+"</td>"
-							+"<td>"+arr[i].createDate+"</td>"
-							+"<td>"
-							+"<a class='btn btn-danger' style='margin-left:5px;' onclick='DeleteScenery(\""+arr[i].id+"\",\"/WHCD/PersonCenter/DeleteScenery\")'>删除</a>"
-							+"</td>"
-							+"</tr>"
-							htmlStr+=tmpStr;
+							+"<td>"+arr[i].createDate+"</td>";
+						if(arr[i].isAudited==1)
+							tmpStr+="<td>通过</td>";
+						else if(arr[i].isAudited==-1)
+							tmpStr+="<td>不通过</td>";
+						else 
+							tmpStr+="<td>待审核</td>";
+						tmpStr+="<td>"+"<a class='btn btn-danger' style='margin-left:5px;' onclick='DeleteScenery(\""+arr[i].id+"\",\"/WHCD/PersonCenter/DeleteScenery\")'>删除</a>";
+						
+						if(arr[i].isAudited==1)
+							tmpStr+="<a class='btn btn-danger' style='margin-left:5px' onclick='AuditScenery(\""+arr[i].id+"\",\"/WHCD/Manager/AuditScenery\")' >通过</a>";
+						else if(arr[i].isAudited==-1)
+							tmpStr+="<a class='btn btn-success' style='margin-left:5px' onclick='DisAuditScenery(\""+arr[i].id+"\",\"/WHCD/Manager/DisAuditScenery\")' >不通过</a>";
+						else
+							{
+							tmpStr+="<a class='btn btn-danger' style='margin-left:5px' onclick='AuditScenery(\""+arr[i].id+"\",\"/WHCD/Manager/AuditScenery\")' >通过</a>";
+							tmpStr+="<a class='btn btn-success' style='margin-left:5px' onclick='DisAuditScenery(\""+arr[i].id+"\",\"/WHCD/Manager/DisAuditScenery\")' >不通过</a>";
+							}
+							htmlStr+=tmpStr+"</td>"+"</tr>";
 					}
 					$("#usrPanelContent tbody").html(htmlStr);
 					var str="";

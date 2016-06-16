@@ -20,6 +20,9 @@ public class SceneryVO {
 	private String detailSub;
 	@Expose 
 	private String userName;
+	@Expose
+	private Integer isAudited;
+	
 	public String getId() {
 		return id;
 	}
@@ -61,6 +64,12 @@ public class SceneryVO {
 	}
 	public void setCreateDate(String createDate) {
 		this.createDate = createDate;
+	}
+	public Integer getIsAudited() {
+		return isAudited;
+	}
+	public void setIsAudited(Integer isAudited) {
+		this.isAudited = isAudited;
 	}
 	
 	

@@ -15,8 +15,7 @@ import com.hand.entity.Activity;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class BaseAction extends ActionSupport implements SessionAware,
-		ServletRequestAware, ServletResponseAware {
+public class BaseAction extends ActionSupport implements SessionAware,ServletRequestAware, ServletResponseAware {
 	public Map session;
 	public HttpServletRequest request;
 	public HttpServletResponse response;

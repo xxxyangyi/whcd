@@ -42,6 +42,9 @@ public class Scenery implements Serializable{
 	@ManyToOne          
     @JoinColumn(name="user_id",referencedColumnName ="mail") 
 	private User user_id;
+	
+	@Column(name="isaudited")
+	private Integer isAudited;
 
 	public String getId() {
 		return id;
@@ -97,6 +100,14 @@ public class Scenery implements Serializable{
 
 	public void setDetailSub(String detailSub) {
 		this.detailSub = detailSub;
+	}
+
+	public Integer getIsAudited() {
+		return isAudited;
+	}
+
+	public void setIsAudited(Integer isAudited) {
+		this.isAudited = isAudited;
 	}
 	
 }

@@ -14,6 +14,7 @@ public class EntityToVo {
 		svo.setPicaddr(s.getPicaddr());
 		svo.setSummary(s.getSummary());
 		svo.setUserName(s.getUser_id().getName());
+		svo.setIsAudited(s.getIsAudited());
 		return svo;
 	} 
 }
