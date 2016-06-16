@@ -13,17 +13,10 @@
 <html>
 <head>
 <base href="<%=basePath%>">
-<meta charset="UTF-8">
 <title>创建名胜古迹</title>
-<link rel="stylesheet" href="http://libs.useso.com/js/font-awesome/4.2.0/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="<%=basePath%>jsp/css/textedit_default.css">
-<link rel="stylesheet" type="text/css" href="<%=basePath%>jsp/css/wysiwyg-editor.css" />
-<link href="<%=basePath%>jsp/css/textedit.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-	<jsp:include page="../layout/nav_top.jsp"></jsp:include>
-
 	<div class="container id1" style="width: 90%">
 		<div class="row">
 			<div class="col-md-3">
@@ -77,71 +70,5 @@
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript">
-	function GetFilePath() {
-		var addr = null;
-		var docObj = document.getElementById("imgUpLoad");
-
-		var imgObjPreview = document.getElementById("preview");
-		if (docObj.files && docObj.files[0]) {
-			//火狐下，直接设img属性
-			imgObjPreview.style.display = 'block';
-			//imgObjPreview.src = docObj.files[0].getAsDataURL();
-
-			//火狐7以上版本不能用上面的getAsDataURL()方式获取，需要一下方式
-			imgObjPreview.src = window.URL
-					.createObjectURL(docObj.files[0]);
-			addr = imgObjPreview.src;
-		} else {
-			//IE下，使用滤镜
-			docObj.select();
-			var imgSrc = document.selection.createRange().text;
-			//图片异常的捕捉，防止用户修改后缀来伪造图片
-			try {
-				localImagId.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
-				localImagId.filters
-						.item("DXImageTransform.Microsoft.AlphaImageLoader").src = imgSrc;
-				addr = imgSrc;
-				//alert(imgSrc);
-			} catch (e) {
-				alert("您上传的图片格式不正确，请重新选择!");
-				return false;
-			}
-			imgObjPreview.style.display = 'none';
-			document.selection.empty();
-		}
-		return addr;
-	}
-
-	function PreView() {
-		var addr = GetFilePath();
-		$("#preview").attr("src", addr);
-	}
-	
-	function Create(){
-		var str=$(".wysiwyg-editor").html();
-		//alert(str);
-		$("#richText").val(str);
-		var strNew=RegText(".wysiwyg-editor");
-		var strFinal=SpiltStr(strNew);
-		$("#detailSub").val(strFinal);
-		$("#sceneryForm").submit();
-	}
-		
-	</script>
-	<script type="text/javascript" src="<%=basePath%>/jsp/js/wysiwyg.js"></script>
-<script type="text/javascript" src="<%=basePath%>/jsp/js/wysiwyg-editor.js"></script>
-<script type="text/javascript" src="<%=basePath%>/jsp/js/textedit.js"></script>
-<script type="text/javascript" src="<%=basePath%>jsp/js/bootstrap-filestyle.min.js"> </script>
-<script type="text/javascript">
-$(":file").filestyle({buttonName: "btn-primary"});
-</script>
-<script type="text/javascript">
-		
-		$(".list-group a").each(function() {
-	         $(this).removeClass("active");
-	 });
-		$(".list-group a").eq(1).addClass("active");
-	</script>
 </body>
 </body>

@@ -18,8 +18,6 @@
 </head>
 
 <body>
-	
-	<jsp:include page="../layout/nav_top.jsp"></jsp:include>
 	<div class="container id1" style="width: 90%">
 		<div class="row">
 			<div class="col-md-3">
@@ -112,12 +110,5 @@
 		function Reset() {
 			window.location.reload();
 		}
-	</script>
-	<script type="text/javascript">
-		
-		$(".list-group a").each(function() {
-	         $(this).removeClass("active");
-	 });
-		$(".list-group a").eq(3).addClass("active");
 	</script>
 </body>

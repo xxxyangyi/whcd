@@ -16,8 +16,6 @@
 </head>
 
 <body>
-	<jsp:include page="../layout/nav_top.jsp"></jsp:include>
-
 	<div class="container id1" style="width: 90%">
 		<div class="row">
 			<div class="col-md-3">
@@ -28,11 +26,4 @@
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript">
-		
-		$(".list-group a").each(function() {
-	         $(this).removeClass("active");
-	 });
-		$(".list-group a").eq(1).addClass("active");
-	</script>
 </body>

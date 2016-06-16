@@ -35,12 +35,10 @@ public abstract class AbstractHibernateDao<T extends Serializable> implements
 	
 
 	public T FindOne(Object id) {
-		// TODO Auto-generated method stub
 		return (T) getCurrentSession().get(clazz, (Serializable) id);
 	}
 
 	public List<T> FindAll() {
-		// TODO Auto-generated method stub
 		return getCurrentSession().createQuery("from " + clazz.getName()).list();
 	}
 	
@@ -50,14 +48,17 @@ public abstract class AbstractHibernateDao<T extends Serializable> implements
 	}
 
 	public void Create(T model) {
-		// TODO Auto-generated method stub
-		// getCurrentSession().saveOrUpdate(model);
-		getCurrentSession().merge(model);
+		getCurrentSession().saveOrUpdate(model);
 	}
 
 	public T Update(T model) {
 		// TODO Auto-generated method stub
 		getCurrentSession().update(model);
+		return model;
+	}
+	
+	public T Merge(T model) {
+		getCurrentSession().merge(model);
 		return model;
 	}
 

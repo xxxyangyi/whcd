@@ -12,34 +12,11 @@
 <base href="<%=basePath%>">
 
 <title>创建投票信息</title>
-<link rel="stylesheet" href="jsp/css/bootstrap.css">
-<link rel="stylesheet" href="jsp/css/prettify-1.0.css">
-<link rel="stylesheet" href="jsp/css/base.css">
-<link rel="stylesheet" href="jsp/css/bootstrap-datetimepicker.css">
-<link rel="stylesheet" href="jsp/css/app.css">
-<script src="jsp/js/jquery-2.1.4.js"></script>
-<script src="jsp/js/bootstrap.min.js"></script>
-<script src="jsp/js/moment-with-locales.js"></script>
-<script src="jsp/js/bootstrap-datetimepicker.js"></script>
-<script type="text/javascript" src="jsp/js/app.js"></script>
-<script type="text/javascript">
-	$(function() {
-		$('#activityStartTime').datetimepicker({
-			 format: 'DD/MM/YYYY'
-		});
-	});
-	$(function() {
-		$('#activityEndTime').datetimepicker({
-			format: 'DD/MM/YYYY'
-		});
-	});
-</script>
+
 
 </head>
 
 <body>
-	<jsp:include page="layout/nav_top.jsp"></jsp:include>
-
 	<div class="container id1" style="width: 90%">
 		<div class="row">
 			<div class="col-md-3">
@@ -66,12 +43,12 @@
 
 							<div class="form-group">
 								<label for="activityStartTime">活动开始时间：</label> <input
-									type="text" class="form-control" name="time1"
+									type="text" class="form-control Time" name="time1"
 									id="activityStartTime" placeholder="活动开始时间">
 							</div>
 							<div class="form-group">
-								<label for="activityStartTime">活动结束时间：</label> <input
-									type="text" class="form-control" name="time2"
+								<label for="activityEndTime">活动结束时间：</label> <input
+									type="text" class="form-control Time" name="time2"
 									id="activityEndTime" placeholder="活动结束时间">
 							</div>
 							<button type="submit" class="btn btn-default">提交</button>
@@ -82,14 +59,6 @@
 			</div>
 		</div>
 	</div>
-	<script src="jsp/js/bootstrap-datetimepicker.js"></script>
-			<script type="text/javascript">
-		
-		$(".list-group a").each(function() {
-	         $(this).removeClass("active");
-	 });
-		$(".list-group a").eq(1).addClass("active");
-	</script>
 </body>
 </body>
 </html>

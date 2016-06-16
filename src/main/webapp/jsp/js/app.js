@@ -1,5 +1,4 @@
-$(document).ready(function() {
-
+window.onload=function() {
 	//通过判断 activity_list 标签是否存在 ，判断是否要请求加载 活动清单数据
 	if ($("#activity_list").length > 0) {
 		console.log("activity_list 存在：请求数据");
@@ -154,8 +153,18 @@ $(document).ready(function() {
 			console.log("home_activity_list 不存在：不请求数据");
 		}
 	
+	//////////////////////////////////////////////////////////////////////////////////////////////
+	$(".list-group a").each(function() {
+		$(this).removeClass("active");
+	});
+	$(".list-group a").eq(1).addClass("active");
 	
-})
+	// ///////////////////////////////////////////////////////////////////////////////////////////
+	$('.Time').datetimepicker({
+		 format: 'DD/MM/YYYY'
+	});
+
+}
 	//  点击投票事件
 	function vote(activity_id,voteFor,vote_id) {
 		console.log(activity_id+'=='+voteFor)
@@ -216,4 +225,106 @@ $(document).ready(function() {
 		 objImg.height = h;
 		 objImg.width = w;
 	}					
-					
+		
+	 function login(url) {
+			var mail=$("#mailLogin").val();
+			var password=$("#passwordLogin").val();
+			$.ajax({
+				url : url,
+				async : false,
+				data:{"mail":mail,"password":password},
+				error : function() {
+					alert("登陆过程出错！");
+				},
+				success : function(data) {
+					var status=data;
+					if(status==='0'||status===''){
+						$("#error").html("邮箱或密码输入有误！")
+					}
+					else if(status==='-1'){
+						$("#error").html("该用户已经被禁用！");
+					}
+					else{
+						 location.href=status+''; 
+					}
+						
+				}
+			});
+		}
+		function logout(url){
+			
+			$.ajax({
+				url : url,
+				async : false,
+				error : function() {
+					alert("登陆过程出错！");
+				},
+				success : function(data) {
+					var status=data;
+					if(status==='1'){
+						alert("退出成功!");
+						window.location.reload();
+					}
+					else{
+						alert("退出失败!");
+					}
+						
+				}
+			});
+		}
+		
+		// 动态的显示图片
+		function GetFilePath() {
+			var addr = null;
+			var docObj = document.getElementById("imgUpLoad");
+
+			var imgObjPreview = document.getElementById("preview");
+			if (docObj.files && docObj.files[0]) {
+				//火狐下，直接设img属性
+				imgObjPreview.style.display = 'block';
+				//imgObjPreview.src = docObj.files[0].getAsDataURL();
+
+				//火狐7以上版本不能用上面的getAsDataURL()方式获取，需要一下方式
+				imgObjPreview.src = window.URL
+						.createObjectURL(docObj.files[0]);
+				addr = imgObjPreview.src;
+			} else {
+				//IE下，使用滤镜
+				docObj.select();
+				var imgSrc = document.selection.createRange().text;
+				//图片异常的捕捉，防止用户修改后缀来伪造图片
+				try {
+					localImagId.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
+					localImagId.filters
+							.item("DXImageTransform.Microsoft.AlphaImageLoader").src = imgSrc;
+					addr = imgSrc;
+					//alert(imgSrc);
+				} catch (e) {
+					alert("您上传的图片格式不正确，请重新选择!");
+					return false;
+				}
+				imgObjPreview.style.display = 'none';
+				document.selection.empty();
+			}
+			return addr;
+		}
+
+		function PreView() {
+			var addr = GetFilePath();
+			$("#preview").attr("src", addr);
+		}
+		
+		function Create(){
+			var str=$(".wysiwyg-editor").html();
+			//alert(str);
+			$("#richText").val(str);
+			var strNew=RegText(".wysiwyg-editor");
+			var strFinal=SpiltStr(strNew);
+			$("#detailSub").val(strFinal);
+			$("#sceneryForm").submit();
+		}
+		
+		$(":file").filestyle({buttonName: "btn-primary"});
+		
+		// 动态显示图片结束
+		

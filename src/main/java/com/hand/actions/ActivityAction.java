@@ -54,7 +54,7 @@ public class ActivityAction extends ActionSupport implements SessionAware,Servle
 		System.out.println("=============getActivitys");
 		response.setContentType("text/json"); 
         response.setCharacterEncoding("UTF-8"); 
-		PrintWriter out = response.getWriter();  
+		PrintWriter out = response.getWriter();
 		List<Activity> activitys=activityService.GetActivitys();
 		System.out.println(activitys.size());
 		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();

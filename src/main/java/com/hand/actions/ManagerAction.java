@@ -69,6 +69,7 @@ private static Integer numPage=8;
 		return "index";
 	}
 	
+	//  退出登录
 	public String DoLogOut(){
 		try{
 			Map session=ActionContext.getContext().getSession();
@@ -81,6 +82,7 @@ private static Integer numPage=8;
 		}
 	}
 	
+	// 修改信息
 	public String ModifyInfo(){
 		
 		Map session=ActionContext.getContext().getSession();
@@ -91,6 +93,8 @@ private static Integer numPage=8;
 		session.put("manager", userNew);
 		return "modifyInfo";
 	}
+	
+	// 做修改信息
 	public String DoModifyInfo(){
 		
 		Map session=ActionContext.getContext().getSession();
@@ -111,6 +115,7 @@ private static Integer numPage=8;
 		return "modifySuccess";
 	}
 	
+	// 管理用户
 	public String ManageUser() {
 
 		String sqlSum = "select count(*) as sumkey from user";
@@ -127,7 +132,7 @@ private static Integer numPage=8;
 
 		return "manangeUser";
 	}
-
+	
 	public String ManageUserSub() {
 
 		String sqlSum = "select count(*) as sumkey from user";
