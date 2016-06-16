@@ -13,17 +13,10 @@
 <html>
 <head>
 <base href="<%=basePath%>">
-<meta charset="UTF-8">
 <title>创建名胜古迹</title>
-<link rel="stylesheet" href="http://libs.useso.com/js/font-awesome/4.2.0/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="<%=basePath%>jsp/css/textedit_default.css">
-<link rel="stylesheet" type="text/css" href="<%=basePath%>jsp/css/wysiwyg-editor.css" />
-<link href="<%=basePath%>jsp/css/textedit.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-	<jsp:include page="../layout/nav_top.jsp"></jsp:include>
-
 	<div class="container id1" style="width: 90%">
 		<div class="row">
 			<div class="col-md-3">
@@ -129,19 +122,8 @@
 	}
 		
 	</script>
-	<script type="text/javascript" src="<%=basePath%>/jsp/js/wysiwyg.js"></script>
-<script type="text/javascript" src="<%=basePath%>/jsp/js/wysiwyg-editor.js"></script>
-<script type="text/javascript" src="<%=basePath%>/jsp/js/textedit.js"></script>
-<script type="text/javascript" src="<%=basePath%>jsp/js/bootstrap-filestyle.min.js"> </script>
 <script type="text/javascript">
 $(":file").filestyle({buttonName: "btn-primary"});
 </script>
-<script type="text/javascript">
-		
-		$(".list-group a").each(function() {
-	         $(this).removeClass("active");
-	 });
-		$(".list-group a").eq(1).addClass("active");
-	</script>
 </body>
 </body>

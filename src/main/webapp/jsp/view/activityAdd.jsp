@@ -12,16 +12,6 @@
 <base href="<%=basePath%>">
 
 <title>创建投票信息</title>
-<link rel="stylesheet" href="jsp/css/bootstrap.css">
-<link rel="stylesheet" href="jsp/css/prettify-1.0.css">
-<link rel="stylesheet" href="jsp/css/base.css">
-<link rel="stylesheet" href="jsp/css/bootstrap-datetimepicker.css">
-<link rel="stylesheet" href="jsp/css/app.css">
-<script src="jsp/js/jquery-2.1.4.js"></script>
-<script src="jsp/js/bootstrap.min.js"></script>
-<script src="jsp/js/moment-with-locales.js"></script>
-<script src="jsp/js/bootstrap-datetimepicker.js"></script>
-<script type="text/javascript" src="jsp/js/app.js"></script>
 <script type="text/javascript">
 	$(function() {
 		$('#activityStartTime').datetimepicker({
@@ -38,8 +28,6 @@
 </head>
 
 <body>
-	<jsp:include page="layout/nav_top.jsp"></jsp:include>
-
 	<div class="container id1" style="width: 90%">
 		<div class="row">
 			<div class="col-md-3">

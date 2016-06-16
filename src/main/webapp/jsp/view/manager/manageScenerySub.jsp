@@ -44,11 +44,11 @@
 				<hr align="left" width="100%" size="15" />
 				<div class="col-lg-8 col-lg-offset-3">
 					<div class="col-lg-2">
-						<a onclick="PrePage()" class="btn btn-primary">上一页</a>
+						<a onclick="PrePage('<%=request.getContextPath()%>/Manager/ManageScenerySub')" class="btn btn-primary">上一页</a>
 					</div>
 					<div class="col-lg-3">
 						<select id="selectPage" class="form-control"
-								onchange="SelectedPage()">
+								onchange="SelectedPage('<%=request.getContextPath()%>/Manager/ManageScenerySub')">
 						<%for(int i=1;i<=total;i++){%>
 							<%if(i==num) {%>
 							<option value="<%=i%>" selected="selected"><%=i%></option>
@@ -59,7 +59,7 @@
 						</select>
 					</div>
 					<div class="col-lg-2">
-						<a onclick="NextPage();" class="btn btn-primary">下一页</a>
+						<a onclick="NextPage('<%=request.getContextPath()%>/Manager/ManageScenerySub','<%=total%>');" class="btn btn-primary">下一页</a>
 					</div>
 				</div>
 			
@@ -178,62 +178,6 @@
 		$("#modelForm").submit();
 	}
 	
-	
-	function PrePage(){
-		var urlStr="<%=request.getContextPath()%>/Manager/ManageScenerySub";	
-		var num=$("#selectPage").val();
-		if(--num>0){
-			var currentNum =num;
-			//alert(currentNum);
-			$.ajax({
-				url : urlStr,
-				async : false,
-				data:{"page":currentNum},
-				error : function() {
-					alert("ajax出错！");
-				},
-				success : function(data) {
-					$("#usrPanelContent").html(data);
-				}
-			});
-		}
-	}
-	
-	function NextPage(){
-		var urlStr="<%=request.getContextPath()%>/Manager/ManageScenerySub";	
-		var num=$("#selectPage").val();
-		if(++num<=<%=total%>){
-			var currentNum =num;
-			$.ajax({
-				url : urlStr,
-				async : false,
-				data:{"page":currentNum},
-				error : function() {
-					alert("ajax出错！");
-				},
-				success : function(data) {
-					$("#usrPanelContent").html(data);
-				}
-			});
-		}
-		
-	}
-	
-	function SelectedPage() {
-		var urlStr="<%=request.getContextPath()%>/Manager/ManageScenerySub";	
-		var currentNum = $("#selectPage").val();
-			$.ajax({
-				url : urlStr,
-				async : false,
-				data:{"page":currentNum},
-				error : function() {
-					alert("ajax出错！");
-				},
-				success : function(data) {
-					$("#usrPanelContent").html(data);
-				}
-			});
-		}
 	function Delete(sceneryId){
 		var urlStr="<%=request.getContextPath()%>/Manager/DeleteScenery";	
 		$.ajax({

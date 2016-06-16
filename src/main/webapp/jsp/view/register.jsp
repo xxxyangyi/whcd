@@ -1,4 +1,3 @@
-
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 	String path = request.getContextPath();
@@ -7,12 +6,9 @@
 			+ path + "/";
 %>
 <%@ taglib prefix="s" uri="/struts-tags"%>
-
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<base href="<%=basePath%>">
-
 <title>注册页面</title>
 <style type="text/css">
 	.error{
@@ -23,8 +19,6 @@
 </head>
 
 <body>
-	<jsp:include page="layout/nav_top.jsp"></jsp:include>
-
 	<div class="container id1" style="width: 90%">
 		<div class="row">
 			<div class="col-md-3">
@@ -107,9 +101,6 @@
 		</div>
 
 	</div>
-	</div>
-	<script type="text/javascript" src="<%=basePath%>jsp/js/jquery.validate.js"></script>
-	<script type="text/javascript" src="<%=basePath%>jsp/js/additional-methods.js"></script>
 	<script type="text/javascript">
 	$().ready(
 			function() {
@@ -151,8 +142,7 @@
 					var chrnum = /^([a-zA-Z0-9]+)$/;
 					return this.optional(element) || (chrnum.test(value));
 				});
-			});
-				
+			});				
 	</script>
 	
 </body>

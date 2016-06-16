@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemesh>
+	<!-- 指明满足“/*”的页面，将被“/WEB-INF/views/decorators/decorator.html”所装饰 -->
+	<mapping path="/Home/*" decorator="/decorators/main.jsp" />
+	<mapping path="/activity/*" decorator="/decorators/main.jsp" />
+	<mapping path="/PersonCenter/*" decorator="/decorators/main.jsp" />
+	<mapping path="/Manager/*" decorator="/decorators/main_manager.jsp" />
+	<mapping path="/Scenery/*" decorator="/decorators/main.jsp" />
+	<mapping path="" decorator="/decorators/main.jsp" />
+	<!-- 指明满足“/exclude.jsp*”的页面，将被排除，不被装饰 <mapping path="/exclude.jsp*" exclue="true" 
+		/> -->
+	<content-processor>
+		<tag-rule-bundle
+			class="org.sitemesh.content.tagrules.html.DivExtractingTagRuleBundle" />
+	</content-processor>
+</sitemesh>

@@ -179,6 +179,8 @@
 		<action name="DetailSceneryInfo" class="personCenter" method="DetailSceneryInfo">
 			<result name="detailSceneryInfo">/jsp/view/manager/detailSceneryInfo.jsp</result>
 		</action>
+		<action name="getUserList" class="managerAction" method="getUserList">
+		</action>
 	</package>
 	
 	<package name="Scenery" namespace="/Scenery" extends="struts-default">
@@ -192,6 +194,8 @@
 		<action name="SceneryDetail" class="sceneryAction" method="SceneryDetail">
 			<result name="sceneryDetail">/jsp/view/scenery/sceneryDetail.jsp</result>
 		</action>
+		<action name="getSceneryList" class="sceneryAction" method="getSceneryList"></action>
+		<action name="getPercenCenterSceneryList" class="sceneryAction" method="getPercenCenterSceneryList"></action>
 	</package>
 
 </struts>
