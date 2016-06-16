@@ -1,12 +1,12 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
+<%@taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator" %>
 <%@taglib prefix="s" uri="/struts-tags" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
-<%@ taglib prefix="s" uri="/struts-tags"%>
 <html>
 <head>
 <base href="<%=basePath%>">

@@ -15,7 +15,7 @@ import com.hand.service.impl.UserService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class HomeAction extends ActionSupport {
+public class HomeAction extends BaseAction {
 
 	@Resource(name = "userService")
 	private IUserService userService;
@@ -35,12 +35,10 @@ public class HomeAction extends ActionSupport {
 
 	public String DoResister() {
 		try {
-			HttpServletRequest request = ServletActionContext.getRequest();
 			String mail = request.getParameter("mail");
 			String password = request.getParameter("password");
 			String name = request.getParameter("name");
-			Integer identity = Integer.parseInt(request
-					.getParameter("identity"));
+			Integer identity = Integer.parseInt(request.getParameter("identity"));
 			Integer sex = Integer.parseInt(request.getParameter("sex"));
 
 			User user = new User();
@@ -63,44 +61,28 @@ public class HomeAction extends ActionSupport {
 		}
 	}
 	
-	
-	public void DoLogin(){
-		try{
-		HttpServletRequest request=ServletActionContext.getRequest();
-		HttpServletResponse response=ServletActionContext.getResponse();
+	// 登陆
+	public void DoLogin() throws Exception{
 		PrintWriter out = response.getWriter();
 		String mail = request.getParameter("mail");
 		String password = request.getParameter("password");
-		if(userService.IsUserExisted(mail, password)){
-			User user=userService.GetUser(mail);
-			if(user.getIsUsed()==0)
+		if (userService.IsUserExisted(mail, password)) {
+			User user = userService.GetUser(mail);
+			if (user.getIsUsed() == 0)
 				out.print(-1);
-			else{
-					Map session = ActionContext.getContext().getSession();
-					if(user.getIdentity()==0)
-					{
-						session.put("manager", user);
-						out.print("/WHCD/Manager/Index");
-					}
-					else if(user.getIdentity()==1)
-					{
-						session.put("user", user);
-						out.print("/WHCD/Home/Index");
-					}
-					else 
-					{	
-						session.put("expert", user);
-						out.print("/WHCD/jsp/view/expert/index.jsp");
-					}
+			else {
+				session.put("user", user);
+				if (((User)session.put("user", user)).getIdentity() == 0) {
+					out.print("/WHCD/Manager/Index");
+				} else if (user.getIdentity() == 1) {
+					out.print("/WHCD/Home/Index");
+				} else {
+					out.print("/WHCD/jsp/view/expert/index.jsp");
+				}
 			}
-		}
-		else
+		} else
 			out.print(0);
 		
-	}
-		catch(Exception ex){
-			ex.printStackTrace();
-		}
 	}
 	
 	public void DoLogOut(){

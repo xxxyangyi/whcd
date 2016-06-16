@@ -15,54 +15,9 @@
 <body>
 	<nav class="navbar navbar-default">
 	<div class="container-fluid">
-		<h4 style="float: left;">欢迎<s:property value="#session.get('expert').getName()"></s:property> 专家</h4>
+		<h4 style="float: left;">欢迎<s:property value="#session.get('user').getName()"></s:property> 专家</h4>
 		<a style="float: right;cursor: pointer;color: #000;text-decoration:none;" onclick="logout('<%=path%>/Home/DoLogOut');"><h4>退出</h4></a>
 	</div>
 	<!-- /.container-fluid --> </nav>
-	<script type="text/javascript">
-		function login(url) {
-			var mail=$("#mailLogin").val();
-			var password=$("#passwordLogin").val();
-			$.ajax({
-				url : url,
-				async : false,
-				data:{"mail":mail,"password":password},
-				error : function() {
-					alert("登陆过程出错！");
-				},
-				success : function(data) {
-					var status=data;
-					if(status==='1'){
-						window.location.reload();
-					}
-					else{
-						$("#error").html("邮箱或密码输入有误！");
-					}
-						
-				}
-			});
-		}
-		function logout(url){
-			
-			$.ajax({
-				url : url,
-				async : false,
-				error : function() {
-					alert("登陆过程出错！");
-				},
-				success : function(data) {
-					var status=data;
-					if(status==='1'){
-						alert("退出成功!");
-						window.location.reload();
-					}
-					else{
-						alert("退出失败!");
-					}
-						
-				}
-			});
-		}
-		
-	</script>
+
 </body>
