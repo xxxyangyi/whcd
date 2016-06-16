@@ -1,4 +1,3 @@
-
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 	<div class="list-group">
 		            <a href="<%=request.getContextPath()%>/PersonCenter/Index" class="list-group-item ">个人中心首页</a>

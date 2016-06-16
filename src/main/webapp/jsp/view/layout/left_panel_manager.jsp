@@ -1,4 +1,3 @@
-
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 	<div class="list-group">
 		            <a href="<%=request.getContextPath()%>/Manager/Index" class="list-group-item ">首页</a>
@@ -7,4 +6,5 @@
 		            <a  href="<%=request.getContextPath()%>/Manager/ManageUser" class="list-group-item">用户管理</a>
 		            <a href="#" class="list-group-item">专家管理</a>
 		            <a href="<%=request.getContextPath()%>/Manager/ModifyInfo" class="list-group-item">个人信息修改</a>
+
  </div>
