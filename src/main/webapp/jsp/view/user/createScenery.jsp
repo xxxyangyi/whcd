@@ -70,6 +70,7 @@
 			</div>
 		</div>
 	</div>
+<<<<<<< Upstream, based on branch 'master' of https://github.com/xxxyangyi/whcd.git
 	<script type="text/javascript">
 	function GetFilePath() {
 		var addr = null;
@@ -125,5 +126,7 @@
 <script type="text/javascript">
 $(":file").filestyle({buttonName: "btn-primary"});
 </script>
+=======
+>>>>>>> 916ebc3 合并代码
 </body>
 </body>

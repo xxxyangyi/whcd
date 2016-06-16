@@ -40,5 +40,10 @@ public class UserToActivityService implements IUserToActivityService {
 		
 	}
 
+	@Override
+	public UserToActivity Merge(UserToActivity userToActivity) {
+		return userToActivityDao.Merge(userToActivity);
+	}
+
 
 }

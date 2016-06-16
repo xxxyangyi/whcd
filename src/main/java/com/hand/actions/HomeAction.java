@@ -90,7 +90,7 @@ public class HomeAction extends ActionSupport {
 					else 
 					{	
 						session.put("expert", user);
-						out.print("/WHCD/Expert/Index");
+						out.print("/WHCD/jsp/view/expert/index.jsp");
 					}
 			}
 		}

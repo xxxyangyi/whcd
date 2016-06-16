@@ -8,4 +8,5 @@ public interface IUserToActivityService{
 	public UserToActivity GetUserToActivity(int id);
 	public List<UserToActivity> FindBySQL(String str);
 	public UserToActivity Update(UserToActivity userToActivity);
+	public UserToActivity Merge(UserToActivity userToActivity);
 }
