@@ -45,5 +45,4 @@ public class UserToActivityService implements IUserToActivityService {
 		return userToActivityDao.Merge(userToActivity);
 	}
 
-
 }
