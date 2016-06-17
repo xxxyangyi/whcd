@@ -5,10 +5,6 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
 import com.google.gson.annotations.Expose;
 
 import javax.persistence.*;
@@ -16,10 +12,9 @@ import javax.persistence.*;
 @Entity(name="activity")
 public class Activity implements Serializable {
 	
-	public Activity(){}
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="id")
+	@GeneratedValue
 	@Expose
 	private int id;
 	
@@ -33,7 +28,7 @@ public class Activity implements Serializable {
 	
 	@Column(name="createTime")
 	@Expose 
-	private Date createTime;
+	private Date createTime = new Date();
 	
 	@Column(name="startTime")
 	@Expose 
@@ -43,14 +38,25 @@ public class Activity implements Serializable {
 	@Expose 
 	private Date endTime;
 	
+	@Column(name="weight")
+	@Expose 
+	private Double weight = 0.6;
 	
-	@OneToMany(mappedBy = "activity_id", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@Column(name="userNum")
+	@Expose 
+	private int userNum = 0;
+	
+	@Column(name="expertNum")
+	@Expose 
+	private int expertNum = 0;
+	
+	@OneToMany(mappedBy = "activity_id", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
 	private Set<UserToActivity> userToActivity  =new HashSet<UserToActivity>();
 	
 	
-	@OneToMany(mappedBy = "activity_id", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "activity_id", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
 	private Set<Vote> vote  =new HashSet<Vote>();
-
+	
 	public int getId() {
 		return id;
 	}
@@ -98,5 +104,23 @@ public class Activity implements Serializable {
 	}
 	public void setEndTime(Date endTime) {
 		this.endTime = endTime;
-	}	
+	}
+	public Double getWeight() {
+		return weight;
+	}
+	public void setWeight(Double weight) {
+		this.weight = weight;
+	}
+	public int getUserNum() {
+		return userNum;
+	}
+	public void setUserNum(int userNum) {
+		this.userNum = userNum;
+	}
+	public int getExpertNum() {
+		return expertNum;
+	}
+	public void setExpertNum(int expertNum) {
+		this.expertNum = expertNum;
+	}
 }

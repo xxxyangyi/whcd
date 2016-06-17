@@ -40,11 +40,14 @@ public class ActivityAction extends ActionSupport implements SessionAware,Servle
 	
 	public String activityAdd() throws ParseException{
 		
+		System.out.println(activity.getId());
+		System.out.println(activity.getActivityName());
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		String startTime = request.getParameter("time1");
 		String endTime = request.getParameter("time2");		
 		activity.setStartTime(sdf.parse(startTime));
-		activity.setEndTime(sdf.parse(endTime));	
+		activity.setEndTime(sdf.parse(endTime));
+		System.out.println(activity.getVote());
 		activityService.AddActivity(activity);
 		System.out.println("+++++++++++添加成功！");
 		return "success";

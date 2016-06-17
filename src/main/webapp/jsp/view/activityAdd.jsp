@@ -12,19 +12,6 @@
 <base href="<%=basePath%>">
 
 <title>创建投票信息</title>
-<script type="text/javascript">
-	$(function() {
-		$('#activityStartTime').datetimepicker({
-			 format: 'DD/MM/YYYY'
-		});
-	});
-	$(function() {
-		$('#activityEndTime').datetimepicker({
-			format: 'DD/MM/YYYY'
-		});
-	});
-</script>
-
 </head>
 
 <body>
@@ -36,6 +23,8 @@
 					<div class="panel-body">
 						<form action="<%=basePath%>activity/activityAdd" method="post">
 							<div class="form-group">
+							<s:property value="activity.id"/>
+							<s:property value="activity.activityName"/>
 								<label for="activityName">活动名称：</label> <input type="text"
 									name="activity.activityName" class="form-control"
 									id="activityName" placeholder="活动名称">
@@ -46,15 +35,14 @@
 									name="activity.context" id="activityContext"
 									placeholder="活动简介："></textarea>
 							</div>
-
 							<div class="form-group">
 								<label for="activityStartTime">活动开始时间：</label> <input
-									type="text" class="form-control" name="time1"
+									type="text" class="form-control Time" name="time1"
 									id="activityStartTime" placeholder="活动开始时间">
 							</div>
 							<div class="form-group">
 								<label for="activityStartTime">活动结束时间：</label> <input
-									type="text" class="form-control" name="time2"
+									type="text" class="form-control Time" name="time2"
 									id="activityEndTime" placeholder="活动结束时间">
 							</div>
 							<button type="submit" class="btn btn-default">提交</button>
@@ -63,14 +51,6 @@
 					<div class="panel-footer"></div>
 				</div>
 			</div>
-	<script src="jsp/js/bootstrap-datetimepicker.js"></script>
-			<script type="text/javascript">
-		
-		$(".list-group a").each(function() {
-	         $(this).removeClass("active");
-	 });
-		$(".list-group a").eq(1).addClass("active");
-	</script>
 </body>
 </body>
 </html>

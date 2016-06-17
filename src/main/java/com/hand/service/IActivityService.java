@@ -18,4 +18,5 @@ public interface IActivityService{
 	
 	public List<Activity> GetActivitys();
 	public List<Activity> FindBySQL(String str);
+	public Activity update(Activity activity);
 }

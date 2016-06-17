@@ -59,7 +59,7 @@
 			<interceptor name="authority" class="com.hand.intercepter.ActivityInterceptor" />
 			<interceptor-stack name="ActivityInterceptor">
 				<interceptor-ref name="authority">
-				    <param name="excludeMethods">voteAdd,activityAdd,getActivitys,getActivityVotes,voteFor</param><!--不拦截Action中的method1-->  
+				    <param name="excludeMethods">voteAdd,getActivitys,getActivityVotes,voteFor</param><!--不拦截Action中的method1-->  
 				    <param name="includeMethods">getActivityById</param>
 				</interceptor-ref>
 				<interceptor-ref name="defaultStack" />
@@ -80,7 +80,7 @@
 		    <result name="success">/jsp/view/activityShowContext.jsp</result>		    
 		</action>
 		<action name="getActivityById" class="activityAction" method="getActivityById">
-		    <interceptor-ref name="ActivityInterceptor"/>
+		   <!--  <interceptor-ref name="ActivityInterceptor"/> -->
 		    <result name="success">/jsp/view/voteAdd.jsp</result>		    
 		</action>
 		<action name="voteFor" class="voteAction" method="voteFor"></action>

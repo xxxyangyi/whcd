@@ -32,9 +32,15 @@
 										内容：<s:property value="#id.context" />
 									</p>
 									<p >
-										<s:property value="#id.voteNum" />票
+										<s:if test="activity.expertNum==0">
+											<s:property value="(#id.voteNum)" />票			
+										</s:if>
+										<s:else>
+											<s:property value="(#id.voteNum)+(#id.expertVoteNum/activity.expertNum)*(activity.weight/(1-activity.weight))*activity.userNum" />票			
+										</s:else>
 										<button class="btn btn-primary btn-sm" onclick="vote(<s:property value='activity.id'/>,'<s:property value='#id.user_id.mail'/>',<s:property value='#id.id'/>)">投一票</button>
 										<button class="btn btn-default btn-sm" onclick="showlargeImg(this)">大图看详情</button>
+										<s:property value="(#id.voteNum)+((#id.expertVoteNum)/(activity.expertNum))*(activity.weigth/(1-activity.weigth))*activity.voteNum" />										
 									</p>
 								</div>
 							</div>

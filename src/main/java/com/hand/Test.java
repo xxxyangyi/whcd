@@ -6,11 +6,10 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.hand.entity.Customer;
 import com.hand.service.CustomerService;
-import com.hand.service.impl.ChangeToJson;
 
 public class Test {
 	private CustomerService customerService;
-	private ChangeToJson changeToJson;
+//	private ChangeToJson changeToJson;
 
 	//===================================================================================
 	public static void main( String[] args )
@@ -56,13 +55,13 @@ public class Test {
 	public void setCustomerService(CustomerService customerService) {
 		this.customerService = customerService;
 	}
-	public ChangeToJson getChangeToJson() {
-		return changeToJson;
-	}
-
-	public void setChangeToJson(ChangeToJson changeToJson) {
-		this.changeToJson = changeToJson;
-	}
+//	public ChangeToJson getChangeToJson() {
+//		return changeToJson;
+//	}
+//
+//	public void setChangeToJson(ChangeToJson changeToJson) {
+//		this.changeToJson = changeToJson;
+//	}
 
 
 }
