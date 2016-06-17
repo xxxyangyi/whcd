@@ -12,24 +12,10 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<base href="<%=basePath%>">
-
 <title>修改名胜古迹信息</title>
-<link rel="stylesheet" href="http://libs.useso.com/js/font-awesome/4.2.0/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="<%=basePath%>jsp/css/textedit_default.css">
-<link rel="stylesheet" type="text/css" href="<%=basePath%>jsp/css/wysiwyg-editor.css" />
-<link href="<%=basePath%>jsp/css/textedit.css" rel="stylesheet" type="text/css" />
-
 </head>
 
 <body>
-	<jsp:include page="../layout/nav_top_manager.jsp"></jsp:include>
-
-	<div class="container id1" style="width: 90%">
-		<div class="row">
-			<div class="col-md-3">
-				<jsp:include page="../layout/left_panel_manager.jsp"></jsp:include>
-			</div>
 			<div class="col-md-9">
 				<hr align="left" width="100%" size="15" />
 
@@ -84,8 +70,6 @@
 					<div class="panel-footer"></div>
 				</div>
 			</div>
-		</div>
-	</div>
 	<script type="text/javascript">
 	
 	

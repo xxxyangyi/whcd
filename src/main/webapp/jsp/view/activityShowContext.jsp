@@ -13,25 +13,8 @@
 </head>
 
 <body>
-	<div class="container id1" style="width: 90%">
-		<div class="row">
-			<div class="col-md-3">
-				<ul>
-					<li>
-						<div class="btn-group">
-							<a href="<%=basePath%>activity/getActivityById?activity_id=<s:property value='activity.id'/>" class="btn btn-info" type="button" style="width: 150px">参加此活动</a>
-							<script type="text/javascript">								
-							</script>
-						</div>
-					</li>
-					<li>
-						<div class="btn-group">
-							<button class="btn btn-info" type="button" style="width: 150px">设置</button>
-						</div>
-					</li>
-				</ul>
-			</div>
-			<div class="col-md-9">
+			<div class="col-md-10">
+				<a href="<%=basePath%>activity/getActivityById?activity_id=<s:property value='activity.id'/>" class="btn btn-info" type="button" style="width: 150px;float:right">参加此活动</a>
 				<hr align="left" width="100%" size="15" />
 				<div class="row">
 					<div id="activity_context"></div>

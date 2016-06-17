@@ -52,8 +52,39 @@
 	<s:else>
 		<jsp:include page="/jsp/view/layout/nav_top.jsp"></jsp:include>
 	</s:else>
-	<decorator:body />  
+	<div class="container id1" style="width: 95%">
+		<div class="row">
+			<div id="mainLeftPanel" class="col-md-2">
+				<s:if test="#session.get('user')!=null">
+					<s:if test="#session.get('user').getIdentity()==0">
+						<jsp:include page="/jsp/view/layout/left_panel_manager.jsp"></jsp:include>
+					</s:if>
+					<s:elseif test="#session.get('user').getIdentity()==2">
+						<jsp:include page="/jsp/view/layout/left_panel_expert.jsp"></jsp:include>
+					</s:elseif>
+					<s:else>
+						<jsp:include page="/jsp/view/layout/left_panel_user.jsp"></jsp:include>
+					</s:else>
+				</s:if>
+			</div>
+			<decorator:body />  
+		</div>
+	</div>
 	<hr>
 	<h3>Foot</h3>
+	<script type="text/javascript">
+		if(window.location.href=="http://localhost:8080/WHCD/"){
+			alert("remove")
+			$('#mainLeftPanel').remove()
+		}
+		if(window.location.href=="http://localhost:8080/WHCD/#"){
+			alert("remove")
+			$('#mainLeftPanel').remove()
+		}		
+		if(window.location.href=="http://localhost:8080/WHCD/Home/Index"){
+			alert("remove")
+			$('#mainLeftPanel').remove()
+		}
+	</script>
 </body>
 </html>

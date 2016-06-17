@@ -5,7 +5,7 @@
 	String basePath = request.getScheme() + "://"
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
-	User user = (User) session.getAttribute("manager");
+	User user = (User) session.getAttribute("user");
 %>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
@@ -18,13 +18,6 @@
 </head>
 
 <body>
-	<jsp:include page="../layout/nav_top_manager.jsp"></jsp:include>
-
-	<div class="container id1" style="width: 90%">
-		<div class="row">
-			<div class="col-md-3">
-				<jsp:include page="../layout/left_panel_manager.jsp"></jsp:include>
-			</div>
 			<div class="col-md-9">
 				<hr align="left" width="100%" size="15" />
 
@@ -91,8 +84,6 @@
 					<div class="panel-footer"></div>
 				</div>
 			</div>
-		</div>
-	</div>
 	<script type="text/javascript">
 		var str = new Object();
 		function Modify(inputId) {

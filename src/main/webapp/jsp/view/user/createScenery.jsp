@@ -17,11 +17,6 @@
 </head>
 
 <body>
-	<div class="container id1" style="width: 90%">
-		<div class="row">
-			<div class="col-md-3">
-				<jsp:include page="../layout/left_panel_user.jsp"></jsp:include>
-			</div>
 			<div class="col-md-9">
 				<hr align="left" width="100%" size="15" />
 
@@ -68,9 +63,6 @@
 					<div class="panel-footer"></div>
 				</div>
 			</div>
-		</div>
-	</div>
-<<<<<<< Upstream, based on branch 'master' of https://github.com/xxxyangyi/whcd.git
 	<script type="text/javascript">
 	function GetFilePath() {
 		var addr = null;
@@ -126,7 +118,5 @@
 <script type="text/javascript">
 $(":file").filestyle({buttonName: "btn-primary"});
 </script>
-=======
->>>>>>> 916ebc3 合并代码
 </body>
 </body>

@@ -16,12 +16,7 @@
 </head>
 
 <body>
-	<div class="container id1" style="width:95%">
-		<div class="row">
-			<div class="col-md-2">
-				<jsp:include page="../layout/left_panel_manager.jsp"></jsp:include>
-			</div>
-				<div class="col-md-10">
+		<div class="col-md-10">
 			<h4 style="display: inline-block;">名胜古迹管理</h4>
 			<hr align="left" width="100%" size="15" />
 			<div id="usrPanelContent">
@@ -38,12 +33,11 @@
 				</thead>
 				<tbody>
 					<script type="text/javascript">
-					GetManagerSceneryListOne();
+						GetManagerSceneryListOne();
 					</script>
 				</tbody>
 				</table>
 				</div>
 		</div>
-	</div>
 </body>
 </html>

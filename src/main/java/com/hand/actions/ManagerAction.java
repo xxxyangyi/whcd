@@ -86,11 +86,11 @@ private static Integer numPage=8;
 	public String ModifyInfo(){
 		
 		Map session=ActionContext.getContext().getSession();
-		User user=(User) session.get("manager");
+		User user=(User) session.get("user");
 		String mail=user.getMail();
 		//String mail="123";
 		User userNew=userService.GetUser(mail);
-		session.put("manager", userNew);
+		session.put("user", userNew);
 		return "modifyInfo";
 	}
 	
@@ -98,7 +98,7 @@ private static Integer numPage=8;
 	public String DoModifyInfo(){
 		
 		Map session=ActionContext.getContext().getSession();
-		User user=(User) session.get("manager");
+		User user=(User) session.get("user");
 		String mail=user.getMail();
 		User userNew=userService.GetUser(mail);
 		HttpServletRequest request=ServletActionContext.getRequest();

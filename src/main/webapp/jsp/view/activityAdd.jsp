@@ -28,11 +28,6 @@
 </head>
 
 <body>
-	<div class="container id1" style="width: 90%">
-		<div class="row">
-			<div class="col-md-3">
-				<!--<jsp:include page="layout/left_panel.jsp"></jsp:include>-->
-			</div>
 			<div class="col-md-9">
 				<hr align="left" width="100%" size="15" />
 
@@ -68,8 +63,6 @@
 					<div class="panel-footer"></div>
 				</div>
 			</div>
-		</div>
-	</div>
 	<script src="jsp/js/bootstrap-datetimepicker.js"></script>
 			<script type="text/javascript">
 		
