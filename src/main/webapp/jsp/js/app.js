@@ -1373,7 +1373,6 @@ window.onload=function() {
 					var arr=data.sceneryList;
 					var htmlStr="";
 					var tmpStr="";
-					alert(len);
 					for (var i=0; i <len&&i<numPage; i++) {
 					if(i==0){
 					 tmpStr="<div class='row'><div class='col-lg-10 col-lg-offset-1'>"

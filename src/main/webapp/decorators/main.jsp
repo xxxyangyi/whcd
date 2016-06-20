@@ -37,14 +37,13 @@
 	<script type="text/javascript" src="<%=basePath%>jsp/js/app.js"></script>
 	<style type="text/css">
 	.footer{
-	width: 1060px;
+	width: 1330px;
 	background:url('/WHCD/jsp/img/bg_footer.png');
 	float: left;
 	border-top: 5px solid #79c90e;
 	height: 190px;
 	padding-left: 40px;
 	margin:15px auto 0;
-	margin-left: 120px;
 }
 .footer .footerDiv{
 	display: inline-block;
@@ -181,15 +180,12 @@
 	
 	<script type="text/javascript">
 		if(window.location.href=="http://localhost:8080/WHCD/"){
-			alert("remove")
 			$('#mainLeftPanel').remove()
 		}
 		if(window.location.href=="http://localhost:8080/WHCD/#"){
-			alert("remove")
 			$('#mainLeftPanel').remove()
 		}		
 		if(window.location.href=="http://localhost:8080/WHCD/Home/Index"){
-			alert("remove")
 			$('#mainLeftPanel').remove()
 		}
 	</script>
