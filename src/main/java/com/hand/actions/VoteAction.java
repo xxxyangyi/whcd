@@ -3,6 +3,8 @@ package com.hand.actions;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.Resource;
@@ -36,11 +38,13 @@ public class VoteAction extends ActionSupport implements SessionAware,ServletReq
 	private HttpServletRequest  request;
 	private HttpServletResponse response;
 	private Vote vote;
+	private List<Vote> voteList; 
 	private Activity activity;
     private File imgUpLoad;
     private String imgUpLoadContentType;  
     private String imgUpLoadFileName;
-	
+	private int flag;
+    
 	public void Index() {
 		Vote vote = new Vote();
 		vote.setId(1);
@@ -60,6 +64,39 @@ public class VoteAction extends ActionSupport implements SessionAware,ServletReq
 		vote.setUserImg(picAddr);
 		voteService.AddVote(vote);
 		System.out.println("====================成功了！");
+		return "success";
+	}
+	
+	// 获得通过的投票信息
+	public String getActivityVotesPassed() throws IOException {
+		int activity_id = Integer.parseInt(request.getParameter("activity_id"));
+		activity = activityService.GetActivity(activity_id);
+		String str = "";
+		if(session.get("user")!=null && ((User)session.get("user")).getIdentity()==0){
+			 str = "SELECT * from vote WHERE activity_id = "+activity_id;		
+		}else{
+			str = "SELECT * from vote WHERE activity_id = "+activity_id+" and review = 0;";
+		}		 
+		voteList = voteService.FindBySQL(str);
+		Collections.sort(voteList, new Comparator<Vote>() {
+			@Override
+            public int compare(Vote v1, Vote v2) {
+				double x=0;
+				double y=0;
+				if(activity.getExpertNum()==0){
+					 x = v1.getVoteNum();
+					 y = v2.getVoteNum();
+				}else{
+					 x = v1.getVoteNum() + 
+							(v1.getExpertVoteNum()/activity.getExpertNum())*(activity.getWeight()/(1-activity.getWeight()))*activity.getUserNum();
+					 y = v2.getVoteNum() + 
+							(v2.getExpertVoteNum()/activity.getExpertNum())*(activity.getWeight()/(1-activity.getWeight()))*activity.getUserNum();								
+				}
+					//System.out.println("x:" +x +"   y:"+y);
+				return (int) (y-x);
+            }
+        });	
+		
 		return "success";
 	}
 
@@ -139,7 +176,66 @@ public class VoteAction extends ActionSupport implements SessionAware,ServletReq
 		out.print(msg);
 		
 	}
-
+	
+	// 管理员获取活动Form的信息
+	public String manageActivityForm() throws IOException {
+		System.out.println("manageActivityForm");
+		int activity_id = Integer.parseInt(request.getParameter("activity_id"));
+		activity = 	activityService.GetActivity(activity_id);
+		String str = "";
+		str = "SELECT * from vote WHERE activity_id = "+activity_id+" and review = 1;";
+		voteList = voteService.FindBySQL(str);
+		Collections.sort(voteList, new Comparator<Vote>() {
+			@Override
+            public int compare(Vote v1, Vote v2) {
+				double x=0;
+				double y=0;
+				if(activity.getExpertNum()==0){
+					 x = v1.getVoteNum();
+					 y = v2.getVoteNum();
+				}else{
+					 x = v1.getVoteNum() + 
+							(v1.getExpertVoteNum()/activity.getExpertNum())*(activity.getWeight()/(1-activity.getWeight()))*activity.getUserNum();
+					 y = v2.getVoteNum() + 
+							(v2.getExpertVoteNum()/activity.getExpertNum())*(activity.getWeight()/(1-activity.getWeight()))*activity.getUserNum();								
+				}
+					//System.out.println("x:" +x +"   y:"+y);
+				return (int) (y-x);
+            }
+        });		
+		return "success";
+	}
+	
+	// 管理员 获取审核参加活动的信息
+	public String managerVoteInfoReview() throws IOException {
+		System.out.println("managerVoteInfoReview");
+		// flag 1 代表未审核 2 代表审核未通过的
+		int pageflag = Integer.parseInt(request.getParameter("pageflag"));
+		String str = "";
+		if(pageflag ==1){
+			str = "SELECT * from vote WHERE review = 0;";
+			flag= 1;
+		}else{
+			str = "SELECT * from vote WHERE review = 2;";
+			flag= 2;
+		}	
+		voteList = voteService.FindBySQL(str);	
+		return "success";
+	}
+	
+	// 管理员 进行审核 通过或不通过
+	public void managerVoteInfoReviewPassORNotPass() throws IOException {
+		System.out.println("managerVoteInfoReview");
+		response.setContentType("text/json"); 
+        response.setCharacterEncoding("UTF-8"); 
+		PrintWriter out = response.getWriter();
+		int vote_id = Integer.parseInt(request.getParameter("vote_id"));
+		int review = Integer.parseInt(request.getParameter("review"));
+		vote = voteService.GetVote(vote_id);
+		vote.setReview(review);
+		voteService.update(vote);
+		out.print("修改成功");
+	}
 	
 	/////////////////get set 方法 //////////////////////////////////////////////////////////////
 	public Vote getVote() {
@@ -147,6 +243,12 @@ public class VoteAction extends ActionSupport implements SessionAware,ServletReq
 	}
 	public void setVote(Vote vote) {
 		this.vote = vote;
+	}
+	public List<Vote> getVoteList() {
+		return voteList;
+	}
+	public void setVoteList(List<Vote> voteList) {
+		this.voteList = voteList;
 	}
 	@Override
 	public void setSession(Map session) {
@@ -160,7 +262,6 @@ public class VoteAction extends ActionSupport implements SessionAware,ServletReq
 	public void setServletResponse(HttpServletResponse response) {
 		this.response = response;
 	}
-
 	public File getImgUpLoad() {
 		return imgUpLoad;
 	}
@@ -179,13 +280,17 @@ public class VoteAction extends ActionSupport implements SessionAware,ServletReq
 	public void setImgUpLoadFileName(String imgUpLoadFileName) {
 		this.imgUpLoadFileName = imgUpLoadFileName;
 	}
-
 	public Activity getActivity() {
 		return activity;
 	}
-
 	public void setActivity(Activity activity) {
 		this.activity = activity;
+	}
+	public int getFlag() {
+		return flag;
+	}
+	public void setFlag(int flag) {
+		this.flag = flag;
 	}
 	
 }

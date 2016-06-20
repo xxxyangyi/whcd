@@ -26,15 +26,15 @@ public class Activity implements Serializable {
 	@Expose 
 	private String context;
 	
-	@Column(name="createTime")
+	@Column(name="createTime", columnDefinition="DATE")
 	@Expose 
 	private Date createTime = new Date();
 	
-	@Column(name="startTime")
+	@Column(name="startTime", columnDefinition="DATE")
 	@Expose 
 	private Date startTime;
 	
-	@Column(name="endTime")
+	@Column(name="endTime", columnDefinition="DATE")
 	@Expose 
 	private Date endTime;
 	

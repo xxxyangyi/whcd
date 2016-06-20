@@ -79,6 +79,19 @@
 		<action name="getActivityVotes" class="activityAction" method="getActivityVotes">
 		    <result name="success">/jsp/view/activityShowContext.jsp</result>		    
 		</action>
+		<action name="getActivityVotesPassed" class="voteAction" method="getActivityVotesPassed">
+		    <result name="success">/jsp/view/activityShowContext.jsp</result>		    
+		</action>
+		<action name="getActivitysOrderByCreateTime" class="activityAction" method="getActivitysOrderByCreateTime">
+		    <result name="success">/jsp/view/manager/manageActivityList.jsp</result>		    
+		</action>
+		<action name="manageActivityForm" class="voteAction" method="manageActivityForm">
+		    <result name="success">/jsp/view/manager/manageActivityForm.jsp</result>		    
+		</action>
+		<action name="managerVoteInfoReview" class="voteAction" method="managerVoteInfoReview">
+		    <result name="success">/jsp/view/manager/managerVoteInfoReview.jsp</result>		    
+		</action>
+		<action name="managerVoteInfoReviewPassORNotPass" class="voteAction" method="managerVoteInfoReviewPassORNotPass"></action>
 		<action name="getActivityById" class="activityAction" method="getActivityById">
 		   <!--  <interceptor-ref name="ActivityInterceptor"/> -->
 		    <result name="success">/jsp/view/voteAdd.jsp</result>		    

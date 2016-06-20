@@ -20,7 +20,7 @@
 					<div id="activity_context"></div>
 				</div>
 				<div class="grid row">
-					<s:iterator value="activity.vote" id='id' status='st'>
+					<s:iterator value="voteList" id='id' status='st'>
 						<div class="grid_item col-sm-6 col-md-4" style="float:left">
 							<div class="thumbnail">
 								<img src="<%=basePath%>jsp/img/<s:property value='#id.userImg'/>" alt="未知">
@@ -57,8 +57,7 @@
 					</script>
 				</div>
 			</div>
-		</div>
-	</div>
+
 	<!-- 查看大图的模态框 -->
 <div class="modal fade" id="modalShowLargeImg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
   <div class="modal-dialog modal-lg">
@@ -75,6 +74,6 @@
         	$('#modalShowLargeImgSrc').attr('src',node.parentNode.parentNode.parentNode.firstElementChild.getAttribute('src'))
                 $('#modalShowLargeImg').modal('show');
       };
-    </script>
+</script>
 </body>
 </html>

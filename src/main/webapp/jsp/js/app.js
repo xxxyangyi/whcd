@@ -25,7 +25,7 @@ window.onload=function() {
 																			+ "</div>"
 																			+ "<div class='media-body'>"
 																			+ "<h4 class='media-heading'>"
-																			+ "<a href='http://localhost:8080/WHCD/activity/getActivityVotes?activity_id="+msg[i].id+"'> "
+																			+ "<a href='http://localhost:8080/WHCD/activity/getActivityVotesPassed?activity_id="+msg[i].id+"'> "
 																			+ msg[i].activityName
 																			+ "</a>"
 																			+ "</h4>"
@@ -43,7 +43,7 @@ window.onload=function() {
 																			+ "<div class='panel-body'>"
 																			+ "<div class='media'>"
 																			+ "<div class='media-body'>"
-																			+ "<a href='http://localhost:8080/WHCD/activity/getActivityVotes?activity_id="+msg[i].id+"'> "
+																			+ "<a href='http://localhost:8080/WHCD/activity/getActivityVotesPassed?activity_id="+msg[i].id+"'> "
 																			+ "<h4 class='media-heading'>"+msg[i].activityName+"</h4>"
 																			+ "</a>"
 																			+ msg[i].context																			+ "</div>"
