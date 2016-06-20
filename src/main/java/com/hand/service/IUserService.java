@@ -56,4 +56,28 @@ public interface IUserService{
 	 * @param user 用户对象
 	 */
 	public void DeleteUser(User user);
+	
+	/***
+	 * 获取男性用户数量
+	 * @return 数量
+	 */
+	public Integer getManSum();
+	
+	/***
+	 * 获取女性用户数量
+	 * @return 数量
+	 */
+	public Integer getWomenSum();
+	
+	/***
+	 * 获取游客数量
+	 * @return 数量
+	 */
+	public Integer getUserSum();
+	
+	/***
+	 * 获取专家数量
+	 * @return 数量
+	 */
+	public Integer getExpertSum();
 }

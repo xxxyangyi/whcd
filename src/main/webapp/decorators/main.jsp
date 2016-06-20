@@ -20,8 +20,7 @@
 	<link rel="stylesheet" type="text/css"  href="<%=basePath%>jsp/css/textedit.css" />
 	<link rel="stylesheet" type="text/css"  href="<%=basePath%>jsp/css/prettify-1.0.css" />
 	<link rel="stylesheet" type="text/css"  href="<%=basePath%>jsp/css/app.css">
-	<script type="text/javascript" src="<%=basePath%>jsp/js/jquery-2.1.4.js"></script>
-	<script type="text/javascript" src="<%=basePath%>jsp/js/jquery-2.1.4.min.js"></script>	
+	<script type="text/javascript" src="<%=basePath%>jsp/js/jquery-2.1.4.min.js"></script>
 	<script type="text/javascript" src="<%=basePath%>jsp/js/jquery.validate.js"></script>
 	<script type="text/javascript" src="<%=basePath%>jsp/js/additional-methods.js"></script>
 	<script type="text/javascript" src="<%=basePath%>jsp/js/bootstrap.min.js"></script>
@@ -33,6 +32,7 @@
 	<script type="text/javascript" src="<%=basePath%>jsp/js/modernizr-2.6.2.min.js"></script>
 	<script type="text/javascript" src="<%=basePath%>jsp/js/textedit.js"></script>	
 	<script type="text/javascript" src="<%=basePath%>jsp/js/wysiwyg-editor.js"></script>
+	<script type="text/javascript" src="<%=basePath%>jsp/js/Chart.js"></script>
 	<script type="text/javascript" src="<%=basePath%>jsp/js/wysiwyg.js"></script>
 	<script type="text/javascript" src="<%=basePath%>jsp/js/app.js"></script>
 	<decorator:head/>

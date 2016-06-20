@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -17,15 +18,21 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.ServletActionContext;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.hand.entity.Scenery;
+import com.hand.entity.Tab;
 import com.hand.entity.User;
+import com.hand.entity.vo.SceneryVO;
 import com.hand.service.ISceneryService;
+import com.hand.service.ITabService;
 import com.hand.service.IUserService;
+import com.hand.util.EntityToVo;
 import com.hand.util.UploadFile;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class ManagerAction extends ActionSupport {
+public class ManagerAction extends BaseAction {
 
 private static Integer numPage=8;
 	
@@ -64,6 +71,9 @@ private static Integer numPage=8;
 
 	@Resource(name = "sceneryService")
 	private ISceneryService sceneryService;
+	
+	@Resource(name = "tabService")
+	private ITabService tabService;
 
 	public String Index(){
 		return "index";
@@ -413,4 +423,216 @@ public String ManageScenery(){
 		
 		return "detailSceneryInfo";
 	}
+	
+	public void AuditScenery(){
+		try{
+			String sceneryId=request.getParameter("sceneryId");
+			Scenery scenery=sceneryService.GetScenery(sceneryId);
+			scenery.setIsAudited(1);
+			sceneryService.UpdateScenery(scenery);
+			PrintWriter out = response.getWriter();
+			out.print("1");
+			
+		}
+		catch(Exception ex){
+			ex.printStackTrace();
+		}
+	}
+	
+	public void DisAuditScenery(){
+		try{
+			String sceneryId=request.getParameter("sceneryId");
+			Scenery scenery=sceneryService.GetScenery(sceneryId);
+			scenery.setIsAudited(-1);
+			sceneryService.UpdateScenery(scenery);
+			PrintWriter out = response.getWriter();
+			out.print("1");
+			
+		}
+		catch(Exception ex){
+			ex.printStackTrace();
+		}
+	}
+	
+	public void getSexData(){
+		try{
+		Integer manSum=userService.getManSum();
+		Integer womenSum=userService.getWomenSum();
+		
+		response.setContentType("text/json"); 
+        response.setCharacterEncoding("UTF-8"); 
+        PrintWriter out = response.getWriter();
+        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+        
+        Map<String, Object> paramMap=new HashMap<String,Object>();
+        paramMap.put("man",manSum);
+        paramMap.put("women",womenSum);
+        
+        out.print(gson.toJson(paramMap));
+	   }
+	   catch(Exception ex){
+			ex.printStackTrace();
+		}
+	}
+	
+	public void getIdentityData(){
+		try{
+		Integer userSum=userService.getUserSum();
+		Integer expertSum=userService.getExpertSum();
+		
+		response.setContentType("text/json"); 
+        response.setCharacterEncoding("UTF-8"); 
+        PrintWriter out = response.getWriter();
+        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+        
+        Map<String, Object> paramMap=new HashMap<String,Object>();
+        paramMap.put("user",userSum);
+        paramMap.put("expert",expertSum);
+        
+        out.print(gson.toJson(paramMap));
+	   }
+	   catch(Exception ex){
+			ex.printStackTrace();
+		}
+	}
+	
+	public void getMonthData(){
+		try{
+		Map paramMap=sceneryService.getSceneryListByMonth();
+		
+		response.setContentType("text/json"); 
+        response.setCharacterEncoding("UTF-8"); 
+        PrintWriter out = response.getWriter();
+        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+                
+        out.print(gson.toJson(paramMap));
+	   }
+	   catch(Exception ex){
+			ex.printStackTrace();
+		}
+	}
+	
+	public void getTabList(){
+		try{
+			List<Tab> tabList=tabService.getAll();
+			
+			
+			response.setContentType("text/json"); 
+	        response.setCharacterEncoding("UTF-8"); 
+	        PrintWriter out = response.getWriter();
+	        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+	        
+	        Map<String, Object> paramMap=new HashMap<String,Object>();
+	        paramMap.put("tabList", tabList);
+	        out.print(gson.toJson(paramMap));
+		   }
+		   catch(Exception ex){
+				ex.printStackTrace();
+			}
+	}
+	public void AddTab(){
+		try {
+
+			String name=request.getParameter("name");
+			String position=request.getParameter("position");
+			
+			Tab tab=new Tab();
+			tab.setIsUsed(1);
+			tab.setName(name);
+			tab.setPosition(Integer.parseInt(position));
+			tabService.addTab(tab);
+			
+			PrintWriter out = response.getWriter();
+			out.print("1");
+			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+	}
+	
+	public void DisableTab(){
+		try{
+			String id=request.getParameter("id");
+			
+			Tab tab=tabService.getTab(Integer.parseInt(id));
+			tab.setIsUsed(0);
+			tabService.updateTab(tab);
+			
+			PrintWriter out = response.getWriter();
+			out.print("1");
+		}
+		catch(Exception ex){
+			ex.printStackTrace();
+		}
+	}
+	
+	public void AbleTab(){
+		try{
+			String id=request.getParameter("id");
+			
+			Tab tab=tabService.getTab(Integer.parseInt(id));
+			tab.setIsUsed(1);
+			tabService.updateTab(tab);
+			
+			PrintWriter out = response.getWriter();
+			out.print("1");
+		}
+		catch(Exception ex){
+			ex.printStackTrace();
+		}
+	}
+	
+	public String ModifyTabInfo(){
+		
+		String id=request.getParameter("id");
+		
+		Tab tab=tabService.getTab(Integer.parseInt(id));
+		request.setAttribute("tab", tab);
+		
+		return "modifyTabInfo";
+	}
+	
+	public String DoModifyTabInfo() {
+		
+		Integer id=Integer.parseInt(request.getParameter("id"));
+		String name=request.getParameter("name");
+		Integer position=Integer.parseInt(request.getParameter("position"));
+		
+		Tab tab=tabService.getTab(id);
+		String nameOld=tab.getName();
+		Integer positionOld=tab.getPosition();
+		if(!nameOld.equals(name))tab.setName(name);
+		if(!position.equals(positionOld))tab.setPosition(position);
+		tabService.updateTab(tab);
+		
+		return "modifyTabSuccess";
+	}
+	
+	public String ManageTab(){
+		return "manageTab";
+	}
+public void getUserList() throws Exception{
+	
+		String sqlSum = "select count(*) as sumkey from user where identity=1";
+		String sql = "select * from user where identity=1";
+			
+		Integer page=Integer.parseInt(request.getParameter("page"));
+		Integer total=userService.GetTotal(sqlSum, numPage);
+		List<User> userList=userService.GetList(sql, page, numPage, total);
+		
+		
+		response.setContentType("text/json"); 
+        response.setCharacterEncoding("UTF-8"); 
+        PrintWriter out = response.getWriter();
+        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+        
+        Map<String, Object> paramMap=new HashMap<String,Object>();
+        paramMap.put("page",page);
+        paramMap.put("total",total);
+        paramMap.put("numPage",numPage);
+        paramMap.put("userList",userList);
+		
+        out.print(gson.toJson(paramMap));
+	}
+	
 }

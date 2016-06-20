@@ -194,6 +194,33 @@
 		</action>
 		<action name="getUserList" class="managerAction" method="getUserList">
 		</action>
+		<action name="AuditScenery" class="managerAction" method="AuditScenery">
+		</action>
+		<action name="DisAuditScenery" class="managerAction" method="DisAuditScenery">
+		</action>
+		<action name="getSexData" class="managerAction" method="getSexData">
+		</action>
+		<action name="getIdentityData" class="managerAction" method="getIdentityData">
+		</action>
+		<action name="getMonthData" class="managerAction" method="getMonthData">
+		</action>
+		<action name="ManageTab" class="managerAction" method="ManageTab">
+			<result name="manageTab">/jsp/view/manager/manageTab.jsp</result>
+		</action>
+		<action name="getTabList" class="managerAction" method="getTabList">
+		</action>
+		<action name="AbleTab" class="managerAction" method="AbleTab">
+		</action>
+		<action name="DisableTab" class="managerAction" method="DisableTab">
+		</action>
+		<action name="AddTab" class="managerAction" method="AddTab">
+		</action>
+		<action name="ModifyTabInfo" class="managerAction" method="ModifyTabInfo">
+			<result name="modifyTabInfo">/jsp/view/manager/modifyTabInfo.jsp</result>
+		</action>
+		<action name="DoModifyTabInfo" class="managerAction" method="DoModifyTabInfo">
+			<result name="modifyTabSuccess" type="redirect">/Manager/ManageTab</result>
+		</action>
 	</package>
 	
 	<package name="Scenery" namespace="/Scenery" extends="struts-default">
