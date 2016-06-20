@@ -192,9 +192,8 @@ window.onload=function() {
 	 function SpiltStr(str){
 			var strNew="";
 			if(str.length<101)return str;
-			
 			var i=99;
-			for(;str.charCodeAt(i)>255;i++);
+			for(;str.charCodeAt(i)>255&&i<101;i++);
 			
 			return str.substring(0,i);	
 	 }				
@@ -291,14 +290,15 @@ window.onload=function() {
 		}
 	 	
 	 	//不同分页获取数据
-	 function GetSceneryListOne(){
+	 function GetSceneryListOne(tabid){
 	 		if(currentNum==1){
+	 		
 			$.ajax({
 				type : "post",
 				url:"/WHCD/Scenery/getSceneryList",
 				async : false,
 				dataType : 'json',
-				data:{"page":1},
+				data:{"page":1,'tabid':tabid},
 				error : function() {
 					alert("ajax出错！");
 				},
@@ -365,15 +365,15 @@ window.onload=function() {
 					var select="<hr align='left' width='100%' size='15' />"
 					+"<div class='col-lg-8 col-lg-offset-3'>"
 					+"<div class='col-lg-2'>"
-					+"<a onclick='PrePage();GetSceneryList();' class='btn btn-primary'>上一页</a>"
+					+"<a onclick='PrePage();GetSceneryList(\""+tabid+"\");' class='btn btn-primary'>上一页</a>"
 					+"</div>"
 					+"<div class='col-lg-3'>"
-					+"<select id='selectPage' class='form-control' onchange='SelectedPage();GetSceneryList()'>"
+					+"<select id='selectPage' class='form-control' onchange='SelectedPage();GetSceneryList(\""+tabid+"\")'>"
 					+str
 					+"</select>"
 					+"</div>"
 					+"<div class='col-lg-2'>"
-					+"<a onclick='NextPage("+total+");GetSceneryList()' class='btn btn-primary'>下一页</a>"
+					+"<a onclick='NextPage("+total+");GetSceneryList(\""+tabid+"\")' class='btn btn-primary'>下一页</a>"
 					+"</div>"
 					+"</div>";
 					htmlStr+=select;
@@ -383,13 +383,13 @@ window.onload=function() {
 	 		}
 	 	}
 	 	
-		function GetSceneryList(){
+		function GetSceneryList(tabid){
 			$.ajax({
 				type : "post",
 				url:"/WHCD/Scenery/getSceneryList",
 				async : false,
 				dataType : 'json',
-				data:{"page":currentNum},
+				data:{"page":currentNum,'tabid':tabid},
 				error : function() {
 					alert("ajax出错！");
 				},
@@ -456,15 +456,15 @@ window.onload=function() {
 					var select="<hr align='left' width='100%' size='15' />"
 					+"<div class='col-lg-8 col-lg-offset-3'>"
 					+"<div class='col-lg-2'>"
-					+"<a onclick='PrePage();GetSceneryList();' class='btn btn-primary'>上一页</a>"
+					+"<a onclick='PrePage();GetSceneryList(\""+tabid+"\");' class='btn btn-primary'>上一页</a>"
 					+"</div>"
 					+"<div class='col-lg-3'>"
-					+"<select id='selectPage' class='form-control' onchange='SelectedPage();GetSceneryList()'>"
+					+"<select id='selectPage' class='form-control' onchange='SelectedPage();GetSceneryList(\""+tabid+"\")'>"
 					+str
 					+"</select>"
 					+"</div>"
 					+"<div class='col-lg-2'>"
-					+"<a onclick='NextPage("+total+");GetSceneryList()' class='btn btn-primary'>下一页</a>"
+					+"<a onclick='NextPage("+total+");GetSceneryList(\""+tabid+"\")' class='btn btn-primary'>下一页</a>"
 					+"</div>"
 					+"</div>";
 					htmlStr+=select;
@@ -640,13 +640,17 @@ window.onload=function() {
 					for(var i=0;i <len&&i<numPage;i++){
 						tmpStr="<tr>"
 							+"<td><a href='/WHCD/Manager/DetailUserInfo?mail="+arr[i].mail+"'></a>"+arr[i].mail+"</td>"
-							+"<td>"+arr[i].name+"</td>"
-							+"<td>"
-							+"<a class='btn btn-warning' onclick='InitializeUserPassword(\""+arr[i].mail+"\")'>初始化密码</a>";
+							+"<td>"+arr[i].name+"</td>";
 						if(arr[i].isUsed==1)
-							tmpStr+="<a class='btn btn-danger' onclick='Disable(\""+arr[i].mail+"\")' >禁用</a>";
+							tmpStr+="<td>可以使用</td>";
 						else
-							tmpStr+="<a class='btn btn-success' onclick='Able(\""+arr[i].mail+"\")' >解禁</a>";
+							tmpStr+="<td>已禁用</td>";
+						tmpStr+="<td>"
+							  +"<a class='btn btn-warning' onclick='InitializeUserPassword(\""+arr[i].mail+"\")'>初始化密码</a>";
+						if(arr[i].isUsed==1)
+							tmpStr+="<a class='btn btn-danger' style='margin-left:5px' onclick='DisableUser(\""+arr[i].mail+"\")' >禁用</a>";
+						else
+							tmpStr+="<a class='btn btn-success' style='margin-left:5px' onclick='AbleUser(\""+arr[i].mail+"\")' >解禁</a>";
 						
 							htmlStr+=tmpStr+"</td>"+"</tr>";
 					}
@@ -660,17 +664,17 @@ window.onload=function() {
 							str+="<option value="+j+">"+j+"</option>";
 					}
 					var select="<hr align='left' width='100%' size='15' />"
-					+"<div class='col-lg-8 col-lg-offset-3'>"
+					+"<div class='col-lg-8 col-lg-offset-3' style='margin-bottom:5px'>"
 					+"<div class='col-lg-2'>"
-					+"<a onclick='PrePage();GetPersonCenterSceneryList();' class='btn btn-primary'>上一页</a>"
+					+"<a onclick='PrePage();GetUserList();' class='btn btn-primary'>上一页</a>"
 					+"</div>"
 					+"<div class='col-lg-3'>"
-					+"<select id='selectPage' class='form-control' onchange='SelectedPage();GetPersonCenterSceneryList();'>"
+					+"<select id='selectPage' class='form-control' onchange='SelectedPage();GetUserList();'>"
 					+str
 					+"</select>"
 					+"</div>"
 					+"<div class='col-lg-2'>"
-					+"<a onclick='NextPage("+total+");GetPersonCenterSceneryList();' class='btn btn-primary'>下一页</a>"
+					+"<a onclick='NextPage("+total+");GetUserList();' class='btn btn-primary'>下一页</a>"
 					+"</div>"
 					+"</div>";
 					$("#usrPanelContent .col-lg-8").remove();
@@ -702,13 +706,17 @@ window.onload=function() {
 					for(var i=0;i <len&&i<numPage;i++){
 						tmpStr="<tr>"
 							+"<td><a href='/WHCD/Manager/DetailUserInfo?mail="+arr[i].mail+"'></a>"+arr[i].mail+"</td>"
-							+"<td>"+arr[i].name+"</td>"
-							+"<td>"
-							+"<a class='btn btn-warning' onclick='InitializeUserPassword(\""+arr[i].mail+"\",\"/WHCD/Manager/DisableUser\")'>初始化密码</a>";
+							+"<td>"+arr[i].name+"</td>";
 						if(arr[i].isUsed==1)
-							tmpStr+="<a class='btn btn-danger' style='margin-left:5px' onclick='Disable(\""+arr[i].mail+"\",\"/WHCD/Manager/DisableUser\")' >禁用</a>";
+							tmpStr+="<td>可以使用</td>";
 						else
-							tmpStr+="<a class='btn btn-success' style='margin-left:5px' onclick='Able(\""+arr[i].mail+"\",\"/WHCD/Manager/AbleUser\")' >解禁</a>";
+							tmpStr+="<td>已禁用</td>";
+						tmpStr+="<td>"
+							  +"<a class='btn btn-warning' onclick='InitializeUserPassword(\""+arr[i].mail+"\")'>初始化密码</a>";
+						if(arr[i].isUsed==1)
+							tmpStr+="<a class='btn btn-danger' style='margin-left:5px' onclick='DisableUser(\""+arr[i].mail+"\")' >禁用</a>";
+						else
+							tmpStr+="<a class='btn btn-success' style='margin-left:5px' onclick='AbleUser(\""+arr[i].mail+"\")' >解禁</a>";
 						
 							htmlStr+=tmpStr+"</td>"+"</tr>";
 					}
@@ -722,17 +730,17 @@ window.onload=function() {
 							str+="<option value="+j+">"+j+"</option>";
 					}
 					var select="<hr align='left' width='100%' size='15' />"
-					+"<div class='col-lg-8 col-lg-offset-3'>"
+					+"<div class='col-lg-8 col-lg-offset-3' style='margin-bottom:5px'>"
 					+"<div class='col-lg-2'>"
-					+"<a onclick='PrePage();GetPersonCenterSceneryList();' class='btn btn-primary'>上一页</a>"
+					+"<a onclick='PrePage();GetUserList();' class='btn btn-primary'>上一页</a>"
 					+"</div>"
 					+"<div class='col-lg-3'>"
-					+"<select id='selectPage' class='form-control' onchange='SelectedPage();GetPersonCenterSceneryList();'>"
+					+"<select id='selectPage' class='form-control' onchange='SelectedPage();GetUserList();'>"
 					+str
 					+"</select>"
 					+"</div>"
 					+"<div class='col-lg-2'>"
-					+"<a onclick='NextPage("+total+");GetPersonCenterSceneryList();' class='btn btn-primary'>下一页</a>"
+					+"<a onclick='NextPage("+total+");GetUserList();' class='btn btn-primary'>下一页</a>"
 					+"</div>"
 					+"</div>";
 					//htmlStr+=select;
@@ -743,8 +751,8 @@ window.onload=function() {
 			});
 	 	}
 		
-		function DisableUser(mail,urlStr){
-			var urlStr="<%=request.getContextPath()%>/Manager/DisableUser";	
+		function DisableUser(mail){
+			var urlStr="/WHCD/Manager/DisableUser";	
 			$.ajax({
 				url : urlStr,
 				async : false,
@@ -763,7 +771,8 @@ window.onload=function() {
 				}
 			});
 		}
-		function AbleUser(mail,urlStr){
+		function AbleUser(mail){
+			var urlStr="/WHCD/Manager/AbleUser";	
 			$.ajax({
 				url : urlStr,
 				async : false,
@@ -783,11 +792,11 @@ window.onload=function() {
 			});
 		}
 		
-		function AddUser(urlStr){
+		function AddUser(){
+			urlStr='/WHCD/Manager/AddUser'
 			var mail=$("#mail").val();
-			alert(mail);
 			var password=$("#password").val();
-			var identity=$("input[name='identity']").val();
+			var identity=$("input[name='identity']:checked").val();
 			var sex=$("input[name='sex']").val();
 			var name=$("#name").val();
 			
@@ -815,7 +824,8 @@ window.onload=function() {
 			});
 			
 		}
-		function  InitializeUserPassword(mail,urlStr){
+		function  InitializeUserPassword(mail){
+			urlStr="/WHCD/Manager/InitializeUserPassword"
 			$.ajax({
 				url : urlStr,
 				async : false,
@@ -834,6 +844,174 @@ window.onload=function() {
 				}
 			});
 		}
+		
+		//管理员中心获取菜单列表
+		function GetTabListOne(){
+	 		if(currentNum==1){
+			$.ajax({
+				type : "post",
+				url:"/WHCD/Manager/getTabList",
+				async : false,
+				dataType : 'json',
+				error : function() {
+					alert("ajax出错！");
+				},
+				success : function(data) {
+					var len=data.tabList.length;
+					var arr=data.tabList;
+					var htmlStr="";
+					var tmpStr="";
+					for(var i=0;i <len;i++){
+						tmpStr="<tr>"
+							+"<td>"+arr[i].name+"</td>";
+						if(arr[i].position===0)
+							tmpStr+="<td>顶部菜单</td>";
+						else
+							tmpStr+="<td>侧部菜单</td>";
+						tmpStr+="<td>";
+						if(arr[i].isUsed==1){
+							tmpStr+="<a class='btn btn-danger'  onclick='DisableTab(\""+arr[i].id+"\")' >禁用</a>"
+							      +"<a class='btn btn-warning' style='margin-left:5px' href='/WHCD/Manager/ModifyTabInfo?id="+arr[i].id+"' >修改</a>";
+						}
+						else
+							tmpStr+="<a class='btn btn-success' style='margin-left:5px' onclick='AbleTab(\""+arr[i].id+"\")' >解禁</a>";
+						
+							htmlStr+=tmpStr+"</td>"+"</tr>";
+					}
+					$("#usrPanelContent tbody").html(htmlStr);
+				}
+			});
+	 		}
+	 	}
+		
+		function GetTabList(){
+			$.ajax({
+				type : "post",
+				url:"/WHCD/Manager/getTabList",
+				async : false,
+				dataType : 'json',
+				error : function() {
+					alert("ajax出错！");
+				},
+				success : function(data) {
+					var len=data.tabList.length;
+					var arr=data.tabList;
+					var htmlStr="";
+					var tmpStr="";
+					for(var i=0;i <len;i++){
+						tmpStr="<tr>"
+							+"<td>"+arr[i].name+"</td>";
+						if(arr[i].position===0)
+							tmpStr+="<td>顶部菜单</td>";
+						else
+							tmpStr+="<td>侧部菜单</td>";
+						tmpStr+="<td>";
+						if(arr[i].isUsed==1){
+							tmpStr+="<a class='btn btn-danger'  onclick='DisableTab(\""+arr[i].id+"\")' >禁用</a>"
+							 +"<a class='btn btn-warning' style='margin-left:5px' href='/WHCD/Manager/ModifyTabInfo?id="+arr[i].id+"' >修改</a>";
+						}
+						else
+							tmpStr+="<a class='btn btn-success' style='margin-left:5px' onclick='AbleTab(\""+arr[i].id+"\")' >解禁</a>";
+						
+							htmlStr+=tmpStr+"</td>"+"</tr>";
+					}
+					$("#usrPanelContent tbody").html(htmlStr);
+				}
+			});
+	 	}
+		function GetTabData(){
+			$.ajax({
+				type : "post",
+				url:"/WHCD/Manager/getTabList",
+				async : false,
+				dataType : 'json',
+				error : function() {
+					alert("ajax出错！");
+				},
+				success : function(data) {
+					var len=data.tabList.length;
+					var arr=data.tabList;
+					var htmlStr="";
+					var tmpStr="";
+					
+					for(var i=0;i <len;i++){
+						htmlStr+="<option value='"+arr[i].id+"'>"+arr[i].name+"</option>"
+					}
+					$("#tab").html(htmlStr);
+				}
+			});
+	 	}
+		
+		function AbleTab(id){
+			var urlStr="/WHCD/Manager/AbleTab";	
+			$.ajax({
+				url : urlStr,
+				async : false,
+				data : {
+					"id" : id
+				},
+				error : function() {
+					alert("解禁失败！");
+				},
+				success : function(data) {
+					if(data==='1')
+						alert('解禁成功');
+				else
+					alert('解禁失败');
+				window.location.reload();
+				}
+			});
+		}
+		
+		function DisableTab(id){
+			var urlStr="/WHCD/Manager/DisableTab";	
+			$.ajax({
+				url : urlStr,
+				async : false,
+				data : {
+					"id" : id
+				},
+				error : function() {
+					alert("禁用失败！");
+				},
+				success : function(data) {
+					if(data==='1')
+						alert('禁用成功');
+				else
+					alert('禁用失败');
+				window.location.reload();
+				}
+			});
+		}
+		
+		function AddTab(){
+			urlStr='/WHCD/Manager/AddTab'
+			var name=$("#name").val();
+			var position=$("input[name='position']:checked").val();
+			alert("position:"+position);
+			$('#addUserModel').modal('hide')
+			$.ajax({
+				url : urlStr,
+				async : false,
+				data : {
+					"position" : position,
+					"name":name
+				},
+				error : function() {
+					alert("添加失败！");
+				},
+				success : function(data) {
+					if(data==='1')
+						alert('添加成功！');
+					else
+						alert('添加失败！');
+				window.location.reload();
+				}
+			});
+			
+		}
+		
+		
 		//获取所有风景名胜
 		function GetManagerSceneryListOne(){
 	 		if(currentNum==1){
@@ -861,22 +1039,22 @@ window.onload=function() {
 							+"<td><p style='width:400px;word-wrap:break-word;overflow:hidden; white-space:nowrap; text-overflow:ellipsis'>"+arr[i].detailSub+"</p></td>"
 							+"<td>"+arr[i].userName+"</td>"
 							+"<td>"+arr[i].createDate+"</td>";
-						if(arr[i].isAudited==1)
+						if(arr[i].isAudited===1)
 							tmpStr+="<td>通过</td>";
-						else if(arr[i].isAudited==-1)
+						else if(arr[i].isAudited===-1)
 							tmpStr+="<td>不通过</td>";
 						else 
 							tmpStr+="<td>待审核</td>";
-						tmpStr+="<td>"+"<a class='btn btn-danger' style='margin-left:5px;' onclick='DeleteScenery(\""+arr[i].id+"\",\"/WHCD/PersonCenter/DeleteScenery\")'>删除</a>";
+						tmpStr+="<td>"+"<a class='btn btn-danger' style='margin-left:5px;float:left' onclick='DeleteScenery(\""+arr[i].id+"\",\"/WHCD/PersonCenter/DeleteScenery\")'>删除</a>";
 						
-						if(arr[i].isAudited==1)
-							tmpStr+="<a class='btn btn-danger' style='margin-left:5px' onclick='AuditScenery(\""+arr[i].id+"\",\"/WHCD/Manager/AuditScenery\")' >通过</a>";
-						else if(arr[i].isAudited==-1)
-							tmpStr+="<a class='btn btn-success' style='margin-left:5px' onclick='DisAuditScenery(\""+arr[i].id+"\",\"/WHCD/Manager/DisAuditScenery\")' >不通过</a>";
+						if(arr[i].isAudited===1)
+							tmpStr+="<a class='btn btn-warning' style='margin-left:5px;float:left' onclick='DisAuditScenery(\""+arr[i].id+"\",\"/WHCD/Manager/DisAuditScenery\")' >不通过</a>";
+						else if(arr[i].isAudited===-1)
+							tmpStr+="<a class='btn btn-success' style='margin-left:5px;float:left' onclick='AuditScenery(\""+arr[i].id+"\",\"/WHCD/Manager/AuditScenery\")' >通过</a>";
 						else
 							{
-							tmpStr+="<a class='btn btn-danger' style='margin-left:5px' onclick='AuditScenery(\""+arr[i].id+"\",\"/WHCD/Manager/AuditScenery\")' >通过</a>";
-							tmpStr+="<a class='btn btn-success' style='margin-left:5px' onclick='DisAuditScenery(\""+arr[i].id+"\",\"/WHCD/Manager/DisAuditScenery\")' >不通过</a>";
+							tmpStr+="<a class='btn btn-success' style='margin-left:5px;float:left' onclick='AuditScenery(\""+arr[i].id+"\",\"/WHCD/Manager/AuditScenery\")' >通过</a>";
+							tmpStr+="<a class='btn btn-warning' style='margin-left:5px;float:left' onclick='DisAuditScenery(\""+arr[i].id+"\",\"/WHCD/Manager/DisAuditScenery\")' >不通过</a>";
 							}
 							htmlStr+=tmpStr+"</td>"+"</tr>";
 					}
@@ -892,15 +1070,15 @@ window.onload=function() {
 					var select="<hr align='left' width='100%' size='15' />"
 					+"<div class='col-lg-8 col-lg-offset-3'>"
 					+"<div class='col-lg-2'>"
-					+"<a onclick='PrePage();GetPersonCenterSceneryList();' class='btn btn-primary'>上一页</a>"
+					+"<a onclick='PrePage();GetManagerSceneryList();' class='btn btn-primary'>上一页</a>"
 					+"</div>"
 					+"<div class='col-lg-3'>"
-					+"<select id='selectPage' class='form-control' onchange='SelectedPage();GetPersonCenterSceneryList();'>"
+					+"<select id='selectPage' class='form-control' onchange='SelectedPage();GetManagerSceneryList();'>"
 					+str
 					+"</select>"
 					+"</div>"
 					+"<div class='col-lg-2'>"
-					+"<a onclick='NextPage("+total+");GetPersonCenterSceneryList();' class='btn btn-primary'>下一页</a>"
+					+"<a onclick='NextPage("+total+");GetManagerSceneryList();' class='btn btn-primary'>下一页</a>"
 					+"</div>"
 					+"</div>";
 					//htmlStr+=select;
@@ -930,28 +1108,29 @@ window.onload=function() {
 					var arr=data.sceneryList;
 					var htmlStr="";
 					var tmpStr="";
+					
 					for(var i=0;i <len&&i<numPage;i++){
 						tmpStr="<tr>"
 							+"<td><a href='/WHCD/PersonCenter/SceneryDetail?sceneryId="+arr[i].id+"'></a>"+arr[i].summary+"</td>"
 							+"<td><p style='width:400px;word-wrap:break-word;overflow:hidden; white-space:nowrap; text-overflow:ellipsis'>"+arr[i].detailSub+"</p></td>"
 							+"<td>"+arr[i].userName+"</td>"
 							+"<td>"+arr[i].createDate+"</td>";
-						if(arr[i].isAudited==1)
+						if(arr[i].isAudited===1)
 							tmpStr+="<td>通过</td>";
-						else if(arr[i].isAudited==-1)
+						else if(arr[i].isAudited===-1)
 							tmpStr+="<td>不通过</td>";
 						else 
 							tmpStr+="<td>待审核</td>";
-						tmpStr+="<td>"+"<a class='btn btn-danger' style='margin-left:5px;' onclick='DeleteScenery(\""+arr[i].id+"\",\"/WHCD/PersonCenter/DeleteScenery\")'>删除</a>";
+						tmpStr+="<td>"+"<a class='btn btn-danger' style='margin-left:5px;float:left' onclick='DeleteScenery(\""+arr[i].id+"\",\"/WHCD/PersonCenter/DeleteScenery\")'>删除</a>";
 						
-						if(arr[i].isAudited==1)
-							tmpStr+="<a class='btn btn-danger' style='margin-left:5px' onclick='AuditScenery(\""+arr[i].id+"\",\"/WHCD/Manager/AuditScenery\")' >通过</a>";
-						else if(arr[i].isAudited==-1)
-							tmpStr+="<a class='btn btn-success' style='margin-left:5px' onclick='DisAuditScenery(\""+arr[i].id+"\",\"/WHCD/Manager/DisAuditScenery\")' >不通过</a>";
+						if(arr[i].isAudited===1)
+							tmpStr+="<a class='btn btn-warning' style='margin-left:5px;float:left' onclick='DisAuditScenery(\""+arr[i].id+"\",\"/WHCD/Manager/AuditScenery\")' >不通过</a>";
+						else if(arr[i].isAudited===-1)
+							tmpStr+="<a class='btn btn-success' style='margin-left:5px;float:left' onclick='AuditScenery(\""+arr[i].id+"\",\"/WHCD/Manager/DisAuditScenery\")' >通过</a>";
 						else
 							{
-							tmpStr+="<a class='btn btn-danger' style='margin-left:5px' onclick='AuditScenery(\""+arr[i].id+"\",\"/WHCD/Manager/AuditScenery\")' >通过</a>";
-							tmpStr+="<a class='btn btn-success' style='margin-left:5px' onclick='DisAuditScenery(\""+arr[i].id+"\",\"/WHCD/Manager/DisAuditScenery\")' >不通过</a>";
+							tmpStr+="<a class='btn btn-success' style='margin-left:5px;float:left' onclick='AuditScenery(\""+arr[i].id+"\",\"/WHCD/Manager/AuditScenery\")' >通过</a>";
+							tmpStr+="<a class='btn btn-warning' style='margin-left:5px;float:left' onclick='DisAuditScenery(\""+arr[i].id+"\",\"/WHCD/Manager/DisAuditScenery\")' >不通过</a>";
 							}
 							htmlStr+=tmpStr+"</td>"+"</tr>";
 					}
@@ -967,15 +1146,15 @@ window.onload=function() {
 					var select="<hr align='left' width='100%' size='15' />"
 					+"<div class='col-lg-8 col-lg-offset-3'>"
 					+"<div class='col-lg-2'>"
-					+"<a onclick='PrePage();GetPersonCenterSceneryList();' class='btn btn-primary'>上一页</a>"
+					+"<a onclick='PrePage();GetManagerSceneryList();' class='btn btn-primary'>上一页</a>"
 					+"</div>"
 					+"<div class='col-lg-3'>"
-					+"<select id='selectPage' class='form-control' onchange='SelectedPage();GetPersonCenterSceneryList();'>"
+					+"<select id='selectPage' class='form-control' onchange='SelectedPage();GetManagerSceneryList();'>"
 					+str
 					+"</select>"
 					+"</div>"
 					+"<div class='col-lg-2'>"
-					+"<a onclick='NextPage("+total+");GetPersonCenterSceneryList();' class='btn btn-primary'>下一页</a>"
+					+"<a onclick='NextPage("+total+");GetManagerSceneryList();' class='btn btn-primary'>下一页</a>"
 					+"</div>"
 					+"</div>";
 					//htmlStr+=select;
@@ -1038,4 +1217,97 @@ window.onload=function() {
 		}
 		
 		$(":file").filestyle({buttonName: "btn-primary"});		
-		// 动态显示图片结束		
+		// 动态显示图片结束
+		
+		function AuditScenery(sceneryId,urlStr){
+			$.ajax({
+				url : urlStr,
+				async : false,
+				data : {
+					"sceneryId" : sceneryId
+				},
+				error : function() {
+					alert("操作失败！");
+				},
+				success : function(data) {
+					if(data==='1')
+						alert('操作成功！');
+				else
+					alert('操作失败！');
+				window.location.reload();
+				}
+			});
+		}
+		
+		function DisAuditScenery(sceneryId,urlStr) {
+			$.ajax({
+				url : urlStr,
+				async : false,
+				data : {
+					"sceneryId" : sceneryId
+				},
+				error : function() {
+					alert("操作失败！");
+				},
+				success : function(data) {
+					if(data==='1')
+						alert('操作成功！');
+				else
+					alert('操作失败！');
+				window.location.reload();
+				}
+			});
+		}
+		
+		//获取顶部菜单
+		function getTopMenu() {
+			$.ajax({
+				type : "post",
+				url:"/WHCD/Manager/getTabList",
+				async : false,
+				dataType : 'json',
+				error : function() {
+					alert("ajax出错！");
+				},
+				success : function(data) {
+					var len=data.tabList.length;
+					var arr=data.tabList;
+					var htmlStr="";
+					var tmpStr="";
+					tmpStr=$("#topMenuList").html();
+					for(var i=0;i <len;i++){
+						if(arr[i].position===0&&arr[i].isUsed===1)
+						htmlStr+="<li><a href='/WHCD/Scenery/SceneryList?tabid="+arr[i].id+"'>"+arr[i].name+"</a></li>"
+					}
+					tmpStr+=htmlStr;
+					$("#topMenuList").html(tmpStr);
+				}
+			});
+		} 
+		
+		//获取侧栏菜单
+		function getSideMenu() {
+			$.ajax({
+				type : "post",
+				url:"/WHCD/Manager/getTabList",
+				async : false,
+				dataType : 'json',
+				error : function() {
+					alert("ajax出错！");
+				},
+				success : function(data) {
+					var len=data.tabList.length;
+					var arr=data.tabList;
+					var htmlStr="";
+					var tmpStr="";
+					tmpStr=$("#sideMenuList").html();
+					for(var i=0;i <len;i++){
+						if(arr[i].position===1&&arr[i].isUsed===1)
+						htmlStr+="<a class='list-group-item' href='/WHCD/Scenery/SceneryList?tabid="+arr[i].id+"'>"+arr[i].name+"</a>"
+					}
+					tmpStr+=htmlStr;
+						$("#sideMenuList").html(tmpStr);
+				}
+			});
+		} 
+		

@@ -18,8 +18,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.struts2.ServletActionContext;
 
 import com.hand.entity.Scenery;
+import com.hand.entity.Tab;
 import com.hand.entity.User;
 import com.hand.service.ISceneryService;
+import com.hand.service.ITabService;
 import com.hand.service.IUserService;
 import com.hand.util.UploadFile;
 import com.opensymphony.xwork2.ActionContext;
@@ -65,6 +67,9 @@ public class PersonCenter extends ActionSupport {
 	@Resource(name = "sceneryService")
 	private ISceneryService sceneryService;
 	
+	@Resource(name = "tabService")
+	private ITabService tabService;
+	
 	public String Index(){
 		return "index";
 	}
@@ -109,6 +114,7 @@ public class PersonCenter extends ActionSupport {
 		String summary=request.getParameter("summary");
 		String richText=request.getParameter("richText");
 		String detailSub=request.getParameter("detailSub");
+		Integer tabId=Integer.parseInt(request.getParameter("tab"));
 		
 		String picAddr=UploadFile.SaveFile(imgUpLoad, this.getImgUpLoadFileName());
         
@@ -127,6 +133,9 @@ public class PersonCenter extends ActionSupport {
 		scenery.setUser_id(user);
 		scenery.setCreateDate(new Date());
 		scenery.setDetailSub(detailSub);
+		Tab tab=tabService.getTab(tabId);
+		scenery.setTab_id(tab);
+		scenery.setIsAudited(0);
 		
 		sceneryService.AddScenery(scenery);
 		
@@ -217,13 +226,16 @@ public class PersonCenter extends ActionSupport {
 			String summary=request.getParameter("summary");
 			String richText=request.getParameter("richText");
 			String detailSub=request.getParameter("detailSub");
+			Integer tabid=Integer.parseInt(request.getParameter("tab"));
 			
 			Scenery sceneryOld=sceneryService.GetScenery(sceneryId);
+			Tab tabNew=tabService.getTab(tabid);
+			Tab tabOld=sceneryOld.getTab_id();
+			if(tabOld.getId()!=tabNew.getId())sceneryOld.setTab_id(tabNew);
 			if(!sceneryOld.getDetail().equals(richText))sceneryOld.setDetail(richText);
-			if(!sceneryOld.getSummary().equals(summary)){
-				sceneryOld.setSummary(summary);
-				sceneryOld.setDetailSub(detailSub);
-			}
+			if(!sceneryOld.getSummary().equals(summary))sceneryOld.setSummary(summary);
+			if(!sceneryOld.getDetailSub().equals(detailSub))sceneryOld.setDetailSub(detailSub);
+			
 			
 			if(imgUpLoad!=null){
 			String picAddr=UploadFile.SaveFile(imgUpLoad, this.getImgUpLoadFileName());

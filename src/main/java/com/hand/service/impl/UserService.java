@@ -69,5 +69,31 @@ public class UserService implements IUserService {
 	public void DeleteUser(User user) {
 		// TODO Auto-generated method stub
 		userDao.Delete(user);
-	}	
+	}
+
+	@Override
+	public Integer getManSum() {
+		// TODO Auto-generated method stub
+		return userDao.getManSum();
+	}
+
+	@Override
+	public Integer getWomenSum() {
+		// TODO Auto-generated method stub
+		return userDao.getWomenSum();
+	}
+
+	@Override
+	public Integer getUserSum() {
+		// TODO Auto-generated method stub
+		return userDao.getUserSum();
+	}
+
+	@Override
+	public Integer getExpertSum() {
+		// TODO Auto-generated method stub
+		return userDao.getExpertSum();
+	}
+	
+	
 }

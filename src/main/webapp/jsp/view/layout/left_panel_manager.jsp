@@ -5,6 +5,7 @@
 		            <a  href="<%=request.getContextPath()%>/Manager/ManageScenery" class="list-group-item">活动管理</a>
 		            <a  href="<%=request.getContextPath()%>/Manager/ManageUser" class="list-group-item">用户管理</a>
 		            <a href="#" class="list-group-item">专家管理</a>
+		             <a href="<%=request.getContextPath()%>/Manager/ManageTab" class="list-group-item">菜单管理</a>
 		            <a href="<%=request.getContextPath()%>/Manager/ModifyInfo" class="list-group-item">个人信息修改</a>
 
  </div>

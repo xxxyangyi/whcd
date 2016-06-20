@@ -127,8 +127,7 @@
 			<result name="index">/jsp/view/manager/index.jsp</result>
 		</action>
 		<action name="DoLogOut" class="managerAction" method="DoLogOut">
-			<result name="logOutSuccess" type="redirect">/Home/Index</result>
-			<result name="logOutFailed" type="redirect">/Manager/Index</result>
+			<result name="logOut" type="redirect">/Home/Index</result>
 		</action>
 		<action name="ModifyInfo" class="managerAction" method="ModifyInfo">
 			<result name="modifyInfo">/jsp/view/manager/modifyInfo.jsp</result>
@@ -180,6 +179,33 @@
 			<result name="detailSceneryInfo">/jsp/view/manager/detailSceneryInfo.jsp</result>
 		</action>
 		<action name="getUserList" class="managerAction" method="getUserList">
+		</action>
+		<action name="AuditScenery" class="managerAction" method="AuditScenery">
+		</action>
+		<action name="DisAuditScenery" class="managerAction" method="DisAuditScenery">
+		</action>
+		<action name="getSexData" class="managerAction" method="getSexData">
+		</action>
+		<action name="getIdentityData" class="managerAction" method="getIdentityData">
+		</action>
+		<action name="getMonthData" class="managerAction" method="getMonthData">
+		</action>
+		<action name="ManageTab" class="managerAction" method="ManageTab">
+			<result name="manageTab">/jsp/view/manager/manageTab.jsp</result>
+		</action>
+		<action name="getTabList" class="managerAction" method="getTabList">
+		</action>
+		<action name="AbleTab" class="managerAction" method="AbleTab">
+		</action>
+		<action name="DisableTab" class="managerAction" method="DisableTab">
+		</action>
+		<action name="AddTab" class="managerAction" method="AddTab">
+		</action>
+		<action name="ModifyTabInfo" class="managerAction" method="ModifyTabInfo">
+			<result name="modifyTabInfo">/jsp/view/manager/modifyTabInfo.jsp</result>
+		</action>
+		<action name="DoModifyTabInfo" class="managerAction" method="DoModifyTabInfo">
+			<result name="modifyTabSuccess" type="redirect">/Manager/ManageTab</result>
 		</action>
 	</package>
 	

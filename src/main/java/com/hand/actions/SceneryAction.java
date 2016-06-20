@@ -46,7 +46,7 @@ public class SceneryAction extends BaseAction {
 		request.setAttribute("page", 1);
 		request.setAttribute("total", total);
 		request.setAttribute("numPage", numPage);
-		
+			
 		return "sceneryList";
 	}
 	
@@ -101,7 +101,6 @@ public class SceneryAction extends BaseAction {
 		if(managerParam!=null){
 			 sqlSum="select count(*) as sumkey from scenery order by createdate";
 			 sql="select * from scenery order by createdate";
-			 System.out.println(sqlSum);
 			
 		}else if(userParam!=null){
 			User user=(User) session.get("user");
@@ -109,12 +108,19 @@ public class SceneryAction extends BaseAction {
 		
 			 sqlSum="select count(*) as sumkey from scenery where user_id='"+mail+"' order by createdate";
 			 sql="select * from scenery where user_id='"+mail+"' order by createdate";
-			 System.out.println(sqlSum);
 			
 		}else{
-			 sqlSum="select count(*) as sumkey from scenery where isaudited=1  order by createdate";
-			 sql="select * from scenery where isaudited=1 order by createdate";
-			 System.out.println(sqlSum);
+			String tab=request.getParameter("tabid");
+			if(tab!=null){
+				sqlSum="select count(*) as sumkey from scenery where isaudited=1 and tab_id="+tab+" order by createdate";
+				 sql="select * from scenery where isaudited=1 and tab_id="+tab+" order by createdate";
+			
+			}
+			else
+			{
+				 sqlSum="select count(*) as sumkey from scenery where isaudited=1  order by createdate";
+				 sql="select * from scenery where isaudited=1 order by createdate";
+			}
 		}	
 		
 		Integer page=Integer.parseInt(request.getParameter("page"));

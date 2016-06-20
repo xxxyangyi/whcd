@@ -35,7 +35,7 @@
 					<div class="panel-body">
 						<form id="sceneryForm" action="<%=request.getContextPath()%>/PersonCenter/DoCreateScenery" method="post" enctype="multipart/form-data">
 							<div>
-								<label style="display: block;">概要：</label>
+								<label style="display: block;">标题：</label>
 								<div class="form-group col-sm-12">
 									<input type="text" class="form-control " id="summary"  name="summary"/> 
 								</div>
@@ -54,6 +54,15 @@
 								</div>
 							</div>
 							<div>
+								<label for="exampleInputPassword1" style="display: block;">类别：</label>
+								<select id="tab" name="tab" class="form-control">
+										
+								</select>
+								<script type="text/javascript">
+									GetTabData();
+								</script>
+							</div>
+							<div>
 								<label style="display: block;">图片：</label>
 								<div class="col-sm-12" style="margin-top: 5px;margin-bottom: 5px;">
 									<input type="file" name="imgUpLoad" id="imgUpLoad" onchange="PreView()" class="filestyle" data-buttonName="btn-primary" >
@@ -70,7 +79,6 @@
 			</div>
 		</div>
 	</div>
-<<<<<<< Upstream, based on branch 'master' of https://github.com/xxxyangyi/whcd.git
 	<script type="text/javascript">
 	function GetFilePath() {
 		var addr = null;
@@ -126,7 +134,5 @@
 <script type="text/javascript">
 $(":file").filestyle({buttonName: "btn-primary"});
 </script>
-=======
->>>>>>> 916ebc3 合并代码
 </body>
 </body>

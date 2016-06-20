@@ -1,6 +1,7 @@
 package com.hand.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -60,5 +61,11 @@ public class SceneryService implements ISceneryService {
 		return sceneryDao.FindAll();
 	}
 
+	@Override
+	public Map getSceneryListByMonth() {
+		// TODO Auto-generated method stub
+		return sceneryDao.getSceneryListByMonth();
+	}
 
+	
 }

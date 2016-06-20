@@ -27,6 +27,7 @@
 				<hr align="left" width="100%" size="15" />
 
 				<div class="panel panel-default">
+					
 					<div class="panel-heading">
 						<h4>修改名胜古迹信息</h4>
 						<div style="float: right;margin-top: -35px;">
@@ -38,7 +39,7 @@
 					<div class="panel-body">
 						<form id="sceneryForm" action="<%=request.getContextPath()%>/PersonCenter/DoSceneryModify" method="post" enctype="multipart/form-data">
 							<div>
-								<label style="display: block;">概要：</label>
+								<label style="display: block;">标题：</label>
 								<div class="form-group col-sm-12">
 									<input type="text" value="<%=scenery.getSummary()%>" class="form-control " id="summary"  name="summary" disabled="disabled"/> 
 								</div>
@@ -54,11 +55,20 @@
 				  							<textarea id="editor1" name="editor" placeholder="Type your text here..." disabled="disabled">
 				  							</textarea>
 									</div>
-									<input type="hidden" id="richText"  name="richText" value="<%=scenery.getDetail()%>"/>
+				
+									<textarea id="richText"  name="richText" style="display: none" ><%=scenery.getDetail()%></textarea>
 									<input type="hidden" id="detailSub"  name="detailSub" />
 									<input  type="hidden" name="sceneryId" value="<%=scenery.getId()%>" > 
+								</div>								
 								</div>
-								
+								<div>
+									<label for="exampleInputPassword1" style="display: block;">类别：</label>
+									<select id="tab" name="tab" class="form-control"  disabled="disabled">
+										
+									</select>
+									<script type="text/javascript">
+									GetTabData();
+									</script>
 								</div>
 								<div>
 								<label style="display: block;">图片：</label>
@@ -79,15 +89,19 @@
 		</div>
 	</div>
 	<script type="text/javascript">
+		
+		$("#tab").val(<%=scenery.getTab_id().getId()%>);
 		var str = new Object();
 		function Modify(inputId) {
 			$("#sceneryForm input").each(function(){
 				$(this).removeAttr("disabled");
 			});
+			$(".group-span-filestyle label").removeAttr("disabled");
+			$("#tab").removeAttr("disabled");
 			
 			var str=$("#textDetail2").html();
 			$(".wysiwyg-editor").html(str);
-			
+
 			$("#textDetail").show();
 			$("#textDetail2").hide();
 			
@@ -100,10 +114,11 @@
 		}
 		function Config(inputId) {
 			var str=$(".wysiwyg-editor").html();
-			$("#richText").val(str);
+			$("#richText").html(str);
 			
 			var strNew=RegText(".wysiwyg-editor");
 			var strFinal=SpiltStr(strNew);
+			alert(strFinal);
 			$("#detailSub").val(strFinal);
 			$("#sceneryForm").submit();
 		}
@@ -150,6 +165,7 @@
 	</script>
 <script type="text/javascript">
 $(":file").filestyle({buttonName: "btn-primary"});
+$(".group-span-filestyle label").attr("disabled","disabled"); 
 </script>
 </body>
 </html>

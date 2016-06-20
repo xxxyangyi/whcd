@@ -30,10 +30,13 @@
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
-			<ul class="nav navbar-nav">
+			<ul id="topMenuList" class="nav navbar-nav">
 				<li class="active"><a href="<%=request.getContextPath()%>/Scenery/SceneryList">名胜古迹 <span class="sr-only">(current)</span></a></li>
 				<li><a href="<%=request.getContextPath()%>/jsp/view/activityShowList.jsp">投票系统</a></li>
 			</ul>
+			<script type="text/javascript">
+						 getTopMenu();
+			</script>
 			<ul class="nav navbar-nav navbar-right">
 				<%
 					if (session.getAttribute("user") == null) {
