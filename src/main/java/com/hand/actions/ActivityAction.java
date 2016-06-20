@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.Resource;
@@ -13,6 +16,7 @@ import org.apache.struts2.interceptor.*;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.hand.entity.Activity;
+import com.hand.entity.User;
 import com.hand.entity.Vote;
 import com.hand.service.IActivityService;
 import com.opensymphony.xwork2.ActionSupport;
@@ -26,6 +30,7 @@ public class ActivityAction extends ActionSupport implements SessionAware,Servle
 	private HttpServletRequest  request;
 	private HttpServletResponse response;
 	private Activity activity;
+	private List<Activity> activityList;
 	private String time1;
 	private String time2;
 	
@@ -33,13 +38,12 @@ public class ActivityAction extends ActionSupport implements SessionAware,Servle
 	public void Index() {
 		Activity activity = new Activity();
 		System.out.println(activity.getEndTime());
-		activity.setActivityName("这是第一个活动");
-		
+		activity.setActivityName("这是第一个活动");		
 		activityService.AddActivity(activity);
 	}
 	
-	public String activityAdd() throws ParseException{
-		
+	// 添加活动
+	public String activityAdd() throws ParseException{		
 		System.out.println(activity.getId());
 		System.out.println(activity.getActivityName());
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -52,7 +56,7 @@ public class ActivityAction extends ActionSupport implements SessionAware,Servle
 		System.out.println("+++++++++++添加成功！");
 		return "success";
 	}
-	
+	// 获取活动的信息
 	public void getActivitys() throws IOException {
 		System.out.println("=============getActivitys");
 		response.setContentType("text/json"); 
@@ -65,13 +69,29 @@ public class ActivityAction extends ActionSupport implements SessionAware,Servle
 		System.out.println("发送数据");
 	}
 	
-	
+	// 得到全部的投票
 	public String getActivityVotes() throws IOException {
 		System.out.println("=============getActivityVotes");
 		int activity_id = Integer.parseInt(request.getParameter("activity_id"));
 		activity = activityService.GetActivity(activity_id);
 		return "success";
 	}
+	
+	// 管理员获取活动的信息
+	public String getActivitysOrderByCreateTime() throws IOException {
+		System.out.println("getActivitysOrderByCreateTime");
+		String str = "";
+		str = "SELECT * from activity";				 
+		activityList = activityService.FindBySQL(str);
+		Collections.sort(activityList, new Comparator<Activity>() {
+			@Override
+            public int compare(Activity a1, Activity a2) {				
+				return a1.getCreateTime().compareTo(a2.getCreateTime());
+            }
+        });		
+		return "success";
+	}
+	
 	
 	public String getActivityById() {
 		System.out.println("=============getActivityById");
@@ -88,6 +108,7 @@ public class ActivityAction extends ActionSupport implements SessionAware,Servle
 	
 	
 	
+	
 /////////////////get set 方法//////////////////////////////////////////////////////////////////////////
 	public Activity getActivity() {
 		return activity;
@@ -95,6 +116,14 @@ public class ActivityAction extends ActionSupport implements SessionAware,Servle
 
 	public void setActivity(Activity activity) {
 		this.activity = activity;
+	}
+
+	public List<Activity> getActivityList() {
+		return activityList;
+	}
+
+	public void setActivityList(List<Activity> activityList) {
+		this.activityList = activityList;
 	}
 
 	public String getTime1() {

@@ -36,7 +36,7 @@ public abstract class AbstractHibernateDao<T extends Serializable> implements
 	public T FindOne(Object id) {
 		return (T) getCurrentSession().get(clazz, (Serializable) id);
 	}
-
+	
 	public List<T> FindAll() {
 		return getCurrentSession().createQuery("from " + clazz.getName()).list();
 	}

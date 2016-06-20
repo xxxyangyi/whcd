@@ -63,17 +63,13 @@
 									type="password" class="form-control" name="rePassword" id="rePassword"
 									placeholder="确认密码">
 							</div>
-							<div class="form-group">
+							<div class="form-group" style="display: none;">
 								<div class="input-group">
 									<div clas="row">
 										<div class="col-lg-1">
 											<input type="radio" name="identity" value="1" aria-label="..."  checked="checked">
 										</div>
-										<div class="col-lg-3">游客</div>
-										<div class="col-lg-1">
-											<input type="radio" name="identity" value="0" aria-label="...">
-										</div>
-										<div class="col-lg-3">专家</div>
+										游客
 									</div>
 								</div>
 							</div>

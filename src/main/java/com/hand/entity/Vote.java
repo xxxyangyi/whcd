@@ -27,7 +27,7 @@ public class Vote implements Serializable {
 	
 	@Column(name="create_time")
 	@Expose 
-	private Date create_time;
+	private Date create_time = new Date();
 	
 	@Column(name="voteNum")
 	@Expose 
@@ -44,13 +44,10 @@ public class Vote implements Serializable {
 	@Column(name="context")
 	@Expose 
 	private String context;	
-
-	public Vote() {
-		this.create_time = new Date();
-		this.voteNum = 0;
-		this.expertVoteNum = 0;
-	}
-
+	
+	@Column(name="review")
+	@Expose 
+	private int review = 0; // 0 代表没审核， 1 代表审核通过， 2 代表审核没通过	
 
 	public int getId() {
 		return id;
@@ -129,6 +126,16 @@ public class Vote implements Serializable {
 
 	public void setContext(String context) {
 		this.context = context;
+	}
+
+
+	public int getReview() {
+		return review;
+	}
+
+
+	public void setReview(int review) {
+		this.review = review;
 	}
 
 
