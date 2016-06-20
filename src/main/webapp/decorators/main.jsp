@@ -35,7 +35,78 @@
 	<script type="text/javascript" src="<%=basePath%>jsp/js/Chart.js"></script>
 	<script type="text/javascript" src="<%=basePath%>jsp/js/wysiwyg.js"></script>
 	<script type="text/javascript" src="<%=basePath%>jsp/js/app.js"></script>
+	<style type="text/css">
+	.footer{
+	width: 1060px;
+	background:url('/WHCD/jsp/img/bg_footer.png');
+	float: left;
+	border-top: 5px solid #79c90e;
+	height: 190px;
+	padding-left: 40px;
+	margin:15px auto 0;
+	margin-left: 120px;
+}
+.footer .footerDiv{
+	display: inline-block;
+	width: 120px;
+	margin:20px;
+	margin-top: 10px;
+}
+.footer .footerDiv .footerTitleBG1{
+	background:url('/WHCD/jsp/img/foot_pic_01.gif');
+}
+.footer .footerDiv .footerTitleBG2{
+	background:url('/WHCD/jsp/img/foot_pic_02.gif');
+}
+.footer .footerDiv .footerTitleBG3{
+	background:url('/WHCD/jsp/img/foot_pic_03.gif');
+}
+.footer .footerDiv .footerTitleBG4{
+	background:url('/WHCD/jsp/img/foot_pic_04.gif');
+}
+.footer .footerDiv span{
+	font-size: 10px;
+	color: #fff;
+	margin-left: 30px;
+}
+.footer .footerDiv a{
+	display: block;
+	margin: 10px;
+	font-size: 10px;
+	color: #000;
+	text-decoration: none;
+}
+.footer .footerLine{
+	display: inline-block;
+	border-right: 1px solid #000;
+	height: 100px;
+	margin-left: 0px;
+}
+
+.footer .footerNote{
+	display: inline-block;
+	font-size: 10px;
+	color: #000;
+	width: 350px;
+	margin-top:30px;
+	float: right;
+}
+
+	.side-bar {width: 66px;position: fixed;bottom: 20px;right: 25px;font-size: 0;line-height: 0;z-index: 100;}
+										.side-bar a {width: 66px;height: 66px;display: inline-block;background-color: #ddd;margin-bottom: 2px;}
+										.side-bar a:hover {background-color: #669fdd;}
+										.side-bar .icon-qq {background-image: url(/WHCD/jsp/img/tencent_mobileqq_64px_1186944_easyicon.net.png);}
+										.side-bar .icon-chat {background-image: url(/WHCD/jsp/img/tencent_mm_64px_1186943_easyicon.net.png);position: relative;}
+										.side-bar .icon-chat:hover .chat-tips {display: block;}
+										.side-bar .icon-blog {background-image: url(/WHCD/jsp/img/qq_qzone_64px_1186902_easyicon.net.png);}
+										.side-bar .icon-mail {background-image: url(/WHCD/jsp/img/home_64px_1093601_easyicon.net.png)}
+										.side-bar .icon-totop {background-position: 0 -334px;}
+										.chat-tips {padding: 20px;border: 1px solid #d1d2d6;position: absolute;right: 78px;top: -55px;background-color: #fff;display: none;}
+										.chat-tips i {width: 9px;height: 16px;display: inline-block;position: absolute;right: -9px;top: 80px;background-position:-88px -350px;}
+										.chat-tips img {width: 138px;height: 138px;}
+	</style>
 	<decorator:head/>
+	
 </head>
 <body>
 	<s:if test="#session.get('user')!=null">
@@ -70,8 +141,44 @@
 			<decorator:body />  
 		</div>
 	</div>
-	<hr>
-	<h3>Foot</h3>
+
+<footer class="footer">
+	<div class="footerDiv">
+		<div class="footerTitleBG1">
+			<span>关于我们</span>
+		</div>
+		<a href="">关于本站</a> <a href="">法律声明</a> <a href="">招聘启事</a> <a
+			href="">新手上门</a>
+	</div>
+	<div class="footerDiv">
+		<div class="footerTitleBG2">
+			<span>商务合作</span>
+		</div>
+		<a href="">市场合作</a> <a href="">友情链接</a> <a href="">商务合作</a> <a href="">携程合作</a>
+	</div>
+	<div class="footerDiv">
+		<div class="footerTitleBG3">
+			<span>联系我们</span>
+		</div>
+		<a href="">在线客服</a> <a href="">官方微博</a> <a href="">意见反馈</a> <a href="">QQ联系</a>
+	</div>
+	<div class="footerDiv">
+		<div class="footerTitleBG4">
+			<span>市场推广</span>
+		</div>
+		<a href="">携程旅行网</a> <a href="">艺龙旅行网</a> <a href="">途牛旅行网</a> <a href="">同城旅行网</a>
+	</div>
+	<div class="footerLine"></div>
+	<div class=" footerNote">
+		<p>
+			©文化词典 <a href="file:///F:/LOLOWeb/index.html">http://localhost:8080/WHCD/</a>
+			文化词典小组所有
+		</p>
+		<p>滇ICP证:120807号 网络文化经营许可证:京网文[2015]0019-019号</p>
+		<p>京公网安备：11010102000514号</p>
+	</div>
+</footer>
+	
 	<script type="text/javascript">
 		if(window.location.href=="http://localhost:8080/WHCD/"){
 			alert("remove")

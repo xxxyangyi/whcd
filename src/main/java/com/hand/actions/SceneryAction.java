@@ -28,7 +28,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class SceneryAction extends BaseAction {
 	
-	private static Integer numPage=2;
+	private static Integer numPage=4;
 	
 	
 	@Resource(name = "sceneryService")
@@ -175,4 +175,5 @@ public class SceneryAction extends BaseAction {
 		
         out.print(gson.toJson(paramMap));
 	}
+   
 }

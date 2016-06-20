@@ -22,6 +22,8 @@ public class SceneryVO {
 	private String userName;
 	@Expose
 	private Integer isAudited;
+	@Expose
+	private String type;
 	
 	public String getId() {
 		return id;
@@ -70,6 +72,12 @@ public class SceneryVO {
 	}
 	public void setIsAudited(Integer isAudited) {
 		this.isAudited = isAudited;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
 	}
 	
 	

@@ -34,7 +34,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class ManagerAction extends BaseAction {
 
-private static Integer numPage=8;
+private static Integer numPage=2;
 	
 	// myFile属性用来封装上传的文件  
     private File imgUpLoad;  

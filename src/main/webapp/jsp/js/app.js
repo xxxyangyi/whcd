@@ -25,7 +25,7 @@ window.onload=function() {
 																			+ "</div>"
 																			+ "<div class='media-body'>"
 																			+ "<h4 class='media-heading'>"
-																			+ "<a href='http://localhost:8080/WHCD/activity/getActivityVotes?activity_id="+msg[i].id+"'> "
+																			+ "<a href='http://localhost:8080/WHCD/activity/getActivityVotesPassed?activity_id="+msg[i].id+"'> "
 																			+ msg[i].activityName
 																			+ "</a>"
 																			+ "</h4>"
@@ -97,7 +97,7 @@ window.onload=function() {
 																			+ "</div>"
 																			+ "<div class='media-body'>"
 																			+ "<h4 class='media-heading'>"
-																			+ "<a href='http://localhost:8080/WHCD/activity/getActivityVotes?activity_id="+msg[i].id+"'> "
+																			+ "<a href='http://localhost:8080/WHCD/activity/getActivityVotesPassed?activity_id="+msg[i].id+"'> "
 																			+msg[i].activityName
 																			+"</a>"
 																			+"</h4>"
@@ -140,9 +140,7 @@ window.onload=function() {
 					console.log(y)
 					for (i; i < y; i++) {
 						console.log(i)
-							$("#home_scenery_list").append("1"
-														
-							)
+							
 					}				
 				} else {
 					console.log("请求数据失败： "+ msg);
@@ -402,7 +400,7 @@ window.onload=function() {
 					var tmpStr="";
 					for (var i=0; i <len&&i<numPage; i++) {
 					if(i%2==0){
-					 tmpStr="<div class='col-lg-10 col-lg-offset-2'>"
+					 tmpStr="<div class='row'><div class='col-lg-10 col-lg-offset-2'>"
 						+"<div class='panel panel-default'>"
 						+"<div class='panel-body' style='height: 125px;'>"
 						+"<div class='media'>"
@@ -418,7 +416,7 @@ window.onload=function() {
 						+"</div>"
 						+"<div class='media-right media-middle'>"
 						+"<a> <img class='media-object' style='margin-top: 20px;'  src='/WHCD"+arr[i].picaddr+"' onload='AutoResizeImage(100,100,this)' onerror='javascript:this.src=\"/WHCD/jsp/img/errorimg.jpg\"' /></a>"
-						+"</div></div></div></div></div>";
+						+"</div></div></div></div></div></div>";
 						}
 					else{
 							tmpStr="<div class='row'>"
@@ -1356,3 +1354,68 @@ window.onload=function() {
 				}
 			});
 		} 
+
+		function getSceneryDataHomePage() {
+			$.ajax({
+				type : "post",
+				url:"/WHCD/Scenery/getSceneryList",
+				async : false,
+				dataType : 'json',
+				data:{"page":1},
+				error : function() {
+					alert("ajax出错！");
+				},
+				success : function(data) {
+					var numPage=data.numPage;
+					var len=data.sceneryList.length;
+					var total=data.total;
+					var page=data.page;
+					var arr=data.sceneryList;
+					var htmlStr="";
+					var tmpStr="";
+					alert(len);
+					for (var i=0; i <len&&i<numPage; i++) {
+					if(i==0){
+					 tmpStr="<div class='row'><div class='col-lg-10 col-lg-offset-1'>"
+						+"<div class='panel panel-default'>"
+						+"<div class='panel-body' style='height: 125px;'>"
+						+"<div class='media'>"
+						+"<div class='media-body'>"
+						+"<h4 class='media-heading'>"
+						+"<a href='/WHCD/Scenery/SceneryDetail?sceneryId="+arr[i].id+"'>" 
+						+arr[i].summary
+						+"</a>"
+						+"</h4>"
+						+"<p style='width:470px;word-wrap:break-word;text-overflow:ellipsis'>"
+						+arr[i].detailSub
+						+"</p>"
+						+"</div>"
+						+"<div class='media-right media-middle'>"
+						+"<a> <img class='media-object' style='margin-top: 20px;'  src='/WHCD"+arr[i].picaddr+"' onload='AutoResizeImage(100,100,this)' onerror='javascript:this.src=\"/WHCD/jsp/img/errorimg.jpg\"' /></a>"
+						+"</div></div></div></div></div></div>";
+						}
+					else{
+							tmpStr="<div class='row'>"
+										+"<div class='col-lg-10 col-lg-offset-1'>"
+										+"<div class='panel panel-default'>"
+										+"<div class='panel-body' style='height: 125px;'>"
+										+"<div class='media'>"
+										+"<div class='media-body'>"
+										+"<h4 class='media-heading'>"
+										+"<a href='/WHCD/Scenery/SceneryDetail?sceneryId="+arr[i].id+"'>"
+										+arr[i].summary
+										+"</a>"
+										+"</h4>"
+										+"<p style='width:470px;word-wrap:break-word;text-overflow:ellipsis'>"
+										+arr[i].detailSub
+										+"</p>"
+										+"</div>"
+										+"</div></div></div></div></div>";
+						}
+						htmlStr+=tmpStr;
+					}
+					
+					$("#sceneryHomePage").html(htmlStr);
+				}
+			});
+		}
