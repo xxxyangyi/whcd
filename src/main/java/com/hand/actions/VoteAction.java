@@ -75,7 +75,7 @@ public class VoteAction extends ActionSupport implements SessionAware,ServletReq
 		if(session.get("user")!=null && ((User)session.get("user")).getIdentity()==0){
 			 str = "SELECT * from vote WHERE activity_id = "+activity_id;		
 		}else{
-			str = "SELECT * from vote WHERE activity_id = "+activity_id+" and review = 0;";
+			str = "SELECT * from vote WHERE activity_id = "+activity_id+" and review = 1;";
 		}		 
 		voteList = voteService.FindBySQL(str);
 		Collections.sort(voteList, new Comparator<Vote>() {
@@ -91,12 +91,15 @@ public class VoteAction extends ActionSupport implements SessionAware,ServletReq
 							(v1.getExpertVoteNum()/activity.getExpertNum())*(activity.getWeight()/(1-activity.getWeight()))*activity.getUserNum();
 					 y = v2.getVoteNum() + 
 							(v2.getExpertVoteNum()/activity.getExpertNum())*(activity.getWeight()/(1-activity.getWeight()))*activity.getUserNum();								
-				}
+				}					
 					//System.out.println("x:" +x +"   y:"+y);
-				return (int) (y-x);
+				int flag=0;
+				if (x-y>0){flag=-1;}
+				if (x-y==0){flag=0;}
+				if (x-y<0){flag=1;}
+				return flag;
             }
         });	
-		
 		return "success";
 	}
 
@@ -200,7 +203,11 @@ public class VoteAction extends ActionSupport implements SessionAware,ServletReq
 							(v2.getExpertVoteNum()/activity.getExpertNum())*(activity.getWeight()/(1-activity.getWeight()))*activity.getUserNum();								
 				}
 					//System.out.println("x:" +x +"   y:"+y);
-				return (int) (y-x);
+				int flag=0;
+				if (x-y>0){System.out.println("11");flag=-1;}
+				if (x-y==0){System.out.println("12");flag=0;}
+				if (x-y<0){System.out.println("13");flag=1;}
+				return flag;
             }
         });		
 		return "success";

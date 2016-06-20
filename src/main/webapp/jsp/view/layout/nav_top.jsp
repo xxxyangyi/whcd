@@ -31,7 +31,6 @@
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul id="topMenuList" class="nav navbar-nav">
-				<li class="active"><a href="<%=request.getContextPath()%>/Scenery/SceneryList">名胜古迹 <span class="sr-only">(current)</span></a></li>
 				<li><a href="<%=request.getContextPath()%>/jsp/view/activityShowList.jsp">投票系统</a></li>
 			</ul>
 			<script type="text/javascript">
@@ -69,7 +68,7 @@
 						<div class="form-group  ">
 							<label class="control-label col-sm-3">密码：</label>
 							<div class="col-sm-7">
-								<input type="text" class="form-control" id="passwordLogin"
+								<input type="password" class="form-control" id="passwordLogin"
 									aria-describedby="passwordStatus">
 							</div>
 						</div>

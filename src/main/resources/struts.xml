@@ -68,7 +68,7 @@
 		<!-- <default-interceptor-ref name="ActivityInterceptor" />    --> 
 		<action name="voteAdd" class="voteAction" method="voteAdd">
 		    <result name="success" type="redirectAction">  
-                 <param name="actionName">activity/getActivityVotes</param>  
+                 <param name="actionName">activity/getActivityVotesPassed</param>  
                  <param name="activity_id">${vote.activity_id.id}</param>  
              </result>	
 		</action>
@@ -93,7 +93,7 @@
 		</action>
 		<action name="managerVoteInfoReviewPassORNotPass" class="voteAction" method="managerVoteInfoReviewPassORNotPass"></action>
 		<action name="getActivityById" class="activityAction" method="getActivityById">
-		   <!--  <interceptor-ref name="ActivityInterceptor"/> -->
+		    <interceptor-ref name="ActivityInterceptor"/>
 		    <result name="success">/jsp/view/voteAdd.jsp</result>		    
 		</action>
 		<action name="voteFor" class="voteAction" method="voteFor"></action>

@@ -19,14 +19,7 @@
 </head>
 
 <body>
-	<div class="container id1" style="width: 90%">
-		<div class="row">
-			<div class="col-md-3">
-				<jsp:include page="../layout/left_panel_manager.jsp"></jsp:include>
-			</div>
 			<div class="col-md-9">
-				<hr align="left" width="100%" size="15" />
-
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						修改菜单信息
@@ -52,7 +45,7 @@
 									<div clas="row">
 
 										<%
-											if (tab.getPosition()== 0) {
+											if (tab.getPosition()== 1) {
 										%>
 										<div class="col-lg-1">
 											<input type="radio" name="position" value="1" aria-label="..."
@@ -86,8 +79,6 @@
 					<div class="panel-footer"></div>
 				</div>
 			</div>
-		</div>
-	</div>
 	<script type="text/javascript">
 		var str = new Object();
 		function Modify(inputId) {
