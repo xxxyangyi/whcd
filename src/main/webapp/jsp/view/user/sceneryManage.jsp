@@ -16,11 +16,6 @@
 </head>
 
 <body>
-	<div class="container id1" style="width: 90%">
-		<div class="row">
-			<div class="col-md-3">
-				<jsp:include page="../layout/left_panel_user.jsp"></jsp:include>
-			</div>
 			<div class="col-md-9">
 				<div style="float:left;"><h4>名胜古迹列表</h4></div><a style="float:right;" class="btn btn-info" href="<%=request.getContextPath()%>/PersonCenter/CreateScenery">创建名胜古迹</a>
 				<hr align="left" width="100%" size="15" />
@@ -41,6 +36,4 @@
 				</table>
 				</div>
 			</div>
-		</div>
-	</div>
 </body>

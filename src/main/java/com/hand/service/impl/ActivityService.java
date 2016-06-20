@@ -37,4 +37,9 @@ public class ActivityService implements IActivityService {
 		return activityDao.FindBySQL(str);
 	}
 
+	@Override
+	public Activity update(Activity activity) {
+		return activityDao.Update(activity);
+	}
+
 }

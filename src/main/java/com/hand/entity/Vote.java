@@ -33,69 +33,104 @@ public class Vote implements Serializable {
 	@Expose 
 	private int voteNum;
 	
+	@Column(name="expertVoteNum")
+	@Expose 
+	private int expertVoteNum;
+	
 	@Column(name="userImg")
 	@Expose 
 	private String userImg;
 	
 	@Column(name="context")
 	@Expose 
-	private String context;
+	private String context;	
+
+	public Vote() {
+		this.create_time = new Date();
+		this.voteNum = 0;
+		this.expertVoteNum = 0;
+	}
+
 
 	public int getId() {
 		return id;
 	}
 
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 
 	public User getUser_id() {
 		return user_id;
 	}
 
+
 	public void setUser_id(User user_id) {
 		this.user_id = user_id;
 	}
+
 
 	public Activity getActivity_id() {
 		return activity_id;
 	}
 
+
 	public void setActivity_id(Activity activity_id) {
 		this.activity_id = activity_id;
 	}
+
 
 	public Date getCreate_time() {
 		return create_time;
 	}
 
+
 	public void setCreate_time(Date create_time) {
 		this.create_time = create_time;
 	}
+
 
 	public int getVoteNum() {
 		return voteNum;
 	}
 
+
 	public void setVoteNum(int voteNum) {
 		this.voteNum = voteNum;
 	}
 
-	public String getContext() {
-		return context;
+
+	public int getExpertVoteNum() {
+		return expertVoteNum;
 	}
 
-	public void setContext(String context) {
-		this.context = context;
+
+	public void setExpertVoteNum(int expertVoteNum) {
+		this.expertVoteNum = expertVoteNum;
 	}
+
 
 	public String getUserImg() {
 		return userImg;
 	}
 
+
 	public void setUserImg(String userImg) {
 		this.userImg = userImg;
 	}
+
+
+	public String getContext() {
+		return context;
+	}
+
+
+	public void setContext(String context) {
+		this.context = context;
+	}
+
 
 	@Override
 	public String toString() {

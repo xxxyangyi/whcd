@@ -36,6 +36,7 @@ public class VoteAction extends ActionSupport implements SessionAware,ServletReq
 	private HttpServletRequest  request;
 	private HttpServletResponse response;
 	private Vote vote;
+	private Activity activity;
     private File imgUpLoad;
     private String imgUpLoadContentType;  
     private String imgUpLoadFileName;
@@ -50,6 +51,7 @@ public class VoteAction extends ActionSupport implements SessionAware,ServletReq
 	//  添加投票信息
 	public String voteAdd(){
 		System.out.println("====================voteAdd");
+		System.out.println(vote.getId());
 		int activity_id =Integer.parseInt(request.getParameter("activity_id"));
 		String picAddr=UploadFile.SaveFile(imgUpLoad, this.getImgUpLoadFileName());
 		System.out.println(picAddr);
@@ -72,31 +74,60 @@ public class VoteAction extends ActionSupport implements SessionAware,ServletReq
 		String str = "SELECT * FROM usertoactivity where activity_id = "+activity_id+" and user_id=\""+user_id+"\";";
 		List<UserToActivity> userToActivityList =  userToActivityService.FindBySQL(str);		
 		System.out.println("size ="+userToActivityList.size());
-		if(userToActivityList.size() ==1){
+		if(userToActivityList.size() ==1){ // 参加了活动，但没有进行投票的情况（专家不会参加活动，所以专家不会有此种情况）
 			System.out.println(userToActivityList.get(0).getVotefor());
 			if(userToActivityList.get(0).getVotefor().equals("")){
 				userToActivityList.get(0).setVotefor(voteFor);
 				userToActivityService.Update(userToActivityList.get(0));
+				//游客总票数加1
+				activity =activityService.GetActivity(activity_id);
+				System.out.println("-------");
+				System.out.println(activity.getUserNum()+1);
+				activity.setUserNum(activity.getUserNum()+1);
+				activityService.update(activity);
+				System.out.println("-------");
 				//票数加1
 				vote = voteService.GetVote(vote_id);
 				vote.setVoteNum(vote.getVoteNum()+1);
 				voteService.update(vote);
 			}else{
+				System.out.println(userToActivityList.get(0).getActivity_id().getId());
 				System.out.println("该用户已经投过票");
 				msg=2;
 			}
 		}
-		if(userToActivityList.size() ==0){
+		if(userToActivityList.size() ==0){// 在这里面要明确的区分 游客和专家的投票
 			System.out.println("开始添加");
 			UserToActivity userToActivity = new UserToActivity();
 			userToActivity.setUser_id(((User)session.get("user")));
 			userToActivity.setActivity_id((Activity)activityService.GetActivity(activity_id));
 			userToActivity.setVotefor(voteFor);
 			userToActivityService.Merge(userToActivity);
-			//票数加1
-			vote = voteService.GetVote(vote_id);
-			vote.setVoteNum(vote.getVoteNum()+1);
-			voteService.update(vote);
+			System.out.println("1开始添加");
+			if(((User)session.get("user")).getIdentity()==2){ // 当是专家的时候
+				System.out.println("2开始添加");
+				//专家总人数加1
+				activity =activityService.GetActivity(activity_id);
+				activity.setExpertNum(activity.getExpertNum()+1);
+				activityService.update(activity);
+				//专家投票数加1 
+				vote = voteService.GetVote(vote_id);
+				vote.setExpertVoteNum(vote.getExpertVoteNum()+1);
+				voteService.update(vote);
+				System.out.println("3开始添加");
+				
+			}else{
+				System.out.println("4开始添加");
+				//游客总票数加1
+				activity =activityService.GetActivity(activity_id);
+				activity.setUserNum(activity.getUserNum()+1);
+				activityService.update(activity);
+				//票数加1
+				vote = voteService.GetVote(vote_id);
+				vote.setVoteNum(vote.getVoteNum()+1);
+				voteService.update(vote);
+				System.out.println("5开始添加");
+			}
 			System.out.println("添加结束");
 		}		
 		if(userToActivityList.size() !=0 && userToActivityList.size() !=1){
@@ -148,4 +179,13 @@ public class VoteAction extends ActionSupport implements SessionAware,ServletReq
 	public void setImgUpLoadFileName(String imgUpLoadFileName) {
 		this.imgUpLoadFileName = imgUpLoadFileName;
 	}
+
+	public Activity getActivity() {
+		return activity;
+	}
+
+	public void setActivity(Activity activity) {
+		this.activity = activity;
+	}
+	
 }

@@ -13,11 +13,6 @@
 <title>首页</title>
 </head>
 <body>
-	<div class="container id1" style="width: 90%">
-		<div class="row">
-			<div class="col-md-3">
-				<jsp:include page="../layout/left_panel.jsp"></jsp:include>
-			</div>
 			<div id="scennery" class="col-md-9">
 				<hr align="left" width="100%" size="15" />
 				<div id="usrPanelContent">
@@ -26,8 +21,6 @@
 					</script>
 				</div>
 			</div>
-		</div>
-	</div>
 </body>
 </body>
 </html>

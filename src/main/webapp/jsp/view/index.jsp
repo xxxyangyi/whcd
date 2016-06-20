@@ -12,9 +12,6 @@
 <title>注册页面</title>
 </head>
 <body>
-	<div class="container id1" style="width: 90%">
-		<div class="row">
-			<hr align="left" width="100%" size="15" />	
 			<div class="col-md-8">
 				<div id="home_scenery_list"> </div>
 				<div class="row">
@@ -41,7 +38,5 @@
 			<div class="col-md-4">
 				<div id="home_activity_list"> </div>
 			</div>
-		</div>
-	</div>
 </body>
 </html>

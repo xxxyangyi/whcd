@@ -12,26 +12,16 @@
 <base href="<%=basePath%>">
 
 <title>创建投票信息</title>
-<link rel="stylesheet" href="jsp/css/bootstrap.css">
-<link rel="stylesheet" href="jsp/css/app.css">
-<script src="jsp/js/jquery-2.1.4.min.js"></script>
-<script src="jsp/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="jsp/js/app.js"></script>
 </head>
 
 <body>
-	<div class="container id1" style="width: 90%">
-		<div class="row">
-			<div class="col-md-3">
-				<jsp:include page="layout/left_panel.jsp"></jsp:include>
-			</div>
 			<div class="col-md-9">
 				<hr align="left" width="100%" size="15" />
 
 				<div class="panel panel-default">
 					<div class="panel-heading">请填写您的投票信息</div>
 					<div class="panel-body">
-						<form  action="<%=basePath%>activity/voteAdd" method="post">
+						<form  action="<%=basePath%>activity/voteAdd" method="post" enctype="multipart/form-data">
 							<div class="form-group">
 								<label for="dropdownActivity">您所要参加的活动：</label>
 								<div class="dropdown">
@@ -42,12 +32,14 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="inputFile">请上传您要参加评选的图片：</label>
-								<div>
-									<img src="jsp/image/sky.jpg" class="img-thumbnail">
+								<label style="display: block;">图片：</label>
+								<div class="col-sm-12" style="margin-top: 5px;margin-bottom: 5px;">
+									<input type="file" name="imgUpLoad" id="imgUpLoad" onchange="PreView()" class="filestyle" data-buttonName="btn-primary" >
 								</div>
-								<input type="file" id="inputFile">
-								<!-- <p class="help-block">加油加油加油！！！</p> -->
+								<div class="form-group col-sm-12">
+									<img id="preview" src="" onload="AutoResizeImage(650,0,this)"  onerror="javascript:this.src='<%=request.getContextPath()%>/jsp/img/errorimg.jpg'" >
+								</div>
+								<br/>
 							</div>
 							<div class="form-group">
 								<label for="context">请简介照片内容</label>
@@ -60,8 +52,6 @@
 					<div class="panel-footer"></div>
 				</div>
 			</div>
-		</div>
-	</div>
 </body>
 </body>
 </html>

@@ -16,11 +16,6 @@
 </head>
 
 <body>
-	<div class="container id1" style="width: 90%">
-		<div class="row">
-			<div class="col-md-3">
-				<jsp:include page="../layout/left_panel_manager.jsp"></jsp:include>
-			</div>
 			<div class="col-md-9" style="background-color: white;">
 	<h2 style="display: inline-block;">用户管理</h2><div style="float:right;display: inline-block;margin-top: 20px;"><a  data-toggle="modal" data-target="#addUserModel" ata-whatever="@mdo" class="btn btn-info">添加</a></div>
 	<div id="usrPanelContent">
@@ -42,7 +37,6 @@
 		</table>
 		</div>
 		</div>
-	</div>
 	<div class="modal fade" id="addUserModel" tabindex="-1" role="dialog"
 		aria-labelledby="loginModalLabel">
 		<div class="modal-dialog" role="document">

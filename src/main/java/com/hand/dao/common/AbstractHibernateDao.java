@@ -47,7 +47,7 @@ public abstract class AbstractHibernateDao<T extends Serializable> implements
 	}
 
 	public void Create(T model) {
-		getCurrentSession().saveOrUpdate(model);
+		getCurrentSession().save(model);
 	}
 
 	public T Update(T model) {

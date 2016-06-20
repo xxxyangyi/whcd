@@ -19,11 +19,6 @@
 </head>
 
 <body>
-	<div class="container id1" style="width: 90%">
-		<div class="row">
-			<div class="col-md-3">
-				<jsp:include page="layout/left_panel.jsp"></jsp:include>
-			</div>
 			<div class="col-md-8">
 				<div class="row">
 					<h1>注册</h1>
@@ -98,9 +93,6 @@
 				</div>
 			</div>
 			<div class="col-md-1"></div>
-		</div>
-
-	</div>
 	<script type="text/javascript">
 	$().ready(
 			function() {

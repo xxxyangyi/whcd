@@ -14,7 +14,6 @@ import org.apache.struts2.ServletActionContext;
 import com.hand.entity.Customer;
 
 import com.hand.service.CustomerService;
-import com.hand.service.impl.ChangeToJson;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -23,7 +22,7 @@ public abstract class CustoemrAction  extends ActionSupport {
 	private Customer cus;	
 	private CustomerService customerService;
 
-	private ChangeToJson changeToJson;
+	//private ChangeToJson changeToJson;
 	private Map session;
 
 	private Object object =new Object();
@@ -41,13 +40,13 @@ public abstract class CustoemrAction  extends ActionSupport {
 		}
 	}
 	//====================返会json 数据============================================
-	public void infoCustomer() throws IOException {
-		System.out.println("=======info======");
-		HttpServletResponse response = ServletActionContext.getResponse();  
-		PrintWriter out = response.getWriter();  
-		Object state = changeToJson.toJson();
-		out.print(state);
-	}
+//	public void infoCustomer() throws IOException {
+//		System.out.println("=======info======");
+//		HttpServletResponse response = ServletActionContext.getResponse();  
+//		PrintWriter out = response.getWriter();  
+//		Object state = changeToJson.toJson();
+//		out.print(state);
+//	}
 	//==================添加 Customer ==============================================
 	public void addCustomer() throws IOException{
 		HttpServletRequest request=ServletActionContext.getRequest();
@@ -136,11 +135,11 @@ public abstract class CustoemrAction  extends ActionSupport {
 	public void setCustomerService(CustomerService customerService) {
 		this.customerService = customerService;
 	}
-	public ChangeToJson getChangeToJson() {
-		return changeToJson;
-	}
-	public void setChangeToJson(ChangeToJson changeToJson) {
-		this.changeToJson = changeToJson;
-	}
+//	public ChangeToJson getChangeToJson() {
+//		return changeToJson;
+//	}
+//	public void setChangeToJson(ChangeToJson changeToJson) {
+//		this.changeToJson = changeToJson;
+//	}
 
 }
