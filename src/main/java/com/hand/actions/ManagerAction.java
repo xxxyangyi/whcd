@@ -6,7 +6,6 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -85,11 +84,11 @@ private static Integer numPage=8;
 		try{
 			Map session=ActionContext.getContext().getSession();
 			session.remove("manager");
-			return "logOut";
+			return "logOutSuccess";
 		}
 		catch(Exception ex){
 			ex.printStackTrace();
-			return "logOut";
+			return "logOutFailed";
 		}
 	}
 	
@@ -97,11 +96,11 @@ private static Integer numPage=8;
 	public String ModifyInfo(){
 		
 		Map session=ActionContext.getContext().getSession();
-		User user=(User) session.get("manager");
+		User user=(User) session.get("user");
 		String mail=user.getMail();
 		//String mail="123";
 		User userNew=userService.GetUser(mail);
-		session.put("manager", userNew);
+		session.put("user", userNew);
 		return "modifyInfo";
 	}
 	
@@ -109,7 +108,7 @@ private static Integer numPage=8;
 	public String DoModifyInfo(){
 		
 		Map session=ActionContext.getContext().getSession();
-		User user=(User) session.get("manager");
+		User user=(User) session.get("user");
 		String mail=user.getMail();
 		User userNew=userService.GetUser(mail);
 		HttpServletRequest request=ServletActionContext.getRequest();
@@ -286,7 +285,7 @@ private static Integer numPage=8;
 		return "detailSceneryInfo";
 	}
 	
-	public String ManageScenery(){
+public String ManageScenery(){
 		String sqlSum="select count(*) as sumkey from scenery order by createdate";
 		String sql="select * from scenery order by createdate";
 		
@@ -416,7 +415,6 @@ private static Integer numPage=8;
 		
 		return "addScenerySuccess";
 	}
-	
 	public String DetailSceneryInfo(){
 		HttpServletRequest request=ServletActionContext.getRequest();
 		String sceneryId=request.getParameter("sceneryId");
@@ -638,4 +636,3 @@ public void getUserList() throws Exception{
 	}
 	
 }
-	

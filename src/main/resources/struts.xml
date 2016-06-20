@@ -59,7 +59,7 @@
 			<interceptor name="authority" class="com.hand.intercepter.ActivityInterceptor" />
 			<interceptor-stack name="ActivityInterceptor">
 				<interceptor-ref name="authority">
-				    <param name="excludeMethods">voteAdd,activityAdd,getActivitys,getActivityVotes,voteFor</param><!--不拦截Action中的method1-->  
+				    <param name="excludeMethods">voteAdd,getActivitys,getActivityVotes,voteFor</param><!--不拦截Action中的method1-->  
 				    <param name="includeMethods">getActivityById</param>
 				</interceptor-ref>
 				<interceptor-ref name="defaultStack" />
@@ -80,7 +80,7 @@
 		    <result name="success">/jsp/view/activityShowContext.jsp</result>		    
 		</action>
 		<action name="getActivityById" class="activityAction" method="getActivityById">
-		    <interceptor-ref name="ActivityInterceptor"/>
+		   <!--  <interceptor-ref name="ActivityInterceptor"/> -->
 		    <result name="success">/jsp/view/voteAdd.jsp</result>		    
 		</action>
 		<action name="voteFor" class="voteAction" method="voteFor"></action>
@@ -127,7 +127,8 @@
 			<result name="index">/jsp/view/manager/index.jsp</result>
 		</action>
 		<action name="DoLogOut" class="managerAction" method="DoLogOut">
-			<result name="logOut" type="redirect">/Home/Index</result>
+			<result name="logOutSuccess" type="redirect">/Home/Index</result>
+			<result name="logOutFailed" type="redirect">/Manager/Index</result>
 		</action>
 		<action name="ModifyInfo" class="managerAction" method="ModifyInfo">
 			<result name="modifyInfo">/jsp/view/manager/modifyInfo.jsp</result>

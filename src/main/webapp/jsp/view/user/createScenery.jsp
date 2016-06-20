@@ -129,7 +129,6 @@
 		$("#detailSub").val(strFinal);
 		$("#sceneryForm").submit();
 	}
-		
 	</script>
 <script type="text/javascript">
 $(":file").filestyle({buttonName: "btn-primary"});

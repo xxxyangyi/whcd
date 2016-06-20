@@ -27,7 +27,6 @@
 				<hr align="left" width="100%" size="15" />
 
 				<div class="panel panel-default">
-					
 					<div class="panel-heading">
 						<h4>修改名胜古迹信息</h4>
 						<div style="float: right;margin-top: -35px;">

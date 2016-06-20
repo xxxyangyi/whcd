@@ -1,12 +1,12 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
+<%@taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator" %>
 <%@taglib prefix="s" uri="/struts-tags" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
-<%@ taglib prefix="s" uri="/struts-tags"%>
 <html>
 <head>
 <base href="<%=basePath%>">
@@ -34,7 +34,6 @@
 	<script type="text/javascript" src="<%=basePath%>jsp/js/wysiwyg-editor.js"></script>
 	<script type="text/javascript" src="<%=basePath%>jsp/js/wysiwyg.js"></script>
 	<script type="text/javascript" src="<%=basePath%>jsp/js/app.js"></script>
-	
 	<sitemesh:write property='head' />
 </head>
 <body>

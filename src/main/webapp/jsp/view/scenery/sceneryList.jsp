@@ -12,7 +12,6 @@
 <head>
 <title>首页</title>
 </head>
-
 <body>
 	<div class="container id1" style="width: 90%">
 		<div class="row">

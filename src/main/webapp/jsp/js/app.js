@@ -292,7 +292,6 @@ window.onload=function() {
 	 	//不同分页获取数据
 	 function GetSceneryListOne(tabid){
 	 		if(currentNum==1){
-	 		
 			$.ajax({
 				type : "post",
 				url:"/WHCD/Scenery/getSceneryList",
@@ -1108,7 +1107,6 @@ window.onload=function() {
 					var arr=data.sceneryList;
 					var htmlStr="";
 					var tmpStr="";
-					
 					for(var i=0;i <len&&i<numPage;i++){
 						tmpStr="<tr>"
 							+"<td><a href='/WHCD/PersonCenter/SceneryDetail?sceneryId="+arr[i].id+"'></a>"+arr[i].summary+"</td>"
@@ -1219,6 +1217,54 @@ window.onload=function() {
 		$(":file").filestyle({buttonName: "btn-primary"});		
 		// 动态显示图片结束
 		
+		/// 登陆退出开始
+		function login(url) {		
+			var mail=$("#mailLogin").val();
+			var password=$("#passwordLogin").val();			
+			$.ajax({
+				url : url,
+				async : false,
+				data:{"mail":mail,"password":password},
+				error : function() {
+					alert("登陆过程出错！");
+				},
+				success : function(data) {
+					var status=data;
+					if(status!==''){
+						window.location.href=data
+					}
+					else if(status==='0'){
+						$("#error").html("邮箱或密码输入有误！");
+					}
+					else if(status==='-1'){
+						$("#error").html("该用户已被禁用！");
+					}
+						
+				}
+			});
+		}
+		function logout(url){
+			
+			$.ajax({
+				url : url,
+				async : false,
+				error : function() {
+					alert("登陆过程出错！");
+				},
+				success : function(data) {
+					var status=data;
+					if(status==='1'){
+						alert("退出成功!");
+						window.location.href="";
+					}
+					else{
+						alert("退出失败!");
+					}
+						
+				}
+			});
+		}
+		//  登陆退出 结束
 		function AuditScenery(sceneryId,urlStr){
 			$.ajax({
 				url : urlStr,
