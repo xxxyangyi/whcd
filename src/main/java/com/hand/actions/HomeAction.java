@@ -4,16 +4,13 @@ import java.io.PrintWriter;
 import java.util.Map;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.ServletActionContext;
 
 import com.hand.entity.User;
 import com.hand.service.IUserService;
-import com.hand.service.impl.UserService;
 import com.opensymphony.xwork2.ActionContext;
-import com.opensymphony.xwork2.ActionSupport;
 
 public class HomeAction extends BaseAction {
 

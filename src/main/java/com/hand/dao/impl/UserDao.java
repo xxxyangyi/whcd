@@ -1,6 +1,5 @@
 package com.hand.dao.impl;
 
-import java.util.List;
 import java.util.Map;
 
 import org.hibernate.Query;
@@ -10,7 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import com.hand.dao.IUserDao;
 import com.hand.dao.common.AbstractHibernateDao;
-import com.hand.dao.common.IOperation;
 import com.hand.entity.User;
 
 @Repository("userDao")

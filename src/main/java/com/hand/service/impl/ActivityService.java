@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.hand.dao.IActivityDao;
 import com.hand.entity.Activity;
-import com.hand.entity.UserToActivity;
 import com.hand.service.IActivityService;
 
 @Transactional

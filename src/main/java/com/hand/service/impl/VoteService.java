@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.hand.dao.IVoteDao;
-import com.hand.entity.UserToActivity;
 import com.hand.entity.Vote;
 import com.hand.service.IVoteService;
 

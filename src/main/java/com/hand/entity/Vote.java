@@ -2,9 +2,6 @@ package com.hand.entity;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
-
 import javax.persistence.*;
 
 import com.google.gson.annotations.Expose;

@@ -37,7 +37,7 @@
 	<script type="text/javascript" src="<%=basePath%>jsp/js/app.js"></script>
 	<style type="text/css">
 	.footer{
-	width: 1330px;
+	width: 90%;
 	background:url('/WHCD/jsp/img/bg_footer.png');
 	float: left;
 	border-top: 5px solid #79c90e;

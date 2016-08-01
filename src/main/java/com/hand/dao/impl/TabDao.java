@@ -4,7 +4,6 @@ import org.springframework.stereotype.Repository;
 
 import com.hand.dao.ITabDao;
 import com.hand.dao.common.AbstractHibernateDao;
-import com.hand.entity.Activity;
 import com.hand.entity.Tab;
 
 @Repository("tabDao")

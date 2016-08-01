@@ -32,7 +32,7 @@
 					<s:iterator value="activityList" id='id' status='st'>
 						
 						<tr>							
-							<td style="text-align: left"><a href="<%=basePath%>activity/manageActivityForm?activity_id=<s:property value='#id.id'/>"><s:property value="#id.activityName"/><a href="#"></td>
+							<td style="text-align: left"><a href="<%=basePath%>activity/manageActivityForm?activity_id=<s:property value='#id.id'/>"><s:property value="#id.activityName"/></a></td>
 							<td style="text-align: left"><s:property value="#id.createTime"/></td>
 							<td style="text-align: left"><s:property value="#id.startTime"/></td>
 							<td style="text-align: left"><s:property value="#id.endTime"/></td>

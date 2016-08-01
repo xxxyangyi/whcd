@@ -5,8 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
-
 import org.hibernate.Query;
 import org.hibernate.transform.Transformers;
 import org.hibernate.type.StandardBasicTypes;
@@ -15,7 +13,6 @@ import org.springframework.stereotype.Repository;
 import com.hand.dao.ISceneryDao;
 import com.hand.dao.common.AbstractHibernateDao;
 import com.hand.entity.Scenery;
-import com.hand.entity.User;
 
 @Repository("sceneryDao")
 public class SceneryDao extends AbstractHibernateDao<Scenery> implements

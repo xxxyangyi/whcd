@@ -6,25 +6,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.apache.struts2.ServletActionContext;
-import org.apache.struts2.interceptor.ServletRequestAware;
-import org.apache.struts2.interceptor.ServletResponseAware;
-import org.apache.struts2.interceptor.SessionAware;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.hand.entity.Activity;
 import com.hand.entity.Scenery;
 import com.hand.entity.User;
 import com.hand.entity.vo.SceneryVO;
 import com.hand.service.ISceneryService;
 import com.hand.util.EntityToVo;
-import com.opensymphony.xwork2.ActionSupport;
 
 public class SceneryAction extends BaseAction {
 	

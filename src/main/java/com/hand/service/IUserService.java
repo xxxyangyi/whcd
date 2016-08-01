@@ -1,9 +1,6 @@
 package com.hand.service;
 
 import java.util.List;
-
-import com.hand.dao.common.IOperation;
-import com.hand.entity.Scenery;
 import com.hand.entity.User;
 
 public interface IUserService{

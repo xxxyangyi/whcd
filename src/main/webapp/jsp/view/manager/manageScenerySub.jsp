@@ -77,7 +77,7 @@
 					</button>
 					<h4 class="modal-title" id="exampleModalLabel">添加名胜古迹</h4>
 				</div>
-				<div class="modal-body" ">
+				<div class="modal-body">
 					<form class="form-horizontal" id="modelForm" action="<%=request.getContextPath()%>/Manager/AddScenery" method="post" enctype="multipart/form-data" >
 						
 						<div class="form-group  ">

@@ -6,7 +6,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.Resource;
@@ -16,8 +15,6 @@ import org.apache.struts2.interceptor.*;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.hand.entity.Activity;
-import com.hand.entity.User;
-import com.hand.entity.Vote;
 import com.hand.service.IActivityService;
 import com.opensymphony.xwork2.ActionSupport;
 

@@ -72,8 +72,6 @@
 					<div class="panel-footer"></div>
 				</div>
 			</div>
-		</div>
-	</div>
 	<script type="text/javascript">
 	function GetFilePath() {
 		var addr = null;

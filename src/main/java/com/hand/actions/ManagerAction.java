@@ -1,10 +1,6 @@
 package com.hand.actions;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.Date;
 import java.util.HashMap;
@@ -23,15 +19,11 @@ import com.google.gson.GsonBuilder;
 import com.hand.entity.Scenery;
 import com.hand.entity.Tab;
 import com.hand.entity.User;
-import com.hand.entity.vo.SceneryVO;
 import com.hand.service.ISceneryService;
 import com.hand.service.ITabService;
 import com.hand.service.IUserService;
-import com.hand.util.EntityToVo;
 import com.hand.util.UploadFile;
 import com.opensymphony.xwork2.ActionContext;
-import com.opensymphony.xwork2.ActionSupport;
-
 public class ManagerAction extends BaseAction {
 
 private static Integer numPage=2;

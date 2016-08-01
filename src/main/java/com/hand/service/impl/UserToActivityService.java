@@ -3,12 +3,9 @@ package com.hand.service.impl;
 import java.util.List;
 
 import javax.annotation.Resource;
-
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.hand.dao.IUserToActivityDao;
-import com.hand.dao.impl.UserToActivityDao;
 import com.hand.entity.UserToActivity;
 import com.hand.service.IUserToActivityService;
 
