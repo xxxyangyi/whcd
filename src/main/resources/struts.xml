@@ -14,26 +14,6 @@
 	<!--设置浏览器是否缓存静态内容，建议：开发阶段关闭，运行时开启 -->
 	<constant name="struts.serve.static.browserCache" value="false" />
 
-<!-- 	<package name="Customer" namespace="/Customer" extends="struts-default">
-		登录验证
-		<interceptors>
-			<interceptor name="auth" class="com.hand.interceptor.AuthInterceptor">
-			</interceptor>
-			<interceptor-stack name="authStack">
-				<interceptor-ref name="auth"></interceptor-ref>
-				<interceptor-ref name="defaultStack"></interceptor-ref>
-			</interceptor-stack>
-		</interceptors>
-
-		<action name="login" class="customerAction" method="checkLogin">
-			<result name="loginSuccess">/index.jsp</result>
-			<result name="loginFailure">/error.jsp</result>
-		</action>
-		<action name="info" class="customerAction" method="infoCustomer"></action>
-		<action name="add" class="customerAction" method="addCustomer"></action>
-		<action name="dele" class="customerAction" method="deleCustomer"></action>
-		<action name="edit" class="customerAction" method="editCustomer"></action>
-	</package> -->
 	<package name="Home" namespace="/Home" extends="struts-default">
 		<action name="Index" class="homeAction" method="Index">
 			<result name="index">/jsp/view/index.jsp</result>

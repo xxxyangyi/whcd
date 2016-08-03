@@ -50,29 +50,10 @@
     <context:component-scan base-package="com.hand.dao.impl"></context:component-scan>
     <context:component-scan base-package="com.hand.service.impl"></context:component-scan>
 	
-<!-- 	<bean id="customerDao" class="com.hand.dao.impl.CustomerImpl">
-		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>
-
-	<bean id="customerService" class="com.hand.service.impl.CustomerServiceImpl">
-		<property name="customerDao" ref="customerDao"></property>
-	</bean>
-
-	<bean id="changeToJson" class="com.hand.service.impl.ChangeToJson">
-		<property name="customerService" ref="customerService" />
-	</bean>
-
-	<bean id="customerAction" class="com.hand.actions.CustoemrAction">
-		<property name="customerService" ref="customerService" />
-		<property name="changeToJson" ref="changeToJson"></property>
-	</bean> -->
 	<bean id="homeAction" class="com.hand.actions.HomeAction"></bean>
 	<bean id="voteAction" class="com.hand.actions.VoteAction"></bean>
 	<bean id="activityAction" class="com.hand.actions.ActivityAction"></bean>			
-	<bean id="personCenter" class="com.hand.actions.PersonCenter">
-	</bean>
-	<bean id="managerAction" class="com.hand.actions.ManagerAction">
-	</bean>
-	<bean id="sceneryAction" class="com.hand.actions.SceneryAction">
-	</bean>
+	<bean id="personCenter" class="com.hand.actions.PersonCenter"></bean>
+	<bean id="managerAction" class="com.hand.actions.ManagerAction"></bean>
+	<bean id="sceneryAction" class="com.hand.actions.SceneryAction"></bean>
 </beans>
