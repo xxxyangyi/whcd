@@ -86,7 +86,7 @@ private static Integer numPage=2;
 	
 	// 修改信息
 	public String ModifyInfo(){
-		
+
 		Map session=ActionContext.getContext().getSession();
 		User user=(User) session.get("user");
 		String mail=user.getMail();
@@ -491,7 +491,7 @@ public String ManageScenery(){
 	public void getMonthData(){
 		try{
 		Map paramMap=sceneryService.getSceneryListByMonth();
-		
+
 		response.setContentType("text/json"); 
         response.setCharacterEncoding("UTF-8"); 
         PrintWriter out = response.getWriter();
@@ -505,10 +505,9 @@ public String ManageScenery(){
 	}
 	
 	public void getTabList(){
+		System.err.println("----->> getTabList");
 		try{
 			List<Tab> tabList=tabService.getAll();
-			
-			
 			response.setContentType("text/json"); 
 	        response.setCharacterEncoding("UTF-8"); 
 	        PrintWriter out = response.getWriter();
@@ -516,6 +515,7 @@ public String ManageScenery(){
 	        
 	        Map<String, Object> paramMap=new HashMap<String,Object>();
 	        paramMap.put("tabList", tabList);
+			System.err.println(gson.toJson(paramMap).toString());
 	        out.print(gson.toJson(paramMap));
 		   }
 		   catch(Exception ex){

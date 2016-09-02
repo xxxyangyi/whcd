@@ -12,6 +12,8 @@ import com.hand.entity.User;
 import com.hand.service.IUserService;
 import com.opensymphony.xwork2.ActionContext;
 
+import static com.hand.commonKey.CommonKey.URL_PERFIX;
+
 public class HomeAction extends BaseAction {
 
 	@Resource(name = "userService")
@@ -63,6 +65,7 @@ public class HomeAction extends BaseAction {
 		PrintWriter out = response.getWriter();
 		String mail = request.getParameter("mail");
 		String password = request.getParameter("password");
+		System.out.println("登陆");
 		if (userService.IsUserExisted(mail, password)) {
 			User user = userService.GetUser(mail);
 			if (user.getIsUsed() == 0)
@@ -70,15 +73,19 @@ public class HomeAction extends BaseAction {
 			else {
 				session.put("user", user);
 				if (((User)session.put("user", user)).getIdentity() == 0) {
-					out.print("/WHCD/Manager/Index");
+					out.print(URL_PERFIX+"Manager/Index");
+//					return "managerIndex";
 				} else if (user.getIdentity() == 1) {
-					out.print("/WHCD/Home/Index");
+					out.print(URL_PERFIX+"Home/Index");
+//					return "homeIndex";
 				} else {
-					out.print("/WHCD/jsp/view/expert/index.jsp");
+					out.print(URL_PERFIX+"jsp/view/expert/index.jsp");
+//					return "expertIndex";
 				}
 			}
-		} else
+		} else {
 			out.print(0);
+		}
 		
 	}
 	

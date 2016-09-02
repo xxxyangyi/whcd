@@ -11,10 +11,10 @@
 <html>
 <head>
 </head>
-
 <body>
+<base href="<%=basePath%>">
 	<div style="width: 100%;background-color: #fff;z-index: 100">
-		<img alt="" src="/WHCD/jsp/img/top.png">
+		<img alt="" src="<%=basePath%>jsp/img/top.png">
 	</div>
 	<nav class="navbar navbar-default" >
 	<div class="container-fluid">

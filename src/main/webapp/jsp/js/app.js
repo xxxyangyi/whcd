@@ -1,3 +1,4 @@
+var url_perfix = "http://localhost:8080/";
 window.onload=function() {
 	//通过判断 activity_list 标签是否存在 ，判断是否要请求加载 活动清单数据
 	if ($("#activity_list").length > 0) {
@@ -5,7 +6,7 @@ window.onload=function() {
 		$.ajax({
 			type : "post",
 			data : {},
-			url : "http://localhost:8080/WHCD/activity/getActivitys",
+			url : url_perfix + "activity/getActivitys",
 			async : false,
 			dataType : 'json',
 			success : function(msg) {
@@ -25,7 +26,7 @@ window.onload=function() {
 																			+ "</div>"
 																			+ "<div class='media-body'>"
 																			+ "<h4 class='media-heading'>"
-																			+ "<a href='http://localhost:8080/WHCD/activity/getActivityVotesPassed?activity_id="+msg[i].id+"'> "
+																			+ "<a href='"+ url_perfix +"activity/getActivityVotesPassed?activity_id="+msg[i].id+"'> "
 																			+ msg[i].activityName
 																			+ "</a>"
 																			+ "</h4>"
@@ -43,7 +44,7 @@ window.onload=function() {
 																			+ "<div class='panel-body'>"
 																			+ "<div class='media'>"
 																			+ "<div class='media-body'>"
-																			+ "<a href='http://localhost:8080/WHCD/activity/getActivityVotesPassed?activity_id="+msg[i].id+"'> "
+																			+ "<a href='"+ url_perfix +"activity/getActivityVotesPassed?activity_id="+msg[i].id+"'> "
 																			+ "<h4 class='media-heading'>"+msg[i].activityName+"</h4>"
 																			+ "</a>"
 																			+ msg[i].context																			+ "</div>"
@@ -72,7 +73,7 @@ window.onload=function() {
 		$.ajax({
 			type : "post",
 			data : {},
-			url : "http://localhost:8080/WHCD/activity/getActivitys",
+			url : url_perfix + "activity/getActivitys",
 			async : true,
 			dataType : 'json',
 			success : function(msg) {
@@ -97,7 +98,7 @@ window.onload=function() {
 																			+ "</div>"
 																			+ "<div class='media-body'>"
 																			+ "<h4 class='media-heading'>"
-																			+ "<a href='http://localhost:8080/WHCD/activity/getActivityVotesPassed?activity_id="+msg[i].id+"'> "
+																			+ "<a href='"+ url_perfix +"activity/getActivityVotesPassed?activity_id="+msg[i].id+"'> "
 																			+msg[i].activityName
 																			+"</a>"
 																			+"</h4>"
@@ -124,7 +125,7 @@ window.onload=function() {
 		$.ajax({
 			type : "post",
 			data : {},
-			url : "http://localhost:8080/WHCD/Scenery/SceneryListGson",
+			url : url_perfix + "Scenery/SceneryListGson",
 			async : true,
 			dataType : 'json',
 			success : function(msg) {
@@ -168,7 +169,7 @@ window.onload=function() {
 		$.ajax({
 			type : "post",
 			data : {activity_id:activity_id,voteFor:voteFor,vote_id:vote_id},
-			url : "http://localhost:8080/WHCD/activity/voteFor",
+			url : url_perfix + "activity/voteFor",
 			async : true,
 			dataType : 'json',
 			success : function(msg) {alert(msg)}
@@ -292,12 +293,12 @@ window.onload=function() {
 	 		if(currentNum==1){
 			$.ajax({
 				type : "post",
-				url:"/WHCD/Scenery/getSceneryList",
+				url:url_perfix + "Scenery/getSceneryList",
 				async : false,
 				dataType : 'json',
 				data:{"page":1,'tabid':tabid},
 				error : function() {
-					alert("ajax出错！");
+					alert("ajax出错！ GetSceneryListOne");
 				},
 				success : function(data) {
 					var numPage=data.numPage;
@@ -315,7 +316,7 @@ window.onload=function() {
 						+"<div class='media'>"
 						+"<div class='media-body'>"
 						+"<h4 class='media-heading'>"
-						+"<a href='/WHCD/Scenery/SceneryDetail?sceneryId="+arr[i].id+"'>" 
+						+"<a href='"+ url_perfix +"Scenery/SceneryDetail?sceneryId="+arr[i].id+"'>"
 						+arr[i].summary
 						+"</a>"
 						+"</h4>"
@@ -324,7 +325,7 @@ window.onload=function() {
 						+"</p>"
 						+"</div>"
 						+"<div class='media-right media-middle'>"
-						+"<a> <img class='media-object' style='margin-top: 20px;'  src='/WHCD"+arr[i].picaddr+"' onload='AutoResizeImage(100,100,this)' onerror='javascript:this.src=\"/WHCD/jsp/img/errorimg.jpg\"' /></a>"
+						+"<a> <img class='media-object' style='margin-top: 20px;'  src='"+ url_perfix +arr[i].picaddr+"' onload='AutoResizeImage(100,100,this)' onerror='javascript:this.src="+ url_perfix +"/jsp/img/errorimg.jpg\"' /></a>"
 						+"</div></div></div></div></div>";
 						}
 					else{
@@ -334,11 +335,11 @@ window.onload=function() {
 										+"<div class='panel-body' style='height: 125px;'>"
 										+"<div class='media'>"
 										+"<div class='media-left media-middle'>"
-										+"<a> <img class='media-object' style='margin-top: 20px;'  src='/WHCD"+arr[i].picaddr+"' onload='AutoResizeImage(100,100,this)' onerror='javascript:this.src=\"/WHCD/jsp/img/errorimg.jpg\"' /></a>"
+										+"<a> <img class='media-object' style='margin-top: 20px;'  src='"+ url_perfix +arr[i].picaddr+"' onload='AutoResizeImage(100,100,this)' onerror='javascript:this.src="+ url_perfix +"jsp/img/errorimg.jpg\"' /></a>"
 										+"</div>"
 										+"<div class='media-body'>"
 										+"<h4 class='media-heading'>"
-										+"<a href='/WHCD/Scenery/SceneryDetail?sceneryId="+arr[i].id+"'>"
+										+"<a href='"+ url_perfix +"Scenery/SceneryDetail?sceneryId="+arr[i].id+"'>"
 										+arr[i].summary
 										+"</a>"
 										+"</h4>"
@@ -383,12 +384,12 @@ window.onload=function() {
 		function GetSceneryList(tabid){
 			$.ajax({
 				type : "post",
-				url:"/WHCD/Scenery/getSceneryList",
+				url:url_perfix + "Scenery/getSceneryList",
 				async : false,
 				dataType : 'json',
 				data:{"page":currentNum,'tabid':tabid},
 				error : function() {
-					alert("ajax出错！");
+					alert("ajax出错！ GetSceneryList");
 				},
 				success : function(data) {
 					var numPage=data.numPage;
@@ -406,7 +407,7 @@ window.onload=function() {
 						+"<div class='media'>"
 						+"<div class='media-body'>"
 						+"<h4 class='media-heading'>"
-						+"<a href='/WHCD/Scenery/SceneryDetail?sceneryId="+arr[i].id+"'>" 
+						+"<a href='"+ url_perfix +"Scenery/SceneryDetail?sceneryId="+arr[i].id+"'>"
 						+arr[i].summary
 						+"</a>"
 						+"</h4>"
@@ -415,7 +416,7 @@ window.onload=function() {
 						+"</p>"
 						+"</div>"
 						+"<div class='media-right media-middle'>"
-						+"<a> <img class='media-object' style='margin-top: 20px;'  src='/WHCD"+arr[i].picaddr+"' onload='AutoResizeImage(100,100,this)' onerror='javascript:this.src=\"/WHCD/jsp/img/errorimg.jpg\"' /></a>"
+						+"<a> <img class='media-object' style='margin-top: 20px;'  src='"+ url_perfix +arr[i].picaddr+"' onload='AutoResizeImage(100,100,this)' onerror='javascript:this.src=\""+ url_perfix +"jsp/img/errorimg.jpg\"' /></a>"
 						+"</div></div></div></div></div></div>";
 						}
 					else{
@@ -425,11 +426,11 @@ window.onload=function() {
 										+"<div class='panel-body' style='height: 125px;'>"
 										+"<div class='media'>"
 										+"<div class='media-left media-middle'>"
-										+"<a> <img class='media-object' style='margin-top: 20px;'  src='/WHCD"+arr[i].picaddr+"' onload='AutoResizeImage(100,100,this)' onerror='javascript:this.src=\"/WHCD/jsp/img/errorimg.jpg\"' /></a>"
+										+"<a> <img class='media-object' style='margin-top: 20px;'  src="+ url_perfix +arr[i].picaddr+"' onload='AutoResizeImage(100,100,this)' onerror='javascript:this.src="+ url_perfix +"jsp/img/errorimg.jpg\"' /></a>"
 										+"</div>"
 										+"<div class='media-body'>"
 										+"<h4 class='media-heading'>"
-										+"<a href='/WHCD/Scenery/SceneryDetail?sceneryId="+arr[i].id+"'>"
+										+"<a href='"+ url_perfix +"Scenery/SceneryDetail?sceneryId="+arr[i].id+"'>"
 										+arr[i].summary
 										+"</a>"
 										+"</h4>"
@@ -475,12 +476,12 @@ window.onload=function() {
 	 		if(currentNum==1){
 			$.ajax({
 				type : "post",
-				url:"/WHCD/Scenery/getSceneryList",
+				url:url_perfix + "Scenery/getSceneryList",
 				async : false,
 				dataType : 'json',
 				data:{"page":1,"userParam":"userParam"},
 				error : function() {
-					alert("ajax出错！");
+					alert("ajax出错！ GetPersonCenterSceneryListOne");
 				},
 				success : function(data) {
 					var numPage=data.numPage;
@@ -493,12 +494,12 @@ window.onload=function() {
 					$("#usrPanelContent table").append(select);
 					for(var i=0;i <len&&i<numPage;i++){
 						tmpStr="<tr>"
-							+"<td><a href='/WHCD/PersonCenter/SceneryDetail?sceneryId="+arr[i].id+"'></a>"+arr[i].summary+"</td>"
+							+"<td><a href='"+ url_perfix +"PersonCenter/SceneryDetail?sceneryId="+arr[i].id+"'></a>"+arr[i].summary+"</td>"
 							+"<td><p style='width:400px;word-wrap:break-word;overflow:hidden; white-space:nowrap; text-overflow:ellipsis'>"+arr[i].detailSub+"</p></td>"
 							//+"<td>"+arr[i].detailSub+"</td>"
 							+"<td>"
-							+"<a class='btn btn-warning' href='/WHCD/PersonCenter/SceneryModify?sceneryId="+arr[i].id+"'>修改</a>"
-							+"<a class='btn btn-danger' style='margin-left:5px;' onclick='DeleteScenery(\""+arr[i].id+"\",\"/WHCD/PersonCenter/DeleteScenery\")'>删除</a>"
+							+"<a class='btn btn-warning' href='"+ url_perfix +"PersonCenter/SceneryModify?sceneryId="+arr[i].id+"'>修改</a>"
+							+"<a class='btn btn-danger' style='margin-left:5px;' onclick='DeleteScenery(\""+arr[i].id+"\",\""+url_perfix+"PersonCenter/DeleteScenery\")'>删除</a>"
 							+"</td>"
 							+"</tr>"
 							htmlStr+=tmpStr;
@@ -538,12 +539,12 @@ window.onload=function() {
 		function GetPersonCenterSceneryList(){
 			$.ajax({
 				type : "post",
-				url:"/WHCD/Scenery/getSceneryList",
+				url:url_perfix + "Scenery/getSceneryList",
 				async : false,
 				dataType : 'json',
 				data:{"page":currentNum,"userParam":"userParam"},
 				error : function() {
-					alert("ajax出错！");
+					alert("ajax出错！ GetPersonCenterSceneryList");
 				},
 				success : function(data) {
 					var numPage=data.numPage;
@@ -555,12 +556,12 @@ window.onload=function() {
 					var tmpStr="";
 					for(var i=0;i <len&&i<numPage;i++){
 						tmpStr="<tr>"
-							+"<td><a href='/WHCD/PersonCenter/SceneryDetail?sceneryId="+arr[i].id+"'>"+arr[i].summary+"</a></td>"
+							+"<td><a href='"+ url_perfix +"PersonCenter/SceneryDetail?sceneryId="+arr[i].id+"'>"+arr[i].summary+"</a></td>"
 							+"<td><p style='width:400px;word-wrap:break-word;overflow:hidden; white-space:nowrap; text-overflow:ellipsis'>"+arr[i].detailSub+"</p></td>"
 							//+"<td>"+arr[i].detailSub+"</td>"
 							+"<td>"
-							+"<a class='btn btn-warning' href='/WHCD/PersonCenter/SceneryModify?sceneryId="+arr[i].id+"'>修改</a>"
-							+"<a class='btn btn-danger' style='margin-left:5px;' onclick='DeleteScenery(\""+arr[i].id+"\",\"/WHCD/PersonCenter/DeleteScenery\")'>删除</a>"
+							+"<a class='btn btn-warning' href='"+ url_perfix +"PersonCenter/SceneryModify?sceneryId="+arr[i].id+"'>修改</a>"
+							+"<a class='btn btn-danger' style='margin-left:5px;' onclick='DeleteScenery(\""+arr[i].id+"\",\""+ url_perfix +"PersonCenter/DeleteScenery\")'>删除</a>"
 							+"</td>"
 							+"</tr>"
 							htmlStr+=tmpStr;
@@ -618,12 +619,12 @@ window.onload=function() {
 	 		if(currentNum==1){
 			$.ajax({
 				type : "post",
-				url:"/WHCD/Manager/getUserList",
+				url:url_perfix + "Manager/getUserList",
 				async : false,
 				dataType : 'json',
 				data:{"page":1},
 				error : function() {
-					alert("ajax出错！");
+					alert("ajax出错！ GetUserListOne");
 				},
 				success : function(data) {
 					var numPage=data.numPage;
@@ -636,7 +637,7 @@ window.onload=function() {
 					$("#usrPanelContent table").append(select);
 					for(var i=0;i <len&&i<numPage;i++){
 						tmpStr="<tr>"
-							+"<td><a href='/WHCD/Manager/DetailUserInfo?mail="+arr[i].mail+"'></a>"+arr[i].mail+"</td>"
+							+"<td><a href='"+ url_perfix +"Manager/DetailUserInfo?mail="+arr[i].mail+"'></a>"+arr[i].mail+"</td>"
 							+"<td>"+arr[i].name+"</td>";
 						if(arr[i].isUsed==1)
 							tmpStr+="<td>可以使用</td>";
@@ -685,12 +686,12 @@ window.onload=function() {
 		function GetUserList(){
 			$.ajax({
 				type : "post",
-				url:"/WHCD/Manager/getUserList",
+				url:url_perfix + "Manager/getUserList",
 				async : false,
 				dataType : 'json',
 				data:{"page":currentNum},
 				error : function() {
-					alert("ajax出错！");
+					alert("ajax出错！ GetUserListOne");
 				},
 				success : function(data) {
 					var numPage=data.numPage;
@@ -702,7 +703,7 @@ window.onload=function() {
 					var tmpStr="";
 					for(var i=0;i <len&&i<numPage;i++){
 						tmpStr="<tr>"
-							+"<td><a href='/WHCD/Manager/DetailUserInfo?mail="+arr[i].mail+"'></a>"+arr[i].mail+"</td>"
+							+"<td><a href='"+ url_perfix +"Manager/DetailUserInfo?mail="+arr[i].mail+"'></a>"+arr[i].mail+"</td>"
 							+"<td>"+arr[i].name+"</td>";
 						if(arr[i].isUsed==1)
 							tmpStr+="<td>可以使用</td>";
@@ -749,9 +750,8 @@ window.onload=function() {
 	 	}
 		
 		function DisableUser(mail){
-			var urlStr="/WHCD/Manager/DisableUser";	
 			$.ajax({
-				url : urlStr,
+				url : url_perfix + "Manager/DisableUser",
 				async : false,
 				data : {
 					"mail" : mail
@@ -769,9 +769,8 @@ window.onload=function() {
 			});
 		}
 		function AbleUser(mail){
-			var urlStr="/WHCD/Manager/AbleUser";	
 			$.ajax({
-				url : urlStr,
+				url : url_perfix + "Manager/AbleUser",
 				async : false,
 				data : {
 					"mail" : mail
@@ -790,7 +789,6 @@ window.onload=function() {
 		}
 		
 		function AddUser(){
-			urlStr='/WHCD/Manager/AddUser'
 			var mail=$("#mail").val();
 			var password=$("#password").val();
 			var identity=$("input[name='identity']:checked").val();
@@ -799,7 +797,7 @@ window.onload=function() {
 			
 			$('#addUserModel').modal('hide')
 			$.ajax({
-				url : urlStr,
+				url : url_perfix + 'Manager/AddUser',
 				async : false,
 				data : {
 					"mail" : mail,
@@ -822,9 +820,8 @@ window.onload=function() {
 			
 		}
 		function  InitializeUserPassword(mail){
-			urlStr="/WHCD/Manager/InitializeUserPassword"
 			$.ajax({
-				url : urlStr,
+				url : url_perfix + "Manager/InitializeUserPassword",
 				async : false,
 				data : {
 					"mail" : mail
@@ -847,11 +844,11 @@ window.onload=function() {
 	 		if(currentNum==1){
 			$.ajax({
 				type : "post",
-				url:"/WHCD/Manager/getTabList",
+				url:url_perfix + "Manager/getTabList",
 				async : false,
 				dataType : 'json',
 				error : function() {
-					alert("ajax出错！");
+					alert("ajax出错！ GetUserListOne");
 				},
 				success : function(data) {
 					var len=data.tabList.length;
@@ -868,7 +865,7 @@ window.onload=function() {
 						tmpStr+="<td>";
 						if(arr[i].isUsed==1){
 							tmpStr+="<a class='btn btn-danger'  onclick='DisableTab(\""+arr[i].id+"\")' >禁用</a>"
-							      +"<a class='btn btn-warning' style='margin-left:5px' href='/WHCD/Manager/ModifyTabInfo?id="+arr[i].id+"' >修改</a>";
+							      +"<a class='btn btn-warning' style='margin-left:5px' href='"+ url_perfix +"Manager/ModifyTabInfo?id="+arr[i].id+"' >修改</a>";
 						}
 						else
 							tmpStr+="<a class='btn btn-success' style='margin-left:5px' onclick='AbleTab(\""+arr[i].id+"\")' >解禁</a>";
@@ -884,11 +881,11 @@ window.onload=function() {
 		function GetTabList(){
 			$.ajax({
 				type : "post",
-				url:"/WHCD/Manager/getTabList",
+				url:url_perfix + "Manager/getTabList",
 				async : false,
 				dataType : 'json',
 				error : function() {
-					alert("ajax出错！");
+					alert("ajax出错！ GetUserListOne");
 				},
 				success : function(data) {
 					var len=data.tabList.length;
@@ -905,7 +902,7 @@ window.onload=function() {
 						tmpStr+="<td>";
 						if(arr[i].isUsed==1){
 							tmpStr+="<a class='btn btn-danger'  onclick='DisableTab(\""+arr[i].id+"\")' >禁用</a>"
-							 +"<a class='btn btn-warning' style='margin-left:5px' href='/WHCD/Manager/ModifyTabInfo?id="+arr[i].id+"' >修改</a>";
+							 +"<a class='btn btn-warning' style='margin-left:5px' href='"+ url_perfix +"Manager/ModifyTabInfo?id="+arr[i].id+"' >修改</a>";
 						}
 						else
 							tmpStr+="<a class='btn btn-success' style='margin-left:5px' onclick='AbleTab(\""+arr[i].id+"\")' >解禁</a>";
@@ -919,11 +916,11 @@ window.onload=function() {
 		function GetTabData(){
 			$.ajax({
 				type : "post",
-				url:"/WHCD/Manager/getTabList",
+				url:url_perfix + "Manager/getTabList",
 				async : false,
 				dataType : 'json',
 				error : function() {
-					alert("ajax出错！");
+					alert("ajax出错！ GetTabData");
 				},
 				success : function(data) {
 					var len=data.tabList.length;
@@ -940,9 +937,8 @@ window.onload=function() {
 	 	}
 		
 		function AbleTab(id){
-			var urlStr="/WHCD/Manager/AbleTab";	
 			$.ajax({
-				url : urlStr,
+				url : url_perfix + "Manager/AbleTab",
 				async : false,
 				data : {
 					"id" : id
@@ -961,9 +957,8 @@ window.onload=function() {
 		}
 		
 		function DisableTab(id){
-			var urlStr="/WHCD/Manager/DisableTab";	
 			$.ajax({
-				url : urlStr,
+				url : url_perfix + "Manager/DisableTab",
 				async : false,
 				data : {
 					"id" : id
@@ -982,13 +977,12 @@ window.onload=function() {
 		}
 		
 		function AddTab(){
-			urlStr='/WHCD/Manager/AddTab'
 			var name=$("#name").val();
 			var position=$("input[name='position']:checked").val();
 			alert("position:"+position);
 			$('#addUserModel').modal('hide')
 			$.ajax({
-				url : urlStr,
+				url : url_perfix + "Manager/AddTab",
 				async : false,
 				data : {
 					"position" : position,
@@ -1014,12 +1008,12 @@ window.onload=function() {
 	 		if(currentNum==1){
 			$.ajax({
 				type : "post",
-				url:"/WHCD/Scenery/getSceneryList",
+				url:url_perfix + "Scenery/getSceneryList",
 				async : false,
 				dataType : 'json',
 				data:{"page":1,"managerParam":"managerParam"},
 				error : function() {
-					alert("ajax出错！");
+					alert("ajax出错！ GetManagerSceneryListOne");
 				},
 				success : function(data) {
 					var numPage=data.numPage;
@@ -1032,7 +1026,7 @@ window.onload=function() {
 					$("#usrPanelContent table").append(select);
 					for(var i=0;i <len&&i<numPage;i++){
 						tmpStr="<tr>"
-							+"<td><a href='/WHCD/PersonCenter/SceneryDetail?sceneryId="+arr[i].id+"'></a>"+arr[i].summary+"</td>"
+							+"<td><a href='"+ url_perfix +"PersonCenter/SceneryDetail?sceneryId="+arr[i].id+"'></a>"+arr[i].summary+"</td>"
 							+"<td><p style='width:400px;word-wrap:break-word;overflow:hidden; white-space:nowrap; text-overflow:ellipsis'>"+arr[i].detailSub+"</p></td>"
 							+"<td>"+arr[i].userName+"</td>"
 							+"<td>"+arr[i].createDate+"</td>";
@@ -1042,16 +1036,16 @@ window.onload=function() {
 							tmpStr+="<td>不通过</td>";
 						else 
 							tmpStr+="<td>待审核</td>";
-						tmpStr+="<td>"+"<a class='btn btn-danger' style='margin-left:5px;float:left' onclick='DeleteScenery(\""+arr[i].id+"\",\"/WHCD/PersonCenter/DeleteScenery\")'>删除</a>";
+						tmpStr+="<td>"+"<a class='btn btn-danger' style='margin-left:5px;float:left' onclick='DeleteScenery(\""+arr[i].id+"\",\""+ url_perfix +"PersonCenter/DeleteScenery\")'>删除</a>";
 						
 						if(arr[i].isAudited===1)
-							tmpStr+="<a class='btn btn-warning' style='margin-left:5px;float:left' onclick='DisAuditScenery(\""+arr[i].id+"\",\"/WHCD/Manager/DisAuditScenery\")' >不通过</a>";
+							tmpStr+="<a class='btn btn-warning' style='margin-left:5px;float:left' onclick='DisAuditScenery(\""+arr[i].id+"\",\""+ url_perfix +"Manager/DisAuditScenery\")' >不通过</a>";
 						else if(arr[i].isAudited===-1)
-							tmpStr+="<a class='btn btn-success' style='margin-left:5px;float:left' onclick='AuditScenery(\""+arr[i].id+"\",\"/WHCD/Manager/AuditScenery\")' >通过</a>";
+							tmpStr+="<a class='btn btn-success' style='margin-left:5px;float:left' onclick='AuditScenery(\""+arr[i].id+"\",\""+ url_perfix +"Manager/AuditScenery\")' >通过</a>";
 						else
 							{
-							tmpStr+="<a class='btn btn-success' style='margin-left:5px;float:left' onclick='AuditScenery(\""+arr[i].id+"\",\"/WHCD/Manager/AuditScenery\")' >通过</a>";
-							tmpStr+="<a class='btn btn-warning' style='margin-left:5px;float:left' onclick='DisAuditScenery(\""+arr[i].id+"\",\"/WHCD/Manager/DisAuditScenery\")' >不通过</a>";
+							tmpStr+="<a class='btn btn-success' style='margin-left:5px;float:left' onclick='AuditScenery(\""+arr[i].id+"\",\""+ url_perfix +"Manager/AuditScenery\")' >通过</a>";
+							tmpStr+="<a class='btn btn-warning' style='margin-left:5px;float:left' onclick='DisAuditScenery(\""+arr[i].id+"\",\""+ url_perfix +"Manager/DisAuditScenery\")' >不通过</a>";
 							}
 							htmlStr+=tmpStr+"</td>"+"</tr>";
 					}
@@ -1090,12 +1084,12 @@ window.onload=function() {
 		function GetManagerSceneryList(){
 			$.ajax({
 				type : "post",
-				url:"/WHCD/Scenery/getSceneryList",
+				url:url_perfix + "Scenery/getSceneryList",
 				async : false,
 				dataType : 'json',
 				data:{"page":currentNum,"managerParam":"managerParam"},
 				error : function() {
-					alert("ajax出错！");
+					alert("ajax出错！ GetManagerSceneryList");
 				},
 				success : function(data) {
 					var numPage=data.numPage;
@@ -1107,7 +1101,7 @@ window.onload=function() {
 					var tmpStr="";
 					for(var i=0;i <len&&i<numPage;i++){
 						tmpStr="<tr>"
-							+"<td><a href='/WHCD/PersonCenter/SceneryDetail?sceneryId="+arr[i].id+"'></a>"+arr[i].summary+"</td>"
+							+"<td><a href='"+ url_perfix +"PersonCenter/SceneryDetail?sceneryId="+arr[i].id+"'></a>"+arr[i].summary+"</td>"
 							+"<td><p style='width:400px;word-wrap:break-word;overflow:hidden; white-space:nowrap; text-overflow:ellipsis'>"+arr[i].detailSub+"</p></td>"
 							+"<td>"+arr[i].userName+"</td>"
 							+"<td>"+arr[i].createDate+"</td>";
@@ -1117,16 +1111,16 @@ window.onload=function() {
 							tmpStr+="<td>不通过</td>";
 						else 
 							tmpStr+="<td>待审核</td>";
-						tmpStr+="<td>"+"<a class='btn btn-danger' style='margin-left:5px;float:left' onclick='DeleteScenery(\""+arr[i].id+"\",\"/WHCD/PersonCenter/DeleteScenery\")'>删除</a>";
+						tmpStr+="<td>"+"<a class='btn btn-danger' style='margin-left:5px;float:left' onclick='DeleteScenery(\""+arr[i].id+"\",\""+ url_perfix +"PersonCenter/DeleteScenery\")'>删除</a>";
 						
 						if(arr[i].isAudited===1)
-							tmpStr+="<a class='btn btn-warning' style='margin-left:5px;float:left' onclick='DisAuditScenery(\""+arr[i].id+"\",\"/WHCD/Manager/AuditScenery\")' >不通过</a>";
+							tmpStr+="<a class='btn btn-warning' style='margin-left:5px;float:left' onclick='DisAuditScenery(\""+arr[i].id+"\",\""+ url_perfix +"Manager/AuditScenery\")' >不通过</a>";
 						else if(arr[i].isAudited===-1)
-							tmpStr+="<a class='btn btn-success' style='margin-left:5px;float:left' onclick='AuditScenery(\""+arr[i].id+"\",\"/WHCD/Manager/DisAuditScenery\")' >通过</a>";
+							tmpStr+="<a class='btn btn-success' style='margin-left:5px;float:left' onclick='AuditScenery(\""+arr[i].id+"\",\""+ url_perfix +"Manager/DisAuditScenery\")' >通过</a>";
 						else
 							{
-							tmpStr+="<a class='btn btn-success' style='margin-left:5px;float:left' onclick='AuditScenery(\""+arr[i].id+"\",\"/WHCD/Manager/AuditScenery\")' >通过</a>";
-							tmpStr+="<a class='btn btn-warning' style='margin-left:5px;float:left' onclick='DisAuditScenery(\""+arr[i].id+"\",\"/WHCD/Manager/DisAuditScenery\")' >不通过</a>";
+							tmpStr+="<a class='btn btn-success' style='margin-left:5px;float:left' onclick='AuditScenery(\""+arr[i].id+"\",\""+ url_perfix +"Manager/AuditScenery\")' >通过</a>";
+							tmpStr+="<a class='btn btn-warning' style='margin-left:5px;float:left' onclick='DisAuditScenery(\""+arr[i].id+"\",\""+ url_perfix +"Manager/DisAuditScenery\")' >不通过</a>";
 							}
 							htmlStr+=tmpStr+"</td>"+"</tr>";
 					}
@@ -1216,7 +1210,8 @@ window.onload=function() {
 		// 动态显示图片结束
 		
 		/// 登陆退出开始
-		function login(url) {		
+		function login(url) {
+			// url_perfix + "
 			var mail=$("#mailLogin").val();
 			var password=$("#passwordLogin").val();			
 			$.ajax({
@@ -1242,7 +1237,7 @@ window.onload=function() {
 			});
 		}
 		function logout(url){
-			
+			// url_perfix + "
 			$.ajax({
 				url : url,
 				async : false,
@@ -1307,24 +1302,31 @@ window.onload=function() {
 		function getTopMenu() {
 			$.ajax({
 				type : "post",
-				url:"/WHCD/Manager/getTabList",
+				url:url_perfix+"Manager/getTabList",
 				async : false,
 				dataType : 'json',
-				error : function() {
-					alert("ajax出错！");
+				error: function(XMLHttpRequest, textStatus, errorThrown) {
+					alert("ajax出错！ getTopMenu");
+				},
+				complete: function(XMLHttpRequest, textStatus) {
+					this; // 调用本次AJAX请求时传递的options参数
 				},
 				success : function(data) {
 					var len=data.tabList.length;
-					var arr=data.tabList;
-					var htmlStr="";
-					var tmpStr="";
-					tmpStr=$("#topMenuList").html();
-					for(var i=0;i <len;i++){
-						if(arr[i].position===0&&arr[i].isUsed===1)
-						htmlStr+="<li><a href='/WHCD/Scenery/SceneryList?tabid="+arr[i].id+"'>"+arr[i].name+"</a></li>"
+					if(len != 0){
+						var arr=data.tabList;
+						var htmlStr="";
+						var tmpStr="";
+						tmpStr=$("#topMenuList").html();
+						for(var i=0;i <len;i++){
+							if(arr[i].position===0&&arr[i].isUsed===1)
+								// htmlStr+="<li><a href='/WHCD/Scenery/SceneryList?tabid="+arr[i].id+"'>"+arr[i].name+"</a></li>"
+								htmlStr+="<li><a href='"+ url_perfix +"Scenery/SceneryList?tabid="+arr[i].id+"'>"+arr[i].name+"</a></li>"
+						}
+						tmpStr+=htmlStr;
+						$("#topMenuList").html(tmpStr);
 					}
-					tmpStr+=htmlStr;
-					$("#topMenuList").html(tmpStr);
+
 				}
 			});
 		} 
@@ -1333,11 +1335,11 @@ window.onload=function() {
 		function getSideMenu() {
 			$.ajax({
 				type : "post",
-				url:"/WHCD/Manager/getTabList",
+				url:url_perfix + "Manager/getTabList",
 				async : false,
 				dataType : 'json',
 				error : function() {
-					alert("ajax出错！");
+					alert("ajax出错！ getSideMenu");
 				},
 				success : function(data) {
 					var len=data.tabList.length;
@@ -1347,7 +1349,7 @@ window.onload=function() {
 					tmpStr=$("#sideMenuList").html();
 					for(var i=0;i <len;i++){
 						if(arr[i].position===1&&arr[i].isUsed===1)
-						htmlStr+="<a class='list-group-item' href='/WHCD/Scenery/SceneryList?tabid="+arr[i].id+"'>"+arr[i].name+"</a>"
+						htmlStr+="<a class='list-group-item' href='"+ url_perfix +"Scenery/SceneryList?tabid="+arr[i].id+"'>"+arr[i].name+"</a>"
 					}
 					tmpStr+=htmlStr;
 						$("#sideMenuList").html(tmpStr);
@@ -1358,12 +1360,12 @@ window.onload=function() {
 		function getSceneryDataHomePage() {
 			$.ajax({
 				type : "post",
-				url:"/WHCD/Scenery/getSceneryList",
+				url:url_perfix + "Scenery/getSceneryList",
 				async : false,
 				dataType : 'json',
 				data:{"page":1},
 				error : function() {
-					alert("ajax出错！");
+					alert("ajax出错！ getSceneryDataHomePage");
 				},
 				success : function(data) {
 					var numPage=data.numPage;
@@ -1381,7 +1383,7 @@ window.onload=function() {
 						+"<div class='media'>"
 						+"<div class='media-body'>"
 						+"<h4 class='media-heading'>"
-						+"<a href='/WHCD/Scenery/SceneryDetail?sceneryId="+arr[i].id+"'>" 
+						+"<a href='"+ url_perfix +"Scenery/SceneryDetail?sceneryId="+arr[i].id+"'>"
 						+arr[i].summary
 						+"</a>"
 						+"</h4>"
@@ -1390,7 +1392,7 @@ window.onload=function() {
 						+"</p>"
 						+"</div>"
 						+"<div class='media-right media-middle'>"
-						+"<a> <img class='media-object' style='margin-top: 20px;'  src='/WHCD"+arr[i].picaddr+"' onload='AutoResizeImage(100,100,this)' onerror='javascript:this.src=\"/WHCD/jsp/img/errorimg.jpg\"' /></a>"
+						+"<a> <img class='media-object' style='margin-top: 20px;'  src='"+ url_perfix +arr[i].picaddr+"' onload='AutoResizeImage(100,100,this)' onerror='javascript:this.src=\""+ url_perfix +"jsp/img/errorimg.jpg\"' /></a>"
 						+"</div></div></div></div></div></div>";
 						}
 					else{
@@ -1401,7 +1403,7 @@ window.onload=function() {
 										+"<div class='media'>"
 										+"<div class='media-body'>"
 										+"<h4 class='media-heading'>"
-										+"<a href='/WHCD/Scenery/SceneryDetail?sceneryId="+arr[i].id+"'>"
+										+"<a href='"+ url_perfix +"Scenery/SceneryDetail?sceneryId="+arr[i].id+"'>"
 										+arr[i].summary
 										+"</a>"
 										+"</h4>"

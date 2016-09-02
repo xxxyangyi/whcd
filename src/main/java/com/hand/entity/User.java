@@ -26,7 +26,8 @@ public class User implements Serializable {
 	@Column(name="isused")
 	@Expose
 	private Integer isUsed;
-	
+
+	//  0 管理员  1 专家   2 用户
 	@Column(name="identity")
 	@Expose
 	private Integer identity;

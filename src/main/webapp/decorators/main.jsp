@@ -38,7 +38,7 @@
 	<style type="text/css">
 	.footer{
 	width: 90%;
-	background:url('/WHCD/jsp/img/bg_footer.png');
+	background:url('<%=basePath%>jsp/img/bg_footer.png');
 	float: left;
 	border-top: 5px solid #79c90e;
 	height: 190px;
@@ -52,16 +52,16 @@
 	margin-top: 10px;
 }
 .footer .footerDiv .footerTitleBG1{
-	background:url('/WHCD/jsp/img/foot_pic_01.gif');
+	background:url('<%=basePath%>jsp/img/foot_pic_01.gif');
 }
 .footer .footerDiv .footerTitleBG2{
-	background:url('/WHCD/jsp/img/foot_pic_02.gif');
+	background:url('<%=basePath%>jsp/img/foot_pic_02.gif');
 }
 .footer .footerDiv .footerTitleBG3{
-	background:url('/WHCD/jsp/img/foot_pic_03.gif');
+	background:url('<%=basePath%>jsp/img/foot_pic_03.gif');
 }
 .footer .footerDiv .footerTitleBG4{
-	background:url('/WHCD/jsp/img/foot_pic_04.gif');
+	background:url('<%=basePath%>jsp/img/foot_pic_04.gif');
 }
 .footer .footerDiv span{
 	font-size: 10px;
@@ -94,11 +94,11 @@
 	.side-bar {width: 66px;position: fixed;bottom: 20px;right: 25px;font-size: 0;line-height: 0;z-index: 100;}
 										.side-bar a {width: 66px;height: 66px;display: inline-block;background-color: #ddd;margin-bottom: 2px;}
 										.side-bar a:hover {background-color: #669fdd;}
-										.side-bar .icon-qq {background-image: url(/WHCD/jsp/img/tencent_mobileqq_64px_1186944_easyicon.net.png);}
-										.side-bar .icon-chat {background-image: url(/WHCD/jsp/img/tencent_mm_64px_1186943_easyicon.net.png);position: relative;}
+										.side-bar .icon-qq {background-image: url(<%=basePath%>jsp/img/tencent_mobileqq_64px_1186944_easyicon.net.png);}
+										.side-bar .icon-chat {background-image: url(<%=basePath%>jsp/img/tencent_mm_64px_1186943_easyicon.net.png);position: relative;}
 										.side-bar .icon-chat:hover .chat-tips {display: block;}
-										.side-bar .icon-blog {background-image: url(/WHCD/jsp/img/qq_qzone_64px_1186902_easyicon.net.png);}
-										.side-bar .icon-mail {background-image: url(/WHCD/jsp/img/home_64px_1093601_easyicon.net.png)}
+										.side-bar .icon-blog {background-image: url(<%=basePath%>jsp/img/qq_qzone_64px_1186902_easyicon.net.png);}
+										.side-bar .icon-mail {background-image: url(<%=basePath%>jsp/img/home_64px_1093601_easyicon.net.png)}
 										.side-bar .icon-totop {background-position: 0 -334px;}
 										.chat-tips {padding: 20px;border: 1px solid #d1d2d6;position: absolute;right: 78px;top: -55px;background-color: #fff;display: none;}
 										.chat-tips i {width: 9px;height: 16px;display: inline-block;position: absolute;right: -9px;top: 80px;background-position:-88px -350px;}
@@ -170,7 +170,7 @@
 	<div class="footerLine"></div>
 	<div class=" footerNote">
 		<p>
-			©文化词典 <a href="file:///F:/LOLOWeb/index.html">http://localhost:8080/WHCD/</a>
+			©文化词典 <a href="file:///F:/LOLOWeb/index.html"><%=basePath%></a>
 			文化词典小组所有
 		</p>
 		<p>滇ICP证:120807号 网络文化经营许可证:京网文[2015]0019-019号</p>
@@ -179,13 +179,14 @@
 </footer>
 	
 	<script type="text/javascript">
-		if(window.location.href=="http://localhost:8080/WHCD/"){
+		var url_perfix = "http://localhost:8080/";
+		if(window.location.href==url_perfix){
 			$('#mainLeftPanel').remove()
 		}
-		if(window.location.href=="http://localhost:8080/WHCD/#"){
+		if(window.location.href==(url_perfix+"#")){
 			$('#mainLeftPanel').remove()
 		}		
-		if(window.location.href=="http://localhost:8080/WHCD/Home/Index"){
+		if(window.location.href==url_perfix+"Home/Index"){
 			$('#mainLeftPanel').remove()
 		}
 	</script>

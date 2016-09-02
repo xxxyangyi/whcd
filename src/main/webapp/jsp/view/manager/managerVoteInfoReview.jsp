@@ -47,12 +47,13 @@
 											onclick="managerVoteInfoReview(<s:property value='#id.id'/>,2)">不通过</button>
 										</s:if>
 										<script type="text/javascript">
+											var url_perfix = "http://localhost:8080/";
 											function managerVoteInfoReview(voteId,review) {
 												alert('voteId'+voteId+'  review'+review);
 													$.ajax({
 														type : "post",
 														data : {vote_id:voteId,review:review},
-														url : "http://localhost:8080/WHCD/activity/managerVoteInfoReviewPassORNotPass",
+														url : url_perfix+"activity/managerVoteInfoReviewPassORNotPass",
 														async : false,
 														success : function(msg) {
 															alert(msg)

@@ -27,10 +27,10 @@
 								<div style="float:left">性别比例</div>
 								<div style="float:right">
 									<div style="margin-bottom: 5px">
-										<span>用户男</span><img src="/WHCD/jsp/img/userM.png" />
+										<span>用户男</span><img src="<%=basePath%>jsp/img/userM.png" />
 									</div>
 									<div>
-										<span>用户女</span><img src="/WHCD/jsp/img/userW.png" />
+										<span>用户女</span><img src="<%=basePath%>jsp/img/userW.png" />
 									</div>
 								</div>
 							</div>
@@ -46,7 +46,7 @@
 		                        	    var man=0;
 		                        	    var women=0;
 		                        	    $.ajax({
-		                    				url : "/WHCD/Manager/getSexData",
+		                    				url : "<%=basePath%>Manager/getSexData",
 		                    				async : false,
 		                    				error : function() {
 		                    					alert("操作失败！");
@@ -82,10 +82,10 @@
 								<div style="float:left">职业比例</div>
 								<div style="float:right">
 									<div style="margin-bottom: 5px">
-										<span>专家</span><img src="/WHCD/jsp/img/authorM.png" />
+										<span>专家</span><img src="<%=basePath%>/jsp/img/authorM.png" />
 									</div>
 									<div>
-										<span>游客</span><img src="/WHCD/jsp/img/touristM.png" />
+										<span>游客</span><img src="<%=basePath%>/jsp/img/touristM.png" />
 									</div>
 								</div>
 							</div>
@@ -100,7 +100,7 @@
 		                        	    var user=0;
 		                        	    var expert=0;
 		                        	    $.ajax({
-		                    				url : "/WHCD/Manager/getIdentityData",
+		                    				url : "<%=basePath%>/Manager/getIdentityData",
 		                    				async : false,
 		                    				error : function() {
 		                    					alert("操作失败！");
@@ -144,7 +144,7 @@
 		                          $("#canvasMonth").ready(function(){
 		                        	  	  
 		                        	  $.ajax({
-		                    				url : "/WHCD/Manager/getMonthData",
+		                    				url : "<%=basePath%>Manager/getMonthData",
 		                    				async : false,
 		                    				error : function() {
 		                    					alert("操作失败！");
