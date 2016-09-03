@@ -122,7 +122,7 @@
 	<s:else>
 		<jsp:include page="/jsp/view/layout/nav_top.jsp"></jsp:include>
 	</s:else>
-	<div class="container id1" style="width: 95%">
+	<div class="container id1" style="width: 99%">
 		<div class="row">
 			<div id="mainLeftPanel" class="col-md-2">
 				<s:if test="#session.get('user')!=null">

@@ -17,7 +17,7 @@
 </head>
 
 <body>
-			<div class="col-md-9">
+			<div class="col-md-10">
 				<hr align="left" width="100%" size="15" />
 					<div class="panel-body">
 						<div style="height:200px;width: 200px;margin: 200px auto; "><h3>欢迎！<%=user.getName()%>登陆</h3></div>

@@ -14,7 +14,7 @@
 <link href="<%=request.getContextPath()%>/jsp/css/textedit.css" rel="stylesheet" type="text/css" />
 <%@ taglib prefix="s" uri="/struts-tags"%>
 			
-			<div class="col-md-9">
+			<div class="col-md-10">
 			<h4 style="display: inline-block;">名胜古迹管理</h4>
 			<hr align="left" width="100%" size="15" />
 			<table class="table table-hover" style="text-align: center;">

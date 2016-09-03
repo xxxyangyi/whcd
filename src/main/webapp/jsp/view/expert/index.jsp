@@ -14,7 +14,7 @@
 </head>
 
 <body>
-			<div class="col-md-9">
+			<div class="col-md-10">
 				<div id="activity_list"></div>					
 			</div>
 </body>

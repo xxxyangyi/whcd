@@ -17,7 +17,7 @@
 
 <body>
 
-	<div class="col-md-9" style="background-color: white;">
+	<div class="col-md-10" style="background-color: white;">
 	<h2 style="display: inline-block;">菜单管理</h2><div style="float:right;display: inline-block;margin-top: 20px;"><a  data-toggle="modal" data-target="#addUserModel" ata-whatever="@mdo" class="btn btn-info">添加</a></div>
 	<div id="usrPanelContent">
 	<table class="table table-hover" style="text-align:center;">

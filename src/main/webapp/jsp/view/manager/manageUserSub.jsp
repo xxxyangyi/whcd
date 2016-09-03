@@ -8,7 +8,7 @@
 	Integer len=userList!=null?userList.size():0;
 %>
 <%@ taglib prefix="s" uri="/struts-tags"%>
-<div class="col-md-9" style="background-color: white;">
+<div class="col-md-10" style="background-color: white;">
 	<h2 style="display: inline-block;">用户管理</h2><div style="float:right;display: inline-block;margin-top: 20px;"><a  data-toggle="modal" data-target="#addUserModel" ata-whatever="@mdo" class="btn btn-info">添加</a></div>
 	<table class="table table-hover" style="text-align:center;">
 		<thead >

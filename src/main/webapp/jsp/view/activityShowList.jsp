@@ -13,7 +13,7 @@
 </head>
 
 <body>
-			<div class="col-md-9">
+			<div class="col-md-10">
 				<hr align="left" width="100%" size="15" />
 				<div class="row">
 				<div id="activity_list"></div>					
