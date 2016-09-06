@@ -106,6 +106,16 @@ public class User implements Serializable {
 	public void setIsUsed(Integer isUsed) {
 		this.isUsed = isUsed;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "User{" +
+				"mail='" + mail + '\'' +
+				", password='" + password + '\'' +
+				", name='" + name + '\'' +
+				", isUsed=" + isUsed +
+				", identity=" + identity +
+				", sex=" + sex +
+				'}';
+	}
 }

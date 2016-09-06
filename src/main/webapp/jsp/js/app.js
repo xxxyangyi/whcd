@@ -16,7 +16,7 @@ window.onload=function() {
 					for (i; i < msg.length; i++) {
 						if (i%2 == 0) {
 							$("#activity_list").append(
-																	"<div class='col-lg-10 col-lg-offset-1'>"
+																	"<div class='col-lg-12'>"
 																			+ "<div class='panel panel-default'>"
 																			+ "<div class='panel-body'>"
 																			+ "<div class='media'>"
@@ -312,7 +312,7 @@ window.onload=function() {
 					if(i%2==0){
 					 tmpStr="<div class='col-lg-10 col-lg-offset-2'>"
 						+"<div class='panel panel-default'>"
-						+"<div class='panel-body' style='height: 125px;'>"
+						+"<div class='panel-body' >"
 						+"<div class='media'>"
 						+"<div class='media-body'>"
 						+"<h4 class='media-heading'>"
@@ -330,9 +330,9 @@ window.onload=function() {
 						}
 					else{
 							tmpStr="<div class='row'>"
-										+"<div class='col-lg-10 col-lg-offset-1'>"
+										+"<div class='col-lg-12'>"
 										+"<div class='panel panel-default'>"
-										+"<div class='panel-body' style='height: 125px;'>"
+										+"<div class='panel-body' >"
 										+"<div class='media'>"
 										+"<div class='media-left media-middle'>"
 										+"<a> <img class='media-object' style='margin-top: 20px;'  src='"+ url_perfix +arr[i].picaddr+"' onload='AutoResizeImage(100,100,this)' onerror='javascript:this.src="+ url_perfix +"jsp/img/errorimg.jpg\"' /></a>"
@@ -360,7 +360,7 @@ window.onload=function() {
 						else
 							str+="<option value="+j+">"+j+"</option>";
 					}
-					var select="<hr align='left' width='100%' size='15' />"
+					 var select="<hr align='left' width='100%' size='15' />"
 					+"<div class='col-lg-8 col-lg-offset-3'>"
 					+"<div class='col-lg-2'>"
 					+"<a onclick='PrePage();GetSceneryList(\""+tabid+"\");' class='btn btn-primary'>上一页</a>"
@@ -403,7 +403,7 @@ window.onload=function() {
 					if(i%2==0){
 					 tmpStr="<div class='row'><div class='col-lg-10 col-lg-offset-2'>"
 						+"<div class='panel panel-default'>"
-						+"<div class='panel-body' style='height: 125px;'>"
+						+"<div class='panel-body' >"
 						+"<div class='media'>"
 						+"<div class='media-body'>"
 						+"<h4 class='media-heading'>"
@@ -421,9 +421,9 @@ window.onload=function() {
 						}
 					else{
 							tmpStr="<div class='row'>"
-										+"<div class='col-lg-10 col-lg-offset-1'>"
+										+"<div class='col-lg-10'>"
 										+"<div class='panel panel-default'>"
-										+"<div class='panel-body' style='height: 125px;'>"
+										+"<div class='panel-body' >"
 										+"<div class='media'>"
 										+"<div class='media-left media-middle'>"
 										+"<a> <img class='media-object' style='margin-top: 20px;'  src="+ url_perfix +arr[i].picaddr+"' onload='AutoResizeImage(100,100,this)' onerror='javascript:this.src="+ url_perfix +"jsp/img/errorimg.jpg\"' /></a>"
@@ -1133,7 +1133,7 @@ window.onload=function() {
 						else
 							str+="<option value="+j+">"+j+"</option>";
 					}
-					var select="<hr align='left' width='100%' size='15' />"
+					 var select="<hr align='left' width='100%' size='15' />"
 					+"<div class='col-lg-8 col-lg-offset-3'>"
 					+"<div class='col-lg-2'>"
 					+"<a onclick='PrePage();GetManagerSceneryList();' class='btn btn-primary'>上一页</a>"
@@ -1377,9 +1377,9 @@ window.onload=function() {
 					var tmpStr="";
 					for (var i=0; i <len&&i<numPage; i++) {
 					if(i==0){
-					 tmpStr="<div class='row'><div class='col-lg-10 col-lg-offset-1'>"
+					 tmpStr="<div class='row'><div class='col-lg-12'>"
 						+"<div class='panel panel-default'>"
-						+"<div class='panel-body' style='height: 125px;'>"
+						+"<div class='panel-body' >"
 						+"<div class='media'>"
 						+"<div class='media-body'>"
 						+"<h4 class='media-heading'>"
@@ -1397,9 +1397,9 @@ window.onload=function() {
 						}
 					else{
 							tmpStr="<div class='row'>"
-										+"<div class='col-lg-10 col-lg-offset-1'>"
+										+"<div class='col-lg-12'>"
 										+"<div class='panel panel-default'>"
-										+"<div class='panel-body' style='height: 125px;'>"
+										+"<div class='panel-body'>"
 										+"<div class='media'>"
 										+"<div class='media-body'>"
 										+"<h4 class='media-heading'>"

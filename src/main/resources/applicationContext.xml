@@ -35,11 +35,11 @@
 			<props>
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-				<!-- <prop key="hibernate.show_sql">true</prop> -->
-				<!-- <prop key="hibernate.format_sql">true</prop> -->
+				<!-- <prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop> -->
 			</props>
 		</property>
-		<property name="packagesToScan" value="com.hand.entity" />
+		<property name="packagesToScan" value="com.hand" />
 	</bean>
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
@@ -49,6 +49,7 @@
 	<tx:annotation-driven transaction-manager="transactionManager" />
     <context:component-scan base-package="com.hand.dao.impl"></context:component-scan>
     <context:component-scan base-package="com.hand.service.impl"></context:component-scan>
+	<context:component-scan base-package="com.hand.paging"></context:component-scan>
 	<context:component-scan base-package="com.hand.init"></context:component-scan>
 	<bean class="com.hand.init.InitDataListener" init-method="initMethod"></bean>
 	

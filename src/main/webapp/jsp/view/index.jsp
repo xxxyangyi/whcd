@@ -12,7 +12,7 @@
 <title>注册页面</title>
 </head>
 <body>
-	<div class="col-md-7" style="border: 1px solid #FAFAFA;">
+	<div class="col-md-8">
 		<h3>最新更新风景人文</h3>
 		<div id="home_scenery_list"></div>
 		<div id="sceneryHomePage"></div>
@@ -20,7 +20,7 @@
 					getSceneryDataHomePage();
 				</script>
 	</div>
-	<div class="col-md-4" style="border: 1px solid #efefef; margin-left: 50px;">
+	<div class="col-md-4">
 		<h3>最新更新活动</h3>
 		<div id="home_activity_list"></div>
 	</div>

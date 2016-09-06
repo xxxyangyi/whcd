@@ -15,9 +15,9 @@
 				<%for(int i=1;i<=numPage&&i<=len;i++){%>
 				<%if(i%2!=0){%>
 				<div class="row">
-					<div class="col-lg-10 col-lg-offset-1">
+					<div class="col-lg-12">
 						<div class="panel panel-default">
-							<div class="panel-body" style="height: 125px;">
+							<div class="panel-body">
 								<div class="media">
 									<div class="media-left media-middle">
 										<a href="#"> <img class="media-object " style="margin-top: 20px;"  src="<%=request.getContextPath()%><%=sceneryList.get(i-1).getPicaddr()%>" onload="AutoResizeImage(100,100,this)" onerror="javascript:this.src='<%=request.getContextPath()%>/jsp/img/errorimg.jpg'"  alt="...">
@@ -25,7 +25,7 @@
 									</div>
 									<div class="media-body">
 										<h4 class="media-heading"><a href="<%=request.getContextPath()%>/Scenery/SceneryDetail?sceneryId=<%=sceneryList.get(i-1).getId()%>"><%=sceneryList.get(i-1).getSummary()%></a></h4>
-										<p style="width:470px;word-wrap:break-word;text-overflow:ellipsis"><%=sceneryList.get(i-1).getDetailSub()%></p>
+										<p ><%=sceneryList.get(i-1).getDetailSub()%></p>
 									</div>
 								</div>
 							</div>
@@ -35,11 +35,11 @@
 				<%}else{ %>
 				<div class="col-lg-10 col-lg-offset-2">
 					<div class="panel panel-default">
-						<div class="panel-body" style="height: 125px;">
+						<div class="panel-body" >
 							<div class="media">
 								<div class="media-body">
 									<h4 class="media-heading"><a href="<%=request.getContextPath()%>/Scenery/SceneryDetail?sceneryId=<%=sceneryList.get(i-1).getId()%>"><%=sceneryList.get(i-1).getSummary()%></a></h4>
-									<p style="width:470px;word-wrap:break-word;text-overflow:ellipsis"><%=sceneryList.get(i-1).getDetailSub()%></p>
+									<p ><%=sceneryList.get(i-1).getDetailSub()%></p>
 								</div>
 								<div class="media-right media-middle">
 									<a href="#"> <img class="media-object "  src="<%=request.getContextPath()%><%=sceneryList.get(i-1).getPicaddr()%>" onload="AutoResizeImage(100,100,this)" onerror="javascript:this.src='<%=request.getContextPath()%>/jsp/img/errorimg.jpg'" alt="...">

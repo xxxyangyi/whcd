@@ -13,11 +13,12 @@
 </head>
 <body>
 <base href="<%=basePath%>">
-	<div style="width: 100%;background-color: #fff;z-index: 100">
-		<img alt="" src="<%=basePath%>jsp/img/top.png">
-	</div>
+
 	<nav class="navbar navbar-default" >
 	<div class="container-fluid">
+		<div style="width: 100%;background-color: #fff;z-index: 100">
+			<img alt="" src="<%=basePath%>jsp/img/top.png">
+		</div>
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed"

@@ -141,7 +141,7 @@
 		</div>
 	</div>
 
-<footer class="footer">
+<!--<footer class="footer">
 	<div class="footerDiv">
 		<div class="footerTitleBG1">
 			<span>关于我们</span>
@@ -176,7 +176,7 @@
 		<p>滇ICP证:120807号 网络文化经营许可证:京网文[2015]0019-019号</p>
 		<p>京公网安备：11010102000514号</p>
 	</div>
-</footer>
+</footer>-->
 	
 	<script type="text/javascript">
 		var url_perfix = "http://localhost:8080/";
