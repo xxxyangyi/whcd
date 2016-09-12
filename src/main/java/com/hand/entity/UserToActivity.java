@@ -11,11 +11,11 @@ public class UserToActivity implements Serializable {
 	@Column(name="id")
 	private int id;
 	
-	@ManyToOne(cascade=CascadeType.ALL)           
+	@ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name="user_id") 
 	private User user_id;
 	
-	@ManyToOne(cascade=CascadeType.ALL)           
+	@ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name="activity_id") 
 	private Activity activity_id;
 	
