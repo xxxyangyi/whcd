@@ -36,7 +36,7 @@
                     </div>
                     <div class="media-right media-middle">
                         <a> <img class="media-object" style="margin-top: 20px;" src=""
-                                 onload="AutoResizeImage(100,100,this)" onerror=" "/></a>
+                                 onload="AutoResizeImage(100,100,this)" /></a>
                     </div>
                 </div>
             </div>
