@@ -38,7 +38,7 @@ public class ActivityAction extends ActionSupport implements SessionAware,Servle
 
 	public void  pagingActivity() throws IOException{
 
-		int pageNo = Integer.parseInt(request.getParameter("pageNo"));
+		int pageNo = Integer.parseInt(request.getParameter("PageNo"));
 
 		pagingActivityService.PagingService(Activity.class);
 		Pager pager = pagingActivityService.paging(pageNo,PAGESIZE,null);
@@ -53,8 +53,8 @@ public class ActivityAction extends ActionSupport implements SessionAware,Servle
 		}
 
 		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
-		out.print(gson.toJson(pager.getResult()));
-		System.out.println("发送数据");
+		out.print(gson.toJson(pager));
+		System.out.println("发送数据=="+gson.toJson(pager));
 
 //		pagingActivityService.PagingService(Activity.class);
 //		Map map = new HashMap();

@@ -15,26 +15,44 @@ function pagingStart(InsertID, ModelId, ActionName) {
 
 function paging(InsertID, ModelId, ActionName,PageNo) {
     console.log("AJAX 发送请求 " + ActionName+ "  PageNo = "+ PageNo)
-    console.log("获取totelNumber---获取PageSize---获取PageNumber")
-    var json = ' { "programmers": [{ "firstName": "1", "lastName":"11", "email": "111" },' +
-        '{ "firstName": "2", "lastName":"22", "email": "222" },' +
-        '{ "firstName": "3", "lastName":"33", "email": "333" },' +
-        '{ "firstName": "4", "lastName":"44", "email": "444" },' +
-        '{ "firstName": "5", "lastName":"55", "email": "555" },' +
-        '{ "firstName": "6", "lastName":"66", "email": "666" },' +
-        '{ "firstName": "7", "lastName":"77", "email": "777" },' +
-        '{ "firstName": "8", "lastName":"88", "email": "888" },' +
-        '{ "firstName": "9", "lastName":"99", "email": "999" },' +
-        '{ "firstName": "0", "lastName":"00", "email": "000" },' +
-        ' ]} ';
-    json = eval("(" + json + ")");
-    var totelNumber = 27;
-    var PageSize = 5;
+    var totelNumber = 0;
+    var PageSize = 0;
     var PageNo = PageNo;
+    var json = null;
+    $.ajax({
+        type: "post",
+        data: {"PageNo":PageNo},
+        url: ActionName,
+        async: false,
+        dataType: 'json',
+        error : function() {
+            alert("分页AJAX 出错");
+        },
+        success: function (msg) {
+            console.log(msg);
+            totelNumber = msg.rowCount;
+            PageSize    = msg.pageSize;
+            PageNo      = msg.pageNo;
+            json        = msg.result;
+        }
+    })
+
+    console.log("获取totelNumber---获取PageSize---获取PageNumber")
+    // var json = ' { "programmers": [{ "firstName": "1", "lastName":"11", "email": "111" },' +
+    //     '{ "firstName": "2", "lastName":"22", "email": "222" },' +
+    //     '{ "firstName": "3", "lastName":"33", "email": "333" },' +
+    //     '{ "firstName": "4", "lastName":"44", "email": "444" },' +
+    //     '{ "firstName": "5", "lastName":"55", "email": "555" },' +
+    //     '{ "firstName": "6", "lastName":"66", "email": "666" },' +
+    //     '{ "firstName": "7", "lastName":"77", "email": "777" },' +
+    //     '{ "firstName": "8", "lastName":"88", "email": "888" },' +
+    //     '{ "firstName": "9", "lastName":"99", "email": "999" },' +
+    //     '{ "firstName": "0", "lastName":"00", "email": "000" },' +
+    //     ' ]} ';
+    // json = eval("(" + json + ")");
+
     if(totelNumber==0){
-
         $(InsertID).append("没有更多数据了");
-
         return;
 
     }
@@ -58,8 +76,8 @@ function paging(InsertID, ModelId, ActionName,PageNo) {
     }
     // 进行循环打印
     $(InsertID).children().remove();
-    for (var i = 0; i < PageSize; i++) {
-        var my_json = json.programmers[i];
+    for (var i = 0; i < json.length; i++) {
+        var my_json = json[i];
         var linshiModelHtml = model_html;
         for (var j = 0; j < map.size(); j++) {
             linshiModelHtml = (linshiModelHtml.replace(map.getKey(j), my_json[map.get(map.getKey(j))])).toString();

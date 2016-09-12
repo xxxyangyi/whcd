@@ -1,5 +1,7 @@
 package com.hand.paging;
 
+import com.google.gson.annotations.Expose;
+
 import java.util.List;
 
 /**
@@ -13,10 +15,13 @@ public class Pager {
         this.rowCount = rowCount;
         this.result = result;
     }
-
+    @Expose
     private int pageSize;
+    @Expose
     private int pageNo;
+    @Expose
     private int rowCount;
+    @Expose
     private List result;
 
     public int getPageSize() {
