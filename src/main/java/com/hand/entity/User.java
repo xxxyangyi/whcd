@@ -36,7 +36,7 @@ public class User implements Serializable {
 	@Expose
 	private Integer sex;
 	
-	@OneToMany(mappedBy = "user_id", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "user_id", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Set<UserToActivity> userToActivity  =new HashSet<UserToActivity>();
 	
 	@OneToMany(mappedBy = "user_id", cascade = CascadeType.ALL, fetch = FetchType.LAZY)

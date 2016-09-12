@@ -81,7 +81,8 @@
 		    <result name="success">/jsp/view/voteAdd.jsp</result>		    
 		</action>
 		<action name="voteFor" class="voteAction" method="voteFor"></action>
-		
+		<action name="pagingActivity" class="activityAction" method="pagingActivity"></action>
+
 	</package>
 	
 	<package name="PersonCenter" namespace="/PersonCenter" extends="struts-default">

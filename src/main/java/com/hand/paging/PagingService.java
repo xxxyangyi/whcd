@@ -7,6 +7,8 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import java.io.Serializable;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by tuberose on 16-9-4.
@@ -37,4 +39,8 @@ public class PagingService<T extends Serializable> {
     public Pager paging(int pageNo, int pageSize, Criterion... criterions){
         return pagingDao.findPageByCriteria(pageNo,pageSize,criterions);
     }
+
+//    public Pager findPageByQuery(int pageNo, int pageSize, Map map){
+//        return pagingDao.findPageByQuery(pageNo,pageSize,map);
+//    };
 }

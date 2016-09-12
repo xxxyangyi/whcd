@@ -4,13 +4,12 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.hand.paging.Pager;
+import com.hand.paging.PagingService;
 import org.apache.struts2.interceptor.*;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -18,10 +17,15 @@ import com.hand.entity.Activity;
 import com.hand.service.IActivityService;
 import com.opensymphony.xwork2.ActionSupport;
 
+import static com.hand.KEY.commonKey.PAGESIZE;
+
 public class ActivityAction extends ActionSupport implements SessionAware,ServletRequestAware,ServletResponseAware{
 	
 	@Resource(name = "activityService")
 	private IActivityService activityService;
+
+	@Resource(name = "pagingService")
+	private PagingService<Activity> pagingActivityService;
 	
 	private Map session;
 	private HttpServletRequest  request;
@@ -31,7 +35,38 @@ public class ActivityAction extends ActionSupport implements SessionAware,Servle
 	private String time1;
 	private String time2;
 	
-	
+
+	public void  pagingActivity() throws IOException{
+
+		int pageNo = Integer.parseInt(request.getParameter("pageNo"));
+
+		pagingActivityService.PagingService(Activity.class);
+		Pager pager = pagingActivityService.paging(pageNo,PAGESIZE,null);
+
+		response.setContentType("text/json");
+		response.setCharacterEncoding("UTF-8");
+		PrintWriter out = response.getWriter();
+		System.out.println("数据："+pager.toString());
+
+		for (Object activity: pager.getResult()){
+			System.out.println("activity --->：  "+((Activity)activity).toString());
+		}
+
+		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+		out.print(gson.toJson(pager.getResult()));
+		System.out.println("发送数据");
+
+//		pagingActivityService.PagingService(Activity.class);
+//		Map map = new HashMap();
+//		Pager pager  = pagingActivityService.findPageByQuery(5,5,map);
+//		for (Object activity: pager.getResult()){
+//			System.out.println("activity --->：  "+((Activity)activity).toString());
+//		}
+
+	}
+
+
+
 	public void Index() {
 		Activity activity = new Activity();
 		System.out.println(activity.getEndTime());

@@ -1,5 +1,8 @@
 var url_perfix = "http://localhost:8080/";
 window.onload=function() {
+
+	paging("#pagingActivityList","","http://localhost:8080/activity/pagingActivityService?pageSize=2&pageNo=2",1,2,3);
+
 	//通过判断 activity_list 标签是否存在 ，判断是否要请求加载 活动清单数据
 	if ($("#activity_list").length > 0) {
 		console.log("activity_list 存在：请求数据");
@@ -16,7 +19,7 @@ window.onload=function() {
 					for (i; i < msg.length; i++) {
 						if (i%2 == 0) {
 							$("#activity_list").append(
-																	"<div class='col-lg-12'>"
+																	"<div class='col-lg-10'>"
 																			+ "<div class='panel panel-default'>"
 																			+ "<div class='panel-body'>"
 																			+ "<div class='media'>"

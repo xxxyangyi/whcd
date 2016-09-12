@@ -35,6 +35,7 @@
 	<script type="text/javascript" src="<%=basePath%>jsp/js/Chart.js"></script>
 	<script type="text/javascript" src="<%=basePath%>jsp/js/wysiwyg.js"></script>
 	<script type="text/javascript" src="<%=basePath%>jsp/js/app.js"></script>
+	<script type="text/javascript" src="<%=basePath%>jsp/js/paging.js"></script>
 	<style type="text/css">
 	.footer{
 	width: 90%;

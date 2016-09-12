@@ -50,11 +50,11 @@ public class Activity implements Serializable {
 	@Expose 
 	private int expertNum = 0;
 	
-	@OneToMany(mappedBy = "activity_id", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "activity_id", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
 	private Set<UserToActivity> userToActivity  =new HashSet<UserToActivity>();
 	
 	
-	@OneToMany(mappedBy = "activity_id", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "activity_id", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
 	private Set<Vote> vote  =new HashSet<Vote>();
 	
 	public int getId() {
@@ -122,5 +122,12 @@ public class Activity implements Serializable {
 	}
 	public void setExpertNum(int expertNum) {
 		this.expertNum = expertNum;
+	}
+
+	@Override
+	public String toString() {
+		return "Activity{" +
+				"id=" + id +
+				'}';
 	}
 }
