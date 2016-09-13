@@ -34,45 +34,41 @@
 						<form id="resistForm" action="<%=request.getContextPath()%>/PersonCenter/DoModifyInfo" method="post">
 							<div>
 								<label style="display: block;">用户名：</label>
-								<div class="form-group col-sm-12">
+								<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
 									<input type="text" class="form-control " id="name"  name="name" value="<%=user.getName()%>" disabled="disabled"/> 
 								</div>
 							</div>
 							<div>
-								<label for="exampleInputPassword1" style="display: block;">密码：</label>
-								<div class="form-group col-sm-12">
+								<label for="password" style="display: block;">密&nbsp&nbsp码：</label>
+								<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
 									<input type="password" id="password" class="form-control"  value="<%=user.getPassword()%>" name="password" disabled="disabled" /> 
 								</div>
 							</div>
-							<div class="form-group">
-								<div class="input-group">
-									<label>性别：</label>
-									<div clas="row">
-
+							<div >
+								<label style="display: block;">性&nbsp&nbsp别：</label>
+								<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
 										<%
 											if (user.getSex() == 1) {
 										%>
-										<div class="col-lg-1">
-											<input type="radio" name="sex" value="1" aria-label="..."
-												checked="checked">
+										<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+											<input type="radio" name="sex" value="1" aria-label="..." checked="checked">
+											<span>男</span>
 										</div>
-										<div class="col-lg-3">男</div>
-										<div class="col-lg-1">
+										<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 ">
 											<input type="radio" name="sex" value="0" aria-label="...">
+											<span>女</span>
 										</div>
-										<div class="col-lg-3">女</div>
 										<%
 											} else {
 										%>
-										<div class="col-lg-1">
+										<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
 											<input type="radio" name="sex" value="1" aria-label="...">
+											<span>男</span>
 										</div>
-										<div class="col-lg-3">男</div>
-										<div class="col-lg-1">
-											<input type="radio" name="sex" value="0" aria-label="..."
-												checked="checked">
-										</div>
-										<div class="col-lg-3">女</div>
+										<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 ">
+											<input type="radio" name="sex" value="0" aria-label="..." checked="checked">
+											<span>女</span>
+										</div
 										<%
 											}
 										%>
