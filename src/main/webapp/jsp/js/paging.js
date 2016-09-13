@@ -125,7 +125,7 @@ function getPagingHtmlString(InsertID, ModelId,ActionName,PageNumber,PageNo) {
         }
     }
     if((PageNo-position)<=0){
-        html_head = '<nav><ul class="pagination"><li class="disabled" ><a >Prev</a></li>' ;
+        html_head = '<nav class="col-lg-6 col-lg-offset-4 col-md-6 col-md-offset-4"><ul class="pagination"><li class="disabled" ><a >Prev</a></li>' ;
     }else{
         html_head = '<nav><ul class="pagination"><li><a href="javascript:paging(\''+InsertID+'\',\''+ModelId+'\',\''+ActionName+'\','+(PageNo-position)+')">Prev</a></li>' ;
     }

@@ -10,7 +10,7 @@
 <html>
 <head>
 <base href="<%=basePath%>">
-	<link rel="stylesheet" href="http://libs.useso.com/js/font-awesome/4.2.0/css/font-awesome.min.css">
+	<%--<link rel="stylesheet" href="http://libs.useso.com/js/font-awesome/4.2.0/css/font-awesome.min.css">--%>
 	<link rel="stylesheet" type="text/css"  href="<%=basePath%>jsp/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css"  href="<%=basePath%>jsp/css/bootstrap-datetimepicker.css">
 	<link rel="stylesheet" type="text/css"  href="<%=basePath%>jsp/css/bootstrap-theme.min.css">
