@@ -199,10 +199,10 @@
 	}
 	
 </script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/jsp/js/wysiwyg.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/jsp/js/wysiwyg-editor.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/jsp/js/textedit.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/jsp/js/bootstrap-filestyle.min.js"> </script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/jsp/js/JsFramework/wysiwyg.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/jsp/js/JsFramework/wysiwyg-editor.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/jsp/js/JsFramework/textedit.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/jsp/js/JsFramework/bootstrap-filestyle.min.js"> </script>
 <script type="text/javascript">
 $(":file").filestyle({buttonName: "btn-primary"});
 </script>

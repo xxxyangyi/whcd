@@ -69,7 +69,7 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" src="<%=basePath%>jsp/js/jquery-2.1.4.js"></script>
+<script type="text/javascript" src="<%=basePath%>jsp/js/JsFramework/jquery-2.1.4.min.js"></script>
 <script type="text/javascript" src="<%=basePath%>jsp/js/mychart.js"></script>
 </body>
 </html>

@@ -77,7 +77,7 @@ $("#canvasIdentity").ready(function () {
 $("#canvasMonth").ready(function () {
 
     $.ajax({
-        url: "<%=basePath%>Manager/getMonthData",
+        url: "Manager/getMonthData",
         async: false,
         error: function () {
             alert("操作失败！");
