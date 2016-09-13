@@ -222,54 +222,7 @@ window.onload=function() {
 		 }
 		 objImg.height = h;
 		 objImg.width = w;
-	}					
-		
-	 function login(url) {
-			var mail=$("#mailLogin").val();
-			var password=$("#passwordLogin").val();
-			$.ajax({
-				url : url,
-				async : false,
-				data:{"mail":mail,"password":password},
-				error : function() {
-					alert("登陆过程出错！");
-				},
-				success : function(data) {
-					var status=data;
-					if(status==='0'||status===''){
-						$("#error").html("邮箱或密码输入有误！")
-					}
-					else if(status==='-1'){
-						$("#error").html("该用户已经被禁用！");
-					}
-					else{
-						 location.href=status+''; 
-					}
-						
-				}
-			});
-		}
-		function logout(url){
-			
-			$.ajax({
-				url : url,
-				async : false,
-				error : function() {
-					alert("登陆过程出错！");
-				},
-				success : function(data) {
-					var status=data;
-					if(status==='1'){
-						alert("退出成功!");
-						window.location.reload();
-					}
-					else{
-						alert("退出失败!");
-					}
-						
-				}
-			});
-		}
+	}
 		
 		//分页设置
 		
@@ -1224,15 +1177,15 @@ window.onload=function() {
 				},
 				success : function(data) {
 					var status=data;
-					if(status!==''){
-						window.location.href=data
-					}
-					else if(status==='0'){
+					if(status=='0'){
 						$("#error").html("邮箱或密码输入有误！");
 					}
-					else if(status==='-1'){
+					else if(status=='-1'){
 						$("#error").html("该用户已被禁用！");
 					}
+					else if(status!==''){
+						 window.location.href = data
+					 }
 						
 				}
 			});
@@ -1259,6 +1212,7 @@ window.onload=function() {
 			});
 		}
 		//  登陆退出 结束
+
 		function AuditScenery(sceneryId,urlStr){
 			$.ajax({
 				url : urlStr,

@@ -74,13 +74,10 @@ public class HomeAction extends BaseAction {
 				session.put("user", user);
 				if (((User)session.put("user", user)).getIdentity() == 0) {
 					out.print(URL_PERFIX+"Manager/Index");
-//					return "managerIndex";
 				} else if (user.getIdentity() == 1) {
 					out.print(URL_PERFIX+"Home/Index");
-//					return "homeIndex";
 				} else {
 					out.print(URL_PERFIX+"jsp/view/expert/index.jsp");
-//					return "expertIndex";
 				}
 			}
 		} else {

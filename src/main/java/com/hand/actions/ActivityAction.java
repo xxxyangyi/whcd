@@ -56,13 +56,6 @@ public class ActivityAction extends ActionSupport implements SessionAware,Servle
 		out.print(gson.toJson(pager));
 		System.out.println("发送数据=="+gson.toJson(pager));
 
-//		pagingActivityService.PagingService(Activity.class);
-//		Map map = new HashMap();
-//		Pager pager  = pagingActivityService.findPageByQuery(5,5,map);
-//		for (Object activity: pager.getResult()){
-//			System.out.println("activity --->：  "+((Activity)activity).toString());
-//		}
-
 	}
 
 
