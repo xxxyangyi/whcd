@@ -220,6 +220,7 @@
 			<result name="sceneryDetail">/jsp/view/scenery/sceneryDetail.jsp</result>
 		</action>
 		<action name="getSceneryList" class="sceneryAction" method="getSceneryList"></action>
+		<action name="pagingScenery" class="sceneryAction" method="pagingScenery"></action>
 		<action name="getPercenCenterSceneryList" class="sceneryAction" method="getPercenCenterSceneryList"></action>
 	</package>
 

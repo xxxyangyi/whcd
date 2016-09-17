@@ -49,6 +49,7 @@ public class AbstractHibernateDao<T extends Serializable> {
                 for (Criterion criterion : criterions) {
                     if (criterion != null) {
                         criteria.add(criterion);
+                        criteria2.add(criterion);
                     }
 
                 }

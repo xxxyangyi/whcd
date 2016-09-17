@@ -51,7 +51,7 @@ function paging(InsertID, ModelId, ActionName,PageNo) {
     //     ' ]} ';
     // json = eval("(" + json + ")");
 
-    if(totelNumber==0){
+    if(totelNumber==0 || json.length == 0){
         $(InsertID).append("没有更多数据了");
         return;
 

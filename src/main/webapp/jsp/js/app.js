@@ -241,6 +241,7 @@ window.onload=function() {
 	 	
 	 	//不同分页获取数据
 	 function GetSceneryListOne(tabid){
+	        alert("function GetSceneryListOne(tabid)： 这个地方是否可以不要")
 	 		if(currentNum==1){
 			$.ajax({
 				type : "post",

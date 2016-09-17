@@ -8,6 +8,9 @@ import java.util.List;
 import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import com.hand.entity.Tab;
+import com.hand.paging.Pager;
+import com.hand.paging.PagingService;
 import org.apache.struts2.ServletActionContext;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -16,16 +19,50 @@ import com.hand.entity.User;
 import com.hand.entity.vo.SceneryVO;
 import com.hand.service.ISceneryService;
 import com.hand.util.EntityToVo;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Restrictions;
+
+import static com.hand.KEY.commonKey.PAGESIZE;
 
 public class SceneryAction extends BaseAction {
 	
 	private static Integer numPage=4;
-	
-	
+
 	@Resource(name = "sceneryService")
 	private ISceneryService sceneryService;
 
+	@Resource(name = "pagingService")
+	private PagingService<Scenery> pagingActivityService;
+
+	public void  pagingScenery() throws IOException{
+
+		int tabId = Integer.parseInt(request.getParameter("tabId"));
+		int pageNo = Integer.parseInt(request.getParameter("PageNo"));
+		System.out.println("pagingScenery ：tabId "+tabId +"  pageNo " +pageNo);
+		pagingActivityService.PagingService(Scenery.class);
+		Criterion criterion = null;
+		Tab tab = new Tab();
+		tab.setId(tabId);
+		criterion = Restrictions.eq("tab_id",tab);
+		Pager pager = pagingActivityService.paging(pageNo,PAGESIZE,criterion);
+
+		response.setContentType("text/json");
+		response.setCharacterEncoding("UTF-8");
+		PrintWriter out = response.getWriter();
+		System.out.println("数据："+pager.toString());
+
+		for (Object scenery: pager.getResult()){
+			System.out.println("activity --->：  "+((Scenery)scenery).toString());
+		}
+
+		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+		out.print(gson.toJson(pager));
+		System.out.println("发送数据=="+gson.toJson(pager));
+
+	}
+
 	public String SceneryList() {
+		System.out.println("SceneryList 方法 是否可以去掉？？？？？？！！！！");
 		String sqlSum="select count(*) as sumkey from scenery order by createdate";
 		String sql="select * from scenery order by createdate";
 		
