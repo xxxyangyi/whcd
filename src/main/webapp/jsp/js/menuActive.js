@@ -21,6 +21,11 @@
 // 有待改善
 
 function menuActive() {
+
+    if( $("pageid").length==0){
+        return
+    }
+
     var pageID = $("pageid")[0].getAttribute("name");
 
     $(".list-group a").each(function() {
