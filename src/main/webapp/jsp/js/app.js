@@ -978,7 +978,7 @@ window.onload=function() {
 					for(var i=0;i <len&&i<numPage;i++){
 						tmpStr="<tr>"
 							+"<td><a href='"+ url_perfix +"PersonCenter/SceneryDetail?sceneryId="+arr[i].id+"'></a>"+arr[i].summary+"</td>"
-							+"<td>"+arr[i].detailSub+"</td>"
+							+"<td>"+arr[i].detailSub+"</p></td>"
 							+"<td>"+arr[i].userName+"</td>"
 							+"<td>"+arr[i].createDate+"</td>";
 						if(arr[i].isAudited===1)
@@ -987,16 +987,16 @@ window.onload=function() {
 							tmpStr+="<td>不通过</td>";
 						else 
 							tmpStr+="<td>待审核</td>";
-						tmpStr+="<td>"+"<a class='btn btn-danger' style='margin-left:5px;float:left' onclick='DeleteScenery(\""+arr[i].id+"\",\""+ url_perfix +"PersonCenter/DeleteScenery\")'>删除</a>";
+						tmpStr+="<td>"+"<a class='btn btn-xs btn-danger' style='margin-left:5px;float:left' onclick='DeleteScenery(\""+arr[i].id+"\",\""+ url_perfix +"PersonCenter/DeleteScenery\")'>删除</a>";
 						
 						if(arr[i].isAudited===1)
-							tmpStr+="<a class='btn btn-warning' style='margin-left:5px;float:left' onclick='DisAuditScenery(\""+arr[i].id+"\",\""+ url_perfix +"Manager/DisAuditScenery\")' >不通过</a>";
+							tmpStr+="<a class='btn btn-xs btn-warning' style='margin-left:5px;float:left' onclick='DisAuditScenery(\""+arr[i].id+"\",\""+ url_perfix +"Manager/DisAuditScenery\")' >不通过</a>";
 						else if(arr[i].isAudited===-1)
-							tmpStr+="<a class='btn btn-success' style='margin-left:5px;float:left' onclick='AuditScenery(\""+arr[i].id+"\",\""+ url_perfix +"Manager/AuditScenery\")' >通过</a>";
+							tmpStr+="<a class='btn btn-xs btn-success' style='margin-left:5px;float:left' onclick='AuditScenery(\""+arr[i].id+"\",\""+ url_perfix +"Manager/AuditScenery\")' >通过</a>";
 						else
 							{
-							tmpStr+="<a class='btn btn-success' style='margin-left:5px;float:left' onclick='AuditScenery(\""+arr[i].id+"\",\""+ url_perfix +"Manager/AuditScenery\")' >通过</a>";
-							tmpStr+="<a class='btn btn-warning' style='margin-left:5px;float:left' onclick='DisAuditScenery(\""+arr[i].id+"\",\""+ url_perfix +"Manager/DisAuditScenery\")' >不通过</a>";
+							tmpStr+="<a class='btn btn-xs btn-success' style='margin-left:5px;float:left' onclick='AuditScenery(\""+arr[i].id+"\",\""+ url_perfix +"Manager/AuditScenery\")' >通过</a>";
+							tmpStr+="<a class='btn btn-xs btn-warning' style='margin-left:5px;float:left' onclick='DisAuditScenery(\""+arr[i].id+"\",\""+ url_perfix +"Manager/DisAuditScenery\")' >不通过</a>";
 							}
 							htmlStr+=tmpStr+"</td>"+"</tr>";
 					}

@@ -24,11 +24,11 @@
             <thead>
             <tr>
                 <th style="text-align: center;" rowspan="1" width="15%">名胜古迹标题</th>
-                <th style="text-align: center;" rowspan="1" width="25%" class="ellipsis">名胜古迹内容</th>
+                <th style="text-align: center;" rowspan="1" width="25%">名胜古迹内容</th>
                 <th style="text-align: center;" rowspan="1" width="15%">创建人</th>
-                <th style="text-align: center;" rowspan="1" width="10%">创建时间</th>
-                <th style="text-align: center;" rowspan="1" width="10%">审核状态</th>
-                <th style="text-align:center;" rowspan="1" width="25%">操作</th>
+                <th style="text-align: center;" rowspan="1" width="20%">创建时间</th>
+                <th style="text-align: center;" rowspan="1" width="10%">状态</th>
+                <th style="text-align: center;" rowspan="1" width="15%">操作</th>
             </tr>
             </thead>
             <tbody>
