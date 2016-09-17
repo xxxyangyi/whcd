@@ -1,6 +1,9 @@
 var url_perfix = "http://localhost:8080/";
 window.onload=function() {
 
+    // 调用 激活菜单的方法
+    menuActive()
+
 	//通过判断 activity_list 标签是否存在 ，判断是否要请求加载 活动清单数据
 	if ($("#activity_list").length > 0) {
 		console.log("activity_list 存在：请求数据");
@@ -152,17 +155,11 @@ window.onload=function() {
 		} else {
 			console.log("home_activity_list 不存在：不请求数据");
 		}
-	
-	//////////////////////////////////////////////////////////////////////////////////////////////
-	$(".list-group a").each(function() {
-		$(this).removeClass("active");
-	});
-	$(".list-group a").eq(1).addClass("active");
-	
-	// ///////////////////////////////////////////////////////////////////////////////////////////
+
 	$('.Time').datetimepicker({
 		 format: 'DD/MM/YYYY'
 	});
+
 }
 	//  点击投票事件
 	function vote(activity_id,voteFor,vote_id) {

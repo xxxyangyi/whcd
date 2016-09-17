@@ -12,6 +12,7 @@
 <base href="<%=basePath%>">
 
 <title>审核</title>
+	<pageid name="manageVoteInfoReview"></pageid>
 </head>
 
 <body>

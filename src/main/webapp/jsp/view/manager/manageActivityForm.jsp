@@ -12,6 +12,7 @@
 <base href="<%=basePath%>">
 
 <title>管理活动</title>
+	<pageid name="manageActivity"></pageid>
 </head>
 
 <body>

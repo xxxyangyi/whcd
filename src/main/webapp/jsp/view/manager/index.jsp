@@ -13,8 +13,8 @@
 <html>
 <head>
     <base href="<%=basePath%>">
-
     <title>后台系统首页</title>
+    <pageid name="index"></pageid>
 </head>
 
 <body>

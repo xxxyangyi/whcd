@@ -36,6 +36,7 @@
 	<script type="text/javascript" src="<%=basePath%>jsp/js/JsFramework/wysiwyg.js"></script>
 	<script type="text/javascript" src="<%=basePath%>jsp/js/app.js"></script>
 	<script type="text/javascript" src="<%=basePath%>jsp/js/paging.js"></script>
+	<script type="text/javascript" src="<%=basePath%>jsp/js/menuActive.js"></script>
 	<decorator:head/>
 	
 </head>
