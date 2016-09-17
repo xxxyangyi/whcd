@@ -103,10 +103,6 @@
 		function Reset() {
 			window.location.reload();
 		}
-		$(".list-group a").each(function() {
-	         $(this).removeClass("active");
-	 });
-		$(".list-group a").eq(5).addClass("active");
 	</script>
 </body>
 </html>

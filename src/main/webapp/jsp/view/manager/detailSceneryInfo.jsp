@@ -43,12 +43,5 @@
 					<div class="panel-footer"></div>
 				</div>
 			</div>
-	<script type="text/javascript">
-		
-		$(".list-group a").each(function() {
-	         $(this).removeClass("active");
-	 });
-		$(".list-group a").eq(1).addClass("active");
-	</script>
 </body>
 </html>

@@ -13,6 +13,7 @@
 <base href="<%=basePath%>">
 
 <title>首页</title>
+	<pageid name="manageUser"></pageid>
 </head>
 
 <body>
@@ -106,12 +107,5 @@
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript">
-		
-		$(".list-group a").each(function() {
-	         $(this).removeClass("active");
-	 });
-		$(".list-group a").eq(3).addClass("active");
-	</script>
 </body>
 </html>
