@@ -978,7 +978,7 @@ window.onload=function() {
 					for(var i=0;i <len&&i<numPage;i++){
 						tmpStr="<tr>"
 							+"<td><a href='"+ url_perfix +"PersonCenter/SceneryDetail?sceneryId="+arr[i].id+"'></a>"+arr[i].summary+"</td>"
-							+"<td><p style='width:400px;word-wrap:break-word;overflow:hidden; white-space:nowrap; text-overflow:ellipsis'>"+arr[i].detailSub+"</p></td>"
+							+"<td>"+arr[i].detailSub+"</td>"
 							+"<td>"+arr[i].userName+"</td>"
 							+"<td>"+arr[i].createDate+"</td>";
 						if(arr[i].isAudited===1)

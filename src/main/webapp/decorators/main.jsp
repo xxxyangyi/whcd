@@ -20,6 +20,7 @@
 	<link rel="stylesheet" type="text/css"  href="<%=basePath%>jsp/css/textedit.css" />
 	<link rel="stylesheet" type="text/css"  href="<%=basePath%>jsp/css/prettify-1.0.css" />
 	<link rel="stylesheet" type="text/css"  href="<%=basePath%>jsp/css/app.css">
+	<link rel="stylesheet" type="text/css"  href="<%=basePath%>jsp/css/table.css">
 	<script type="text/javascript" src="<%=basePath%>jsp/js/JsFramework/jquery-2.1.4.min.js"></script>
 	<script type="text/javascript" src="<%=basePath%>jsp/js/JsFramework/jquery.validate.js"></script>
 	<script type="text/javascript" src="<%=basePath%>jsp/js/JsFramework/additional-methods.js"></script>
