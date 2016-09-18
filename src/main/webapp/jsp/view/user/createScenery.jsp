@@ -38,7 +38,7 @@
                 </div>
                 <div>
                     <label for="" style="display: block;">详情：</label>
-                    <div class="content bgcolor-1">
+                    <div class="form-group col-sm-12 content bgcolor-1">
                         <div class="main">
                             <div>
                                 <textarea id="editor1" name="editor" placeholder="Type your text here..."> </textarea>
@@ -50,9 +50,9 @@
                 </div>
                 <div>
                     <label for="" style="display: block;">类别：</label>
-                    <select id="tab" name="tab" class="form-control">
-
-                    </select>
+                    <div class="form-group col-sm-12">
+                        <select id="tab" name="tab" class="form-control"> </select>
+                    </div>
                     <script type="text/javascript">
                         GetTabData();
                     </script>
@@ -63,8 +63,8 @@
                         <input type="file" name="imgUpLoad" id="imgUpLoad" onchange="PreView()" class="filestyle"
                                data-buttonName="btn-primary">
                     </div>
-                    <div class="form-group col-sm-12">
-                        <img id="preview" src="" onload="AutoResizeImage(650,0,this)"
+                    <div class="form-group col-sm-12" align="center">
+                        <img id="preview" src="" onload="AutoResizeImage(300,0,this)"
                              onerror="javascript:this.src='<%=request.getContextPath()%>/jsp/img/errorimg.jpg'">
                     </div>
                     <br/>

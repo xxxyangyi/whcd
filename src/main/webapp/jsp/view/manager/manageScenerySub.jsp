@@ -9,9 +9,9 @@
 	Integer len=sceneryList!=null?sceneryList.size():0;
 %>
 <link rel="stylesheet" href="http://libs.useso.com/js/font-awesome/4.2.0/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/jsp/css/textedit_default.css">
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/jsp/css/wysiwyg-editor.css" />
-<link href="<%=request.getContextPath()%>/jsp/css/textedit.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/jsp/css/cssFramework/textedit_default.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/jsp/css/cssFramework/wysiwyg-editor.css" />
+<link href="<%=request.getContextPath()%>/jsp/css/cssFramework/textedit.css" rel="stylesheet" type="text/css" />
 <%@ taglib prefix="s" uri="/struts-tags"%>
 			
 			<div class="col-md-10">
