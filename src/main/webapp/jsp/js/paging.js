@@ -8,12 +8,12 @@
  *  actionName  :   action
  *  PageNo  :   当前的页数
  * */
-function pagingStart(InsertID, ModelId, ActionName) {
-    paging(InsertID, ModelId, ActionName,1)
+function pagingStart(InsertID, ModelId, ActionName, isPaging) {
+    paging(InsertID, ModelId, ActionName,1,isPaging)
 
 }
 
-function paging(InsertID, ModelId, ActionName,PageNo) {
+function paging(InsertID, ModelId, ActionName,PageNo,isPaging) {
     console.log("AJAX 发送请求 " + ActionName+ "  PageNo = "+ PageNo)
     var totelNumber = 0;
     var PageSize = 0;
@@ -50,9 +50,9 @@ function paging(InsertID, ModelId, ActionName,PageNo) {
     //     '{ "firstName": "0", "lastName":"00", "email": "000" },' +
     //     ' ]} ';
     // json = eval("(" + json + ")");
-
+    $(InsertID).children().remove();
     if(totelNumber==0 || json.length == 0){
-        $(InsertID).append("没有更多数据了");
+        $(InsertID).append("<h4>没有更多数据了</h4>");
         return;
 
     }
@@ -75,7 +75,6 @@ function paging(InsertID, ModelId, ActionName,PageNo) {
         console.log(map.arr)
     }
     // 进行循环打印
-    $(InsertID).children().remove();
     for (var i = 0; i < json.length; i++) {
         var my_json = json[i];
         var linshiModelHtml = model_html;
@@ -91,13 +90,15 @@ function paging(InsertID, ModelId, ActionName,PageNo) {
     }
 
     // 2 加载 分页信息
+    if(isPaging==false){
 
-    console.log(Math.ceil(totelNumber/PageSize));
+    }else{
+        console.log(Math.ceil(totelNumber/PageSize));
 
-    var html = getPagingHtmlString(InsertID, ModelId,ActionName,Math.ceil(totelNumber/PageSize),PageNo)
+        var html = getPagingHtmlString(InsertID, ModelId,ActionName,Math.ceil(totelNumber/PageSize),PageNo)
 
-    $(InsertID).append(html);
-
+        $(InsertID).append(html);
+    }
 }
 
 

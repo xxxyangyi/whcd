@@ -14,6 +14,7 @@
 <head>
     <base href="<%=basePath%>">
     <title>创建名胜古迹</title>
+    <pageid name="createScenery"></pageid>
 </head>
 
 <body>

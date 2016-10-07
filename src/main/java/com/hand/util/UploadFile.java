@@ -47,7 +47,7 @@ public class UploadFile {
 		}
 		catch(Exception ex){
 			ex.printStackTrace();
-			return "";
+			return "-1";
 		}
         
 	}
