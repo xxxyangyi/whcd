@@ -816,11 +816,11 @@ window.onload=function() {
 							tmpStr+="<td>侧部菜单</td>";
 						tmpStr+="<td>";
 						if(arr[i].isUsed==1){
-							tmpStr+="<a class='btn btn-danger'  onclick='DisableTab(\""+arr[i].id+"\")' >禁用</a>"
-							      +"<a class='btn btn-warning' style='margin-left:5px' href='"+ url_perfix +"Manager/ModifyTabInfo?id="+arr[i].id+"' >修改</a>";
+							tmpStr+="<a class='btn btn-danger btn-xs'  onclick='DisableTab(\""+arr[i].id+"\")' >禁用</a>"
+							      +"<a class='btn btn-warning btn-xs' style='margin-left:5px' href='"+ url_perfix +"Manager/ModifyTabInfo?id="+arr[i].id+"' >修改</a>";
 						}
 						else
-							tmpStr+="<a class='btn btn-success' style='margin-left:5px' onclick='AbleTab(\""+arr[i].id+"\")' >解禁</a>";
+							tmpStr+="<a class='btn btn-success btn-xs' style='margin-left:5px' onclick='AbleTab(\""+arr[i].id+"\")' >解禁</a>";
 						
 							htmlStr+=tmpStr+"</td>"+"</tr>";
 					}

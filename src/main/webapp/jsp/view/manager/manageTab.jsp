@@ -17,27 +17,31 @@
 
 <body>
 
-<div class="col-md-10" style="background-color: white;">
-    <h2 style="display: inline-block;">菜单管理</h2>
-    <div style="float:right;display: inline-block;margin-top: 20px;"><a data-toggle="modal" data-target="#addUserModel"
-                                                                        ata-whatever="@mdo" class="btn btn-info">添加</a>
-    </div>
-    <div id="usrPanelContent">
-        <table class="table table-hover" style="text-align:center;">
-            <thead>
-            <tr>
-                <th style="text-align:center;">菜单名称</th>
-                <th style="text-align:center;">菜单位置</th>
-                <th style="text-align:center;">操作</th>
-            </tr>
-            </thead>
-            <tbody>
-            <script type="text/javascript">
-                GetTabListOne();
-            </script>
-            </tbody>
+<div class="col-md-10">
+    <div class="panel panel-default">
+        <div class="panel-heading">菜单管理
+            <div style="float:right;">
+                <a data-toggle="modal" data-target="#addUserModel" ata-whatever="@mdo" class="btn btn-info" style="padding: 3px 12px">添加</a>
+            </div>
+        </div>
+        <div class="panel-body" id="usrPanelContent">
+            <table class="table table-hover" style="text-align:center;">
+                <thead>
+                <tr>
+                    <th style="text-align:center;">菜单名称</th>
+                    <th style="text-align:center;">菜单位置</th>
+                    <th style="text-align:center;">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <script type="text/javascript">
+                    GetTabListOne();
+                </script>
+                </tbody>
 
-        </table>
+            </table>
+        </div>
+        <div class="panel-footer"></div>
     </div>
 </div>
 <div class="modal fade" id="addUserModel" tabindex="-1" role="dialog"
