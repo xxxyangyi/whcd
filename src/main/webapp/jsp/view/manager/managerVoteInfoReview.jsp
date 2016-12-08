@@ -20,7 +20,7 @@
         <div class="panel-heading">
             <div>审核
                 <a href="<%=basePath%>/activity/managerVoteInfoReview?pageflag=2" class="btn btn-default"
-                   style="float:right">拒绝记录</a>
+                   style="float:right;padding: 3px 12px">拒绝记录</a>
             </div>
         </div>
 
