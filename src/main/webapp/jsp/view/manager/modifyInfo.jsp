@@ -33,14 +33,14 @@
         <div class="panel-body">
             <form id="resistForm" action="<%=request.getContextPath()%>/Manager/DoModifyInfo" method="post">
                 <div>
-                    <label style="display: block;">用户名：</label>
+                    <label for="name" style="display: block;">用户名：</label>
                     <div class="form-group col-sm-12">
                         <input type="text" class="form-control " id="name" name="name" value="<%=user.getName()%>"
                                disabled="disabled"/>
                     </div>
                 </div>
                 <div>
-                    <label for="exampleInputPassword1" style="display: block;">密码：</label>
+                    <label for="password" style="display: block;">密码：</label>
                     <div class="form-group col-sm-12">
                         <input type="password" id="password" class="form-control" value="<%=user.getPassword()%>"
                                name="password" disabled="disabled"/>
@@ -50,7 +50,6 @@
                     <div class="input-group">
                         <label>性别：</label>
                         <div clas="row">
-
                             <%
                                 if (user.getSex() == 1) {
                             %>
