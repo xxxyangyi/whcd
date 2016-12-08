@@ -596,11 +596,11 @@ window.onload=function() {
 						else
 							tmpStr+="<td>已禁用</td>";
 						tmpStr+="<td>"
-							  +"<a class='btn btn-warning' onclick='InitializeUserPassword(\""+arr[i].mail+"\")'>初始化密码</a>";
+							  +"<a class='btn btn-warning btn-xs' onclick='InitializeUserPassword(\""+arr[i].mail+"\")'>初始化密码</a>";
 						if(arr[i].isUsed==1)
-							tmpStr+="<a class='btn btn-danger' style='margin-left:5px' onclick='DisableUser(\""+arr[i].mail+"\")' >禁用</a>";
+							tmpStr+="<a class='btn btn-danger btn-xs' style='margin-left:5px' onclick='DisableUser(\""+arr[i].mail+"\")' >禁用</a>";
 						else
-							tmpStr+="<a class='btn btn-success' style='margin-left:5px' onclick='AbleUser(\""+arr[i].mail+"\")' >解禁</a>";
+							tmpStr+="<a class='btn btn-success btn-xs' style='margin-left:5px' onclick='AbleUser(\""+arr[i].mail+"\")' >解禁</a>";
 						
 							htmlStr+=tmpStr+"</td>"+"</tr>";
 					}
