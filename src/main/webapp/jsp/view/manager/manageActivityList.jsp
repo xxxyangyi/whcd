@@ -18,7 +18,7 @@
 <div class="col-md-10">
     <div class="panel panel-default">
         <div class="panel-heading">活动列表
-            <a href="<%=basePath%>jsp/view/activityAdd.jsp" class="btn btn-default" style="float:right">创建一个新的活动</a>
+            <a href="<%=basePath%>jsp/view/activityAdd.jsp" class="btn btn-default" style="float:right;padding: 2px 12px;">创建一个新的活动</a>
         </div>
         <div class="panel-body">
             <table class="table table-hover table-condensed">

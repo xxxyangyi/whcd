@@ -52,7 +52,7 @@ public class ActivityAction extends ActionSupport implements SessionAware,Servle
 			System.out.println("activity --->：  "+((Activity)activity).toString());
 		}
 
-		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").setDateFormat("yyyy-MM-dd").excludeFieldsWithoutExposeAnnotation().create();
 		out.print(gson.toJson(pager));
 		System.out.println("发送数据=="+gson.toJson(pager));
 
@@ -89,7 +89,7 @@ public class ActivityAction extends ActionSupport implements SessionAware,Servle
 		PrintWriter out = response.getWriter();
 		List<Activity> activitys=activityService.GetActivitys();
 		System.out.println(activitys.size());
-		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").excludeFieldsWithoutExposeAnnotation().create();
 		out.print(gson.toJson(activitys));
 		System.out.println("发送数据");
 	}

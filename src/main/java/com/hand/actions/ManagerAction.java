@@ -454,7 +454,7 @@ public String ManageScenery(){
 		response.setContentType("text/json"); 
         response.setCharacterEncoding("UTF-8"); 
         PrintWriter out = response.getWriter();
-        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").excludeFieldsWithoutExposeAnnotation().create();
         
         Map<String, Object> paramMap=new HashMap<String,Object>();
         paramMap.put("man",manSum);
@@ -475,7 +475,7 @@ public String ManageScenery(){
 		response.setContentType("text/json"); 
         response.setCharacterEncoding("UTF-8"); 
         PrintWriter out = response.getWriter();
-        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").excludeFieldsWithoutExposeAnnotation().create();
         
         Map<String, Object> paramMap=new HashMap<String,Object>();
         paramMap.put("user",userSum);
@@ -495,7 +495,7 @@ public String ManageScenery(){
 			response.setContentType("text/json"); 
 	        response.setCharacterEncoding("UTF-8"); 
 	        PrintWriter out = response.getWriter();
-	        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+	        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").excludeFieldsWithoutExposeAnnotation().create();
 	        
 	        Map<String, Object> paramMap=new HashMap<String,Object>();
 	        paramMap.put("tabList", tabList);
@@ -600,7 +600,7 @@ public void getUserList() throws Exception{
 		response.setContentType("text/json"); 
         response.setCharacterEncoding("UTF-8"); 
         PrintWriter out = response.getWriter();
-        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").excludeFieldsWithoutExposeAnnotation().create();
         
         Map<String, Object> paramMap=new HashMap<String,Object>();
         paramMap.put("page",page);
