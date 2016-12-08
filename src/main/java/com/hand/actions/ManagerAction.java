@@ -488,22 +488,6 @@ public String ManageScenery(){
 		}
 	}
 	
-	public void getMonthData(){
-		try{
-		Map paramMap=sceneryService.getSceneryListByMonth();
-
-		response.setContentType("text/json"); 
-        response.setCharacterEncoding("UTF-8"); 
-        PrintWriter out = response.getWriter();
-        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
-                
-        out.print(gson.toJson(paramMap));
-	   }
-	   catch(Exception ex){
-			ex.printStackTrace();
-		}
-	}
-	
 	public void getTabList(){
 		System.err.println("----->> getTabList");
 		try{

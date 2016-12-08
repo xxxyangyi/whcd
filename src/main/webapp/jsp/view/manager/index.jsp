@@ -57,16 +57,6 @@
                 </div>
             </div>
         </div>
-        <div style="float: left;margin-left: 120px;margin-top: 20px;">
-            <div style="text-align: center">12个月中数据创建折线图</div>
-            <div>用户上传的各类风景饮食文化数据数量</div>
-            <div id="canvasMonth">
-                <canvas id="canvasMonthArea" width="400" height="300"/>
-
-            </div>
-            <div style="float:right">月份</div>
-
-        </div>
     </div>
 </div>
 <script type="text/javascript" src="<%=basePath%>jsp/js/JsFramework/jquery-2.1.4.min.js"></script>
