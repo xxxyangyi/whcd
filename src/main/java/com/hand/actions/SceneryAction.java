@@ -55,7 +55,7 @@ public class SceneryAction extends BaseAction {
 			System.out.println("activity --->：  "+((Scenery)scenery).toString());
 		}
 
-		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").excludeFieldsWithoutExposeAnnotation().create();
 		out.print(gson.toJson(pager));
 		System.out.println("发送数据=="+gson.toJson(pager));
 
@@ -85,7 +85,7 @@ public class SceneryAction extends BaseAction {
 		PrintWriter out = response.getWriter();
 		List<Scenery> list = sceneryService.GetScenerys();
 		System.out.println(list.size());
-		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").excludeFieldsWithoutExposeAnnotation().create();
 		out.print(gson.toJson(list));
 		System.out.println("发送数据");
 	}
@@ -162,7 +162,7 @@ public class SceneryAction extends BaseAction {
 		response.setContentType("text/json"); 
         response.setCharacterEncoding("UTF-8"); 
         PrintWriter out = response.getWriter();
-        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").excludeFieldsWithoutExposeAnnotation().create();
         
         Map<String, Object> paramMap=new HashMap<String,Object>();
         paramMap.put("page",page);
@@ -193,7 +193,7 @@ public class SceneryAction extends BaseAction {
 		response.setContentType("text/json"); 
         response.setCharacterEncoding("UTF-8"); 
         PrintWriter out = response.getWriter();
-        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").excludeFieldsWithoutExposeAnnotation().create();
         
         Map<String, Object> paramMap=new HashMap<String,Object>();
         paramMap.put("page",page);
