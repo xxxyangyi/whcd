@@ -3,12 +3,8 @@ package com.hand.paging;
 import org.hibernate.criterion.Criterion;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import java.io.Serializable;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Created by tuberose on 16-9-4.
@@ -40,7 +36,12 @@ public class PagingService<T extends Serializable> {
         return pagingDao.findPageByCriteria(pageNo,pageSize,criterions);
     }
 
-//    public Pager findPageByQuery(int pageNo, int pageSize, Map map){
-//        return pagingDao.findPageByQuery(pageNo,pageSize,map);
-//    };
+    public Pager paging(int pageNo, int pageSize,String[] JOIN,Criterion... criterions){
+        return pagingDao.findPageByCriteria(pageNo, pageSize,JOIN,criterions);
+    }
+
+    public Pager findPageBySQL(int pageNo, int pageSize,String sql){
+        return  pagingDao.findPageBySQL(pageNo,pageSize,sql);
+    }
+
 }
