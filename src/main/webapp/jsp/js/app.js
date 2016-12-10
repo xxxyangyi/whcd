@@ -1,4 +1,48 @@
 var url_perfix = "http://localhost:8080/";
+var util = {
+	alert:function (msg) {
+		console.log(msg)
+	},
+    showMsg : function (msg) {
+        console.log(msg)
+    },
+	ajax: function (apiName, postData,dataType,callback, method, timeout) {
+		// 默认下发POST请求
+		method = method || 'POST';
+		// 默认超时60秒
+		timeout = timeout || 60000;
+
+		util.alert("接口：" + apiName + " postData：" + postData);
+
+		$.ajax({
+			type: method,
+			async: true,
+			url: apiName,
+			dataType: dataType,
+			data: postData,
+			timeout: timeout,
+			beforeSend: function (request) {
+
+			},
+			/* 成功时直接返回数据 */
+			success: function (data, textStatus, jqXHR) {
+				util.alert("接口：" + apiName + " 返回数据：" + JSON.stringify(data));
+				if(data=="特殊情况"){
+					util.alert("进行特殊情况处理")
+				}
+				callback(data);
+			},
+
+			/* 失败时返回默认错误 */
+			error: function (jqXHR, textStatus, errorThrown) {
+				if (jqXHR.textStatus == "error") {
+					util.alert("网络请求失败!");
+				}
+			}
+		});
+	},
+}
+
 window.onload=function() {
 
     // 调用 激活菜单的方法
@@ -162,7 +206,7 @@ window.onload=function() {
 
 }
 	//  点击投票事件
-	function vote(activity_id,voteFor,vote_id) {
+	   function vote(activity_id,voteFor,vote_id) {
 		console.log(activity_id+'=='+voteFor)
 		$.ajax({
 			type : "post",
@@ -176,7 +220,7 @@ window.onload=function() {
 	};
 	
 					
-	function RegText(id){
+	   function RegText(id){
 		var description=$(""+id).html();
 		description = description.replace(/(\n)/g, "");  
 		description = description.replace(/(\t)/g, "");  
@@ -186,15 +230,16 @@ window.onload=function() {
 		return description;
 	}
 
-	 function SpiltStr(str){
+	   function SpiltStr(str){
 			var strNew="";
 			if(str.length<101)return str;
 			var i=99;
 			for(;str.charCodeAt(i)>255&&i<101;i++);
 			
 			return str.substring(0,i);	
-	 }				
-	 function AutoResizeImage(maxWidth,maxHeight,objImg){
+	 }
+
+	   function AutoResizeImage(maxWidth,maxHeight,objImg){
 		 var img = new Image();
 		 img.src = objImg.src;
 		 var hRatio;
@@ -240,7 +285,7 @@ window.onload=function() {
 		}
 	 	
 	 	//不同分页获取数据
-	 function GetSceneryListOne(tabid){
+	    function GetSceneryListOne(tabid){
 	        alert("function GetSceneryListOne(tabid)： 这个地方是否可以不要")
 	 		if(currentNum==1){
 			$.ajax({
@@ -1373,3 +1418,37 @@ window.onload=function() {
 				}
 			});
 		}
+
+
+		var activity ={
+
+            activityAdd:function () {
+                var activityName = $("#activityName").val().trim();
+                var activityContext = $("#activityContext").val().trim();
+                var activityStartTime = $("#activityStartTime").val().trim();
+                var activityEndTime = $("#activityEndTime").val().trim();
+
+                if(activityName == "" || activityContext == "" || activityStartTime == "" || activityEndTime == ""){
+                    util.showMsg("参数错误,请重新填写")
+                    return;
+                }else {
+                    var postDate = {
+                        "activityName":activityName,
+                        "activityContext":activityContext,
+                        "activityStartTime":activityStartTime,
+                        "activityEndTime":activityEndTime
+                    }
+                    util.ajax("activity/activityAdd",postDate,null,function (data) {
+                    	if(data == "添加活动成功"){
+							util.showMsg("添加活动成功!")
+						}else{
+							util.showMsg("添加活动失败!")
+							window.location.reload();
+						}
+                    })
+                }
+
+            }
+
+
+        }

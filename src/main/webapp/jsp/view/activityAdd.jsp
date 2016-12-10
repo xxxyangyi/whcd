@@ -19,7 +19,7 @@
     <div class="panel panel-default">
         <div class="panel-heading">请您填写活动的基本信息</div>
         <div class="panel-body">
-            <form action="<%=basePath%>activity/activityAdd" method="post">
+            <form>
                 <div class="form-group">
                     <s:property value="activity.id"/>
                     <s:property value="activity.activityName"/>
@@ -43,7 +43,7 @@
                         type="text" class="form-control Time" name="time2"
                         id="activityEndTime" placeholder="活动结束时间">
                 </div>
-                <button type="submit" class="btn btn-default">提交</button>
+                <button class="btn btn-default" onclick="activity.activityAdd()">提交</button>
             </form>
         </div>
         <div class="panel-footer"></div>

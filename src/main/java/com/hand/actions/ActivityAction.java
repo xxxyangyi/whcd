@@ -68,18 +68,27 @@ public class ActivityAction extends ActionSupport implements SessionAware,Servle
 	}
 	
 	// 添加活动
-	public String activityAdd() throws ParseException{		
-		System.out.println(activity.getId());
-		System.out.println(activity.getActivityName());
+	public void activityAdd() throws Exception{
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		String startTime = request.getParameter("time1");
-		String endTime = request.getParameter("time2");		
+
+		String activityName = request.getParameter("activityName");
+		String activityContext = request.getParameter("activityContext");
+		String startTime = request.getParameter("activityStartTime");
+		String endTime = request.getParameter("activityEndTime");
+		activity = new Activity();
+		activity.setActivityName(activityName);
+		activity.setContext(activityContext);
 		activity.setStartTime(sdf.parse(startTime));
 		activity.setEndTime(sdf.parse(endTime));
 		System.out.println(activity.getVote());
 		activityService.AddActivity(activity);
+
+		response.setContentType("text/plain");
+		response.setCharacterEncoding("UTF-8");
+		PrintWriter out = response.getWriter();
+
 		System.out.println("+++++++++++添加成功！");
-		return "success";
+		out.print("添加活动成功");
 	}
 	// 获取活动的信息
 	public void getActivitys() throws IOException {

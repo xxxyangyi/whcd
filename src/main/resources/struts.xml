@@ -56,9 +56,7 @@
                  <param name="activity_id">${vote.activity_id.id}</param>  
              </result>	
 		</action>
-		<action name="activityAdd" class="activityAction" method="activityAdd">
-			<result name="success" type="redirect">/jsp/view/activityShowList.jsp</result>
-		</action>
+		<action name="activityAdd" class="activityAction" method="activityAdd" />
 		<action name="getActivitys" class="activityAction" method="getActivitys"></action>
 		<action name="getActivityVotes" class="activityAction" method="getActivityVotes">
 		    <result name="success">/jsp/view/activityShowContext.jsp</result>		    
