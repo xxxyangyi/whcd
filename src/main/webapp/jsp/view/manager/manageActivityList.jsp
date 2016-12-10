@@ -25,10 +25,10 @@
                 <thead>
                 <tr>
                     <th style="text-align: left;" rowspan="1" width="15%">活动名称</th>
-                    <th style="text-align: left;" rowspan="1" width="10%">创建时间</th>
-                    <th style="text-align: left;" rowspan="1" width="10%">开始时间</th>
-                    <th style="text-align: left;" rowspan="1" width="10%">结束时间</th>
-                    <th style="text-align: left;" rowspan="1" width="55%">活动内容</th>
+                    <th style="text-align: left;" rowspan="1" width="15%">创建时间</th>
+                    <th style="text-align: left;" rowspan="1" width="15%">开始时间</th>
+                    <th style="text-align: left;" rowspan="1" width="15%">结束时间</th>
+                    <th style="text-align: left;" rowspan="1" width="40%">活动内容</th>
                 </tr>
                 </thead>
                 <tbody id="activityListPaging"></tbody>
