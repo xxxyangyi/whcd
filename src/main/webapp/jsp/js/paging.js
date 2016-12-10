@@ -10,7 +10,9 @@
  * */
 function pagingStart(InsertID, ModelId, ActionName, isPaging) {
     paging(InsertID, ModelId, ActionName,1,isPaging)
-
+}
+function pagingStart2(InsertID, ModelId, PerId, NextId, TotalPageId, ActionName, functionName) {
+    paging2(InsertID, ModelId, PerId, NextId, TotalPageId, ActionName, 1, functionName)
 }
 
 function paging(InsertID, ModelId, ActionName,PageNo,isPaging) {
@@ -38,18 +40,7 @@ function paging(InsertID, ModelId, ActionName,PageNo,isPaging) {
     })
 
     console.log("获取totelNumber---获取PageSize---获取PageNumber")
-    // var json = ' { "programmers": [{ "firstName": "1", "lastName":"11", "email": "111" },' +
-    //     '{ "firstName": "2", "lastName":"22", "email": "222" },' +
-    //     '{ "firstName": "3", "lastName":"33", "email": "333" },' +
-    //     '{ "firstName": "4", "lastName":"44", "email": "444" },' +
-    //     '{ "firstName": "5", "lastName":"55", "email": "555" },' +
-    //     '{ "firstName": "6", "lastName":"66", "email": "666" },' +
-    //     '{ "firstName": "7", "lastName":"77", "email": "777" },' +
-    //     '{ "firstName": "8", "lastName":"88", "email": "888" },' +
-    //     '{ "firstName": "9", "lastName":"99", "email": "999" },' +
-    //     '{ "firstName": "0", "lastName":"00", "email": "000" },' +
-    //     ' ]} ';
-    // json = eval("(" + json + ")");
+
     $(InsertID).children().remove();
     if(totelNumber==0 || json.length == 0){
         $(InsertID).append("<h4>没有更多数据了</h4>");
@@ -142,6 +133,142 @@ function getPagingHtmlString(InsertID, ModelId,ActionName,PageNumber,PageNo) {
 }
 
 
+function paging2(InsertID, ModelId, PerId, NextId, TotalPageId, ActionName, PageNo ,functionName) {
+    var totelNumber = 0;
+    var PageSize = 0;
+    var PageNo = PageNo;
+    var json = null;
+    $.ajax({
+        type: "post",
+        data: {"pageNo":PageNo},
+        url: ActionName,
+        async: false,
+        dataType: 'json',
+        error : function() {
+            alert("paging2 分页AJAX 出错");
+        },
+        success: function (msg) {
+            console.log(msg);
+            totelNumber = msg.rowCount;
+            PageSize    = msg.pageSize;
+            PageNo      = msg.pageNo;
+            json        = msg.result;
+        }
+    })
+
+    console.log("获取totelNumber---获取PageSize---获取PageNumber")
+
+    $(InsertID).children().remove();
+    if(totelNumber==0 || json.length == 0){
+        alert("<h4>没有更多数据了</h4>");
+        return;
+    }
+    // 获取数据完成 end
+    // 加载页面 ----   加载数据   加载分页
+
+    // 1. 加载数据
+
+    console.log("加载页面");
+    var model_html = $(ModelId).html();
+    var map = new UtilMap();
+
+    var patt = new RegExp(/[@]{3}\w+[@]{1}/,"gmi");
+    var result;
+    while ((result = patt.exec(model_html)) != null)  {
+        result = result.toString().replace(/([@]{3})(\w+)([@]{1})/, "$2");
+        console.log(result+"----");
+        map.put("@@@"+result+"@",result);
+        console.log(map.arr)
+    }
+    // 进行循环打印
+    for (var i = 0; i < json.length; i++) {
+        var my_json = json[i];
+        var linshiModelHtml = model_html;
+        for (var j = 0; j < map.size(); j++) {
+            linshiModelHtml = (linshiModelHtml.replace(map.getKey(j), my_json[map.get(map.getKey(j))])).toString();
+        }
+
+        $(InsertID).append(linshiModelHtml);
+
+    }
+
+    // 2 加载 分页信息
+    console.log(Math.ceil(totelNumber/PageSize));
+    var html = getPagingHtmlString2(InsertID, ModelId, PerId, NextId, TotalPageId, ActionName, Math.ceil(totelNumber/PageSize),PageNo,functionName)
+    $(InsertID).append(html);
+
+    if(functionName != null){
+        console.log("paging2中 调用了方法");
+        var  func=eval(functionName);
+        new func();
+    }else {
+        console.log("paging2中 没有调用方法");
+    }
+}
+
+// 总页数  当前页数  之前的页数
+function getPagingHtmlString2(InsertID, ModelId, PerId, NextId, TotalPageId, ActionName, PageNumber, PageNo, functionName) {
+    $(PerId).children().remove();
+    $(NextId).children().remove();
+    $(TotalPageId).children().remove();
+    var per = PageNo - 1;
+    var next = PageNo + 1;
+    if(per > 0){
+        $(PerId).append('<button type="button" class="btn btn-default btn-sm" ' +
+            'onclick="paging2(\''+InsertID+'\',\''+ModelId+'\',\''+PerId+'\',\''+NextId+'\',\''+TotalPageId+'\',\''+ActionName+'\',\''+per+'\',\''+functionName+'\')">前一页</button>')
+    }else {
+        $(PerId).append('<button type="button" class="btn btn-default btn-sm" disabled="disabled">前一页</button>')
+    }
+    if(PageNumber - next >= 0){
+        $(NextId).append('<button type="button" class="btn btn-default btn-sm" ' +
+            'onclick="paging2(\''+InsertID+'\',\''+ModelId+'\',\''+PerId+'\',\''+NextId+'\',\''+TotalPageId+'\',\''+ActionName+'\',\''+next+'\',\''+functionName+'\')">后一页</button>')
+    }else {
+        $(NextId).append('<button type="button" class="btn btn-default btn-sm" disabled="disabled" >后一页</button>')
+    }
+    $(TotalPageId).append('<span>'+PageNo + "/" + PageNumber + ' 页</span>');
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
 // MAP  方法
 function UtilMap() {
     var struct = function (key, value) {
@@ -150,12 +277,12 @@ function UtilMap() {
     };
 
     var put = function (key, value) {
-        for (var i = 0; i < this.arr.length; i++) {
-            if (this.arr[i].key === key) {
-                this.arr[i].value = value;
-                return;
-            }
-        }
+        // for (var i = 0; i < this.arr.length; i++) {
+        //     if (this.arr[i].key === key) {
+        //         this.arr[i].value = value;
+        //         return;
+        //     }
+        // }
         this.arr[this.arr.length] = new struct(key, value);
     };
 
