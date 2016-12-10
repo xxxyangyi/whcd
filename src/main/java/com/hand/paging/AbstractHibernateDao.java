@@ -78,9 +78,11 @@ public class AbstractHibernateDao<T extends Serializable> {
     public Pager findPageBySQL(int pageNo, int pageSize,String sql){
         Query query = getCurrentSession().createSQLQuery(sql).addEntity(clazz);
 
+        Criteria criteria = this.getCurrentSession().createCriteria(clazz);
+        List<T> result = (List<T>) criteria.list();
         query.setFirstResult((pageNo - 1) * pageSize);
         query.setMaxResults(pageSize);
-        Pager pager = new Pager(pageSize, pageNo, query.list().size(), query.list());
+        Pager pager = new Pager(pageSize, pageNo, Integer.parseInt((criteria.setProjection(Projections.rowCount()).uniqueResult()).toString()), query.list());
         return pager;
     }
 

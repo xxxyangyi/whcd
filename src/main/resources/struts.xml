@@ -64,9 +64,8 @@
 		<action name="getActivityVotesPassed" class="voteAction" method="getActivityVotesPassed">
 		    <result name="success">/jsp/view/activityShowContext.jsp</result>		    
 		</action>
-		<action name="getActivitysOrderByCreateTime" class="activityAction" method="getActivitysOrderByCreateTime">
-		    <result name="success">/jsp/view/manager/manageActivityList.jsp</result>		    
-		</action>
+		<action name="getActivitysOrderByCreateTime" class="activityAction" method="getActivitysOrderByCreateTime"></action>
+
 		<action name="manageActivityForm" class="voteAction" method="manageActivityForm">
 		    <result name="success">/jsp/view/manager/manageActivityForm.jsp</result>		    
 		</action>

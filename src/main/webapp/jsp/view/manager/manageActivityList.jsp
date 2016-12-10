@@ -22,6 +22,7 @@
         </div>
         <div class="panel-body">
             <table class="table table-hover table-condensed">
+                <thead>
                 <tr>
                     <th style="text-align: left;" rowspan="1" width="15%">活动名称</th>
                     <th style="text-align: left;" rowspan="1" width="10%">创建时间</th>
@@ -29,25 +30,32 @@
                     <th style="text-align: left;" rowspan="1" width="10%">结束时间</th>
                     <th style="text-align: left;" rowspan="1" width="55%">活动内容</th>
                 </tr>
-                <s:iterator value="activityList" id='id' status='st'>
-
-                    <tr>
-                        <td style="text-align: left"><a
-                                href="<%=basePath%>activity/manageActivityForm?activity_id=<s:property value='#id.id'/>"><s:property
-                                value="#id.activityName"/></a></td>
-                        <td style="text-align: left"><s:property value="#id.createTime"/></td>
-                        <td style="text-align: left"><s:property value="#id.startTime"/></td>
-                        <td style="text-align: left"><s:property value="#id.endTime"/></td>
-                        <td style="text-align: left"><s:property value="#id.context"/></td>
-                    </tr>
-
-                </s:iterator>
-
+                </thead>
+                <tbody id="activityListPaging"></tbody>
+            </table>
+            <div class="row">
+                <div class="col-md-2 col-md-offset-2" id="per"></div>
+                <div class="col-md-2 col-md-offset-2" id="pageNo"></div>
+                <div class="col-md-2 col-md-offset-1" id="next"></div>
+            </div>
+            <table hidden="hiddenr">
+                <tbody id="activityListPaging_Model">
+                <tr>
+                    <td style="text-align: left">
+                        <a href="<%=basePath%>activity/manageActivityForm?activity_id=@@@id@">@@@activityName@</a></td>
+                    <td style="text-align: left">@@@createTime@</td>
+                    <td style="text-align: left">@@@startTime@</td>
+                    <td style="text-align: left">@@@endTime@</td>
+                    <td style="text-align: left">@@@context@</td>
+                </tr>
+                </tbody>
             </table>
         </div>
         <div class="panel-footer"></div>
     </div>
 </div>
-</body>
+<script type="text/javascript">
+    pagingStart2('#activityListPaging', '#activityListPaging_Model','#per','#next','#pageNo', '/activity/getActivitysOrderByCreateTime?PageSize=5')
+</script>
 </body>
 </html>

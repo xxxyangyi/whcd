@@ -52,7 +52,7 @@ public class ActivityAction extends ActionSupport implements SessionAware,Servle
 			System.out.println("activity --->：  "+((Activity)activity).toString());
 		}
 
-		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").setDateFormat("yyyy-MM-dd").excludeFieldsWithoutExposeAnnotation().create();
+		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").excludeFieldsWithoutExposeAnnotation().create();
 		out.print(gson.toJson(pager));
 		System.out.println("发送数据=="+gson.toJson(pager));
 
@@ -110,20 +110,23 @@ public class ActivityAction extends ActionSupport implements SessionAware,Servle
 		activity = activityService.GetActivity(activity_id);
 		return "success";
 	}
-	
+
 	// 管理员获取活动的信息
-	public String getActivitysOrderByCreateTime() throws IOException {
+	public void getActivitysOrderByCreateTime() throws IOException {
 		System.out.println("getActivitysOrderByCreateTime");
-		String str = "";
-		str = "SELECT * from activity";				 
-		activityList = activityService.FindBySQL(str);
-		Collections.sort(activityList, new Comparator<Activity>() {
-			@Override
-            public int compare(Activity a1, Activity a2) {				
-				return a1.getCreateTime().compareTo(a2.getCreateTime());
-            }
-        });		
-		return "success";
+		int pageNo = Integer.parseInt(request.getParameter("pageNo"));
+		String str = "SELECT * FROM activity order by createTime DESC";
+		pagingActivityService.PagingService(Activity.class);
+		Pager pager = pagingActivityService.findPageBySQL(pageNo,PAGESIZE,str);
+
+		response.setContentType("text/json");
+		response.setCharacterEncoding("UTF-8");
+		PrintWriter out = response.getWriter();
+		System.out.println("数据："+pager.toString());
+
+		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").excludeFieldsWithoutExposeAnnotation().create();
+		out.print(gson.toJson(pager));
+		System.out.println("发送数据=="+gson.toJson(pager));
 	}
 	
 	
