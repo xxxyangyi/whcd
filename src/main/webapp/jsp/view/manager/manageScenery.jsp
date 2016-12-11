@@ -32,14 +32,45 @@
                 </tr>
                 </thead>
                 <tbody>
-                <script type="text/javascript">
-                    GetManagerSceneryListOne();
-                </script>
+                <%--<script type="text/javascript">--%>
+                    <%--GetManagerSceneryListOne();--%>
+                <%--</script>--%>
+                <tbody id="sceneryListPaging"></tbody>
                 </tbody>
             </table>
+            <div class="row">
+                <div class="col-md-2 col-md-offset-2" id="per"></div>
+                <div class="col-md-2 col-md-offset-2" id="pageNo"></div>
+                <div class="col-md-2 col-md-offset-1" id="next"></div>
+            </div>
         </div>
         <div class="panel-footer"></div>
+        <table hidden="hiddenr">
+            <tbody id="sceneryListPaging_Model">
+            <tr class="sceneryListPaging_Tr">
+                <td>
+                    <a href="http://localhost:8080/PersonCenter/SceneryDetail?sceneryId=@@@id@">@@@summary@</a>
+                </td>
+                <td>
+                    @@@detailSub@
+                </td>
+                <td>@@@user_id['name']@</td>
+                <td>@@@createDate@</td>
+                <td class="isAudited">@@@isAudited@</td>
+                <td><a class="btn btn-xs btn-danger dele" style="margin-left:5px;float:left"
+                       onclick="DeleteScenery('@@@id@')">删除</a>
+                    <a class="btn btn-xs btn-warning pass" style="margin-left:5px;float:left"
+                       onclick="AuditScenery('@@@id@')">通过</a>
+                    <a class="btn btn-xs btn-warning noPass" style="margin-left:5px;float:left"
+                       onclick="DisAuditScenery('@@@id@')">不通过</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </div>
+<script type="text/javascript">
+    pagingStart2('#sceneryListPaging', '#sceneryListPaging_Model','#per','#next','#pageNo', '/Scenery/getSceneryList','scenery.isAuditedToString()')
+</script>
 </body>
 </html>

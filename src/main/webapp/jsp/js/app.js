@@ -998,160 +998,7 @@ window.onload=function() {
 			});
 			
 		}
-		
-		
-		//获取所有风景名胜
-		function GetManagerSceneryListOne(){
-	 		if(currentNum==1){
-			$.ajax({
-				type : "post",
-				url:url_perfix + "Scenery/getSceneryList",
-				async : false,
-				dataType : 'json',
-				data:{"page":1,"managerParam":"managerParam"},
-				error : function() {
-					alert("ajax出错！ GetManagerSceneryListOne");
-				},
-				success : function(data) {
-					var numPage=data.numPage;
-					var len=data.sceneryList.length;
-					var total=data.total;
-					var page=data.page;
-					var arr=data.sceneryList;
-					var htmlStr="";
-					var tmpStr="";
-					$("#usrPanelContent table").append(select);
-					for(var i=0;i <len&&i<numPage;i++){
-						tmpStr="<tr>"
-							+"<td><a href='"+ url_perfix +"PersonCenter/SceneryDetail?sceneryId="+arr[i].id+"'></a>"+arr[i].summary+"</td>"
-							+"<td>"+arr[i].detailSub+"</p></td>"
-							+"<td>"+arr[i].userName+"</td>"
-							+"<td>"+arr[i].createDate+"</td>";
-						if(arr[i].isAudited===1)
-							tmpStr+="<td>通过</td>";
-						else if(arr[i].isAudited===-1)
-							tmpStr+="<td>不通过</td>";
-						else 
-							tmpStr+="<td>待审核</td>";
-						tmpStr+="<td>"+"<a class='btn btn-xs btn-danger' style='margin-left:5px;float:left' onclick='DeleteScenery(\""+arr[i].id+"\",\""+ url_perfix +"PersonCenter/DeleteScenery\")'>删除</a>";
-						
-						if(arr[i].isAudited===1)
-							tmpStr+="<a class='btn btn-xs btn-warning' style='margin-left:5px;float:left' onclick='DisAuditScenery(\""+arr[i].id+"\",\""+ url_perfix +"Manager/DisAuditScenery\")' >不通过</a>";
-						else if(arr[i].isAudited===-1)
-							tmpStr+="<a class='btn btn-xs btn-success' style='margin-left:5px;float:left' onclick='AuditScenery(\""+arr[i].id+"\",\""+ url_perfix +"Manager/AuditScenery\")' >通过</a>";
-						else
-							{
-							tmpStr+="<a class='btn btn-xs btn-success' style='margin-left:5px;float:left' onclick='AuditScenery(\""+arr[i].id+"\",\""+ url_perfix +"Manager/AuditScenery\")' >通过</a>";
-							tmpStr+="<a class='btn btn-xs btn-warning' style='margin-left:5px;float:left' onclick='DisAuditScenery(\""+arr[i].id+"\",\""+ url_perfix +"Manager/DisAuditScenery\")' >不通过</a>";
-							}
-							htmlStr+=tmpStr+"</td>"+"</tr>";
-					}
-					$("#usrPanelContent tbody").html(htmlStr);
-					var str="";
-					for(var j=1;j<=total;j++){
-						if(j===page){
-							str+="<option value='"+j+"' selected='selected'>"+j+"</option>";
-						}
-						else
-							str+="<option value="+j+">"+j+"</option>";
-					}
-					var select="<hr align='left' width='100%' size='15' />"
-					+"<div class='col-lg-8 col-lg-offset-3'>"
-					+"<div class='col-lg-2'>"
-					+"<a onclick='PrePage();GetManagerSceneryList();' class='btn btn-primary'>上一页</a>"
-					+"</div>"
-					+"<div class='col-lg-3'>"
-					+"<select id='selectPage' class='form-control' onchange='SelectedPage();GetManagerSceneryList();'>"
-					+str
-					+"</select>"
-					+"</div>"
-					+"<div class='col-lg-2'>"
-					+"<a onclick='NextPage("+total+");GetManagerSceneryList();' class='btn btn-primary'>下一页</a>"
-					+"</div>"
-					+"</div>";
-					//htmlStr+=select;
-					$("#usrPanelContent .col-lg-8").remove();
-					$("#usrPanelContent hr").remove();
-					$("#usrPanelContent").append(select);
-				}
-			});
-	 		}
-	 	}
-		
-		function GetManagerSceneryList(){
-			$.ajax({
-				type : "post",
-				url:url_perfix + "Scenery/getSceneryList",
-				async : false,
-				dataType : 'json',
-				data:{"page":currentNum,"managerParam":"managerParam"},
-				error : function() {
-					alert("ajax出错！ GetManagerSceneryList");
-				},
-				success : function(data) {
-					var numPage=data.numPage;
-					var len=data.sceneryList.length;
-					var total=data.total;
-					var page=data.page;
-					var arr=data.sceneryList;
-					var htmlStr="";
-					var tmpStr="";
-					for(var i=0;i <len&&i<numPage;i++){
-						tmpStr="<tr>"
-							+"<td><a href='"+ url_perfix +"PersonCenter/SceneryDetail?sceneryId="+arr[i].id+"'></a>"+arr[i].summary+"</td>"
-							+"<td><p style='width:400px;word-wrap:break-word;overflow:hidden; white-space:nowrap; text-overflow:ellipsis'>"+arr[i].detailSub+"</p></td>"
-							+"<td>"+arr[i].userName+"</td>"
-							+"<td>"+arr[i].createDate+"</td>";
-						if(arr[i].isAudited===1)
-							tmpStr+="<td>通过</td>";
-						else if(arr[i].isAudited===-1)
-							tmpStr+="<td>不通过</td>";
-						else 
-							tmpStr+="<td>待审核</td>";
-						tmpStr+="<td>"+"<a class='btn btn-danger' style='margin-left:5px;float:left' onclick='DeleteScenery(\""+arr[i].id+"\",\""+ url_perfix +"PersonCenter/DeleteScenery\")'>删除</a>";
-						
-						if(arr[i].isAudited===1)
-							tmpStr+="<a class='btn btn-warning' style='margin-left:5px;float:left' onclick='DisAuditScenery(\""+arr[i].id+"\",\""+ url_perfix +"Manager/AuditScenery\")' >不通过</a>";
-						else if(arr[i].isAudited===-1)
-							tmpStr+="<a class='btn btn-success' style='margin-left:5px;float:left' onclick='AuditScenery(\""+arr[i].id+"\",\""+ url_perfix +"Manager/DisAuditScenery\")' >通过</a>";
-						else
-							{
-							tmpStr+="<a class='btn btn-success' style='margin-left:5px;float:left' onclick='AuditScenery(\""+arr[i].id+"\",\""+ url_perfix +"Manager/AuditScenery\")' >通过</a>";
-							tmpStr+="<a class='btn btn-warning' style='margin-left:5px;float:left' onclick='DisAuditScenery(\""+arr[i].id+"\",\""+ url_perfix +"Manager/DisAuditScenery\")' >不通过</a>";
-							}
-							htmlStr+=tmpStr+"</td>"+"</tr>";
-					}
-					$("#usrPanelContent tbody").html(htmlStr);
-					var str="";
-					for(var j=1;j<=total;j++){
-						if(j===page){
-							str+="<option value='"+j+"' selected='selected'>"+j+"</option>";
-						}
-						else
-							str+="<option value="+j+">"+j+"</option>";
-					}
-					 var select="<hr align='left' width='100%' size='15' />"
-					+"<div class='col-lg-8 col-lg-offset-3'>"
-					+"<div class='col-lg-2'>"
-					+"<a onclick='PrePage();GetManagerSceneryList();' class='btn btn-primary'>上一页</a>"
-					+"</div>"
-					+"<div class='col-lg-3'>"
-					+"<select id='selectPage' class='form-control' onchange='SelectedPage();GetManagerSceneryList();'>"
-					+str
-					+"</select>"
-					+"</div>"
-					+"<div class='col-lg-2'>"
-					+"<a onclick='NextPage("+total+");GetManagerSceneryList();' class='btn btn-primary'>下一页</a>"
-					+"</div>"
-					+"</div>";
-					//htmlStr+=select;
-					$("#usrPanelContent .col-lg-8").remove();
-					$("#usrPanelContent hr").remove();
-					$("#usrPanelContent").append(select);
-				}
-			});
-	 	}
-		
+
 		// 动态的显示图片
 		function GetFilePath() {
 			var addr = null;
@@ -1449,6 +1296,24 @@ window.onload=function() {
                 }
 
             }
-
-
         }
+
+	var scenery ={
+
+		isAuditedToString:function () {
+			util.alert("isAuditedToString 方法执行");
+			$(".sceneryListPaging_Tr").each(function() {
+				var isAudited = $(this).find('.isAudited').eq(0).text();
+				if (isAudited == "1") {
+					$(this).find('.isAudited').eq(0).text('通过');
+					$(this).find('.pass').eq(0).remove();
+				} else if (isAudited == "0") {
+					$(this).find('.isAudited').eq(0).text('待审核');
+					$(this).find('.noPass').eq(0).remove();
+				} else if (isAudited == "-1") {
+					$(this).find('.isAudited').eq(0).text('不通过');
+					$(this).find('.noPass').eq(0).remove();
+				}
+			})
+		}
+	}

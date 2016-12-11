@@ -39,14 +39,17 @@ public class Scenery implements Serializable{
 	private String detailSub;
 	
 	@ManyToOne          
-    @JoinColumn(name="user_id",referencedColumnName ="mail") 
+    @JoinColumn(name="user_id",referencedColumnName ="mail")
+	@Expose
 	private User user_id;
 	
-	@ManyToOne          
-    @JoinColumn(name="tab_id",referencedColumnName ="id") 
+	@ManyToOne
+	@Expose
+	@JoinColumn(name="tab_id",referencedColumnName ="id")
 	private Tab tab_id;
 	
 	@Column(name="isaudited")
+	@Expose
 	private Integer isAudited;
 
 	public String getId() {

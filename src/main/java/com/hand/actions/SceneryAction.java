@@ -32,19 +32,19 @@ public class SceneryAction extends BaseAction {
 	private ISceneryService sceneryService;
 
 	@Resource(name = "pagingService")
-	private PagingService<Scenery> pagingActivityService;
+	private PagingService<Scenery> pagingSceneryService;
 
 	public void  pagingScenery() throws IOException{
 
 		int tabId = Integer.parseInt(request.getParameter("tabId"));
 		int pageNo = Integer.parseInt(request.getParameter("PageNo"));
 		System.out.println("pagingScenery ：tabId "+tabId +"  pageNo " +pageNo);
-		pagingActivityService.PagingService(Scenery.class);
+		pagingSceneryService.PagingService(Scenery.class);
 		Criterion criterion = null;
 		Tab tab = new Tab();
 		tab.setId(tabId);
 		criterion = Restrictions.eq("tab_id",tab);
-		Pager pager = pagingActivityService.paging(pageNo,PAGESIZE,criterion);
+		Pager pager = pagingSceneryService.paging(pageNo,PAGESIZE,criterion);
 
 		response.setContentType("text/json");
 		response.setCharacterEncoding("UTF-8");
@@ -89,26 +89,6 @@ public class SceneryAction extends BaseAction {
 		out.print(gson.toJson(list));
 		System.out.println("发送数据");
 	}
-
-	public String SceneryListSub() {
-		
-		String sqlSum="select count(*) as sumkey from scenery where user_id='"+123+"' order by createdate";
-		String sql="select * from scenery where user_id='"+123+"' order by createdate";
-		
-		HttpServletRequest request=ServletActionContext.getRequest();
-		String pageStr=request.getParameter("page");
-		Integer page=Integer.parseInt(pageStr);
-		
-		Integer total=sceneryService.GetTotal(sqlSum, numPage);
-		List<Scenery> sceneryList=sceneryService.GetList(sql, page, numPage, total);
-		
-		request.setAttribute("sceneryList", sceneryList);
-		request.setAttribute("page", page);
-		request.setAttribute("total", total);
-		request.setAttribute("numPage", numPage);
-		
-		return "sceneryListSub";
-	}
 	
 	public String SceneryDetail(){
 		
@@ -121,56 +101,21 @@ public class SceneryAction extends BaseAction {
 	}
 	
 	public void getSceneryList() throws Exception{
-		
-		String managerParam=request.getParameter("managerParam");
-		String userParam=request.getParameter("userParam");
-		String sqlSum="";
-		String sql="";
-		if(managerParam!=null){
-			 sqlSum="select count(*) as sumkey from scenery order by createdate";
-			 sql="select * from scenery order by createdate";
-			
-		}else if(userParam!=null){
-			User user=(User) session.get("user");
-			String mail=user.getMail();
-		
-			 sqlSum="select count(*) as sumkey from scenery where user_id='"+mail+"' order by createdate";
-			 sql="select * from scenery where user_id='"+mail+"' order by createdate";
-			
-		}else{
-			String tab=request.getParameter("tabid");
-			if(tab!=null){
-				sqlSum="select count(*) as sumkey from scenery where isaudited=1 and tab_id="+tab+" order by createdate";
-				 sql="select * from scenery where isaudited=1 and tab_id="+tab+" order by createdate";
-			
-			}
-			else
-			{
-				 sqlSum="select count(*) as sumkey from scenery where isaudited=1  order by createdate";
-				 sql="select * from scenery where isaudited=1 order by createdate";
-			}
-		}	
-		
-		Integer page=Integer.parseInt(request.getParameter("page"));
-		Integer total=sceneryService.GetTotal(sqlSum, numPage);
-		List<Scenery> sceneryList=sceneryService.GetList(sql, page, numPage, total);
-		
-		List<SceneryVO> sceneryVoList=new ArrayList<SceneryVO>();
-		for(Scenery s:sceneryList)
-			sceneryVoList.add(EntityToVo.SceneryToVo(s));
-		
-		response.setContentType("text/json"); 
-        response.setCharacterEncoding("UTF-8"); 
-        PrintWriter out = response.getWriter();
-        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").excludeFieldsWithoutExposeAnnotation().create();
-        
-        Map<String, Object> paramMap=new HashMap<String,Object>();
-        paramMap.put("page",page);
-        paramMap.put("total",total);
-        paramMap.put("numPage",numPage);
-        paramMap.put("sceneryList",sceneryVoList);
-		
-        out.print(gson.toJson(paramMap));
+
+		System.out.println("getSceneryList");
+		int pageNo = Integer.parseInt(request.getParameter("pageNo"));
+		String str = "SELECT * FROM scenery order by createdate DESC";
+		pagingSceneryService.PagingService(Scenery.class);
+		Pager pager = pagingSceneryService.findPageBySQL(pageNo,PAGESIZE,str);
+
+		response.setContentType("text/json");
+		response.setCharacterEncoding("UTF-8");
+		PrintWriter out = response.getWriter();
+		System.out.println("数据："+pager.toString());
+
+		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").excludeFieldsWithoutExposeAnnotation().create();
+		out.print(gson.toJson(pager));
+		System.out.println("发送数据=="+gson.toJson(pager));
 	}
 	
    public void getPercenCenterSceneryList() throws Exception{
