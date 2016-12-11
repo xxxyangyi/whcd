@@ -73,8 +73,8 @@ function paging(InsertID, ModelId, ActionName,PageNo,isPaging) {
             var val = my_json;
             var keyVal = map.getKey(j);
             var keyValArrary =  keyVal.split('.')
-            for(var i= 0; i<keyValArrary.size();i++){
-                val = val[keyValArrary[i]];
+            for(var i1= 0; i1<keyValArrary.length;i1++){
+                val = val[keyValArrary[i1]];
             }
             linshiModelHtml = (linshiModelHtml.replace(keyVal, val)).toString();
 
@@ -191,9 +191,9 @@ function paging2(InsertID, ModelId, PerId, NextId, TotalPageId, ActionName, Page
         for (var j = 0; j < map.size(); j++) {
             var val = my_json;
             var keyVal = map.getKey(j);
-            var keyValArrary =  map.get(keyVal).split('.')
-            for(var i= 0; i<keyValArrary.length;i++){
-                val = val[keyValArrary[i]];
+            var keyValArrary =  map.get(keyVal).split('.');
+            for(var i1= 0; i1<keyValArrary.length;i1++){
+                val = val[keyValArrary[i1]];
             }
             linshiModelHtml = (linshiModelHtml.replace(keyVal, val)).toString();
         }
