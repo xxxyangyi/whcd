@@ -57,10 +57,10 @@ function paging(InsertID, ModelId, ActionName,PageNo,isPaging) {
     var model_html = $(ModelId).html();
     var map = new UtilMap();
 
-    var patt = new RegExp(/[@]{3}\w+[@]{1}/,"gmi");
+    var patt = new RegExp(/[@]{3}[\w._]+[@]{1}/,"gmi");
     var result;
     while ((result = patt.exec(model_html)) != null)  {
-        result = result.toString().replace(/([@]{3})(\w+)([@]{1})/, "$2");
+        result = result.toString().replace(/([@]{3})([\w._]+)([@]{1})/, "$2");
         console.log(result+"----");
         map.put("@@@"+result+"@",result);
         console.log(map.arr)
@@ -69,11 +69,15 @@ function paging(InsertID, ModelId, ActionName,PageNo,isPaging) {
     for (var i = 0; i < json.length; i++) {
         var my_json = json[i];
         var linshiModelHtml = model_html;
-        for (var j = 0; j < map.size(); j++) {
-            linshiModelHtml = (linshiModelHtml.replace(map.getKey(j), my_json[map.get(map.getKey(j))])).toString();
+        for (var j = 0; j < map.length; j++) {
+            var val = my_json;
+            var keyVal = map.getKey(j);
+            var keyValArrary =  keyVal.split('.')
+            for(var i= 0; i<keyValArrary.size();i++){
+                val = val[keyValArrary[i]];
+            }
+            linshiModelHtml = (linshiModelHtml.replace(keyVal, val)).toString();
 
-            // console.log(map.getKey(j) + "   " + map.get(map.getKey(j)));
-            // console.log("linshiModelHtml :" + linshiModelHtml);
         }
 
         $(InsertID).append(linshiModelHtml);
@@ -172,10 +176,10 @@ function paging2(InsertID, ModelId, PerId, NextId, TotalPageId, ActionName, Page
     var model_html = $(ModelId).html();
     var map = new UtilMap();
 
-    var patt = new RegExp(/[@]{3}\w+[@]{1}/,"gmi");
+    var patt = new RegExp(/[@]{3}[\w._]+[@]{1}/,"gmi");
     var result;
     while ((result = patt.exec(model_html)) != null)  {
-        result = result.toString().replace(/([@]{3})(\w+)([@]{1})/, "$2");
+        result = result.toString().replace(/([@]{3})([\w._]+)([@]{1})/, "$2");
         console.log(result+"----");
         map.put("@@@"+result+"@",result);
         console.log(map.arr)
@@ -185,7 +189,13 @@ function paging2(InsertID, ModelId, PerId, NextId, TotalPageId, ActionName, Page
         var my_json = json[i];
         var linshiModelHtml = model_html;
         for (var j = 0; j < map.size(); j++) {
-            linshiModelHtml = (linshiModelHtml.replace(map.getKey(j), my_json[map.get(map.getKey(j))])).toString();
+            var val = my_json;
+            var keyVal = map.getKey(j);
+            var keyValArrary =  map.get(keyVal).split('.')
+            for(var i= 0; i<keyValArrary.length;i++){
+                val = val[keyValArrary[i]];
+            }
+            linshiModelHtml = (linshiModelHtml.replace(keyVal, val)).toString();
         }
 
         $(InsertID).append(linshiModelHtml);
@@ -199,8 +209,8 @@ function paging2(InsertID, ModelId, PerId, NextId, TotalPageId, ActionName, Page
 
     if(functionName != null){
         console.log("paging2中 调用了方法");
-        var  func=eval(functionName);
-        new func();
+        var func=eval(functionName);
+
     }else {
         console.log("paging2中 没有调用方法");
     }

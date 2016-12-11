@@ -54,7 +54,7 @@
                 <td>
                     @@@detailSub@
                 </td>
-                <td>@@@user_id['name']@</td>
+                <td>@@@user_id.name@</td>
                 <td>@@@createDate@</td>
                 <td class="isAudited">@@@isAudited@</td>
                 <td><a class="btn btn-xs btn-danger dele" style="margin-left:5px;float:left"
