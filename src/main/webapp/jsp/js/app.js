@@ -594,23 +594,7 @@ window.onload=function() {
 			});
 	 	}
 		
-		function DeleteScenery(sceneryId,urlStr){
-			$.ajax({
-				url : urlStr,
-				async : false,
-				data:{"sceneryId":sceneryId},
-				error : function() {
-					alert("删除失败！");
-				},
-				success : function(data) {
-					if(data==='1')
-						alert('删除成功');
-				else
-					alert('删除成功');
-				window.location.reload();
-				}
-			});
-		}
+
 		//管理员中心获取用户列表
 		function GetUserListOne(){
 	 		if(currentNum==1){
@@ -1315,5 +1299,17 @@ window.onload=function() {
 					$(this).find('.noPass').eq(0).remove();
 				}
 			})
+		},
+		deleteScenery:function (sceneryId){
+			var postData =  {"sceneryId":sceneryId}
+			util.ajax("Scenery/deleteScenery",postData,null,function (data) {
+				if(data == "删除成功"){
+					util.showMsg("删除成功!");
+					$("#"+sceneryId).remove();
+				}else{
+					util.showMsg("删除失败!")
+					window.location.reload();
+				}
+			});
 		}
 	}

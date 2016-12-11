@@ -148,5 +148,15 @@ public class SceneryAction extends BaseAction {
 		
         out.print(gson.toJson(paramMap));
 	}
+
+	public void deleteScenery() throws Exception {
+		String sceneryId = request.getParameter("sceneryId");
+		Scenery scenery = sceneryService.GetScenery(sceneryId);
+		sceneryService.DeleteScenery(scenery);
+		response.setContentType("text/plain");
+		response.setCharacterEncoding("UTF-8");
+		PrintWriter out = response.getWriter();
+		out.print("删除成功");
+	}
    
 }

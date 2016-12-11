@@ -247,23 +247,5 @@ public class PersonCenter extends ActionSupport {
 			
 			return "modifyScenerySuccess";
 	}
-	public void DeleteScenery(){
-		
-		try{
-		HttpServletRequest request=ServletActionContext.getRequest();
-		String sceneryId=request.getParameter("sceneryId");
-		
-		Scenery scenery=sceneryService.GetScenery(sceneryId);
-		sceneryService.DeleteScenery(scenery);
-		HttpServletResponse response=ServletActionContext.getResponse();
-		PrintWriter out = response.getWriter();
-		out.print("1");
-		}
-		catch(Exception ex){
-			ex.printStackTrace();
-		}
-		
-	}
-	
 	
 }

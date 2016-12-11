@@ -47,7 +47,7 @@
         <div class="panel-footer"></div>
         <table hidden="hiddenr">
             <tbody id="sceneryListPaging_Model">
-            <tr class="sceneryListPaging_Tr">
+            <tr class="sceneryListPaging_Tr" id="@@@id@">
                 <td>
                     <a href="http://localhost:8080/PersonCenter/SceneryDetail?sceneryId=@@@id@">@@@summary@</a>
                 </td>
@@ -58,7 +58,7 @@
                 <td>@@@createDate@</td>
                 <td class="isAudited">@@@isAudited@</td>
                 <td><a class="btn btn-xs btn-danger dele" style="margin-left:5px;float:left"
-                       onclick="DeleteScenery('@@@id@')">删除</a>
+                       onclick="scenery.deleteScenery('@@@id@')">删除</a>
                     <a class="btn btn-xs btn-warning pass" style="margin-left:5px;float:left"
                        onclick="AuditScenery('@@@id@')">通过</a>
                     <a class="btn btn-xs btn-warning noPass" style="margin-left:5px;float:left"

@@ -354,23 +354,6 @@ public String ManageScenery(){
 			
 			return "modifyScenerySuccess";
 	}
-	public void DeleteScenery(){
-		try{
-		HttpServletRequest request=ServletActionContext.getRequest();
-		String sceneryId=request.getParameter("sceneryId");
-		
-		Scenery scenery=sceneryService.GetScenery(sceneryId);
-		sceneryService.DeleteScenery(scenery);
-		
-		//request.setAttribute("page", 1);
-		HttpServletResponse response=ServletActionContext.getResponse();
-		PrintWriter out = response.getWriter();
-		out.print("1");
-		}
-		catch(Exception ex){
-			ex.printStackTrace();
-		}
-	}
 	
 	public String AddScenery(){
 		try{

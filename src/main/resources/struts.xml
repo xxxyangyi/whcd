@@ -113,8 +113,8 @@
 		<action name="DoSceneryModify" class="personCenter" method="DoSceneryModify">
 			<result name="modifyScenerySuccess" type="redirect">/PersonCenter/SceneryManage</result>
 		</action>
-		<action name="DeleteScenery" class="personCenter" method="DeleteScenery">
-		</action>
+		<!--<action name="DeleteScenery" class="personCenter" method="DeleteScenery">-->
+		<!--</action>-->
 	</package>
 	
 	<package name="Manager" namespace="/Manager" extends="struts-default">
@@ -166,8 +166,8 @@
 		<action name="DoModifyScenery" class="managerAction" method="DoModifyScenery">
 			<result name="modifyScenerySuccess" type="redirect">/Manager/ManageScenery</result>
 		</action>
-		<action name="DeleteScenery" class="managerAction" method="DeleteScenery">
-		</action>
+		<!--<action name="DeleteScenery" class="managerAction" method="DeleteScenery">-->
+		<!--</action>-->
 		<action name="AddScenery" class="managerAction" method="AddScenery">
 			<result name="addScenerySuccess" type="redirect">/Manager/ManageScenery</result>
 		</action>
@@ -217,6 +217,7 @@
 		<action name="getSceneryList" class="sceneryAction" method="getSceneryList"></action>
 		<action name="pagingScenery" class="sceneryAction" method="pagingScenery"></action>
 		<action name="getPercenCenterSceneryList" class="sceneryAction" method="getPercenCenterSceneryList"></action>
+		<action name="deleteScenery" class="sceneryAction" method="deleteScenery"></action>
 	</package>
 
 </struts>
