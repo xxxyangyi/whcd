@@ -399,36 +399,6 @@ public String ManageScenery(){
 		return "detailSceneryInfo";
 	}
 	
-	public void AuditScenery(){
-		try{
-			String sceneryId=request.getParameter("sceneryId");
-			Scenery scenery=sceneryService.GetScenery(sceneryId);
-			scenery.setIsAudited(1);
-			sceneryService.UpdateScenery(scenery);
-			PrintWriter out = response.getWriter();
-			out.print("1");
-			
-		}
-		catch(Exception ex){
-			ex.printStackTrace();
-		}
-	}
-	
-	public void DisAuditScenery(){
-		try{
-			String sceneryId=request.getParameter("sceneryId");
-			Scenery scenery=sceneryService.GetScenery(sceneryId);
-			scenery.setIsAudited(-1);
-			sceneryService.UpdateScenery(scenery);
-			PrintWriter out = response.getWriter();
-			out.print("1");
-			
-		}
-		catch(Exception ex){
-			ex.printStackTrace();
-		}
-	}
-	
 	public void getSexData(){
 		try{
 		Integer manSum=userService.getManSum();

@@ -1086,46 +1086,6 @@ window.onload=function() {
 			});
 		}
 		//  登陆退出 结束
-
-		function AuditScenery(sceneryId,urlStr){
-			$.ajax({
-				url : urlStr,
-				async : false,
-				data : {
-					"sceneryId" : sceneryId
-				},
-				error : function() {
-					alert("操作失败！");
-				},
-				success : function(data) {
-					if(data==='1')
-						alert('操作成功！');
-				else
-					alert('操作失败！');
-				window.location.reload();
-				}
-			});
-		}
-		
-		function DisAuditScenery(sceneryId,urlStr) {
-			$.ajax({
-				url : urlStr,
-				async : false,
-				data : {
-					"sceneryId" : sceneryId
-				},
-				error : function() {
-					alert("操作失败！");
-				},
-				success : function(data) {
-					if(data==='1')
-						alert('操作成功！');
-				else
-					alert('操作失败！');
-				window.location.reload();
-				}
-			});
-		}
 		
 		//获取顶部菜单
 		function getTopMenu() {
@@ -1290,16 +1250,17 @@ window.onload=function() {
 				var isAudited = $(this).find('.isAudited').eq(0).text();
 				if (isAudited == "1") {
 					$(this).find('.isAudited').eq(0).text('通过');
-					$(this).find('.pass').eq(0).remove();
+					$(this).find('.pass').eq(0).hide();
 				} else if (isAudited == "0") {
 					$(this).find('.isAudited').eq(0).text('待审核');
-					$(this).find('.noPass').eq(0).remove();
+					$(this).find('.noPass').eq(0).hide();
 				} else if (isAudited == "-1") {
 					$(this).find('.isAudited').eq(0).text('不通过');
-					$(this).find('.noPass').eq(0).remove();
+					$(this).find('.noPass').eq(0).hide();
 				}
 			})
 		},
+
 		deleteScenery:function (sceneryId){
 			var postData =  {"sceneryId":sceneryId}
 			util.ajax("Scenery/deleteScenery",postData,null,function (data) {
@@ -1308,6 +1269,36 @@ window.onload=function() {
 					$("#"+sceneryId).remove();
 				}else{
 					util.showMsg("删除失败!")
+					window.location.reload();
+				}
+			});
+		},
+
+		auditScenery: function (sceneryId){
+			var postData =  {"sceneryId":sceneryId}
+			util.ajax("Scenery/auditScenery",postData,null,function (data) {
+				if(data == "通过成功"){
+					util.showMsg("通过成功!");
+					$("#"+sceneryId).find('.isAudited').eq(0).text('通过');
+					$("#"+sceneryId).find('.pass').eq(0).hide();
+					$("#"+sceneryId).find('.noPass').eq(0).show();
+				}else{
+					util.showMsg("通过失败!")
+					window.location.reload();
+				}
+			});
+		},
+
+		disAuditScenery:function (sceneryId) {
+			var postData = {"sceneryId": sceneryId}
+			util.ajax("Scenery/disAuditScenery", postData, null, function (data) {
+				if (data == "不通过成功") {
+					util.showMsg("[不通过]操作成功!");
+					$("#"+sceneryId).find('.isAudited').eq(0).text('未通过');
+					$("#"+sceneryId).find('.pass').eq(0).show();
+					$("#"+sceneryId).find('.noPass').eq(0).hide();
+				} else {
+					util.showMsg("[不通过]操作失败!")
 					window.location.reload();
 				}
 			});

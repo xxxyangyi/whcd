@@ -176,10 +176,6 @@
 		</action>
 		<action name="getUserList" class="managerAction" method="getUserList">
 		</action>
-		<action name="AuditScenery" class="managerAction" method="AuditScenery">
-		</action>
-		<action name="DisAuditScenery" class="managerAction" method="DisAuditScenery">
-		</action>
 		<action name="getSexData" class="managerAction" method="getSexData">
 		</action>
 		<action name="getIdentityData" class="managerAction" method="getIdentityData">
@@ -218,6 +214,8 @@
 		<action name="pagingScenery" class="sceneryAction" method="pagingScenery"></action>
 		<action name="getPercenCenterSceneryList" class="sceneryAction" method="getPercenCenterSceneryList"></action>
 		<action name="deleteScenery" class="sceneryAction" method="deleteScenery"></action>
+		<action name="auditScenery" class="sceneryAction" method="auditScenery"></action>
+		<action name="disAuditScenery" class="sceneryAction" method="disAuditScenery"></action>
 	</package>
 
 </struts>

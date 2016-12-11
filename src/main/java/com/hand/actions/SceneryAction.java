@@ -158,5 +158,28 @@ public class SceneryAction extends BaseAction {
 		PrintWriter out = response.getWriter();
 		out.print("删除成功");
 	}
+
+	public void auditScenery() throws Exception {
+		String sceneryId = request.getParameter("sceneryId");
+		Scenery scenery = sceneryService.GetScenery(sceneryId);
+		scenery.setIsAudited(1);
+		sceneryService.UpdateScenery(scenery);
+		response.setContentType("text/plain");
+		response.setCharacterEncoding("UTF-8");
+		PrintWriter out = response.getWriter();
+		out.print("通过成功");
+	}
+
+	public void disAuditScenery() throws Exception {
+		String sceneryId = request.getParameter("sceneryId");
+		Scenery scenery = sceneryService.GetScenery(sceneryId);
+		scenery.setIsAudited(-1);
+		sceneryService.UpdateScenery(scenery);
+
+		response.setContentType("text/plain");
+		response.setCharacterEncoding("UTF-8");
+		PrintWriter out = response.getWriter();
+		out.print("不通过成功");
+	}
    
 }

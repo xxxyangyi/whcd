@@ -60,9 +60,9 @@
                 <td><a class="btn btn-xs btn-danger dele" style="margin-left:5px;float:left"
                        onclick="scenery.deleteScenery('@@@id@')">删除</a>
                     <a class="btn btn-xs btn-warning pass" style="margin-left:5px;float:left"
-                       onclick="AuditScenery('@@@id@')">通过</a>
+                       onclick="scenery.auditScenery('@@@id@')">通过</a>
                     <a class="btn btn-xs btn-warning noPass" style="margin-left:5px;float:left"
-                       onclick="DisAuditScenery('@@@id@')">不通过</a>
+                       onclick="scenery.disAuditScenery('@@@id@')">不通过</a>
                 </td>
             </tr>
             </tbody>
