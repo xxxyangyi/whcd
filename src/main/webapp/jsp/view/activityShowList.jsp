@@ -15,10 +15,8 @@
 
 <body>
 <div class="col-md-10">
-    <hr align="left" width="100%" size="15"/>
     <div class="row">
         <div id="pagingActivityList"></div>
-        <!--<div id="activity_list"></div>-->
     </div>
 
     <div id="pagingActivityList_Model" hidden="hidden">
@@ -42,8 +40,6 @@
             </div>
         </div>
     </div>
-
-
 </div>
 
 </div>
