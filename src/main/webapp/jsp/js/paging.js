@@ -69,15 +69,14 @@ function paging(InsertID, ModelId, ActionName,PageNo,isPaging) {
     for (var i = 0; i < json.length; i++) {
         var my_json = json[i];
         var linshiModelHtml = model_html;
-        for (var j = 0; j < map.length; j++) {
+        for (var j = 0; j < map.size(); j++) {
             var val = my_json;
             var keyVal = map.getKey(j);
-            var keyValArrary =  keyVal.split('.')
+            var keyValArrary =  map.get(keyVal).split('.');
             for(var i1= 0; i1<keyValArrary.length;i1++){
                 val = val[keyValArrary[i1]];
             }
             linshiModelHtml = (linshiModelHtml.replace(keyVal, val)).toString();
-
         }
 
         $(InsertID).append(linshiModelHtml);
