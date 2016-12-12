@@ -7,11 +7,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import com.hand.entity.Tab;
 import com.hand.paging.Pager;
 import com.hand.paging.PagingService;
-import org.apache.struts2.ServletActionContext;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.hand.entity.Scenery;
@@ -36,46 +34,29 @@ public class SceneryAction extends BaseAction {
 
 	public void  pagingScenery() throws IOException{
 
-		int tabId = Integer.parseInt(request.getParameter("tabId"));
+		String tabId = request.getParameter("tabId");
 		int pageNo = Integer.parseInt(request.getParameter("PageNo"));
 		System.out.println("pagingScenery ：tabId "+tabId +"  pageNo " +pageNo);
 		pagingSceneryService.PagingService(Scenery.class);
-		Criterion criterion = null;
-		Tab tab = new Tab();
-		tab.setId(tabId);
-		criterion = Restrictions.eq("tab_id",tab);
-		Pager pager = pagingSceneryService.paging(pageNo,PAGESIZE,criterion);
-
+		Pager pager = null;
+		if(tabId != null && tabId != ""){
+			int tabIdInt = Integer.parseInt(tabId);
+			Tab tab = new Tab();
+			tab.setId(tabIdInt);
+			Criterion criterion = null;
+			criterion = Restrictions.eq("tab_id",tab);
+			pager = pagingSceneryService.paging(pageNo,PAGESIZE,criterion);
+		}else {
+			pager = pagingSceneryService.paging(pageNo,PAGESIZE);
+		}
 		response.setContentType("text/json");
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
-		System.out.println("数据："+pager.toString());
-
-		for (Object scenery: pager.getResult()){
-			System.out.println("activity --->：  "+((Scenery)scenery).toString());
-		}
 
 		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").excludeFieldsWithoutExposeAnnotation().create();
 		out.print(gson.toJson(pager));
 		System.out.println("发送数据=="+gson.toJson(pager));
 
-	}
-
-	public String SceneryList() {
-		System.out.println("SceneryList 方法 是否可以去掉？？？？？？！！！！");
-		String sqlSum="select count(*) as sumkey from scenery order by createdate";
-		String sql="select * from scenery order by createdate";
-		
-		Integer total=sceneryService.GetTotal(sqlSum, numPage);
-		List<Scenery> sceneryList=sceneryService.GetList(sql, 1, numPage, total);
-		HttpServletRequest request=ServletActionContext.getRequest();
-		
-		request.setAttribute("sceneryList", sceneryList);
-		request.setAttribute("page", 1);
-		request.setAttribute("total", total);
-		request.setAttribute("numPage", numPage);
-			
-		return "sceneryList";
 	}
 	
 	public void SceneryListGson() throws IOException{

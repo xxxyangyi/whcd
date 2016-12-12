@@ -168,37 +168,37 @@ window.onload=function() {
 			console.log("home_activity_list 不存在：不请求数据");
 		}
 	
-	if ($("#home_scenery_list").length > 0) {
-		console.log("home_scenery_list 存在：请求数据");
-		$.ajax({
-			type : "post",
-			data : {},
-			url : url_perfix + "Scenery/SceneryListGson",
-			async : true,
-			dataType : 'json',
-			success : function(msg) {
-				if (msg) {
-					console.log("请求数据成功： "+ msg.length);
-					var i = 0;
-					var y = 0;
-					if(msg.length<=6){
-						y=msg.length;
-					}else{
-						y=6;
-					}
-					console.log(y)
-					for (i; i < y; i++) {
-						console.log(i)
-							
-					}				
-				} else {
-					console.log("请求数据失败： "+ msg);
-				}
-			}
-		})	
-		} else {
-			console.log("home_activity_list 不存在：不请求数据");
-		}
+	// if ($("#home_scenery_list").length > 0) {
+	// 	console.log("home_scenery_list 存在：请求数据");
+	// 	$.ajax({
+	// 		type : "post",
+	// 		data : {},
+	// 		url : url_perfix + "Scenery/SceneryListGson",
+	// 		async : true,
+	// 		dataType : 'json',
+	// 		success : function(msg) {
+	// 			if (msg) {
+	// 				console.log("请求数据成功： "+ msg.length);
+	// 				var i = 0;
+	// 				var y = 0;
+	// 				if(msg.length<=6){
+	// 					y=msg.length;
+	// 				}else{
+	// 					y=6;
+	// 				}
+	// 				console.log(y)
+	// 				for (i; i < y; i++) {
+	// 					console.log(i)
+	//
+	// 				}
+	// 			} else {
+	// 				console.log("请求数据失败： "+ msg);
+	// 			}
+	// 		}
+	// 	})
+	// 	} else {
+	// 		console.log("home_activity_list 不存在：不请求数据");
+	// 	}
 
 	$('.Time').datetimepicker({
 		 format: 'DD/MM/YYYY'
@@ -1109,8 +1109,7 @@ window.onload=function() {
 						tmpStr=$("#topMenuList").html();
 						for(var i=0;i <len;i++){
 							if(arr[i].position===0&&arr[i].isUsed===1)
-								// htmlStr+="<li><a href='/WHCD/Scenery/SceneryList?tabid="+arr[i].id+"'>"+arr[i].name+"</a></li>"
-								htmlStr+="<li><a href='"+ url_perfix +"Scenery/SceneryList?tabid="+arr[i].id+"'>"+arr[i].name+"</a></li>"
+								htmlStr+="<li><a onclick='localStorage[\"tabId\"] = "+arr[i].id+";window.location.href=\"/jsp/view/scenery/sceneryList.jsp\"'>"+arr[i].name+"</a></li>"
 						}
 						tmpStr+=htmlStr;
 						$("#topMenuList").html(tmpStr);
@@ -1146,69 +1145,69 @@ window.onload=function() {
 			});
 		} 
 
-		function getSceneryDataHomePage() {
-			$.ajax({
-				type : "post",
-				url:url_perfix + "Scenery/getSceneryList",
-				async : false,
-				dataType : 'json',
-				data:{"page":1},
-				error : function() {
-					alert("ajax出错！ getSceneryDataHomePage");
-				},
-				success : function(data) {
-					var numPage=data.numPage;
-					var len=data.sceneryList.length;
-					var total=data.total;
-					var page=data.page;
-					var arr=data.sceneryList;
-					var htmlStr="";
-					var tmpStr="";
-					for (var i=0; i <len&&i<numPage; i++) {
-					if(i==0){
-					 tmpStr="<div class='row'><div class='col-lg-12'>"
-						+"<div class='panel panel-default'>"
-						+"<div class='panel-body' >"
-						+"<div class='media'>"
-						+"<div class='media-body'>"
-						+"<h4 class='media-heading'>"
-						+"<a href='"+ url_perfix +"Scenery/SceneryDetail?sceneryId="+arr[i].id+"'>"
-						+arr[i].summary
-						+"</a>"
-						+"</h4>"
-						+"<p style='width:470px;word-wrap:break-word;text-overflow:ellipsis'>"
-						+arr[i].detailSub
-						+"</p>"
-						+"</div>"
-						+"<div class='media-right media-middle'>"
-						+"<a> <img class='media-object' style='margin-top: 20px;'  src='"+ url_perfix +arr[i].picaddr+"' onload='AutoResizeImage(100,100,this)' onerror='javascript:this.src=\""+ url_perfix +"jsp/img/errorimg.jpg\"' /></a>"
-						+"</div></div></div></div></div></div>";
-						}
-					else{
-							tmpStr="<div class='row'>"
-										+"<div class='col-lg-12'>"
-										+"<div class='panel panel-default'>"
-										+"<div class='panel-body'>"
-										+"<div class='media'>"
-										+"<div class='media-body'>"
-										+"<h4 class='media-heading'>"
-										+"<a href='"+ url_perfix +"Scenery/SceneryDetail?sceneryId="+arr[i].id+"'>"
-										+arr[i].summary
-										+"</a>"
-										+"</h4>"
-										+"<p style='width:470px;word-wrap:break-word;text-overflow:ellipsis'>"
-										+arr[i].detailSub
-										+"</p>"
-										+"</div>"
-										+"</div></div></div></div></div>";
-						}
-						htmlStr+=tmpStr;
-					}
-					
-					$("#sceneryHomePage").html(htmlStr);
-				}
-			});
-		}
+		// function getSceneryDataHomePage() {
+		// 	$.ajax({
+		// 		type : "post",
+		// 		url:url_perfix + "Scenery/getSceneryList",
+		// 		async : false,
+		// 		dataType : 'json',
+		// 		data:{"page":1},
+		// 		error : function() {
+		// 			alert("ajax出错！ getSceneryDataHomePage");
+		// 		},
+		// 		success : function(data) {
+		// 			var numPage=data.numPage;
+		// 			var len=data.sceneryList.length;
+		// 			var total=data.total;
+		// 			var page=data.page;
+		// 			var arr=data.sceneryList;
+		// 			var htmlStr="";
+		// 			var tmpStr="";
+		// 			for (var i=0; i <len&&i<numPage; i++) {
+		// 			if(i==0){
+		// 			 tmpStr="<div class='row'><div class='col-lg-12'>"
+		// 				+"<div class='panel panel-default'>"
+		// 				+"<div class='panel-body' >"
+		// 				+"<div class='media'>"
+		// 				+"<div class='media-body'>"
+		// 				+"<h4 class='media-heading'>"
+		// 				+"<a href='"+ url_perfix +"Scenery/SceneryDetail?sceneryId="+arr[i].id+"'>"
+		// 				+arr[i].summary
+		// 				+"</a>"
+		// 				+"</h4>"
+		// 				+"<p style='width:470px;word-wrap:break-word;text-overflow:ellipsis'>"
+		// 				+arr[i].detailSub
+		// 				+"</p>"
+		// 				+"</div>"
+		// 				+"<div class='media-right media-middle'>"
+		// 				+"<a> <img class='media-object' style='margin-top: 20px;'  src='"+ url_perfix +arr[i].picaddr+"' onload='AutoResizeImage(100,100,this)' onerror='javascript:this.src=\""+ url_perfix +"jsp/img/errorimg.jpg\"' /></a>"
+		// 				+"</div></div></div></div></div></div>";
+		// 				}
+		// 			else{
+		// 					tmpStr="<div class='row'>"
+		// 								+"<div class='col-lg-12'>"
+		// 								+"<div class='panel panel-default'>"
+		// 								+"<div class='panel-body'>"
+		// 								+"<div class='media'>"
+		// 								+"<div class='media-body'>"
+		// 								+"<h4 class='media-heading'>"
+		// 								+"<a href='"+ url_perfix +"Scenery/SceneryDetail?sceneryId="+arr[i].id+"'>"
+		// 								+arr[i].summary
+		// 								+"</a>"
+		// 								+"</h4>"
+		// 								+"<p style='width:470px;word-wrap:break-word;text-overflow:ellipsis'>"
+		// 								+arr[i].detailSub
+		// 								+"</p>"
+		// 								+"</div>"
+		// 								+"</div></div></div></div></div>";
+		// 				}
+		// 				htmlStr+=tmpStr;
+		// 			}
+		//
+		// 			$("#sceneryHomePage").html(htmlStr);
+		// 		}
+		// 	});
+		// }
 
 
 		var activity ={

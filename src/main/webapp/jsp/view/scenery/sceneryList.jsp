@@ -14,7 +14,6 @@
 </head>
 <body>
 <div id="scennery" class="col-md-10">
-    <hr align="left" width="100%" size="15"/>
     <div id="usrPanelContent">
         <div id="pageSceneryList"></div>
 
@@ -44,7 +43,7 @@
     </div>
 </div>
 <script type="text/javascript">
-    pagingStart('#pageSceneryList', '#pageSceneryList_Model', '<%=basePath%>Scenery/pagingScenery?tabId=1');
+    pagingStart('#pageSceneryList', '#pageSceneryList_Model', '/Scenery/pagingScenery?tabId='+localStorage["tabId"]);
 </script>
 </body>
 </html>
