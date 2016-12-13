@@ -19,8 +19,6 @@
 
 <body>
 			<div class="col-md-10">
-				<hr align="left" width="100%" size="15" />
-
 				<div class="panel panel-default">
 					<div class="panel-heading" style="text-align: center;">
 						<%=scenery.getSummary()%>
