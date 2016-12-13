@@ -85,7 +85,18 @@ public class SceneryAction extends BaseAction {
 
 		System.out.println("getSceneryList");
 		int pageNo = Integer.parseInt(request.getParameter("pageNo"));
-		String str = "SELECT * FROM scenery order by createdate DESC";
+		String isMe = request.getParameter("me");
+		String str = null;
+		if( isMe.equals("true") ){
+			if(session.get("user") != null){
+				String userMail = ((User)session.get("user")).getMail();
+				str = "SELECT * FROM scenery where user_id = \""+userMail+"\" order by createdate DESC";
+			}else {
+				return;
+			}
+		}else{
+			 str = "SELECT * FROM scenery order by createdate DESC";
+		}
 		pagingSceneryService.PagingService(Scenery.class);
 		Pager pager = pagingSceneryService.findPageBySQL(pageNo,PAGESIZE,str);
 

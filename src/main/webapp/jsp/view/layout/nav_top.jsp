@@ -101,8 +101,10 @@
                                         aria-expanded="false">个人中心 <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="<%=request.getContextPath()%>/PersonCenter/Index">中心首页</a></li>
-                        <li><a href="<%=request.getContextPath()%>/PersonCenter/ModifyInfo">修改个人信息</a></li>
+                        <li><a href="<%=request.getContextPath()%>/jsp/view/user/sceneryManage.jsp">我创建的信息</a></li>
                         <li><a href="<%=request.getContextPath()%>/PersonCenter/CreateScenery">创建名胜古迹</a></li>
+                        <li><a href="<%=request.getContextPath()%>/PersonCenter/ModifyInfo">   修改个人信息</a></li>
+
                         <li role="separator" class="divider"></li>
                         <li><a onclick="logout('<%=path%>/Home/DoLogOut');">退出</a></li>
                     </ul>
