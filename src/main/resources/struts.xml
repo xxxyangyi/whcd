@@ -14,10 +14,6 @@
 	<!--设置浏览器是否缓存静态内容，建议：开发阶段关闭，运行时开启 -->
 	<constant name="struts.serve.static.browserCache" value="false" />
 
-	<package name="test" namespace="/Test" extends="struts-default">
-		<action name="Index" class="com.hand.actions.TestAction" method="Index" />
-	</package>
-
 	<package name="Home" namespace="/Home" extends="struts-default">
 		<action name="Index" class="homeAction" method="Index">
 			<result name="index">/jsp/view/index.jsp</result>
