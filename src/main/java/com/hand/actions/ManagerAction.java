@@ -482,11 +482,11 @@ public String ManageScenery(){
 	public void DisableTab(){
 		try{
 			String id=request.getParameter("id");
-			
+
 			Tab tab=tabService.getTab(Integer.parseInt(id));
 			tab.setIsUsed(0);
 			tabService.updateTab(tab);
-			
+
 			PrintWriter out = response.getWriter();
 			out.print("1");
 		}
