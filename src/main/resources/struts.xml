@@ -113,8 +113,6 @@
 		<action name="DoSceneryModify" class="personCenter" method="DoSceneryModify">
 			<result name="modifyScenerySuccess" type="redirect">/PersonCenter/SceneryManage</result>
 		</action>
-		<!--<action name="DeleteScenery" class="personCenter" method="DeleteScenery">-->
-		<!--</action>-->
 	</package>
 	
 	<package name="Manager" namespace="/Manager" extends="struts-default">
@@ -166,8 +164,6 @@
 		<action name="DoModifyScenery" class="managerAction" method="DoModifyScenery">
 			<result name="modifyScenerySuccess" type="redirect">/Manager/ManageScenery</result>
 		</action>
-		<!--<action name="DeleteScenery" class="managerAction" method="DeleteScenery">-->
-		<!--</action>-->
 		<action name="AddScenery" class="managerAction" method="AddScenery">
 			<result name="addScenerySuccess" type="redirect">/Manager/ManageScenery</result>
 		</action>
@@ -179,8 +175,6 @@
 		<action name="getSexData" class="managerAction" method="getSexData">
 		</action>
 		<action name="getIdentityData" class="managerAction" method="getIdentityData">
-		</action>
-		<action name="getMonthData" class="managerAction" method="getMonthData">
 		</action>
 		<action name="ManageTab" class="managerAction" method="ManageTab">
 			<result name="manageTab">/jsp/view/manager/manageTab.jsp</result>
@@ -205,14 +199,11 @@
 		<action name="SceneryList" class="sceneryAction" method="SceneryList">
 			<result name="sceneryList">/jsp/view/scenery/sceneryList.jsp</result>
 		</action>
-		<action name="SceneryListGson" class="sceneryAction" method="SceneryListGson"></action>
-
 		<action name="SceneryDetail" class="sceneryAction" method="SceneryDetail">
 			<result name="sceneryDetail">/jsp/view/scenery/sceneryDetail.jsp</result>
 		</action>
 		<action name="getSceneryList" class="sceneryAction" method="getSceneryList"></action>
 		<action name="pagingScenery" class="sceneryAction" method="pagingScenery"></action>
-		<action name="getPercenCenterSceneryList" class="sceneryAction" method="getPercenCenterSceneryList"></action>
 		<action name="deleteScenery" class="sceneryAction" method="deleteScenery"></action>
 		<action name="auditScenery" class="sceneryAction" method="auditScenery"></action>
 		<action name="disAuditScenery" class="sceneryAction" method="disAuditScenery"></action>

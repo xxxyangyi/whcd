@@ -59,18 +59,6 @@ public class SceneryAction extends BaseAction {
 
 	}
 	
-	public void SceneryListGson() throws IOException{
-		System.out.println("=============SceneryListGson");
-		response.setContentType("text/json"); 
-        response.setCharacterEncoding("UTF-8"); 
-		PrintWriter out = response.getWriter();
-		List<Scenery> list = sceneryService.GetScenerys();
-		System.out.println(list.size());
-		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").excludeFieldsWithoutExposeAnnotation().create();
-		out.print(gson.toJson(list));
-		System.out.println("发送数据");
-	}
-	
 	public String SceneryDetail(){
 		
 		String sceneryId=request.getParameter("sceneryId");
@@ -82,12 +70,11 @@ public class SceneryAction extends BaseAction {
 	}
 	
 	public void getSceneryList() throws Exception{
-
 		System.out.println("getSceneryList");
 		int pageNo = Integer.parseInt(request.getParameter("pageNo"));
 		String isMe = request.getParameter("me");
 		String str = null;
-		if( isMe.equals("true") ){
+		if( "true".equals(isMe) ){
 			if(session.get("user") != null){
 				String userMail = ((User)session.get("user")).getMail();
 				str = "SELECT * FROM scenery where user_id = \""+userMail+"\" order by createdate DESC";
@@ -108,37 +95,6 @@ public class SceneryAction extends BaseAction {
 		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").excludeFieldsWithoutExposeAnnotation().create();
 		out.print(gson.toJson(pager));
 		System.out.println("发送数据=="+gson.toJson(pager));
-	}
-	
-   public void getPercenCenterSceneryList() throws Exception{
-		
-		User user=(User) session.get("user");
-		String mail=user.getMail();
-	
-		String sqlSum="select count(*) as sumkey from scenery where user_id='"+mail+"' order by createdate";
-		String sql="select * from scenery where user_id='"+mail+"' order by createdate";
-		
-		
-		Integer page=Integer.parseInt(request.getParameter("page"));
-		Integer total=sceneryService.GetTotal(sqlSum, numPage);
-		List<Scenery> sceneryList=sceneryService.GetList(sql, page, numPage, total);
-		
-		List<SceneryVO> sceneryVoList=new ArrayList<SceneryVO>();
-		for(Scenery s:sceneryList)
-			sceneryVoList.add(EntityToVo.SceneryToVo(s));
-		
-		response.setContentType("text/json"); 
-        response.setCharacterEncoding("UTF-8"); 
-        PrintWriter out = response.getWriter();
-        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").excludeFieldsWithoutExposeAnnotation().create();
-        
-        Map<String, Object> paramMap=new HashMap<String,Object>();
-        paramMap.put("page",page);
-        paramMap.put("total",total);
-        paramMap.put("numPage",numPage);
-        paramMap.put("sceneryList",sceneryVoList);
-		
-        out.print(gson.toJson(paramMap));
 	}
 
 	public void deleteScenery() throws Exception {

@@ -19,7 +19,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import static com.hand.KEY.commonKey.PAGESIZE;
 
-public class ActivityAction extends ActionSupport implements SessionAware,ServletRequestAware,ServletResponseAware{
+public class ActivityAction extends BaseAction{
 	
 	@Resource(name = "activityService")
 	private IActivityService activityService;
@@ -27,9 +27,6 @@ public class ActivityAction extends ActionSupport implements SessionAware,Servle
 	@Resource(name = "pagingService")
 	private PagingService<Activity> pagingActivityService;
 	
-	private Map session;
-	private HttpServletRequest  request;
-	private HttpServletResponse response;
 	private Activity activity;
 	private List<Activity> activityList;
 	private String time1;
@@ -177,20 +174,5 @@ public class ActivityAction extends ActionSupport implements SessionAware,Servle
 
 	public void setTime2(String time2) {
 		this.time2 = time2;
-	}
-
-	@Override
-	public void setSession(Map session) {
-		this.session = session;
-	}
-
-	@Override
-	public void setServletRequest(HttpServletRequest request) {
-		this.request = request;
-	}
-
-	@Override
-	public void setServletResponse(HttpServletResponse response) {
-		this.response = response;
 	}
 }
