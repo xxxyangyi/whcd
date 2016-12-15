@@ -37,31 +37,27 @@ public class SceneryService implements ISceneryService {
 	}
 	
 	@Override
-	public Scenery GetScenery(String sceneryId){
+	public Scenery getScenery(String sceneryId){
 		return sceneryDao.FindOne(sceneryId);
 	}
 
 	@Override
 	public void UpdateScenery(Scenery scenery) {
-		// TODO Auto-generated method stub
 		sceneryDao.Update(scenery);
 	}
 
 	@Override
 	public void DeleteScenery(Scenery scenery) {
-		// TODO Auto-generated method stub
 		sceneryDao.Delete(scenery);
 	}
 
 	@Override
 	public List<Scenery> GetScenerys() {
-		// TODO Auto-generated method stub
 		return sceneryDao.FindAll();
 	}
 
 	@Override
 	public Map getSceneryListByMonth() {
-		// TODO Auto-generated method stub
 		return sceneryDao.getSceneryListByMonth();
 	}
 

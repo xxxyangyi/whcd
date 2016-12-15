@@ -35,7 +35,7 @@ public interface ISceneryService {
 	 * @param sceneryId 名胜古迹对象ID
 	 * @return 名胜古迹对象
 	 */
-	public Scenery GetScenery(String sceneryId);
+	public Scenery getScenery(String sceneryId);
 	
 	/***
 	 * 更细名胜古迹对象信息
