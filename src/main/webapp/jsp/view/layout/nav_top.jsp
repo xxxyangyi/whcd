@@ -19,7 +19,6 @@
         <div style="width: 100%;background-color: #fff;z-index: 100">
             <img alt="" src="<%=basePath%>jsp/img/top.png">
         </div>
-        <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed"
                     data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
@@ -101,7 +100,7 @@
                                         aria-expanded="false">个人中心 <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="<%=request.getContextPath()%>/PersonCenter/Index">中心首页</a></li>
-                        <li><a href="<%=request.getContextPath()%>/jsp/view/user/sceneryManage.jsp">我创建的信息</a></li>
+                        <li><a href="<%=request.getContextPath()%>/jsp/view/scenery/sceneryManage.jsp">我创建的信息</a></li>
                         <li><a href="<%=request.getContextPath()%>/PersonCenter/CreateScenery">创建名胜古迹</a></li>
                         <li><a href="<%=request.getContextPath()%>/PersonCenter/ModifyInfo">   修改个人信息</a></li>
 

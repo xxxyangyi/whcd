@@ -24,19 +24,6 @@ public class SceneryService implements ISceneryService {
 	}
 	
 	@Override
-	public Integer GetTotal(String sqlSum,Integer numPage){
-		Integer sum=sceneryDao.GetSum(sqlSum);
-		return sceneryDao.GetTotal(sum,numPage);
-	}
-	
-	@Override
-	public List<Scenery> GetList(String sql,Integer page,Integer numPage,Integer total){
-		Integer pre=sceneryDao.GetPre(page, total, numPage);
-		
-		return sceneryDao.FindList(sql, pre, numPage);
-	}
-	
-	@Override
 	public Scenery getScenery(String sceneryId){
 		return sceneryDao.FindOne(sceneryId);
 	}

@@ -238,39 +238,58 @@ function getPagingHtmlString2(InsertID, ModelId, PerId, NextId, TotalPageId, Act
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+function formInfo(InsertID, ModelId, ActionName, functionName) {
+    var json = null;
+    $.ajax({
+        type: "post",
+        data: {},
+        url: ActionName,
+        async: false,
+        dataType: 'json',
+        error: function () {
+            alert("FormInfo AJAX");
+        },
+        success: function (msg) {
+            console.log(msg);
+            json = msg;
+        }
+    })
+    $(InsertID).children().remove();
+    if (json == "" || json == null) {
+        alert("<h4>没有更多数据了</h4>");
+        return;
+    }
+    // 1. 加载数据
+    var model_html = $(ModelId).html();
+    $(ModelId).remove();
+    var map = new UtilMap();
+    var patt = new RegExp(/[@]{3}[\w._]+[@]{1}/, "gmi");
+    var result;
+    while ((result = patt.exec(model_html)) != null) {
+        result = result.toString().replace(/([@]{3})([\w._]+)([@]{1})/, "$2");
+        console.log(result + "----");
+        map.put("@@@" + result + "@", result);
+        console.log(map.arr)
+    }
+    // 进行循环打印
+    var linshiModelHtml = model_html;
+    for (var j = 0; j < map.size(); j++) {
+        var val = json;
+        var keyVal = map.getKey(j);
+        var keyValArrary = map.get(keyVal).split('.');
+        for (var i1 = 0; i1 < keyValArrary.length; i1++) {
+            val = val[keyValArrary[i1]];
+        }
+        linshiModelHtml = (linshiModelHtml.replace(keyVal, val)).toString();
+    }
+    $(InsertID).append(linshiModelHtml);
+    if(functionName != null){
+        console.log("formInfo中 调用了方法");
+        var func=eval(functionName);
+    }else {
+        console.log("formInfo中 没有调用方法");
+    }
+}
 
 
 

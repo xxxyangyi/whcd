@@ -1,4 +1,3 @@
-<%@page import="com.hand.entity.Scenery" %>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
 <%
 	String path = request.getContextPath();
@@ -45,7 +44,7 @@
 			<tbody id="sceneryListPaging_Model">
 			<tr class="sceneryListPaging_Tr" id="@@@id@">
 				<td>
-					<a href="http://localhost:8080/PersonCenter/SceneryDetail?sceneryId=@@@id@">@@@summary@</a>
+					<a href="javascript:scenery.goToSceneryDetail('@@@id@')">@@@summary@</a>
 				</td>
 				<td>
 					@@@detailSub@

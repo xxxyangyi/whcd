@@ -9,7 +9,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-    <base href="<%=basePath%>">
     <title>名胜列表</title>
 </head>
 <body>
@@ -23,7 +22,7 @@
                     <div class="media">
                         <div class="media-body">
                             <h4 class="media-heading">
-                                <a href="Scenery/SceneryDetail?sceneryId=@@@id@">
+                                <a href="javascript:scenery.goToSceneryDetail('@@@id@')">
                                     @@@summary@
                                 </a>
                             </h4>

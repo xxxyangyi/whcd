@@ -91,23 +91,14 @@
 		<action name="CreateScenery" class="personCenter" method="CreateScenery">
 			<result name="createScenery">/jsp/view/scenery/createScenery.jsp</result>
 		</action>
-		<action name="DoCreateScenery" class="personCenter" method="DoCreateScenery">
-			<result name="createScenerySuccess" type="redirect">/PersonCenter/SceneryManage</result>
-		</action>
+		<!--<action name="DoCreateScenery" class="personCenter" method="DoCreateScenery">-->
+			<!--<result name="createScenerySuccess" type="redirect">/PersonCenter/SceneryManage</result>-->
+		<!--</action>-->
 		<action name="SceneryManage" class="personCenter" method="SceneryManage">
 			<result name="sceneryManage">/jsp/view/user/sceneryManage.jsp</result>
 		</action>
-		<action name="SceneryManageSub" class="personCenter" method="SceneryManageSub">
-			<result name="sceneryManageSub">/jsp/view/user/sceneryManageSub.jsp</result>
-		</action>
-		<action name="SceneryDetail" class="personCenter" method="SceneryDetail">
-			<result name="sceneryDetail">/jsp/view/user/sceneryDetail.jsp</result>
-		</action>
 		<action name="SceneryModify" class="personCenter" method="SceneryModify">
 			<result name="sceneryModify">/jsp/view/user/sceneryModify.jsp</result>
-		</action>
-		<action name="DoSceneryModify" class="personCenter" method="DoSceneryModify">
-			<result name="modifyScenerySuccess" type="redirect">/PersonCenter/SceneryManage</result>
 		</action>
 	</package>
 	
@@ -124,9 +115,6 @@
 		</action>
 		<action name="DoModifyInfo" class="managerAction" method="DoModifyInfo">
 			<result name="modifySuccess" type="redirect">/Manager/Index</result>
-		</action>
-		<action name="ManageUser" class="managerAction" method="ManageUser">
-			<result name="manangeUser">/jsp/view/manager/manageUser.jsp</result>
 		</action>
 		<action name="ManageUserSub" class="managerAction" method="ManageUserSub">
 			<result name="manangeUserSub">/jsp/view/manager/manageUserSub.jsp</result>
@@ -163,9 +151,6 @@
 		<action name="AddScenery" class="managerAction" method="AddScenery">
 			<result name="addScenerySuccess" type="redirect">/Manager/ManageScenery</result>
 		</action>
-		<action name="DetailSceneryInfo" class="personCenter" method="DetailSceneryInfo">
-			<result name="detailSceneryInfo">/jsp/view/manager/detailSceneryInfo.jsp</result>
-		</action>
 		<action name="getUserList" class="managerAction" method="getUserList">
 		</action>
 		<action name="getSexData" class="managerAction" method="getSexData">
@@ -192,12 +177,7 @@
 	</package>
 	
 	<package name="Scenery" namespace="/Scenery" extends="struts-default">
-		<action name="SceneryList" class="sceneryAction" method="SceneryList">
-			<result name="sceneryList">/jsp/view/scenery/sceneryList.jsp</result>
-		</action>
-		<action name="SceneryDetail" class="sceneryAction" method="SceneryDetail">
-			<result name="sceneryDetail">/jsp/view/scenery/sceneryDetail.jsp</result>
-		</action>
+		<action name="sceneryDetail" class="sceneryAction" method="sceneryDetail"></action>
 		<action name="getSceneryList" class="sceneryAction" method="getSceneryList"></action>
 		<action name="pagingScenery" class="sceneryAction" method="pagingScenery"></action>
 		<action name="deleteScenery" class="sceneryAction" method="deleteScenery"></action>

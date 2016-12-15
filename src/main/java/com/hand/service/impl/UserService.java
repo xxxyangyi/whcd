@@ -50,22 +50,6 @@ public class UserService implements IUserService {
 	}
 
 	@Override
-	public Integer GetTotal(String sqlSum, Integer numPage) {
-		// TODO Auto-generated method stub
-		Integer sum = userDao.GetSum(sqlSum);
-		return userDao.GetTotal(sum, numPage);
-	}
-
-	@Override
-	public List<User> GetList(String sql, Integer page, Integer numPage,
-			Integer total) {
-		// TODO Auto-generated method stub
-		Integer pre = userDao.GetPre(page, total, numPage);
-
-		return userDao.FindList(sql, pre, numPage);
-	}
-
-	@Override
 	public void DeleteUser(User user) {
 		// TODO Auto-generated method stub
 		userDao.Delete(user);

@@ -51,14 +51,14 @@ public class SceneryAction extends BaseAction {
 
 	}
 	
-	public String SceneryDetail(){
-		
+	public void sceneryDetail() throws Exception{
 		String sceneryId=request.getParameter("sceneryId");
-		
-		Scenery scenery=sceneryService.GetScenery(sceneryId);
-		request.setAttribute("scenery", scenery);
-		
-		return "sceneryDetail";
+		Scenery scenery=sceneryService.getScenery(sceneryId);
+		response.setContentType("text/json");
+		response.setCharacterEncoding("UTF-8");
+		PrintWriter out = response.getWriter();
+		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").excludeFieldsWithoutExposeAnnotation().create();
+		out.print(gson.toJson(scenery));
 	}
 	
 	public void getSceneryList() throws Exception{
@@ -91,7 +91,7 @@ public class SceneryAction extends BaseAction {
 
 	public void deleteScenery() throws Exception {
 		String sceneryId = request.getParameter("sceneryId");
-		Scenery scenery = sceneryService.GetScenery(sceneryId);
+		Scenery scenery = sceneryService.getScenery(sceneryId);
 		sceneryService.DeleteScenery(scenery);
 		response.setContentType("text/plain");
 		response.setCharacterEncoding("UTF-8");
@@ -101,7 +101,7 @@ public class SceneryAction extends BaseAction {
 
 	public void auditScenery() throws Exception {
 		String sceneryId = request.getParameter("sceneryId");
-		Scenery scenery = sceneryService.GetScenery(sceneryId);
+		Scenery scenery = sceneryService.getScenery(sceneryId);
 		scenery.setIsAudited(1);
 		sceneryService.UpdateScenery(scenery);
 		response.setContentType("text/plain");
@@ -112,7 +112,7 @@ public class SceneryAction extends BaseAction {
 
 	public void disAuditScenery() throws Exception {
 		String sceneryId = request.getParameter("sceneryId");
-		Scenery scenery = sceneryService.GetScenery(sceneryId);
+		Scenery scenery = sceneryService.getScenery(sceneryId);
 		scenery.setIsAudited(-1);
 		sceneryService.UpdateScenery(scenery);
 

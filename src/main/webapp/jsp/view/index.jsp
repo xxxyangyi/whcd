@@ -21,7 +21,7 @@
                 <div class="media">
                     <div class="media-body">
                         <h4 class="media-heading">
-                            <a href="Scenery/SceneryDetail?sceneryId=@@@id@">
+                            <a href="javascript:scenery.goToSceneryDetail('@@@id@')">
                                 @@@summary@
                             </a>
                         </h4>
@@ -30,7 +30,7 @@
                         </p>
                     </div>
                     <div class="media-right media-middle">
-                        <a> <img class="media-object" style="margin-top: 20px;" src="http://localhost:8080/@@@picaddr@"
+                        <a> <img class="media-object" style="margin-top: 20px;" src="@@@picaddr@"
                                  onload="AutoResizeImage(100,100,this)"></a>
                     </div>
                 </div>
@@ -40,10 +40,30 @@
 </div>
 <div class="col-md-4">
     <h3>最新更新活动</h3>
-    <div id="home_activity_list"></div>
+    <div id="pageActivityList"></div>
+    <div id="pageActivityList_Model" hidden="hidden">
+        <div class='panel panel-default'>
+            <div class='panel-body'>
+                <div class='media'>
+                    <div class='media-left media-middle'>
+                        <img class='media-object' height='50px' width='50px' src='jsp/image/sky.jpg'>
+                    </div>
+                    <div class='media-body'>
+                        <h4 class='media-heading'>
+                           <a href="/activity/getActivityVotesPassed?activity_id=@@@id@">
+                            @@@activityName@
+                            </a>
+                        </h4>
+                        @@@context@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <script type="text/javascript">
     pagingStart('#pageSceneryList', '#pageSceneryList_Model', '/Scenery/pagingScenery',false);
+    pagingStart('#pageActivityList', '#pageActivityList_Model', '/activity/pagingActivity',false);
 </script>
 </body>
 </html>
