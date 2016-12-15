@@ -17,8 +17,6 @@ import org.hibernate.criterion.Restrictions;
 import static com.hand.KEY.commonKey.PAGESIZE;
 
 public class SceneryAction extends BaseAction {
-	
-	private static Integer numPage=4;
 
 	@Resource(name = "sceneryService")
 	private ISceneryService sceneryService;
