@@ -112,44 +112,6 @@ public class ManagerAction extends BaseAction {
 		
 		return "modifySuccess";
 	}
-	
-	// 管理用户
-//	public String ManageUser() {
-//
-//		String sqlSum = "select count(*) as sumkey from user";
-//		String sql = "select * from user";
-//
-//		Integer total = userService.GetTotal(sqlSum, numPage);
-//		List<User> userList = userService.GetList(sql, 1, numPage, total);
-//		HttpServletRequest request = ServletActionContext.getRequest();
-//
-//		request.setAttribute("userList", userList);
-//		request.setAttribute("page", 1);
-//		request.setAttribute("total", total);
-//		request.setAttribute("numPage", numPage);
-//
-//		return "manangeUser";
-//	}
-//
-//	public String ManageUserSub() {
-//
-//		String sqlSum = "select count(*) as sumkey from user";
-//		String sql = "select * from user";
-//
-//		HttpServletRequest request = ServletActionContext.getRequest();
-//		String pageStr = request.getParameter("page");
-//		Integer page = Integer.parseInt(pageStr);
-//
-//		Integer total = userService.GetTotal(sqlSum, numPage);
-//		List<User> userList = userService.GetList(sql, page, numPage, total);
-//
-//		request.setAttribute("userList", userList);
-//		request.setAttribute("page", page);
-//		request.setAttribute("total", total);
-//		request.setAttribute("numPage", numPage);
-//
-//		return "manangeUserSub";
-//	}
 
 	public String ModifyUserInfo() {
 
