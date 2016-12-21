@@ -62,7 +62,7 @@
     </div>
 </div>
 <script type="text/javascript">
-    pagingStart('#pageSceneryList', '#pageSceneryList_Model', '/Scenery/pagingScenery',false);
+    pagingStart('#pageSceneryList', '#pageSceneryList_Model', '/scenery/pagingScenery',false);
     pagingStart('#pageActivityList', '#pageActivityList_Model', '/activity/pagingActivity',false);
 </script>
 </body>
