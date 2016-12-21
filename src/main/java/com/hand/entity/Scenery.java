@@ -32,7 +32,7 @@ public class Scenery implements Serializable{
 	
 	@Column(name="createdate")
 	@Expose 
-	private Date createDate;
+	private Date createDate = new Date();
 	
 	@Column(name="detailsub",columnDefinition="TEXT")
 	@Expose
