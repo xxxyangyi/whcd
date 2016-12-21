@@ -176,7 +176,8 @@
 		</action>
 	</package>
 	
-	<package name="Scenery" namespace="/Scenery" extends="struts-default">
+	<package name="scenery" namespace="/scenery" extends="struts-default">
+		<action name="createScenery" class="sceneryAction" method="createScenery"></action>
 		<action name="sceneryDetail" class="sceneryAction" method="sceneryDetail"></action>
 		<action name="getSceneryList" class="sceneryAction" method="getSceneryList"></action>
 		<action name="pagingScenery" class="sceneryAction" method="pagingScenery"></action>
