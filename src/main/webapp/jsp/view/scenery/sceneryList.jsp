@@ -42,7 +42,7 @@
     </div>
 </div>
 <script type="text/javascript">
-    pagingStart('#pageSceneryList', '#pageSceneryList_Model', '/Scenery/pagingScenery?tabId='+localStorage["tabId"]);
+    pagingStart('#pageSceneryList', '#pageSceneryList_Model', '/scenery/pagingScenery?tabId='+localStorage["tabId"]);
 </script>
 </body>
 </html>

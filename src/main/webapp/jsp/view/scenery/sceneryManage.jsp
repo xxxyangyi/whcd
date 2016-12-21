@@ -62,7 +62,7 @@
 	</div>
 </div>
 <script type="text/javascript">
-	pagingStart2('#sceneryListPaging', '#sceneryListPaging_Model','#per','#next','#pageNo', '/Scenery/getSceneryList?me=true','scenery.isAuditedToString()')
+	pagingStart2('#sceneryListPaging', '#sceneryListPaging_Model','#per','#next','#pageNo', '/scenery/getSceneryList?me=true','scenery.isAuditedToString()')
 </script>
 </body>
 </html>

@@ -34,7 +34,7 @@
 </div>
 
 <script type="application/javascript">
-    formInfo("#sceneryDetail", "#sceneryDetail_Model", "/Scenery/sceneryDetail?sceneryId="+localStorage["sceneryId"]);
+    formInfo("#sceneryDetail", "#sceneryDetail_Model", "/scenery/sceneryDetail?sceneryId="+localStorage["sceneryId"]);
 </script>
 </body>
 </html>
