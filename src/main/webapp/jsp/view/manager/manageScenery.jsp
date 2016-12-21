@@ -1,4 +1,3 @@
-<%@page import="com.hand.entity.Scenery" %>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
 <%
     String path = request.getContextPath();
@@ -32,9 +31,6 @@
                 </tr>
                 </thead>
                 <tbody>
-                <%--<script type="text/javascript">--%>
-                    <%--GetManagerSceneryListOne();--%>
-                <%--</script>--%>
                 <tbody id="sceneryListPaging"></tbody>
                 </tbody>
             </table>
@@ -70,7 +66,7 @@
     </div>
 </div>
 <script type="text/javascript">
-    pagingStart2('#sceneryListPaging', '#sceneryListPaging_Model','#per','#next','#pageNo', '/Scenery/getSceneryList','scenery.isAuditedToString()')
+    pagingStart2('#sceneryListPaging', '#sceneryListPaging_Model','#per','#next','#pageNo', '/scenery/getSceneryList','scenery.isAuditedToString()')
 </script>
 </body>
 </html>
